@@ -1,0 +1,1975 @@
+[2015-02-02 13:58:00 INFO]:创建小消息窗口中....
+[2015-02-02 14:29:29 INFO]:创建小消息窗口中....
+[2015-02-02 14:30:10 INFO]:创建小消息窗口中....
+[2015-02-02 14:31:57 INFO]:创建小消息窗口中....
+[2015-02-02 14:33:36 INFO]:创建小消息窗口中....
+[2015-02-02 14:33:50 INFO]:创建小消息窗口中....
+[2015-02-02 14:34:02 INFO]:创建小消息窗口中....
+[2015-02-02 14:34:43 INFO]:创建小消息窗口中....
+[2015-02-02 14:34:52 INFO]:创建小消息窗口中....
+[2015-02-02 14:36:36 INFO]:创建小消息窗口中....
+[2015-02-02 14:50:28 INFO]:创建小消息窗口中....
+[2015-02-02 14:53:03 INFO]:创建小消息窗口中....
+[2015-02-02 14:53:06 INFO]:创建小消息窗口中....
+[2015-02-02 14:53:50 INFO]:创建小消息窗口中....
+[2015-02-02 14:54:03 INFO]:创建小消息窗口中....
+[2015-02-02 14:55:13 INFO]:创建小消息窗口中....
+[2015-02-02 14:56:03 INFO]:创建小消息窗口中....
+[2015-02-02 14:56:33 INFO]:创建小消息窗口中....
+[2015-02-02 14:56:36 INFO]:创建小消息窗口中....
+[2015-02-02 14:57:18 INFO]:创建小消息窗口中....
+[2015-02-02 14:57:38 INFO]:创建小消息窗口中....
+[2015-02-02 14:58:01 INFO]:创建小消息窗口中....
+[2015-02-02 14:58:26 INFO]:创建小消息窗口中....
+[2015-02-02 14:58:27 INFO]:创建小消息窗口中....
+[2015-02-02 14:58:39 INFO]:创建小消息窗口中....
+[2015-02-02 15:03:12 INFO]:创建小消息窗口中....
+[2015-02-02 15:04:27 INFO]:创建小消息窗口中....
+[2015-02-02 15:04:30 INFO]:创建小消息窗口中....
+[2015-02-02 15:04:36 INFO]:创建小消息窗口中....
+[2015-02-02 15:06:01 INFO]:创建小消息窗口中....
+[2015-02-02 15:06:04 INFO]:创建小消息窗口中....
+[2015-02-02 15:08:50 INFO]:创建小消息窗口中....
+[2015-02-02 15:09:21 INFO]:创建小消息窗口中....
+[2015-02-02 15:09:36 INFO]:创建小消息窗口中....
+[2015-02-02 15:09:46 INFO]:创建小消息窗口中....
+[2015-02-02 15:10:29 INFO]:创建小消息窗口中....
+[2015-02-02 15:11:08 INFO]:创建小消息窗口中....
+[2015-02-02 15:12:39 INFO]:创建小消息窗口中....
+[2015-02-02 15:13:22 INFO]:创建小消息窗口中....
+[2015-02-02 15:13:25 INFO]:创建小消息窗口中....
+[2015-02-02 15:14:04 INFO]:创建小消息窗口中....
+[2015-02-02 15:14:32 INFO]:创建小消息窗口中....
+[2015-02-02 15:15:46 INFO]:创建小消息窗口中....
+[2015-02-02 15:16:47 INFO]:创建小消息窗口中....
+[2015-02-02 15:17:31 INFO]:创建小消息窗口中....
+[2015-02-02 15:17:57 INFO]:创建小消息窗口中....
+[2015-02-02 15:25:16 INFO]:创建小消息窗口中....
+[2015-02-02 15:25:19 INFO]:创建小消息窗口中....
+[2015-02-02 15:25:22 INFO]:创建小消息窗口中....
+[2015-02-02 16:27:50 INFO]:创建小消息窗口中....
+[2015-02-02 16:27:55 INFO]:创建小消息窗口中....
+[2015-02-02 16:28:41 INFO]:创建小消息窗口中....
+[2015-02-02 16:44:14 INFO]:创建小消息窗口中....
+[2015-02-02 16:49:55 INFO]:创建小消息窗口中....
+[2015-02-02 17:18:47 INFO]:创建小消息窗口中....
+[2015-02-02 17:28:09 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:28:09 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:28:09 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:28:09 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:28:13 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:28:13 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:28:13 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:28:13 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:28:16 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:28:17 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:28:17 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:28:17 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:23 INFO]:创建小消息窗口中....
+[2015-02-02 17:31:23 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:23 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:23 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:23 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:28 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:28 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:28 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:28 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:33 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:33 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:33 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:33 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:38 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:38 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:38 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:38 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:39 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:31:39 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:39 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:39 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:39 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:39 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:39 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:39 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:39 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:31:40 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:40 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:40 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:40 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:40 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:40 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:40 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:40 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:31:40 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:40 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:40 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:40 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:40 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:40 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:40 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:41 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:31:41 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:41 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:41 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:41 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:41 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:41 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:41 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:42 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:42 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:42 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:42 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:42 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:42 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:42 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:42 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:42 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:42 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:42 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:42 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:42 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:31:42 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:31:42 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:31:42 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:31:52 INFO]:创建小消息窗口中....
+[2015-02-02 17:33:02 INFO]:创建小消息窗口中....
+[2015-02-02 17:33:02 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:02 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:02 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:02 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:03 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:03 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:03 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:03 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:04 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:04 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:04 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:04 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:05 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:33:05 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:05 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:05 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:05 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:33:05 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:05 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:05 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:05 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:33:06 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:06 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:06 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:06 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:06 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:06 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:06 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:06 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:06 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:06 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:06 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:06 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:07 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:07 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:07 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:07 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:07 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:07 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:07 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:07 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:07 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:07 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:07 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:09 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:09 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:09 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:09 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:09 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:09 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:09 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:09 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:09 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:09 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:09 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:09 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:09 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:09 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:09 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:09 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:09 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:10 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:10 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:10 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:10 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:10 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:10 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:11 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:11 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:11 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:11 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:11 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:12 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:12 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:12 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:12 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:12 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:12 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:16 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:16 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:16 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:16 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:16 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:16 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:16 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:16 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:16 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:16 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:16 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:16 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:16 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:16 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:16 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:16 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:16 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:16 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:16 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:16 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:16 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:17 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:17 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:17 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:17 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:17 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:17 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:17 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:17 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:17 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:17 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:17 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:17 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:17 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:18 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:18 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:18 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:18 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:18 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:18 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:18 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:18 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:18 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:18 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:18 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:18 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:18 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:19 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:19 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:19 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:19 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:19 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:19 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:19 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:19 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:19 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:19 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:19 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:19 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:20 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:20 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:20 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:20 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:20 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:20 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:20 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:20 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:20 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:20 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:20 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:20 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:20 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:20 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:20 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:20 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:20 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:20 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:20 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:20 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:20 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:21 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:21 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:21 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:21 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:21 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:21 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:21 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:21 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:21 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:21 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:21 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:21 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:22 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:22 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:22 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:22 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:22 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:22 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:22 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:22 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:22 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:22 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:22 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:22 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:22 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:22 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:22 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:22 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:22 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:22 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:22 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:22 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:23 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:23 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:23 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:23 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:23 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:23 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:23 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:23 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:23 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:23 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:23 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:23 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:23 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:23 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:23 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:23 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:23 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:23 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:23 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:23 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:23 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:24 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:24 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:24 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:24 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:24 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:24 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:24 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:26 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:27 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:27 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:27 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:27 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:27 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:27 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:27 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:27 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:27 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:27 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:27 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:27 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:28 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:28 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:28 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:28 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:28 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:28 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:28 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:28 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:28 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:28 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:28 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:28 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:28 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:28 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:28 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:28 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:28 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:28 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:28 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:28 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:29 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:29 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:29 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:29 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:29 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:29 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:29 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:29 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:29 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:29 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:29 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:29 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:29 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:29 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:29 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:29 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:29 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:29 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:29 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:29 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:29 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:30 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:30 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:30 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:30 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:30 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:30 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:30 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:30 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:30 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:30 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:30 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:30 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:33:31 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:33:31 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:33:31 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:33:31 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:20 INFO]:创建小消息窗口中....
+[2015-02-02 17:34:20 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:20 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:20 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:20 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:21 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:21 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:21 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:21 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:21 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:21 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:21 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:21 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:21 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:21 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:21 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:21 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:22 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:22 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:22 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:22 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:22 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:22 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:22 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:22 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:22 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:22 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:22 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:22 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:22 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:23 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:23 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:23 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:23 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:23 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:23 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:23 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:23 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:23 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:23 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:23 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:23 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:24 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:24 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:24 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:24 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:24 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:24 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:24 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:24 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:24 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:24 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:24 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:24 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:24 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:24 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:24 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:25 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:25 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:25 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:25 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:26 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:26 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:26 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:26 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:33 INFO]:创建小消息窗口中....
+[2015-02-02 17:34:42 INFO]:创建小消息窗口中....
+[2015-02-02 17:34:44 INFO]:创建小消息窗口中....
+[2015-02-02 17:34:44 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:45 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:45 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:45 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:45 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:45 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:45 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:45 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:45 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:45 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:45 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:45 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:45 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:45 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:45 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:45 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:45 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:46 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:46 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:46 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:46 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:46 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:46 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:46 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:46 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:46 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:46 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:46 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:46 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:46 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:46 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:46 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:34:47 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:34:47 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:34:47 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:34:47 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:01 INFO]:创建小消息窗口中....
+[2015-02-02 17:35:01 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:02 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:02 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:02 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:02 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:02 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:02 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:02 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:02 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:02 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:02 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:02 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:02 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:02 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:02 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:02 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:03 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:03 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:03 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:03 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:03 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:03 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:03 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:03 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:03 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:03 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:03 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:03 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:03 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:03 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:04 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:04 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:04 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:04 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:04 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:04 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:04 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:04 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:04 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:04 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:04 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:04 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:07 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:07 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:07 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:07 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:07 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:08 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:08 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:08 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:08 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:08 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:08 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:08 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:08 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:08 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:08 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:08 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:08 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:08 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:08 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:08 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:08 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:08 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:08 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:08 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:09 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:09 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:09 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:09 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:09 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:09 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:09 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:09 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:09 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:09 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:09 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:09 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:09 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:09 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:09 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:09 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:10 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:10 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:10 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:10 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:10 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:10 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:10 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:10 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:10 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:11 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:11 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:11 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:11 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:11 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:11 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:11 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:12 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:12 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:12 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:12 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:12 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:12 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:12 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:12 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:12 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:13 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:13 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:13 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:13 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:13 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:13 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:13 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:13 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:13 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:13 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:13 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:13 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:13 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:13 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:13 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:13 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:13 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:13 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:13 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:13 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:14 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:14 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:14 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:14 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:14 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:14 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:14 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:14 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:14 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:14 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:14 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:14 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:15 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:15 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:15 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:15 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:15 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:15 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:15 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:15 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:15 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:15 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:15 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:15 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:15 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:35:15 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:15 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:15 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:35:19 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:35:19 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:35:20 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:35:20 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:52:00 INFO]:创建小消息窗口中....
+[2015-02-02 17:52:00 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:52:00 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:52:00 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:52:00 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:52:08 INFO]:创建小消息窗口中....
+[2015-02-02 17:52:08 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:52:08 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:52:08 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:52:08 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:52:20 INFO]:创建小消息窗口中....
+[2015-02-02 17:52:20 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:52:21 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:52:21 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:52:21 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:53:01 INFO]:创建小消息窗口中....
+[2015-02-02 17:53:01 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:53:01 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:53:01 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:53:01 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:54:46 INFO]:创建小消息窗口中....
+[2015-02-02 17:54:46 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:54:47 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:54:47 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:54:47 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:54:52 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:54:52 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:54:52 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:54:52 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:54:53 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:54:53 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:54:53 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:54:53 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:54:53 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:54:53 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:54:53 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:54:53 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:54:53 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:54:53 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:54:53 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:54:53 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:54:58 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:54:59 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:54:59 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:54:59 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:55:00 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:55:00 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:55:00 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:55:00 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:55:01 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:55:01 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:55:01 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:55:01 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:55:01 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:55:01 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:55:01 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:55:01 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:55:24 INFO]:创建小消息窗口中....
+[2015-02-02 17:55:24 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:55:24 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:55:24 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:55:24 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:57:42 INFO]:创建小消息窗口中....
+[2015-02-02 17:57:42 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:57:42 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:57:42 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:57:42 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:33 INFO]:创建小消息窗口中....
+[2015-02-02 17:58:33 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:33 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:33 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:33 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:34 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:34 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:34 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:34 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:34 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:58:34 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:35 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:35 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:35 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:35 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:35 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:35 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:35 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:35 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:35 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:35 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:35 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:35 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:35 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:35 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:36 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:36 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:36 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:36 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:36 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:36 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:36 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:36 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:36 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:36 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:36 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:36 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:37 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:37 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:37 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:37 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:37 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:37 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:37 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:37 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:37 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:38 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:38 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:38 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:38 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:38 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:38 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:38 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:38 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:38 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:38 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:38 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:39 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:39 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:39 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:39 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:39 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:39 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:39 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:39 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:39 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:39 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:39 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:39 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:39 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:39 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:39 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:39 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:39 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:39 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:39 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:39 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:40 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:40 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:40 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:40 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:40 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:40 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:40 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:40 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:40 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:41 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:41 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:41 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:41 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:41 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:41 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:41 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:41 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:41 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:41 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:41 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:41 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:41 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:41 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:41 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:42 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:58:42 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:42 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:42 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:43 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:43 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:43 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:43 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:43 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:43 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:43 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:43 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:43 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:43 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:43 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:43 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:48 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:58:48 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:48 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:48 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:48 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:58:48 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:48 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:48 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:48 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:58:48 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:48 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:48 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:48 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:58:48 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:48 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:48 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:48 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:58:49 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:49 INFO]:正在尝试登陆服务器[localhost:5055]...
+[2015-02-02 17:58:49 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:49 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:49 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:49 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:49 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:49 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:49 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:49 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:49 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:49 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:50 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:50 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:50 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:50 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:50 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:50 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:50 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:50 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:54 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:54 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:54 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:54 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:54 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:54 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:54 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:54 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:54 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:54 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:54 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:54 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:54 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:55 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:55 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:55 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:55 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:55 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:55 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:55 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:55 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:55 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:55 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:55 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:55 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:55 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:56 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:56 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:56 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:56 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:56 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:56 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:56 INFO]:[photon OFF]服务器连接状态返回: Disconnect
+[2015-02-02 17:58:56 INFO]:正在尝试登陆服务器[127.0.0.1:5055]...
+[2015-02-02 17:58:56 INFO]:[photon ERROR]Error trying to receive. Exception: System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.NConnect.Run () [0x00000] in <filename unknown>:0 
+[2015-02-02 17:58:56 INFO]:[photon OFF]服务器连接状态返回: Exception
+[2015-02-02 17:58:56 INFO]:[photon OFF]服务器连接状态返回: Disconnect
