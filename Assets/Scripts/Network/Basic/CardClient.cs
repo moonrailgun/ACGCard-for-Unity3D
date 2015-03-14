@@ -31,7 +31,7 @@ public class CardClient : MonoBehaviour
         //初始化网络数据
         NetworkInit();
 
-        //开始监听协同
+        //开始监听
         ReceiveMsg();
     }
 
@@ -44,6 +44,28 @@ public class CardClient : MonoBehaviour
         udpSendState.udpClient = new UdpClient(hostName, port);
     }
 
+    /// <summary>
+    /// 同步发送数据到远程
+    /// 默认的IP和端口号为hostName和port
+    /// </summary>
+    public void SendMsg(string message)
+    {
+        SendMsg(this.hostName, this.port, message); 
+    }
+    public void SendMsg(string hostname, int port, string message)
+    {
+        if (this.hostName != "0.0.0.0")
+        {
+            byte[] dgram = Encoding.UTF8.GetBytes(message);
+            udpSendState.udpClient.Send(dgram, dgram.Length, hostname, port);
+        }
+        else
+        {
+            LogsSystem.Instance.Print("信息发送目标IP未指定", LogLevel.WARN);
+        }
+
+    }
+
 
     //异步接受数据
     private void ReceiveMsg()
@@ -51,6 +73,10 @@ public class CardClient : MonoBehaviour
         udpReceiveState.udpClient.BeginReceive(new AsyncCallback(ProcessResponse), udpReceiveState);
     }
 
+    /// <summary>
+    /// 异步处理接受到的信息
+    /// 并挂起下一次的异步接受
+    /// </summary>
     private void ProcessResponse(IAsyncResult ar)
     {
         UdpState udpState = ar.AsyncState as UdpState;
