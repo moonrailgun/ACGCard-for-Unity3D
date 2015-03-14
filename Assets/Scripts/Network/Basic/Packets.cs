@@ -6,11 +6,22 @@ using System;
 public class Packets{
 	public static byte[] PingPacket()
 	{
-		string text = "";
-		AddArguments(ref text, GetTimeStamp().ToString());
-		AddArguments(ref text, "ping");
-		AddArguments(ref text, "true");
-		return Encoding.UTF8.GetBytes(text);
+		string message = "";
+		AddArguments(ref message, GetTimeStamp().ToString());
+		AddArguments(ref message, "ping");
+		AddArguments(ref message, "true");
+		return Encoding.UTF8.GetBytes(message);
+	}
+
+	public static byte[] LoginPacket(string username, string password)
+	{
+		string message = "";
+		AddArguments(ref message, GetTimeStamp().ToString());
+		AddArguments(ref message, "login");
+		AddArguments(ref message, "true");
+		AddArguments(ref message, username);
+		AddArguments(ref message, password);
+		return Encoding.UTF8.GetBytes(message);
 	}
 
 	/// <summary>
@@ -20,7 +31,15 @@ public class Packets{
 	/// <param name="arguments">添加的参数</param>
 	public static void AddArguments(ref string addedString, string argument)
 	{
-		addedString += " " + argument;
+		if (addedString == "")
+		{
+			addedString = argument;
+		}
+		else
+		{
+			addedString += " " + argument;
+		}
+		
 	}
 	
 	/// <summary>

@@ -4,16 +4,20 @@ using System.Collections;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
+using System.Threading;
 
 public class CardClient : MonoBehaviour
 {
     public static string ServerAddress;
 
     private string hostName = "0.0.0.0";
-    private int port = 23333;
+    private int remotePort = 23333;
+    private int localPort = 22233;//固定
+    private Thread listenThread;
+    private bool isThreadRun = false;
 
-    private UdpState udpReceiveState = new UdpState();
-    private UdpState udpSendState = new UdpState();
+    private UdpClient udpReceiveClient;
+    private UdpClient udpSendClient;
 
     /// <summary>
     /// 设置服务器地址并分割为IP和port
@@ -26,13 +30,10 @@ public class CardClient : MonoBehaviour
         //设置ip和port
         string[] iped = serverAddress.Split(new char[] { ':' });
         this.hostName = iped[0];
-        this.port = Convert.ToInt32(iped[1]);
+        this.remotePort = Convert.ToInt32(iped[1]);
 
         //初始化网络数据
         NetworkInit();
-
-        //开始监听
-        ReceiveMsg();
     }
 
     /// <summary>
@@ -40,8 +41,15 @@ public class CardClient : MonoBehaviour
     /// </summary>
     private void NetworkInit()
     {
-        udpReceiveState.udpClient = new UdpClient(hostName, port);
-        udpSendState.udpClient = new UdpClient(hostName, port);
+        if (udpReceiveClient == null || udpSendClient == null)
+        {
+            udpReceiveClient = new UdpClient(localPort);
+            udpSendClient = new UdpClient();
+        }
+
+        //开始监听
+        listenThread = new Thread(new ThreadStart(BeginListen));
+        listenThread.Start();
     }
 
     /// <summary>
@@ -50,14 +58,14 @@ public class CardClient : MonoBehaviour
     /// </summary>
     public void SendMsg(string message)
     {
-        SendMsg(this.hostName, this.port, message); 
+        SendMsg(this.hostName, this.remotePort, message);
     }
     public void SendMsg(string hostname, int port, string message)
     {
-        if (this.hostName != "0.0.0.0")
+        if (hostname != "0.0.0.0")
         {
             byte[] dgram = Encoding.UTF8.GetBytes(message);
-            udpSendState.udpClient.Send(dgram, dgram.Length, hostname, port);
+            udpSendClient.Send(dgram, dgram.Length, hostname, port);
         }
         else
         {
@@ -65,38 +73,61 @@ public class CardClient : MonoBehaviour
         }
 
     }
-
-
-    //异步接受数据
-    private void ReceiveMsg()
+    /// <summary>
+    /// 发送二进制数据包
+    /// </summary>
+    /// <param name="packet">数据包</param>
+    public void SendPacket(byte[] packet)
     {
-        udpReceiveState.udpClient.BeginReceive(new AsyncCallback(ProcessResponse), udpReceiveState);
+        if (this.hostName != "0.0.0.0")
+        {
+            try
+            {
+                udpSendClient.Send(packet, packet.Length, hostName, remotePort);
+            }
+            catch (Exception ex)
+            {
+                LogsSystem.Instance.Print(ex.ToString(), LogLevel.ERROR);
+            }
+        }
+        else
+        {
+            LogsSystem.Instance.Print("信息发送目标IP未指定", LogLevel.WARN);
+        }
+    }
+
+    //------------------------------------------------------------------------------这里消息没有写入日志。后期要改为写入日志
+    private void BeginListen()
+    {
+        //LogsSystem.Instance.Print(string.Format("正在监听本地端口{0}!", localPort));
+        isThreadRun = true;
+        Debug.Log(string.Format("正在监听本地端口{0}!", localPort));
+        this.listenThread.IsBackground = true;//将线程设为后台线程,当前台线程全部关闭后会自动关闭后台线程
+        while (true)
+        {
+            //当标识为否的时候，退出线程
+            if (!this.isThreadRun) { return; }
+
+            IPEndPoint remoteEP = null;
+            byte[] bytes = udpReceiveClient.Receive(ref remoteEP);
+            string message = Encoding.UTF8.GetString(bytes);
+            //LogsSystem.Instance.Print(string.Format("[远程{0}]:{1}", remoteEP, message));
+            Debug.Log(string.Format("[远程{0}]:{1}", remoteEP, message));
+        }
     }
 
     /// <summary>
-    /// 异步处理接受到的信息
-    /// 并挂起下一次的异步接受
+    /// 调用后关闭线程
     /// </summary>
-    private void ProcessResponse(IAsyncResult ar)
+    public void StopListen()
     {
-        UdpState udpState = ar.AsyncState as UdpState;
-        if (ar.IsCompleted)
-        {
-            byte[] receiveBytes = udpState.udpClient.EndReceive(ar, ref udpReceiveState.ipEndPoint);
-            string receiveString = Encoding.UTF8.GetString(receiveBytes);
-            LogsSystem.Instance.Print("接收到的数据:" + receiveString);
-
-            //进行下一次的数据接受
-            ReceiveMsg();
-        }
+        this.isThreadRun = false;
+        SendMsg("127.0.0.1", 22233, "请求关闭监听");
     }
-}
 
-public class UdpState
-{
-    public UdpClient udpClient = null;
-    public IPEndPoint ipEndPoint = null;
-    public const int BufferSize = 1024;
-    public byte[] buffer = new byte[BufferSize];
-    public int counter = 0;
+    private void OnDestroy()
+    {
+        StopListen();
+        Debug.Log("已关闭线程");
+    }
 }

@@ -10,7 +10,14 @@ public class LoginScene : MonoBehaviour {
 	[SerializeField]
 	private GameObject loginPanel;
 
-	void Start () {
+	private CardClient cardClient;
+
+	private void Awake()
+	{
+		cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
+	}
+
+	private void Start () {
 		indexPanel.GetComponent<TweenPosition>().to.y = - Screen.height / 2 - 50;
 
 		if(indexPanel == null || serverSelectPanel == null || loginPanel == null)
@@ -57,7 +64,7 @@ public class LoginScene : MonoBehaviour {
 		ShortMessagesSystem.Instance.ShowShortMessage("暂无内容,敬请期待!");
 	}
 
-	public void ConnectSuccess()
+	public void ShowLoginPanel()
 	{
 		if(serverSelectPanel != null && loginPanel != null)
 		{
@@ -77,6 +84,9 @@ public class LoginScene : MonoBehaviour {
 
 			loginPanel.GetComponent<TweenAlpha>().PlayReverse();
 		}
+
+		//关闭监听线程
+		cardClient.StopListen();
 	}
 
 	/// <summary>
@@ -84,10 +94,10 @@ public class LoginScene : MonoBehaviour {
 	/// </summary>
 	public void OnLogin()
 	{
-		string account = GameObject.Find("LoginPanel/background/Container/Account").GetComponentInChildren<UIInput>().label.text;
-		string password = GameObject.Find("LoginPanel/background/Container/Password").GetComponentInChildren<UIInput>().label.text;
+		string username = GameObject.Find("LoginPanel/background/Container/Account").GetComponentInChildren<UIInput>().value;
+		string password = GameObject.Find("LoginPanel/background/Container/Password").GetComponentInChildren<UIInput>().value;
 
-		if(string.IsNullOrEmpty(account) || string.IsNullOrEmpty(password))
+		if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
 		{
 			ShortMessagesSystem.Instance.ShowShortMessage("请输入账号或者密码");
 		}
@@ -96,12 +106,8 @@ public class LoginScene : MonoBehaviour {
 			//登陆请求
 			ShortMessagesSystem.Instance.ShowShortMessage("正在发送登陆请求...请稍后");
 
-
-
-
-
-
-
+			cardClient.SendPacket(Packets.LoginPacket(username, password));//发送登陆请求
+			//cardClient.SyncReceiveMsg();
 		}
 	}
 }

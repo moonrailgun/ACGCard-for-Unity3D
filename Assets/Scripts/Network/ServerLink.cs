@@ -45,8 +45,8 @@ public class ServerLink : MonoBehaviour {
 	/// </summary>
 	/// <param name="serverName">服务器名.</param>
 	/// <param name="IPAddress">IP地址.</param>
-	/// <param name="port">端口号,默认5055.</param>
-	private void CreateServerCell(string serverName, string IPAddress, string port = "5055")
+	/// <param name="port">端口号,默认23333.</param>
+	private void CreateServerCell(string serverName, string IPAddress, string port = "23333")
 	{
 		if(serverButton == null){Debug.Log("按钮不存在");return;}
 		if(serverList == null){ Debug.Log("列表不存在"); return; }
@@ -72,5 +72,6 @@ public class ServerLink : MonoBehaviour {
 		Global.Instance.serverName = serverName;
 
 		client.SetHost(serverAddress);
+		GameObject.FindGameObjectWithTag(Tags.SceneController).GetComponent<LoginScene>().ShowLoginPanel();//显示登陆面板
 	}
 }
