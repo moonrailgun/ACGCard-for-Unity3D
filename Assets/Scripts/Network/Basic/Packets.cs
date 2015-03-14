@@ -13,13 +13,6 @@ public class Packets{
 		return Encoding.UTF8.GetBytes(text);
 	}
 
-
-
-
-
-
-
-
 	/// <summary>
 	/// 添加参数
 	/// </summary>

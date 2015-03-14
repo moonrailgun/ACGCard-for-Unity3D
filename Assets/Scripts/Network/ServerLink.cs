@@ -71,7 +71,6 @@ public class ServerLink : MonoBehaviour {
 		ShortMessagesSystem.Instance.ShowShortMessage("正在登陆服务器：" + serverName);
 		Global.Instance.serverName = serverName;
 
-		client.ServerAddress = serverAddress;
-		client.Connect();
+		client.SetHost(serverAddress);
 	}
 }

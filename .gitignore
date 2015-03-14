@@ -7,3 +7,4 @@ Temp/
 *.unityproj
 *.DS_Store
 *.log
+*.log.meta
