@@ -10,7 +10,7 @@ public class CardClient : MonoBehaviour
 {
     public static string ServerAddress;
 
-    private string hostName = "0.0.0.0";
+    public string hostName = "0.0.0.0";
     private int remotePort = 23333;
     private int localPort = 22233;//固定
     private Thread listenThread;
@@ -62,14 +62,14 @@ public class CardClient : MonoBehaviour
     }
     public void SendMsg(string hostname, int port, string message)
     {
-        if (hostname != "0.0.0.0")
+        if (hostname != "0.0.0.0" && udpSendClient != null)
         {
             byte[] dgram = Encoding.UTF8.GetBytes(message);
             udpSendClient.Send(dgram, dgram.Length, hostname, port);
         }
         else
         {
-            LogsSystem.Instance.Print("信息发送目标IP未指定", LogLevel.WARN);
+            LogsSystem.Instance.Print("信息发送目标IP未指定或udp发送端不可用", LogLevel.WARN);
         }
 
     }
