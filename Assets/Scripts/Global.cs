@@ -20,6 +20,7 @@ public class Global{
 	public SceneType scene;
 	public string serverName;
 	public bool IsLogin;
+	public string UUID;
 
 	public Global(){
 		scene = SceneType.LoginScene;

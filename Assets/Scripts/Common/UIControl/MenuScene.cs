@@ -15,6 +15,7 @@ public class MenuScene : MonoBehaviour
         LogsSystem.Instance.Print("[用户]" + text);
         if (cardClient != null)
         {
+            text.Replace(" ", "-");
             cardClient.SendPacket(Packets.ChatPacket(text));
         }
         input.value = "";

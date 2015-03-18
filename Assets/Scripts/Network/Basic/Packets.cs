@@ -37,6 +37,7 @@ public class Packets
         AddArguments(ref message, "chat");
         AddArguments(ref message, "true");
         AddArguments(ref message, text);
+        AddArguments(ref message, Global.Instance.UUID);
         AddArguments(ref message, toUUID);
         return Encoding.UTF8.GetBytes(message);
     }
