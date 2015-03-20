@@ -21,14 +21,16 @@ public class Global{
 	public string serverName;
 	public bool IsLogin;
 	public string UUID;
+	public PacketProcess pp;
 
 	public Global(){
 		scene = SceneType.LoginScene;
 		IsLogin = false;
+		pp = new PacketProcess();
 	}
 }
 
 public enum SceneType
 {
-	LoginScene
+	LoginScene,SkipScene,MenuScene
 }

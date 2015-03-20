@@ -8,7 +8,8 @@ public class MenuScene : MonoBehaviour
     private UIScrollBar chatScroll;
     private void Awake()
     {
-        //cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
+        Global.Instance.scene = SceneType.MenuScene;
+        cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
         chatList = GameObject.Find("Chatting/ChattingList").GetComponent<UITextList>();
         if (chatList != null)
         {
@@ -55,7 +56,6 @@ public class MenuScene : MonoBehaviour
     /// </summary>
     private void CheckScrollSize()
     {
-        
         if (chatScroll.barSize != 1)
         {
             chatScroll.alpha = 1;

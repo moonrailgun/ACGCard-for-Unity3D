@@ -14,6 +14,7 @@ public class LoginScene : MonoBehaviour {
 
 	private void Awake()
 	{
+		Global.Instance.scene = SceneType.LoginScene;
 		cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
 	}
 

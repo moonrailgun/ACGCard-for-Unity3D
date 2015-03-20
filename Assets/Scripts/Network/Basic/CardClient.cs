@@ -49,7 +49,9 @@ public class CardClient : MonoBehaviour
 
         //开始监听
         listenThread = new Thread(new ThreadStart(BeginListen));
+        //listenThread = Loom.RunAsync(BeginListen);
         listenThread.Start();
+        Debug.LogError("多线程调用unity 主线程API的方式尚未解决。");
     }
 
     /// <summary>
@@ -113,6 +115,7 @@ public class CardClient : MonoBehaviour
             string message = Encoding.UTF8.GetString(bytes);
             //LogsSystem.Instance.Print(string.Format("[远程{0}]:{1}", remoteEP, message));
             Debug.Log(string.Format("[远程{0}]:{1}", remoteEP, message));
+            Global.Instance.pp.Process(message);
         }
     }
 
