@@ -1,66 +1,93 @@
 ﻿using UnityEngine;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 public class LogsSystem
 {
-	private static LogsSystem _instance;
-	private string logPath;
-	private string logFileName;
+    #region 单例模式
+    private static LogsSystem _instance;
+    public static LogsSystem Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new LogsSystem();
+            }
+            return _instance;
+        }
+    }
+    #endregion
+    private string logDate;
+    private string logPath;
+    private string logFileName;
 
-	public LogsSystem()
-	{
-		string logDate = DateTime.Now.ToString("yyyy-MM-dd");
-		logPath = Application.dataPath + "/logs/";
+    public LogsSystem()
+    {
+        SetLogFileInfo();
+    }
 
-		logFileName = logPath + logDate + ".log";
-	}
+    /// <summary>
+    /// 设置文件IO的信息
+    /// logDate:日期
+    /// logPath:文件夹地址
+    /// logFileName:日志文件完整地址
+    /// </summary>
+    private void SetLogFileInfo()
+    {
+        try
+        {
+            logDate = DateTime.Now.ToString("yyyy-MM-dd");
+            logPath = Application.dataPath + "/logs/";
+            logFileName = logPath + logDate + ".log";
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("发生异常:" + ex);
+        }
+    }
 
-	public static LogsSystem Instance
-	{
-		get
-		{
-			if(_instance == null)
-			{
-				_instance = new LogsSystem();
-			}
 
-			return _instance;
-		}
-	}
+    /// <summary>
+    /// 用于跨天数的日志记录更改
+    /// 每次调用文件时先调用该函数检查一遍日期是否更换
+    /// </summary>
+    private void CheckLogFileInfo()
+    {
+        if (logDate != DateTime.Now.ToString("yyyy-MM-dd"))
+        {
+            SetLogFileInfo();//重新设置文件信息
+        }
+    }
 
-	public void Print(string mainLog,LogLevel level = LogLevel.INFO)
-	{
-		if(Application.isEditor) {Debug.Log(mainLog);}//给unity编辑器另外传一份log
-		//ShortMessagesSystem.Instance.ShowShortMessage(mainLog);//给用户交互界面发送一份
+    public void Print(string mainLog, LogLevel level = LogLevel.INFO)
+    {
+        Debug.Log(mainLog);//给unity编辑器另外传一份log
 
-		try
-		{
-			if(!Directory.Exists(logPath))
-			{
-				Directory.CreateDirectory(logPath);
-			}
-			if(!File.Exists(logFileName))
-			{
-				File.Create(logFileName);
-			}
-			StreamWriter sw = new StreamWriter(logFileName, true);
+        CheckLogFileInfo();//检查是否已经更换日期了
 
-			sw.WriteLine(string.Format("[{0} {1}]:{2}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), level.ToString(),mainLog));
+        try
+        {
+            string log = string.Format("[{0} {1}] : {2}", DateTime.Now.ToString("HH:mm:ss"), level.ToString(), mainLog);
 
-			sw.Close();
-		}
-		catch(IOException ex)
-		{
-			Debug.Log(ex.ToString());
-		}
-
-	}
+            //写入数据
+            FileStream fs = new FileStream(logFileName, FileMode.Append);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.WriteLine(log);
+            sw.Close();
+            fs.Close();
+        }
+        catch (IOException ex)
+        {
+            Debug.Log(ex.ToString());
+        }
+    }
 }
 
 public enum LogLevel
 {
-	INFO = 0,
-	WARN = 1,
-	ERROR = 2
+    INFO = 0,
+    WARN = 1,
+    ERROR = 2
 }
