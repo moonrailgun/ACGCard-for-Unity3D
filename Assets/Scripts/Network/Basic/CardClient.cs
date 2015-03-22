@@ -1,23 +1,28 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using System.Threading;
 
+/*
+ * 暂时不考虑大数据包传输
+ * 游戏界面转到TCP协议处理
+ */
 public class CardClient : MonoBehaviour
 {
     public static string ServerAddress;
-
     public string hostName = "0.0.0.0";
     private int remotePort = 23333;
     private int localPort = 22233;//固定
-    private Thread listenThread;
     private bool isThreadRun = false;
 
     private UdpClient udpReceiveClient;
     private UdpClient udpSendClient;
+
+    private List<SocketModel> messageList = new List<SocketModel>();
 
     /// <summary>
     /// 设置服务器地址并分割为IP和port
@@ -48,10 +53,7 @@ public class CardClient : MonoBehaviour
         }
 
         //开始监听
-        listenThread = new Thread(new ThreadStart(BeginListen));
-        //listenThread = Loom.RunAsync(BeginListen);
-        listenThread.Start();
-        Debug.LogError("多线程调用unity 主线程API的方式尚未解决。");
+        BeginListen();
     }
 
     /// <summary>
@@ -98,26 +100,40 @@ public class CardClient : MonoBehaviour
         }
     }
 
-    //------------------------------------------------------------------------------这里消息没有写入日志。后期要改为写入日志
+    #region 数据接受
     private void BeginListen()
     {
-        //LogsSystem.Instance.Print(string.Format("正在监听本地端口{0}!", localPort));
+        LogsSystem.Instance.Print(string.Format("正在监听本地端口{0}!", localPort));
         isThreadRun = true;
-        Debug.Log(string.Format("正在监听本地端口{0}!", localPort));
-        this.listenThread.IsBackground = true;//将线程设为后台线程,当前台线程全部关闭后会自动关闭后台线程
-        while (true)
-        {
-            //当标识为否的时候，退出线程
-            if (!this.isThreadRun) { return; }
-
-            IPEndPoint remoteEP = null;
-            byte[] bytes = udpReceiveClient.Receive(ref remoteEP);
-            string message = Encoding.UTF8.GetString(bytes);
-            //LogsSystem.Instance.Print(string.Format("[远程{0}]:{1}", remoteEP, message));
-            Debug.Log(string.Format("[远程{0}]:{1}", remoteEP, message));
-            Global.Instance.pp.Process(message);
-        }
+        udpReceiveClient.BeginReceive(ReceiveCallBack, null);
     }
+    private void ReceiveCallBack(IAsyncResult ar)
+    {
+        //如果线程标识符为false则关闭线程
+        if (isThreadRun == false)
+        {
+            Debug.Log("已关闭线程");
+            return;
+        }
+
+        IPEndPoint iped = null;
+        try
+        {
+            //读取消息长度
+            byte[] receiveBytes = udpReceiveClient.EndReceive(ar, ref iped);//调用这个函数来结束本次接收并返回接收到的数据长度。 
+            LogsSystem.Instance.Print(string.Format("收到来自[{0}]的数据包，长度{1}", iped.ToString(), receiveBytes.Length));
+            LogsSystem.Instance.Print(Encoding.UTF8.GetString(receiveBytes));
+
+            AddMessageList(receiveBytes);
+        }
+        catch (SocketException)//出现Socket异常就关闭连接 
+        {
+            udpReceiveClient.Close();//这个函数用来关闭客户端连接 
+            return;
+        }
+        udpReceiveClient.BeginReceive(ReceiveCallBack, null);
+    }
+    #endregion
 
     /// <summary>
     /// 调用后关闭线程
@@ -127,10 +143,30 @@ public class CardClient : MonoBehaviour
         this.isThreadRun = false;
         SendMsg("127.0.0.1", 22233, "请求关闭监听");
     }
-
     private void OnDestroy()
     {
         StopListen();
-        Debug.Log("已关闭线程");
     }
+
+    #region 消息列表操作
+    /// <summary>
+    /// 将二进制数据转化为socket对象加入消息列表
+    /// </summary>
+    /// <param name="receiveBytes">接收到的数据</param>
+    private void AddMessageList(byte[] receiveBytes)
+    {
+        string message = Encoding.UTF8.GetString(receiveBytes);
+        SocketModel model = JsonCoding<SocketModel>.decode(message);
+        messageList.Add(model);
+    }
+
+    /// <summary>
+    /// 获取消息列表
+    /// </summary>
+    public List<SocketModel> GetMessageList()
+    {
+        return messageList;
+    }
+    #endregion
+
 }

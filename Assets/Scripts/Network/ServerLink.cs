@@ -20,7 +20,7 @@ public class ServerLink : MonoBehaviour {
 		if(haveRead) {return;}
 
 		serverList = GameObject.Find("ServerList");
-		if(serverList == null) { LogsSystem.Instance.Print("服务器列表容器不存在"); return; }
+		if (serverList == null) { LogsSystem.Instance.Print("服务器列表容器不存在"); return; }
 
 		Object serverListResource = Resources.Load("ServerList");
 		if(serverListResource == null) 
