@@ -124,6 +124,7 @@ public class CardClient : MonoBehaviour
             LogsSystem.Instance.Print(string.Format("收到来自[{0}]的数据包，长度{1}", iped.ToString(), receiveBytes.Length));
             LogsSystem.Instance.Print(Encoding.UTF8.GetString(receiveBytes));
 
+            //添加到消息列表
             AddMessageList(receiveBytes);
         }
         catch (SocketException)//出现Socket异常就关闭连接 
@@ -159,7 +160,6 @@ public class CardClient : MonoBehaviour
         SocketModel model = JsonCoding<SocketModel>.decode(message);
         messageList.Add(model);
     }
-
     /// <summary>
     /// 获取消息列表
     /// </summary>
