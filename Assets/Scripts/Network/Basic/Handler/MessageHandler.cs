@@ -3,10 +3,12 @@ using System.Collections.Generic;
 
 public class MessageHandler : MonoBehaviour {
     private CardClient cardClient;
+    private LoginHandler loginHandler;
 
     private void Awake()
     {
         cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
+        loginHandler = new LoginHandler();
     }
     private void Update()
     {
@@ -24,6 +26,19 @@ public class MessageHandler : MonoBehaviour {
     /// </summary>
     private void ProcessMessage(SocketModel model)
     {
-        LogsSystem.Instance.Print(string.Format("数据返回：返回码[{0}] 类型[{1}] 消息[{2}]", model.returnCode, model.type, model.message));
+        LogsSystem.Instance.Print(string.Format("数据返回：返回码[{0}] 协议[{1}] 消息[{2}]", model.returnCode, model.protocol, model.message));
+        switch (model.protocol)
+        {
+            case SocketProtocol.LOGIN:
+                {
+                    loginHandler.Process(model.returnCode, model.message);
+                    break;
+                }
+            default:
+                {
+                    LogsSystem.Instance.Print("未知的协议");
+                    break;
+                }
+        }
     }
 }

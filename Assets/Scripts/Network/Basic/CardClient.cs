@@ -68,8 +68,16 @@ public class CardClient : MonoBehaviour
     {
         if (hostname != "0.0.0.0" && udpSendClient != null)
         {
-            byte[] dgram = Encoding.UTF8.GetBytes(message);
-            udpSendClient.Send(dgram, dgram.Length, hostname, port);
+            try
+            {
+                byte[] dgram = Encoding.UTF8.GetBytes(message);
+                udpSendClient.Send(dgram, dgram.Length, hostname, port);
+                LogsSystem.Instance.Print(string.Format("[To {0}:{1}]{2}", hostname, port, message));
+            }
+            catch (Exception ex)
+            {
+                LogsSystem.Instance.Print(ex.ToString(), LogLevel.ERROR);
+            }
         }
         else
         {

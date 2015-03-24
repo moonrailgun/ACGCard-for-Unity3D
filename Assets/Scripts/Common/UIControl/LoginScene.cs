@@ -107,8 +107,11 @@ public class LoginScene : MonoBehaviour {
 			//登陆请求
 			ShortMessagesSystem.Instance.ShowShortMessage("正在发送登陆请求...请稍后");
 
-			cardClient.SendPacket(Packets.LoginPacket(username, password));//发送登陆请求
-			//cardClient.SyncReceiveMsg();
+			SocketModel model = new SocketModel();
+			model.protocol = SocketProtocol.LOGIN;
+			model.message = JsonCoding<LoginDTO>.encode(new LoginDTO(username, password));//发送登陆请求
+
+			cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
 		}
 	}
 }
