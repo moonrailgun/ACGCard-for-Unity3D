@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
+// Copyright © 2011-2015 Tasharen Entertainment
 //----------------------------------------------
 
 #if UNITY_EDITOR || !UNITY_FLASH
@@ -129,6 +129,7 @@ public class EventDelegate
 	[System.NonSerialized] bool mCached = false;
 #if REFLECTION_SUPPORT
 	[System.NonSerialized] MethodInfo mMethod;
+	[System.NonSerialized] ParameterInfo[] mParameterInfos;
 	[System.NonSerialized] object[] mArgs;
 #endif
 
@@ -150,6 +151,7 @@ public class EventDelegate
 			mCached = false;
 #if REFLECTION_SUPPORT
 			mMethod = null;
+			mParameterInfos = null;
 #endif
 			mParameters = null;
 		}
@@ -173,6 +175,7 @@ public class EventDelegate
 			mCached = false;
 #if REFLECTION_SUPPORT
 			mMethod = null;
+			mParameterInfos = null;
 #endif
 			mParameters = null;
 		}
@@ -384,7 +387,7 @@ public class EventDelegate
 						if (mMethod != null) break;
 					}
 					catch (System.Exception) { }
-  #if UNITY_WP8
+  #if UNITY_WP8 || UNITY_WP_8_1
 					// For some odd reason Type.GetMethod(name, bindingFlags) doesn't seem to work on WP8...
 					try
 					{
@@ -410,9 +413,9 @@ public class EventDelegate
 				}
 
 				// Get the list of expected parameters
-				ParameterInfo[] info = mMethod.GetParameters();
+				mParameterInfos = mMethod.GetParameters();
 
-				if (info.Length == 0)
+				if (mParameterInfos.Length == 0)
 				{
 					// No parameters means we can create a simple delegate for it, optimizing the call
  #if NETFX_CORE
@@ -428,16 +431,16 @@ public class EventDelegate
 				else mCachedCallback = null;
 
 				// Allocate the initial list of parameters
-				if (mParameters == null || mParameters.Length != info.Length)
+				if (mParameters == null || mParameters.Length != mParameterInfos.Length)
 				{
-					mParameters = new Parameter[info.Length];
+					mParameters = new Parameter[mParameterInfos.Length];
 					for (int i = 0, imax = mParameters.Length; i < imax; ++i)
 						mParameters[i] = new Parameter();
 				}
 
 				// Save the parameter type
 				for (int i = 0, imax = mParameters.Length; i < imax; ++i)
-					mParameters[i].expectedType = info[i].ParameterType;
+					mParameters[i].expectedType = mParameterInfos[i].ParameterType;
 			}
 		}
 #endif // REFLECTION_SUPPORT
@@ -476,7 +479,11 @@ public class EventDelegate
 			{
 				// There must be an [ExecuteInEditMode] flag on the script for us to call the function at edit time
 				System.Type type = mCachedCallback.Target.GetType();
+ //#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 				object[] objs = type.GetCustomAttributes(typeof(ExecuteInEditMode), true);
+// #else
+//				object[] objs = type.GetCustomAttributes(typeof(ExecuteInEditModeAttribute), true);
+// #endif
 				if (objs != null && objs.Length > 0) mCachedCallback();
 			}
 #endif
@@ -490,7 +497,11 @@ public class EventDelegate
 			if (mTarget != null && !Application.isPlaying)
 			{
 				System.Type type = mTarget.GetType();
+// #if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 				object[] objs = type.GetCustomAttributes(typeof(ExecuteInEditMode), true);
+// #else
+//				object[] objs = type.GetCustomAttributes(typeof(ExecuteInEditModeAttribute), true);
+// #endif
 				if (objs == null || objs.Length == 0) return true;
 			}
 #endif
@@ -525,17 +536,15 @@ public class EventDelegate
 					msg += ": " + ex.Message;
 					msg += "\n  Expected: ";
 
-					ParameterInfo[] pis = mMethod.GetParameters();
-
-					if (pis.Length == 0)
+					if (mParameterInfos.Length == 0)
 					{
 						msg += "no arguments";
 					}
 					else
 					{
-						msg += pis[0];
-						for (int i = 1; i < pis.Length; ++i)
-							msg += ", " + pis[i].ParameterType;
+						msg += mParameterInfos[0];
+						for (int i = 1; i < mParameterInfos.Length; ++i)
+							msg += ", " + mParameterInfos[i].ParameterType;
 					}
 
 					msg += "\n  Received: ";
@@ -555,7 +564,14 @@ public class EventDelegate
 				}
 
 				// Clear the parameters so that references are not kept
-				for (int i = 0, imax = mArgs.Length; i < imax;  ++i) mArgs[i] = null;
+				for (int i = 0, imax = mArgs.Length; i < imax; ++i)
+				{
+					if (mParameterInfos[i].IsIn || mParameterInfos[i].IsOut)
+					{
+						mParameters[i].value = mArgs[i];
+					}
+					mArgs[i] = null;
+				}
 			}
 			return true;
 		}
@@ -577,6 +593,7 @@ public class EventDelegate
 		mCached = false;
 #if REFLECTION_SUPPORT
 		mMethod = null;
+		mParameterInfos = null;
 		mArgs = null;
 #endif
 	}

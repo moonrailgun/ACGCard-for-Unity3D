@@ -1,7 +1,7 @@
 ----------------------------------------------
             NGUI: Next-Gen UI kit
- Copyright © 2011-2014 Tasharen Entertainment
-            Version 3.7.4
+ Copyright © 2011-2015 Tasharen Entertainment
+            Version 3.8.0
     http://www.tasharen.com/?page_id=197
             support@tasharen.com
 ----------------------------------------------
@@ -54,6 +54,53 @@ and it will not be included in the build of your game. It's only used in the edi
 -----------------
  Version History
 -----------------
+
+3.8.0
+- NEW: Added a way to add TouchScript support to NGUI: http://www.tasharen.com/forum/index.php?topic=12411.0
+- NEW: Setting a Unity sprite on a UI2DSprite will now automatically set its border values.
+- FIX: Drag & drop script should now again work with press-based activation and cloneOnDrag option.
+- FIX: Popup lists should now work better with multi-touch events.
+- FIX: Variety of fixes for obscure issues that most would have never encountered.
+
+3.7.9
+- NEW: Localization system can now automatically merge localization data coming from multiple sources as well as partial localizations.
+- NEW: Command-click = right click is now an option on the UICamera instead of always being on.
+- FIX: UIInput's Return key handling was moved to the Update() function to fix an issue with typing quickly and pressing Return causing the last character to be cut off.
+- FIX: Forced keyboard and mouse to be turned off for Android devices in UICamera's Awake() function.
+- FIX: UICamera will no longer process keyboard events if both keyboard and controller input is turned off.
+- FIX: UICamera should now properly handle release and press events being sent in the same frame.
+- FIX: Relative anchor slider will no longer get disabled if the user types values outside 0 to 1.
+
+3.7.8
+- NEW: Added a validator delegate to the toggle class for when you want to add custom code to prevent state changes before they happen.
+- FIX: Some more compile fixes for newer Unity 5 versions.
+- FIX: Sliced sprite corners will no longer be drawn if sides were chosen to be hidden.
+- FIX: UIPanel no longer makes all of the game objects underneath it be on the same layer. Just widgets.
+- FIX: Minor fix for the scroll view recentering.
+- FIX: Flash compilation #ifdef.
+- FIX: FreeType fix for Unity 5 (64 bit).
+
+3.7.7
+- Fix for the drop-down list appearing in the wrong place in some situations.
+- You can now choose to merge loaded localization data with existing one. Useful for patching games.
+- Added a user-contributed outline8 type label effect.
+- Cleaned up new warnings shown in Unity 5.
+- Fixes for dynamic font rendering in Unity 5 (underline/strikethrough).
+
+3.7.6
+- FIX: Unity 5.0 compilation and functionality compatibility fixes.
+- FIX: Work-around for a Unity bug in 4.5.5p3 and p4 (OnValidate not affected by script execution order).
+- FIX: Potential work-around for touch events sending mouse events.
+- FIX: NGUI texture import will now use automatic true color instead of ARGB32.
+- FIX: UIEventTrigger's OnDrag was mistakenly calling the onDragOut callback.
+
+3.7.5
+- NEW: UISavedOption now works with progress bars as well.
+- NEW: MathiasSoeholm's implementation for Labels with float spacing.
+- FIX: UIPopupList opened manually will now close automatically without requiring selection to be set.
+- FIX: UICamera will now use proper 'events go to colliders' flag from the first UICamera.
+- FIX: Unity 5 compilation tweaks.
+- FIX: Flash compilation fixes.
 
 3.7.4
 - FIX: UIInput no longer uses OnGUI unless you actually select the input field first (eliminates GC alloc).

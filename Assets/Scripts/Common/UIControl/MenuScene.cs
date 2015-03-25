@@ -16,9 +16,9 @@ public class MenuScene : MonoBehaviour
         {
             cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
         }
-        catch (Exception ex) { ex.ToString(); }
+        catch (Exception ex) { LogsSystem.Instance.Print(ex.ToString()); }
 
-        chatList = GameObject.Find("Chatting/ChattingList").GetComponent<UITextList>(); 
+        chatList = GameObject.Find("Chatting/ChattingList").GetComponent<UITextList>();
         if (chatList != null)
         {
             chatScroll = chatList.scrollBar as UIScrollBar;

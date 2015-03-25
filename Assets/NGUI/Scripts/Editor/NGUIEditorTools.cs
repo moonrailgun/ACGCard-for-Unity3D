@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
+// Copyright © 2011-2015 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEditor;
@@ -444,7 +444,7 @@ public static class NGUIEditorTools
 		if (force || !settings.readable || settings.npotScale != TextureImporterNPOTScale.None || settings.alphaIsTransparency)
 		{
 			settings.readable = true;
-			if (NGUISettings.trueColorAtlas) settings.textureFormat = TextureImporterFormat.ARGB32;
+			if (NGUISettings.trueColorAtlas) settings.textureFormat = TextureImporterFormat.AutomaticTruecolor;
 			settings.npotScale = TextureImporterNPOTScale.None;
 			settings.alphaIsTransparency = false;
 			ti.SetTextureSettings(settings);

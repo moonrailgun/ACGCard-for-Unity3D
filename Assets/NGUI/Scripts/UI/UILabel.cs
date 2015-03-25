@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
+// Copyright © 2011-2015 Tasharen Entertainment
 //----------------------------------------------
 
 #if !UNITY_3_5
@@ -21,6 +21,7 @@ public class UILabel : UIWidget
 		None,
 		Shadow,
 		Outline,
+		Outline8,
 	}
 
 	public enum Overflow
@@ -67,6 +68,9 @@ public class UILabel : UIWidget
 	[HideInInspector][SerializeField] Color mGradientBottom = new Color(0.7f, 0.7f, 0.7f);
 	[HideInInspector][SerializeField] int mSpacingX = 0;
 	[HideInInspector][SerializeField] int mSpacingY = 0;
+	[HideInInspector][SerializeField] bool mUseFloatSpacing = false;
+	[HideInInspector][SerializeField] float mFloatSpacingX = 0;
+	[HideInInspector][SerializeField] float mFloatSpacingY = 0;
 
 	// Obsolete values
 	[HideInInspector][SerializeField] bool mShrinkToFit = false;
@@ -438,6 +442,92 @@ public class UILabel : UIWidget
 		}
 	}
 
+	/// <summary>
+	/// Whether this label will use float text spacing values, instead of integers.
+	/// </summary>
+
+	public bool useFloatSpacing
+	{
+		get
+		{
+			return mUseFloatSpacing;
+		}
+		set
+		{
+			if (mUseFloatSpacing != value)
+			{
+				mUseFloatSpacing = value;
+				shouldBeProcessed = true;
+			}
+		}
+	}
+
+	/// <summary>
+	/// Additional horizontal spacing between characters when printing text.
+	/// For this to have any effect useFloatSpacing must be true.
+	/// </summary>
+
+	public float floatSpacingX
+	{
+		get
+		{
+			return mFloatSpacingX;
+		}
+		set
+		{
+			if (!Mathf.Approximately(mFloatSpacingX, value))
+			{
+				mFloatSpacingX = value;
+				MarkAsChanged();
+			}
+		}
+	}
+
+	/// <summary>
+	/// Additional vertical spacing between lines when printing text.
+	/// For this to have any effect useFloatSpacing must be true.
+	/// </summary>
+
+	public float floatSpacingY
+	{
+		get
+		{
+			return mFloatSpacingY;
+		}
+		set
+		{
+			if (!Mathf.Approximately(mFloatSpacingY, value))
+			{
+				mFloatSpacingY = value;
+				MarkAsChanged();
+			}
+		}
+	}
+
+	/// <summary>
+	/// Convenience property to get the used y spacing.
+	/// </summary>
+
+	public float effectiveSpacingY
+	{
+		get
+		{
+			return mUseFloatSpacing ? mFloatSpacingY : mSpacingY;
+		}
+	}
+
+	/// <summary>
+	/// Convenience property to get the used x spacing.
+	/// </summary>
+
+	public float effectiveSpacingX
+	{
+		get
+		{
+			return mUseFloatSpacing ? mFloatSpacingX : mSpacingX;
+		}
+	}
+
 #if DYNAMIC_FONT
 	/// <summary>
 	/// Whether the label will use the printed size instead of font size when printing the label.
@@ -450,7 +540,7 @@ public class UILabel : UIWidget
 		{
 			if (trueTypeFont != null && keepCrispWhenShrunk != Crispness.Never)
 			{
-#if UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_BLACKBERRY
+#if UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_WP_8_1 || UNITY_BLACKBERRY
 				return (keepCrispWhenShrunk == Crispness.Always);
 #else
 				return true;
@@ -804,12 +894,16 @@ public class UILabel : UIWidget
 
 					if (usage == 0)
 					{
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 						mActiveTTF.textureRebuildCallback = null;
+#endif
 						mFontUsage.Remove(mActiveTTF);
 					}
 					else mFontUsage[mActiveTTF] = usage;
 				}
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 				else mActiveTTF.textureRebuildCallback = null;
+#endif
 			}
 
 			mActiveTTF = fnt;
@@ -819,8 +913,10 @@ public class UILabel : UIWidget
 				int usage = 0;
 
 				// Font hasn't been used yet? Register a change delegate callback
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 				if (!mFontUsage.TryGetValue(mActiveTTF, out usage))
 					mActiveTTF.textureRebuildCallback = OnFontTextureChanged;
+#endif
 #if UNITY_FLASH
 				mFontUsage[mActiveTTF] = usage + 1;
 #else
@@ -839,6 +935,7 @@ public class UILabel : UIWidget
 	/// So... queue yet another work-around.
 	/// </summary>
 
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 	static void OnFontTextureChanged ()
 	{
 		for (int i = 0; i < mList.size; ++i)
@@ -872,6 +969,41 @@ public class UILabel : UIWidget
 			}
 		}
 	}
+#else
+	static void OnFontChanged (Font font)
+	{
+		for (int i = 0; i < mList.size; ++i)
+		{
+			UILabel lbl = mList[i];
+
+			if (lbl != null)
+			{
+				Font fnt = lbl.trueTypeFont;
+
+				if (fnt == font)
+				{
+					fnt.RequestCharactersInTexture(lbl.mText, lbl.mPrintedSize, lbl.mFontStyle);
+				}
+			}
+		}
+
+		for (int i = 0; i < mList.size; ++i)
+		{
+			UILabel lbl = mList[i];
+
+			if (lbl != null)
+			{
+				Font fnt = lbl.trueTypeFont;
+
+				if (fnt == font)
+				{
+					lbl.RemoveFromPanel();
+					lbl.CreatePanel();
+				}
+			}
+		}
+	}
+#endif
 #endif
 
 	/// <summary>
@@ -999,6 +1131,20 @@ public class UILabel : UIWidget
 			mAllowProcessing = true;
 			ProcessAndRequest();
 			if (autoResizeBoxCollider) ResizeCollider();
+		}
+	}
+#endif
+
+#if !UNITY_4_3 && !UNITY_4_5 && !UNITY_4_6
+	static bool mTexRebuildAdded = false;
+
+	protected override void OnEnable ()
+	{
+		base.OnEnable();
+		if (!mTexRebuildAdded)
+		{
+			mTexRebuildAdded = true;
+			Font.textureRebuilt += OnFontChanged;
 		}
 	}
 #endif
@@ -1341,9 +1487,13 @@ public class UILabel : UIWidget
 	{
 		if (characterIndex != -1 && characterIndex < mText.Length)
 		{
+#if UNITY_FLASH
+			int wordStart = LastIndexOfAny(mText, new char[] { ' ', '\n' }, characterIndex) + 1;
+			int wordEnd = IndexOfAny(mText, new char[] { ' ', '\n', ',', '.' }, characterIndex);
+#else
 			int wordStart = mText.LastIndexOfAny(new char[] {' ', '\n'}, characterIndex) + 1;
 			int wordEnd = mText.IndexOfAny(new char[] { ' ', '\n', ',', '.' }, characterIndex);
-
+#endif
 			if (wordEnd == -1) wordEnd = mText.Length;
 
 			if (wordStart != wordEnd)
@@ -1359,6 +1509,52 @@ public class UILabel : UIWidget
 		}
 		return null;
 	}
+
+#if UNITY_FLASH
+	/// <summary>
+	/// Flash is fail IRL: http://www.tasharen.com/forum/index.php?topic=11390.0
+	/// </summary>
+
+	int LastIndexOfAny (string input, char[] any, int start)
+	{
+		if (start >= 0 && input.Length > 0 && any.Length > 0 && start < input.Length)
+		{
+			for (int w = start; w >= 0; w--)
+			{
+				for (int r = 0; r < any.Length; r++)
+				{
+					if (any[r] == input[w])
+					{
+						return w;
+					}
+				}
+			}
+		}
+		return -1;
+	}
+
+	/// <summary>
+	/// Flash is fail IRL: http://www.tasharen.com/forum/index.php?topic=11390.0
+	/// </summary>
+
+	int IndexOfAny (string input, char[] any, int start)
+	{
+		if (start >= 0 && input.Length > 0 && any.Length > 0 && start < input.Length)
+		{
+			for (int w = start; w < input.Length; w++)
+			{
+				for (int r = 0; r < any.Length; r++)
+				{
+					if (any[r] == input[w])
+					{
+						return w;
+					}
+				}
+			}
+		}
+		return -1;
+	}
+#endif
 
 	/// <summary>
 	/// Retrieve the URL directly below the specified world-space position.
@@ -1433,8 +1629,8 @@ public class UILabel : UIWidget
 						// Determine position on the line above or below this character
 						Vector2 localPos = mTempVerts[i];
 
-						if (key == KeyCode.UpArrow) localPos.y += def + spacingY;
-						else if (key == KeyCode.DownArrow) localPos.y -= def + spacingY;
+						if (key == KeyCode.UpArrow) localPos.y += def + effectiveSpacingY;
+						else if (key == KeyCode.DownArrow) localPos.y -= def + effectiveSpacingY;
 						else if (key == KeyCode.Home) localPos.x -= 1000f;
 						else if (key == KeyCode.End) localPos.x += 1000f;
 
@@ -1563,7 +1759,7 @@ public class UILabel : UIWidget
 
 			ApplyShadow(verts, uvs, cols, offset, end, pos.x, -pos.y);
 
-			if (effectStyle == Effect.Outline)
+			if ((effectStyle == Effect.Outline) || (effectStyle == Effect.Outline8))
 			{
 				offset = end;
 				end = verts.size;
@@ -1579,6 +1775,29 @@ public class UILabel : UIWidget
 				end = verts.size;
 
 				ApplyShadow(verts, uvs, cols, offset, end, -pos.x, -pos.y);
+
+				if (effectStyle == Effect.Outline8)
+				{
+					offset = end;
+					end = verts.size;
+
+					ApplyShadow(verts, uvs, cols, offset, end, -pos.x, 0);
+
+					offset = end;
+					end = verts.size;
+
+					ApplyShadow(verts, uvs, cols, offset, end, pos.x, 0);
+
+					offset = end;
+					end = verts.size;
+
+					ApplyShadow(verts, uvs, cols, offset, end, 0, pos.y);
+
+					offset = end;
+					end = verts.size;
+
+					ApplyShadow(verts, uvs, cols, offset, end, 0, -pos.y);
+				}
 			}
 		}
 
@@ -1754,8 +1973,8 @@ public class UILabel : UIWidget
 		NGUIText.premultiply = mPremultiply;
 		NGUIText.symbolStyle = mSymbols;
 		NGUIText.maxLines = mMaxLineCount;
-		NGUIText.spacingX = mSpacingX;
-		NGUIText.spacingY = mSpacingY;
+		NGUIText.spacingX = effectiveSpacingX;
+		NGUIText.spacingY = effectiveSpacingY;
 		NGUIText.fontScale = isDynamic ? mScale : ((float)mFontSize / mFont.defaultSize) * mScale;
 
 		if (mFont != null)

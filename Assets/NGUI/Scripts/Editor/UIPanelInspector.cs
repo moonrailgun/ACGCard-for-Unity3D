@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
+// Copyright © 2011-2015 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEngine;
@@ -74,7 +74,11 @@ public class UIPanelInspector : UIRectEditor
 		if (Selection.objects.Length > 1) return;
 
 		UICamera cam = UICamera.FindCameraForLayer(mPanel.gameObject.layer);
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 		if (cam == null || !cam.cachedCamera.isOrthoGraphic) return;
+#else
+		if (cam == null || !cam.cachedCamera.orthographic) return;
+#endif
 
 		NGUIEditorTools.HideMoveTool(true);
 		if (!UIWidget.showHandles) return;

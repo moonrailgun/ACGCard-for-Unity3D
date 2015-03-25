@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
+// Copyright © 2011-2015 Tasharen Entertainment
 //----------------------------------------------
 
 #if !UNITY_3_5 && !UNITY_FLASH
@@ -106,7 +106,7 @@ public class UITextList : MonoBehaviour
 	/// Height of each line.
 	/// </summary>
 
-	protected float lineHeight { get { return (textLabel != null) ? textLabel.fontSize + textLabel.spacingY : 20f; } }
+	protected float lineHeight { get { return (textLabel != null) ? textLabel.fontSize + textLabel.effectiveSpacingY : 20f; } }
 
 	/// <summary>
 	/// Height of the scrollable area (outside of the visible area's bounds).

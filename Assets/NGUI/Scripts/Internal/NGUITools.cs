@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
+// Copyright © 2011-2015 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEngine;
@@ -71,12 +71,20 @@ static public class NGUITools
 
 	static public AudioSource PlaySound (AudioClip clip, float volume) { return PlaySound(clip, volume, 1f); }
 
+	static float mLastTimestamp = 0f;
+	static AudioClip mLastClip;
+
 	/// <summary>
 	/// Play the specified audio clip with the specified volume and pitch.
 	/// </summary>
 
 	static public AudioSource PlaySound (AudioClip clip, float volume, float pitch)
 	{
+		float time = Time.time;
+		if (mLastClip == clip && mLastTimestamp + 0.1f > time) return null;
+
+		mLastClip = clip;
+		mLastTimestamp = time;
 		volume *= soundVolume;
 
 		if (clip != null && volume > 0.01f)
@@ -107,9 +115,16 @@ static public class NGUITools
 
 			if (mListener != null && mListener.enabled && NGUITools.GetActive(mListener.gameObject))
 			{
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 				AudioSource source = mListener.audio;
+#else
+				AudioSource source = mListener.GetComponent<AudioSource>();
+#endif
 				if (source == null) source = mListener.gameObject.AddComponent<AudioSource>();
+#if !UNITY_FLASH
+				source.priority = 50;
 				source.pitch = pitch;
+#endif
 				source.PlayOneShot(clip, volume);
 				return source;
 			}
@@ -375,13 +390,21 @@ static public class NGUITools
 			if (w != null)
 			{
 				Vector3[] corners = w.localCorners;
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 				box.center = Vector3.Lerp(corners[0], corners[2], 0.5f);
+#else
+				box.offset = Vector3.Lerp(corners[0], corners[2], 0.5f);
+#endif
 				box.size = corners[2] - corners[0];
 			}
 			else
 			{
 				Bounds b = NGUIMath.CalculateRelativeWidgetBounds(go.transform, considerInactive);
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 				box.center = b.center;
+#else
+				box.offset = b.center;
+#endif
 				box.size = new Vector2(b.size.x, b.size.y);
 			}
 #if UNITY_EDITOR
@@ -543,7 +566,11 @@ static public class NGUITools
 			for (int i = 0, imax = widgets.Length; i < imax; ++i)
 			{
 				UIWidget w = widgets[i];
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 				if (w.cachedGameObject != go && (w.collider != null || w.GetComponent<Collider2D>() != null)) continue;
+#else
+				if (w.cachedGameObject != go && (w.GetComponent<Collider>() != null || w.GetComponent<Collider2D>() != null)) continue;
+#endif
 				depth = Mathf.Max(depth, w.depth);
 			}
 			return depth + 1;
@@ -751,7 +778,11 @@ static public class NGUITools
 		{
 			UICamera cam = root.GetComponentInChildren<UICamera>();
 
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 			if (cam != null && cam.camera.isOrthoGraphic == advanced3D)
+#else
+			if (cam != null && cam.GetComponent<Camera>().orthographic == advanced3D)
+#endif
 			{
 				trans = null;
 				root = null;
@@ -918,6 +949,20 @@ static public class NGUITools
 	}
 
 	/// <summary>
+	/// Add a new widget of specified type.
+	/// </summary>
+
+	static public T AddWidget<T> (GameObject go, int depth) where T : UIWidget
+	{
+		// Create the widget and place it above other widgets
+		T widget = AddChild<T>(go);
+		widget.width = 100;
+		widget.height = 100;
+		widget.depth = depth;
+		return widget;
+	}
+
+	/// <summary>
 	/// Add a sprite appropriate for the specified atlas sprite.
 	/// It will be sliced if the sprite has an inner rect, and a regular sprite otherwise.
 	/// </summary>
@@ -1025,6 +1070,8 @@ static public class NGUITools
 	{
 		if (obj != null)
 		{
+			if (obj is Transform) obj = (obj as Transform).gameObject;
+
 			if (Application.isPlaying)
 			{
 				if (obj is GameObject)
@@ -1295,7 +1342,7 @@ static public class NGUITools
 
 	static public bool Save (string fileName, byte[] bytes)
 	{
-#if UNITY_WEBPLAYER || UNITY_FLASH || UNITY_METRO || UNITY_WP8
+#if UNITY_WEBPLAYER || UNITY_FLASH || UNITY_METRO || UNITY_WP8 || UNITY_WP_8_1
 		return false;
 #else
 		if (!NGUITools.fileAccess) return false;
@@ -1332,7 +1379,7 @@ static public class NGUITools
 
 	static public byte[] Load (string fileName)
 	{
-#if UNITY_WEBPLAYER || UNITY_FLASH || UNITY_METRO || UNITY_WP8
+#if UNITY_WEBPLAYER || UNITY_FLASH || UNITY_METRO || UNITY_WP8 || UNITY_WP_8_1
 		return null;
 #else
 		if (!NGUITools.fileAccess) return null;
@@ -1466,7 +1513,11 @@ static public class NGUITools
 
 	static public Vector3[] GetSides (this Camera cam, float depth, Transform relativeTo)
 	{
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 		if (cam.isOrthoGraphic)
+#else
+		if (cam.orthographic)
+#endif
 		{
 			float os = cam.orthographicSize;
 			float x0 = -os;
@@ -1541,7 +1592,11 @@ static public class NGUITools
 
 	static public Vector3[] GetWorldCorners (this Camera cam, float depth, Transform relativeTo)
 	{
+#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 		if (cam.isOrthoGraphic)
+#else
+		if (cam.orthographic)
+#endif
 		{
 			float os = cam.orthographicSize;
 			float x0 = -os;
@@ -1606,7 +1661,7 @@ static public class NGUITools
 
 		foreach (T comp in comps)
 		{
-#if !UNITY_EDITOR && (UNITY_WEBPLAYER || UNITY_FLASH || UNITY_METRO || UNITY_WP8)
+#if !UNITY_EDITOR && (UNITY_WEBPLAYER || UNITY_FLASH || UNITY_METRO || UNITY_WP8 || UNITY_WP_8_1)
 			comp.SendMessage(funcName, SendMessageOptions.DontRequireReceiver);
 #else
 			MethodInfo method = comp.GetType().GetMethod(funcName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
