@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class MenuScene : MonoBehaviour
 {
@@ -9,8 +10,15 @@ public class MenuScene : MonoBehaviour
     private void Awake()
     {
         Global.Instance.scene = SceneType.MenuScene;
-        cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
-        chatList = GameObject.Find("Chatting/ChattingList").GetComponent<UITextList>();
+
+        //尝试获取网络端口
+        try
+        {
+            cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
+        }
+        catch (Exception ex) { ex.ToString(); }
+
+        chatList = GameObject.Find("Chatting/ChattingList").GetComponent<UITextList>(); 
         if (chatList != null)
         {
             chatScroll = chatList.scrollBar as UIScrollBar;
@@ -30,8 +38,12 @@ public class MenuScene : MonoBehaviour
             AddChatList("我", text);
             if (cardClient != null)
             {
-                text.Replace(" ", "-");
-                cardClient.SendPacket(Packets.ChatPacket(text));
+                SocketModel model = new SocketModel();
+                model.protocol = SocketProtocol.CHAT;
+                ChatDTO data = new ChatDTO(text, Global.Instance.UUID);
+                model.message = JsonCoding<ChatDTO>.encode(data);
+
+                cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
             }
         }
         input.value = "";
