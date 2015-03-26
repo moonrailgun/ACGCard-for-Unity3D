@@ -9,7 +9,7 @@ public class MenuScene : MonoBehaviour
     private UIScrollBar chatScroll;
     private void Awake()
     {
-        Global.Instance.scene = SceneType.MenuScene;
+        Global.Instance.scene = SceneType.MenuScene;//切换场景变量
 
         //尝试获取网络端口
         try
@@ -40,7 +40,7 @@ public class MenuScene : MonoBehaviour
             {
                 SocketModel model = new SocketModel();
                 model.protocol = SocketProtocol.CHAT;
-                ChatDTO data = new ChatDTO(text, Global.Instance.UUID);
+                ChatDTO data = new ChatDTO(text, Global.Instance.playerName, Global.Instance.UUID);
                 model.message = JsonCoding<ChatDTO>.encode(data);
 
                 cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));

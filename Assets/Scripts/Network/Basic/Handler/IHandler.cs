@@ -1,5 +1,5 @@
 ﻿public interface IHandler
 {
-    void Process(int returnCode,string data);
+    void Process(SocketModel model);
 }
 

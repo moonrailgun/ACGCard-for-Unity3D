@@ -14,7 +14,8 @@ public class LoginScene : MonoBehaviour {
 
 	private void Awake()
 	{
-		Global.Instance.scene = SceneType.LoginScene;
+		Global.Instance.scene = SceneType.LoginScene;//切换场景变量
+
 		cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
 	}
 
@@ -95,10 +96,10 @@ public class LoginScene : MonoBehaviour {
 	/// </summary>
 	public void OnLogin()
 	{
-		string username = GameObject.Find("LoginPanel/background/Container/Account").GetComponentInChildren<UIInput>().value;
+		string account = GameObject.Find("LoginPanel/background/Container/Account").GetComponentInChildren<UIInput>().value;
 		string password = GameObject.Find("LoginPanel/background/Container/Password").GetComponentInChildren<UIInput>().value;
 
-		if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+		if (string.IsNullOrEmpty(account) || string.IsNullOrEmpty(password))
 		{
 			ShortMessagesSystem.Instance.ShowShortMessage("请输入账号或者密码");
 		}
@@ -109,7 +110,7 @@ public class LoginScene : MonoBehaviour {
 
 			SocketModel model = new SocketModel();
 			model.protocol = SocketProtocol.LOGIN;
-			model.message = JsonCoding<LoginDTO>.encode(new LoginDTO(username, password));//发送登陆请求
+			model.message = JsonCoding<LoginDTO>.encode(new LoginDTO(account, password));//发送登陆请求
 
 			cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
 		}

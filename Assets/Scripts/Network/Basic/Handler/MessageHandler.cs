@@ -4,11 +4,13 @@ using System.Collections.Generic;
 public class MessageHandler : MonoBehaviour {
     private CardClient cardClient;
     private LoginHandler loginHandler;
+    private ChatHandler chatHandler;
 
     private void Awake()
     {
         cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
         loginHandler = new LoginHandler();
+        chatHandler = new ChatHandler();
     }
     private void Update()
     {
@@ -31,7 +33,12 @@ public class MessageHandler : MonoBehaviour {
         {
             case SocketProtocol.LOGIN:
                 {
-                    loginHandler.Process(model.returnCode, model.message);
+                    loginHandler.Process(model);
+                    break;
+                }
+            case SocketProtocol.CHAT:
+                {
+                    chatHandler.Process(model);
                     break;
                 }
             default:
