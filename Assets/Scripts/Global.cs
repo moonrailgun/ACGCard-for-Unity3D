@@ -22,10 +22,11 @@ public class Global
     public string serverName;
     public string UUID;
     public string playerName;
+    public PlayerInfo playerInfo;
 
     public Global()
     {
-
+        
     }
 }
 

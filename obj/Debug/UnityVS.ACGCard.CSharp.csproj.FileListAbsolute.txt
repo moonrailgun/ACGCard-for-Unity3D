@@ -8,3 +8,5 @@ G:\Study\Unity3D Project\ACGCard\obj\Debug\UnityVS.ACGCard.CSharp.csprojResolveA
 G:\Study\Unity3D Project\ACGCard\obj\Debug\Assembly-CSharp.dll
 G:\Study\Unity3D Project\ACGCard\obj\Debug\Assembly-CSharp.pdb
 G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\LitJson.dll
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml

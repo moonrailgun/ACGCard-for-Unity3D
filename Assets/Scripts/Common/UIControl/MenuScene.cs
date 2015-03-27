@@ -4,9 +4,20 @@ using System;
 
 public class MenuScene : MonoBehaviour
 {
+    //全局
     private CardClient cardClient;
+
+    //聊天
     private UITextList chatList;
     private UIScrollBar chatScroll;
+
+    //角色信息
+    private PlayerInfo playerInfo;
+    private UILabel coinLabel;
+    private UILabel gemLabel;
+    private UILabel playerNameLabel;
+    private UILabel levelLabel;
+
     private void Awake()
     {
         Global.Instance.scene = SceneType.MenuScene;//切换场景变量
@@ -15,15 +26,23 @@ public class MenuScene : MonoBehaviour
         try
         {
             cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
+            SendPlayerInfoRequest();//获取角色信息
         }
         catch (Exception ex) { LogsSystem.Instance.Print(ex.ToString()); }
 
+        //聊天窗初始化
         chatList = GameObject.Find("Chatting/ChattingList").GetComponent<UITextList>();
         if (chatList != null)
         {
             chatScroll = chatList.scrollBar as UIScrollBar;
             chatScroll.alpha = 0.01f;
         }
+
+        //角色信息获取
+        coinLabel = GameObject.Find("Economy/Coin/Sprite/Num").GetComponent<UILabel>();
+        gemLabel = GameObject.Find("Economy/Gem/Sprite/Num").GetComponent<UILabel>();
+        playerNameLabel = GameObject.Find("Head/Name").GetComponent<UILabel>();
+        levelLabel = GameObject.Find("Head/Head-bg/Level").GetComponent<UILabel>();
     }
 
     /// <summary>
@@ -71,6 +90,36 @@ public class MenuScene : MonoBehaviour
         if (chatScroll.barSize != 1)
         {
             chatScroll.alpha = 1;
+        }
+    }
+
+    /// <summary>
+    /// 获取角色信息
+    /// </summary>
+    private void SendPlayerInfoRequest()
+    {
+        SocketModel model = new SocketModel();
+        model.protocol = SocketProtocol.PLAYERINFO;
+        PlayerInfoDTO data = new PlayerInfoDTO(Global.Instance.UUID);
+        model.message = JsonCoding<PlayerInfoDTO>.encode(data);
+
+        cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
+    }
+
+    /// <summary>
+    /// 刷新玩家信息
+    /// </summary>
+    public void UpdatePlayerInfo()
+    {
+        playerInfo = Global.Instance.playerInfo;//此时该对象有值
+
+        if (playerInfo != null)
+        {
+            LogsSystem.Instance.Print("玩家数据:" + playerInfo.ToString());
+            coinLabel.text = playerInfo.coin.ToString();
+            gemLabel.text = playerInfo.gem.ToString();
+            playerNameLabel.text = playerInfo.playerName;
+            levelLabel.text = playerInfo.level.ToString();
         }
     }
 }

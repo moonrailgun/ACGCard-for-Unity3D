@@ -5,12 +5,14 @@ public class MessageHandler : MonoBehaviour {
     private CardClient cardClient;
     private LoginHandler loginHandler;
     private ChatHandler chatHandler;
+    private PlayerInfoHandler playerInfoHandler;
 
     private void Awake()
     {
         cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
         loginHandler = new LoginHandler();
         chatHandler = new ChatHandler();
+        playerInfoHandler = new PlayerInfoHandler();
     }
     private void Update()
     {
@@ -39,6 +41,11 @@ public class MessageHandler : MonoBehaviour {
             case SocketProtocol.CHAT:
                 {
                     chatHandler.Process(model);
+                    break;
+                }
+            case SocketProtocol.PLAYERINFO:
+                {
+                    playerInfoHandler.Process(model);
                     break;
                 }
             default:
