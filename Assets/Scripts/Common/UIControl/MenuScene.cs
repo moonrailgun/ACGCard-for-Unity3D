@@ -89,7 +89,10 @@ public class MenuScene : MonoBehaviour
     {
         if (chatScroll.barSize != 1)
         {
-            chatScroll.alpha = 1;
+            chatScroll.alpha = 1.0f;
+            Color temp = chatScroll.foregroundWidget.gameObject.GetComponent<UIButton>().defaultColor;
+            temp.a = 1.0f;
+            chatScroll.foregroundWidget.gameObject.GetComponent<UIButton>().defaultColor = temp;
         }
     }
 
