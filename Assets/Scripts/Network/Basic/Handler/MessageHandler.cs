@@ -6,6 +6,7 @@ public class MessageHandler : MonoBehaviour {
     private LoginHandler loginHandler;
     private ChatHandler chatHandler;
     private PlayerInfoHandler playerInfoHandler;
+    private CardInfoHandler cardInfoHandler;
 
     private void Awake()
     {
@@ -13,6 +14,7 @@ public class MessageHandler : MonoBehaviour {
         loginHandler = new LoginHandler();
         chatHandler = new ChatHandler();
         playerInfoHandler = new PlayerInfoHandler();
+        cardInfoHandler = new CardInfoHandler();
     }
     private void Update()
     {
@@ -46,6 +48,11 @@ public class MessageHandler : MonoBehaviour {
             case SocketProtocol.PLAYERINFO:
                 {
                     playerInfoHandler.Process(model);
+                    break;
+                }
+            case SocketProtocol.CARDINFOLIST:
+                {
+                    cardInfoHandler.Process(model);
                     break;
                 }
             default:

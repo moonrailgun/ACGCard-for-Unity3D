@@ -5,6 +5,7 @@ using System.Collections.Generic;
 /// 卡片基类
 /// </summary>
 public class Card {
+    public int cardID;//卡片ID
     public string cardName;//卡片名称
     public CardType cardType;//卡片类型
     public List<CardSkill> cardSkill;//卡片技能列表

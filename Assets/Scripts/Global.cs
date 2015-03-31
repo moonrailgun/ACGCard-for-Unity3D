@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Global
 {
@@ -23,6 +24,7 @@ public class Global
     public string UUID;
     public string playerName;
     public PlayerInfo playerInfo;
+    public List<CardInfo> playerOwnCard;
 
     public Global()
     {

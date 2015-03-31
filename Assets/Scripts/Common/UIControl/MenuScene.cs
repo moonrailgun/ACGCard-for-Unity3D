@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class MenuScene : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class MenuScene : MonoBehaviour
     private UILabel gemLabel;
     private UILabel playerNameLabel;
     private UILabel levelLabel;
+
+    //信息面板
+    private GameObject infoPanel;
 
     private void Awake()
     {
@@ -43,6 +47,9 @@ public class MenuScene : MonoBehaviour
         gemLabel = GameObject.Find("Economy/Gem/Sprite/Num").GetComponent<UILabel>();
         playerNameLabel = GameObject.Find("Head/Name").GetComponent<UILabel>();
         levelLabel = GameObject.Find("Head/Head-bg/Level").GetComponent<UILabel>();
+
+        //信息控件获取
+        infoPanel = GameObject.Find("Frame/Background/InfoPanel");
     }
 
     /// <summary>
@@ -123,6 +130,37 @@ public class MenuScene : MonoBehaviour
             gemLabel.text = playerInfo.gem.ToString();
             playerNameLabel.text = playerInfo.playerName;
             levelLabel.text = playerInfo.level.ToString();
+        }
+    }
+
+
+    /// <summary>
+    /// 获取玩家拥有的卡片列表
+    /// </summary>
+    private void GetPlayerCardList()
+    {
+        SocketModel model = new SocketModel();
+        model.protocol = SocketProtocol.CARDINFOLIST;
+
+        cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
+    }
+
+    /// <summary>
+    /// 更新玩家拥有的卡片列表
+    /// </summary>
+    public void UpdatePlayerCardList()
+    {
+        List<CardInfo> cardList = Global.Instance.playerOwnCard;
+        if (cardList == null)
+        {
+            if (cardList.Count == 0)
+            {
+                ShortMessagesSystem.Instance.ShowShortMessage("暂时没有拥有任何卡片");
+            }
+            else
+            {
+                LogsSystem.Instance.Print("更新卡片列表功能尚未实现", LogLevel.WARN);
+            }
         }
     }
 }
