@@ -10,13 +10,13 @@ public class CardInfoHandler : IHandler
         {
             CardInfoDTO data = JsonCoding<CardInfoDTO>.decode(model.message);
 
-            if (data.cardOwner == Global.Instance.playerName)
+            if (data.cardOwnerId == Global.Instance.playerInfo.uid)
             {
                 //将玩家拥有的卡片存到全局中
                 Global.Instance.playerOwnCard = new List<CardInfo>(data.cardInfoList);
             }
 
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
     }
 }

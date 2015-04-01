@@ -3,6 +3,6 @@ using System.Collections;
 
 public class CardInfoDTO : CommonDTO
 {
-    public string cardOwner;
+    public int cardOwnerId;
     public CardInfo[] cardInfoList;
 }

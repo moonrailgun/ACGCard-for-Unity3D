@@ -4,7 +4,7 @@ using System.Collections;
 public class CardInfo
 {
     public int cardId;
-    public string cardOwner;
+    public int cardOwnerId;
     public int cardRarity;
     public int specialHealth;
     public int specialMana;

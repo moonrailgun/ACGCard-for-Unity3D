@@ -118,6 +118,7 @@ public class MenuScene : MonoBehaviour
 
     /// <summary>
     /// 刷新玩家信息
+    /// 并获取玩家拥有卡片
     /// </summary>
     public void UpdatePlayerInfo()
     {
@@ -125,11 +126,12 @@ public class MenuScene : MonoBehaviour
 
         if (playerInfo != null)
         {
-            LogsSystem.Instance.Print("玩家数据:" + playerInfo.ToString());
             coinLabel.text = playerInfo.coin.ToString();
             gemLabel.text = playerInfo.gem.ToString();
             playerNameLabel.text = playerInfo.playerName;
             levelLabel.text = playerInfo.level.ToString();
+
+            GetPlayerCardList();//获取玩家拥有卡片
         }
     }
 
@@ -141,6 +143,8 @@ public class MenuScene : MonoBehaviour
     {
         SocketModel model = new SocketModel();
         model.protocol = SocketProtocol.CARDINFOLIST;
+        CardInfoDTO data = new CardInfoDTO() { cardOwnerId = Global.Instance.playerInfo.uid };
+        model.message = JsonCoding<CardInfoDTO>.encode(data);
 
         cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
     }

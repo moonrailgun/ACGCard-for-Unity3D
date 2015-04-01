@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerInfo
 {
     public string UUID;
-
     public int uid;
     public string playerName;
     public int level;
