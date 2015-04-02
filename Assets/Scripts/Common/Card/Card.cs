@@ -4,7 +4,8 @@ using System.Collections.Generic;
 /// <summary>
 /// 卡片基类
 /// </summary>
-public class Card {
+public class Card : MonoBehaviour
+{
     public int cardID;//卡片ID
     public string cardName;//卡片名称
     public CardType cardType;//卡片类型
@@ -25,10 +26,29 @@ public class Card {
         this.cardPicName = "Default";
     }
 
-    public GameObject GetCardGameobject()
+    public Card(int cardId, string cardName,int cardRarity)
     {
-        //TODO
-        return null;
+        this.cardID = cardId;
+        this.cardName = cardName;
+        this.cardRarity = (CardRarity)cardRarity;
+    }
+
+    public void UpdateCardUI()
+    {
+        GameObject character = transform.FindChild("Character").gameObject;
+        GameObject cardDescribe = transform.FindChild("Card-describe").gameObject;
+        
+        Debug.Log(character.name + " " + cardDescribe.name);
+
+        //更换图片
+        character.GetComponent<UISprite>().spriteName = string.Format("Card-{0}",cardName);
+        //--更换描述底色
+        //--更换背景边框
+        //--更换背景色
+
+        //更新文本
+        character.GetComponentInChildren<UILabel>().text = CardNames.Instance.GetCardName(cardName);
+        cardDescribe.GetComponentInChildren<UILabel>().text = this.cardDescription;
     }
 }
 
@@ -41,10 +61,10 @@ public enum CardType
 
 public enum CardRarity
 {
-    Normal,//普通
-    Excellent,//精良
-    Scarce,//稀有
-    Rare,//罕见
-    Legend,//传说
-    Epic//史诗
+    Normal = 1,//普通
+    Excellent = 2,//精良
+    Scarce = 3,//稀有
+    Rare = 4,//罕见
+    Legend = 5,//传说
+    Epic = 6//史诗
 }

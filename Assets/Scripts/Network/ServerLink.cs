@@ -32,6 +32,12 @@ public class ServerLink : MonoBehaviour {
 		string[] lists = txt.Split(new char[]{'\n'});
 		foreach(string list in lists)
 		{
+			//如果以#开头则跳过（注释）
+			if (list.StartsWith("#"))
+			{
+				continue;
+			}
+
 			string[] serverInfo = list.Split(new char[]{','});
 			CreateServerCell(serverInfo[2],serverInfo[0],serverInfo[1]);
 		}

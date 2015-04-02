@@ -21,6 +21,7 @@ public class MenuScene : MonoBehaviour
 
     //信息面板
     private GameObject infoPanel;
+    private GameObject cardListGrid;
 
     private void Awake()
     {
@@ -50,6 +51,7 @@ public class MenuScene : MonoBehaviour
 
         //信息控件获取
         infoPanel = GameObject.Find("Frame/Background/InfoPanel");
+        cardListGrid = GameObject.Find("Frame/Background/InfoPanel/CardContainer/CardList/Grid");
     }
 
     /// <summary>
@@ -88,6 +90,51 @@ public class MenuScene : MonoBehaviour
         }
     }
 
+    #region 卡片背包
+    /// <summary>
+    /// 更新玩家拥有的卡片列表
+    /// 并显示卡片背包
+    /// </summary>
+    public void UpdatePlayerCardList()
+    {
+        //获取列表
+        List<CardInfo> cardList = Global.Instance.playerOwnCard;
+        if (cardList == null)
+        {
+            if (cardList.Count == 0)
+            {
+                ShortMessagesSystem.Instance.ShowShortMessage("暂时没有拥有任何卡片");
+            }
+            else
+            {
+                LogsSystem.Instance.Print("更新卡片列表功能尚未实现", LogLevel.WARN);
+            }
+        }
+
+        //添加数据
+        foreach (CardInfo card in cardList)
+        {
+            AddCardListItem(card.cardId, card.cardName, card.cardRarity);
+        }
+        LogsSystem.Instance.Print("卡片背包显示完毕");
+    }
+
+    private void AddCardListItem(int id, string cardName, int rarity)
+    {
+        GameObject card = Instantiate<GameObject>(Resources.Load<GameObject>("Card-small"));
+        card.transform.parent = cardListGrid.transform;
+        card.transform.localScale = new Vector3(1, 1, 1);
+
+        Card cardInfo = card.GetComponent<Card>();
+        cardInfo.cardID = id;
+        cardInfo.cardName = cardName;
+        cardInfo.cardRarity = (CardRarity)rarity;
+        cardInfo.UpdateCardUI();
+
+        cardListGrid.GetComponent<UIGrid>().enabled = true;
+    }
+    #endregion
+
     /// <summary>
     /// 检查滚动条大小
     /// 当文字内容超过一个屏幕时显示滚动条
@@ -103,6 +150,8 @@ public class MenuScene : MonoBehaviour
         }
     }
 
+
+    #region 信息处理
     /// <summary>
     /// 获取角色信息
     /// </summary>
@@ -134,8 +183,6 @@ public class MenuScene : MonoBehaviour
             GetPlayerCardList();//获取玩家拥有卡片
         }
     }
-
-
     /// <summary>
     /// 获取玩家拥有的卡片列表
     /// </summary>
@@ -148,23 +195,6 @@ public class MenuScene : MonoBehaviour
 
         cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
     }
+    #endregion
 
-    /// <summary>
-    /// 更新玩家拥有的卡片列表
-    /// </summary>
-    public void UpdatePlayerCardList()
-    {
-        List<CardInfo> cardList = Global.Instance.playerOwnCard;
-        if (cardList == null)
-        {
-            if (cardList.Count == 0)
-            {
-                ShortMessagesSystem.Instance.ShowShortMessage("暂时没有拥有任何卡片");
-            }
-            else
-            {
-                LogsSystem.Instance.Print("更新卡片列表功能尚未实现", LogLevel.WARN);
-            }
-        }
-    }
 }
