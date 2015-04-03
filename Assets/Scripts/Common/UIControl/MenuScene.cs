@@ -22,6 +22,7 @@ public class MenuScene : MonoBehaviour
     //信息面板
     private GameObject infoPanel;
     private GameObject cardListGrid;
+    public bool isWaittingForCardInv = false;
 
     private void Awake()
     {
@@ -31,7 +32,7 @@ public class MenuScene : MonoBehaviour
         try
         {
             cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
-            SendPlayerInfoRequest();//获取角色信息
+            RequestPlayerInfo();//获取角色信息
         }
         catch (Exception ex) { LogsSystem.Instance.Print(ex.ToString()); }
 
@@ -97,18 +98,27 @@ public class MenuScene : MonoBehaviour
     /// </summary>
     public void UpdatePlayerCardList()
     {
+        //删除过期的卡片
+        for (int i = cardListGrid.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(cardListGrid.transform.GetChild(i).gameObject);
+        }
+
         //获取列表
         List<CardInfo> cardList = Global.Instance.playerOwnCard;
+        //如果没有获取到远程数据，则重新发送邀请并等待返回
         if (cardList == null)
         {
-            if (cardList.Count == 0)
-            {
-                ShortMessagesSystem.Instance.ShowShortMessage("暂时没有拥有任何卡片");
-            }
-            else
-            {
-                LogsSystem.Instance.Print("更新卡片列表功能尚未实现", LogLevel.WARN);
-            }
+            RequestPlayerCardList();
+            isWaittingForCardInv = true;
+            ShortMessagesSystem.Instance.ShowShortMessage("正在获取卡片。请稍后");
+            return;
+        }
+        //如果没有任何卡片。则提示
+        if (cardList.Count == 0)
+        {
+            ShortMessagesSystem.Instance.ShowShortMessage("暂时没有拥有任何卡片");
+            return;
         }
 
         //添加数据
@@ -155,7 +165,7 @@ public class MenuScene : MonoBehaviour
     /// <summary>
     /// 获取角色信息
     /// </summary>
-    private void SendPlayerInfoRequest()
+    private void RequestPlayerInfo()
     {
         SocketModel model = new SocketModel();
         model.protocol = SocketProtocol.PLAYERINFO;
@@ -179,14 +189,14 @@ public class MenuScene : MonoBehaviour
             gemLabel.text = playerInfo.gem.ToString();
             playerNameLabel.text = playerInfo.playerName;
             levelLabel.text = playerInfo.level.ToString();
-
-            GetPlayerCardList();//获取玩家拥有卡片
         }
+
+        RequestPlayerCardList();//获取玩家拥有卡片
     }
     /// <summary>
     /// 获取玩家拥有的卡片列表
     /// </summary>
-    private void GetPlayerCardList()
+    private void RequestPlayerCardList()
     {
         SocketModel model = new SocketModel();
         model.protocol = SocketProtocol.CARDINFOLIST;

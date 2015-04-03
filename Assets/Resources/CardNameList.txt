@@ -1,2 +1,5 @@
 ﻿Rin=远坂凛
 Saber=亚瑟王Saber
+Rukia=朽木露琪亚
+Illyasviel=伊利亚
+Yaya=夜夜

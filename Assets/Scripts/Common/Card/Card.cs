@@ -26,7 +26,7 @@ public class Card : MonoBehaviour
         this.cardPicName = "Default";
     }
 
-    public Card(int cardId, string cardName,int cardRarity)
+    public Card(int cardId, string cardName, int cardRarity)
     {
         this.cardID = cardId;
         this.cardName = cardName;
@@ -37,14 +37,41 @@ public class Card : MonoBehaviour
     {
         GameObject character = transform.FindChild("Character").gameObject;
         GameObject cardDescribe = transform.FindChild("Card-describe").gameObject;
-        
-        Debug.Log(character.name + " " + cardDescribe.name);
 
         //更换图片
-        character.GetComponent<UISprite>().spriteName = string.Format("Card-{0}",cardName);
-        //--更换描述底色
-        //--更换背景边框
-        //--更换背景色
+        character.GetComponent<UISprite>().spriteName = string.Format("Card-{0}", cardName);
+
+        string rarityColorName;
+        //选择颜色名
+        switch (this.cardRarity)
+        {
+            case CardRarity.Normal:
+                rarityColorName = "white";
+                break;
+            case CardRarity.Excellent:
+                rarityColorName = "green";
+                break;
+            case CardRarity.Scarce:
+                rarityColorName = "blue";
+                break;
+            case CardRarity.Rare:
+                rarityColorName = "gold";
+                break;
+            case CardRarity.Legend:
+                rarityColorName = "purple";
+                break;
+            case CardRarity.Epic:
+                rarityColorName = "orange";
+                break;
+            default:
+                rarityColorName = "gold";
+                break;
+        }
+
+        //更换背景边框
+        GetComponent<UISprite>().spriteName = string.Format("CardFrame-{0}-frame", rarityColorName);
+        //更换描述信息背景
+        cardDescribe.GetComponent<UISprite>().spriteName = string.Format("CardFrame-{0}-describe", rarityColorName);
 
         //更新文本
         character.GetComponentInChildren<UILabel>().text = CardNames.Instance.GetCardName(cardName);
