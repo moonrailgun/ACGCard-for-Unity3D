@@ -67,6 +67,19 @@ public class MenuScene : MonoBehaviour
     public void GameStart()
     {
         Windows.CreateWindows("请稍后", "正在匹配对手...", "取消匹配", UIWidget.Pivot.Center);
+
+        //发送游戏队列请求
+        SocketModel model = new SocketModel();
+        model.protocol = SocketProtocol.GAME;
+
+        GameRequestDTO data = new GameRequestDTO();
+        data.playerUUID = Global.Instance.playerInfo.UUID;
+        data.playerUid = Global.Instance.playerInfo.uid;
+        data.playerName = Global.Instance.playerInfo.playerName;
+        data.playerLevel = Global.Instance.playerInfo.level;
+        model.message = JsonCoding<GameRequestDTO>.encode(data);
+
+        cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
     }
 
     /// <summary>
