@@ -8,6 +8,9 @@ public class MenuScene : MonoBehaviour
     //全局
     private CardClient cardClient;
 
+    //功能按键
+    //private GameObject StartButton;
+
     //聊天
     private UITextList chatList;
     private UIScrollBar chatScroll;
@@ -20,7 +23,7 @@ public class MenuScene : MonoBehaviour
     private UILabel levelLabel;
 
     //信息面板
-    private GameObject infoPanel;
+    //private GameObject infoPanel;
     private GameObject cardListGrid;
     public bool isWaittingForCardInv = false;
 
@@ -35,6 +38,9 @@ public class MenuScene : MonoBehaviour
             RequestPlayerInfo();//获取角色信息
         }
         catch (Exception ex) { LogsSystem.Instance.Print(ex.ToString()); }
+
+        //获取功能按键
+        //StartButton = GameObject.Find("GameStart");
 
         //聊天窗初始化
         chatList = GameObject.Find("Chatting/ChattingList").GetComponent<UITextList>();
@@ -51,8 +57,16 @@ public class MenuScene : MonoBehaviour
         levelLabel = GameObject.Find("Head/Head-bg/Level").GetComponent<UILabel>();
 
         //信息控件获取
-        infoPanel = GameObject.Find("Frame/Background/InfoPanel");
+        //infoPanel = GameObject.Find("Frame/Background/InfoPanel");
         cardListGrid = GameObject.Find("Frame/Background/InfoPanel/CardContainer/CardList/Grid");
+    }
+
+    /// <summary>
+    /// 本地按下游戏开始按键
+    /// </summary>
+    public void GameStart()
+    {
+        Windows.CreateWindows("正在匹配对手", "请稍后", "取消匹配");
     }
 
     /// <summary>
