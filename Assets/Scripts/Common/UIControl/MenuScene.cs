@@ -66,7 +66,7 @@ public class MenuScene : MonoBehaviour
     /// </summary>
     public void GameStart()
     {
-        Windows.CreateWindows("正在匹配对手", "请稍后", "取消匹配");
+        Windows.CreateWindows("请稍后", "正在匹配对手...", "取消匹配", UIWidget.Pivot.Center);
     }
 
     /// <summary>
