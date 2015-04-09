@@ -67,7 +67,13 @@ public class MenuScene : MonoBehaviour
     public void GameStart()
     {
         Windows.CreateWindows("请稍后", "正在匹配对手...", "取消匹配", UIWidget.Pivot.Center);
+        if (cardClient != null || cardClient.hostName != "0.0.0.0")
+        {
+            string serverHost = cardClient.hostName;
+            GameClient.Instance.ConnectGameServer(serverHost);//连接服务器
+        }
 
+        /*
         //发送游戏队列请求
         SocketModel model = new SocketModel();
         model.protocol = SocketProtocol.GAME;
@@ -79,7 +85,7 @@ public class MenuScene : MonoBehaviour
         data.playerLevel = Global.Instance.playerInfo.level;
         model.message = JsonCoding<GameRequestDTO>.encode(data);
 
-        cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
+        cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));*/
     }
 
     /// <summary>

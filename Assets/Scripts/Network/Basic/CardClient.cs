@@ -121,6 +121,8 @@ public class CardClient : MonoBehaviour
         if (isThreadRun == false)
         {
             Debug.Log("已关闭线程");
+            udpReceiveClient.Close();
+            udpSendClient.Close();
             return;
         }
 
@@ -137,7 +139,8 @@ public class CardClient : MonoBehaviour
         }
         catch (SocketException)//出现Socket异常就关闭连接 
         {
-            udpReceiveClient.Close();//这个函数用来关闭客户端连接 
+            udpReceiveClient.Close();//这个函数用来关闭客户端连接
+            udpSendClient.Close();
             return;
         }
         udpReceiveClient.BeginReceive(ReceiveCallBack, null);
