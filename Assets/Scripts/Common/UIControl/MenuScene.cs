@@ -69,7 +69,7 @@ public class MenuScene : MonoBehaviour
         Windows.CreateWindows("请稍后", "正在匹配对手...", "取消匹配", UIWidget.Pivot.Center);
         if (cardClient != null || cardClient.hostName != "0.0.0.0")
         {
-            string serverHost = cardClient.hostName;
+            string serverHost = cardClient.hostName;//获取IP地址
             GameClient.Instance.ConnectGameServer(serverHost);//连接服务器
         }
 

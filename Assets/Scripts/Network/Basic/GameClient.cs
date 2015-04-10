@@ -46,6 +46,18 @@ public class GameClient
         }
     }
 
+    /// <summary>
+    /// 关闭连接
+    /// </summary>
+    public void CloseTcpConnect()
+    {
+        if (gameClient.Connected)
+        {
+            //如果tcp已连接
+            gameClient.Close();//关闭连接
+        }
+    }
+
 
 
 
