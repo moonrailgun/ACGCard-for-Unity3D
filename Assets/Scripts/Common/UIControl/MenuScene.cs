@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class MenuScene : MonoBehaviour
 {
@@ -72,20 +71,6 @@ public class MenuScene : MonoBehaviour
             string serverHost = cardClient.hostName;//获取IP地址
             GameClient.Instance.ConnectGameServer(serverHost);//连接服务器
         }
-
-        /*
-        //发送游戏队列请求
-        SocketModel model = new SocketModel();
-        model.protocol = SocketProtocol.GAME;
-
-        GameRequestDTO data = new GameRequestDTO();
-        data.playerUUID = Global.Instance.playerInfo.UUID;
-        data.playerUid = Global.Instance.playerInfo.uid;
-        data.playerName = Global.Instance.playerInfo.playerName;
-        data.playerLevel = Global.Instance.playerInfo.level;
-        model.message = JsonCoding<GameRequestDTO>.encode(data);
-
-        cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));*/
     }
 
     /// <summary>

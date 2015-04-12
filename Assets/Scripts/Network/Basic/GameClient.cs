@@ -22,11 +22,14 @@ public class GameClient
     #endregion
     public const int gamePort = 28283;
     public TcpClient gameClient;
-    public Encoding encoding = Encoding.ASCII;//编码格式
+    public Encoding encoding;//编码格式
+    private TCPGameDataHandler dataHandler;//数据处理器
 
     public GameClient()
     {
         gameClient = new TcpClient();
+        dataHandler = new TCPGameDataHandler();
+        encoding = Encoding.UTF8;
     }
 
     /// <summary>
@@ -37,8 +40,12 @@ public class GameClient
     {
         try
         {
-            LogsSystem.Instance.Print("正在尝试连接到远程服务器");
+            LogsSystem.Instance.Print(string.Format("正在尝试连接到远程服务器{0}", hostname, gamePort));
             gameClient.Connect(hostname, gamePort);//连接服务器
+
+            //开始接受数据
+            LogsSystem.Instance.Print("连接成功！开始异步接受数据");
+            Receive(gameClient.Client);
         }
         catch (Exception ex)
         {
@@ -62,6 +69,12 @@ public class GameClient
 
 
     #region 发送数据
+    public void Send(Socket socket, GameDataDTO data)
+    {
+        string sendMessage = JsonCoding<GameDataDTO>.encode(data);
+        byte[] sendBytes = encoding.GetBytes(sendMessage);
+        Send(socket, sendBytes);
+    }
     private void Send(Socket socket, byte[] data)
     {
         LogsSystem.Instance.Print(string.Format("发送数据({0}):{1}", data.Length, encoding.GetString(data)));
@@ -108,14 +121,21 @@ public class GameClient
             if (bytesRead < StateObject.buffSize)
             {
                 //如果读取到数据长度较小
-                receiveState.dataByte.AddRange(receiveState.buffer);//将缓存加入结果列
+                foreach (byte b in receiveState.buffer)
+                {
+                    if (b != 0x00)
+                    {
+                        //将缓存加入结果列
+                        receiveState.dataByte.Add(b);
+                    }
+                }
                 receiveState.buffer = new byte[StateObject.buffSize];//清空缓存
 
                 //接受完成
                 byte[] receiveData = receiveState.dataByte.ToArray();
                 LogsSystem.Instance.Print(string.Format("接受到{0}字节数据", receiveData.Length));
                 //处理数据
-                ProcessReceiveMessage(receiveData, client.LocalEndPoint, receiveState.socket);
+                ProcessReceiveMessage(receiveData, receiveState.socket);
 
                 Receive(client);//继续下一轮的接受
             }
@@ -136,9 +156,25 @@ public class GameClient
     /// <summary>
     /// 处理数据
     /// </summary>
-    private void ProcessReceiveMessage(byte[] receiveData, EndPoint endPoint, Socket socket)
+    private void ProcessReceiveMessage(byte[] receiveBytes, Socket socket)
     {
-        throw new NotImplementedException();
+        try
+        {
+            string receiveMessage = encoding.GetString(receiveBytes);
+            LogsSystem.Instance.Print(string.Format("[TCP FROM{0}]:{1}", socket.RemoteEndPoint, receiveMessage));//日志记录
+            
+            GameDataDTO receiveData = JsonCoding<GameDataDTO>.decode(receiveMessage);
+            GameDataDTO returnData = dataHandler.Process(receiveData, socket);//数据处理
+            //响应
+            if (returnData != null)
+            {
+                Send(socket, returnData);
+            }
+        }
+        catch (Exception ex)
+        {
+            LogsSystem.Instance.Print(ex.ToString(), LogLevel.ERROR);
+        }
     }
     #endregion
 
