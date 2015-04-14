@@ -28,11 +28,11 @@ public class Global
 
     public Global()
     {
-        
+
     }
 }
 
 public enum SceneType
 {
-    LoginScene, SkipScene, MenuScene
+    LoginScene, SkipScene, MenuScene, GameScene
 }
