@@ -90,17 +90,14 @@ public class CircleTimer : MonoBehaviour
 
     private void Finished()
     {
-        //完成参数设置
-        //因为一些NGUI的bug所以只能用另外的方法完成
+        //完成后参数设置，强制中断后续背景变化操作
         if (beginTime % 2 == 0)
         {
             timerBackground.alpha = 0;
-            Debug.Log(timerBackground.fillAmount);
         }
         else
         {
             timerBackground.type = UIBasicSprite.Type.Simple;
-            Debug.Log(timerBackground.fillAmount);
         }
 
         //完成动画
