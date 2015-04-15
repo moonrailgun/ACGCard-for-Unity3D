@@ -12,6 +12,11 @@ public class CircleTimer : MonoBehaviour
     private int showTime;
     private Coroutine TimerCoroutine;
 
+    private void Awake()
+    {
+        transform.localScale = new Vector3(0, 0, 1);
+    }
+
     /// <summary>
     /// 开始计时
     /// </summary>
@@ -21,6 +26,13 @@ public class CircleTimer : MonoBehaviour
         {
             TimerInit();//初始化设定
             TimerCoroutine = StartCoroutine(Timer(intervalTime));
+
+            //显示动画
+            UITweener tweener = GetComponent<UITweener>();
+            if (tweener != null)
+            {
+                tweener.PlayForward();
+            }
         }
     }
 
@@ -35,11 +47,6 @@ public class CircleTimer : MonoBehaviour
 
 
         }
-    }
-
-    private void Start()
-    {
-        StartTimer();
     }
 
     private int addDir = 1;
@@ -104,7 +111,7 @@ public class CircleTimer : MonoBehaviour
         UITweener tweener = GetComponent<UITweener>();
         if (tweener != null)
         {
-            tweener.PlayForward();
+            tweener.PlayReverse();
         }
     }
 
