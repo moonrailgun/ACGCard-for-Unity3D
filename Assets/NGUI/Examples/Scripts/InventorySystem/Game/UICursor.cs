@@ -28,8 +28,8 @@ public class UICursor : MonoBehaviour
 	/// Keep an instance reference so this class can be easily found.
 	/// </summary>
 
-	void Awake () { instance = this; }
-	void OnDestroy () { instance = null; }
+	void Awake() { instance = this; Cursor.visible = false; }
+	void OnDestroy() { instance = null; Cursor.visible = true; }
 
 	/// <summary>
 	/// Cache the expected components and starting values.

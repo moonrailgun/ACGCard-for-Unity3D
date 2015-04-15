@@ -14,7 +14,7 @@ public class MouseDirection : MonoBehaviour
     void Update()
     {
         Vector3 Mps = Input.mousePosition;
-        Ray Mray = uicamera.ScreenPointToRay(Input.mousePosition);
+        Ray Mray = uicamera.ScreenPointToRay(Mps);
         RaycastHit Mhit;
         if (Physics.Raycast(Mray, out Mhit))
         {

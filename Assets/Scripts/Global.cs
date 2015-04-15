@@ -19,6 +19,7 @@ public class Global
         }
     }
     #endregion
+    public Vector2 screenSize;
     public SceneType scene;
     public string serverName;
     public string UUID;
@@ -28,7 +29,7 @@ public class Global
 
     public Global()
     {
-
+        screenSize = new Vector2(1280, 720);
     }
 }
 

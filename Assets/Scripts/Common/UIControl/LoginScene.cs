@@ -34,6 +34,9 @@ public class LoginScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// 进入游戏
+	/// </summary>
 	public void EnterGame()
 	{
 		if(indexPanel != null && serverSelectPanel != null)
@@ -49,6 +52,9 @@ public class LoginScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// 从服务器列表返回
+	/// </summary>
 	public void BackFromServerList()
 	{
 		if(indexPanel != null && serverSelectPanel != null)
@@ -66,6 +72,9 @@ public class LoginScene : MonoBehaviour {
 		ShortMessagesSystem.Instance.ShowShortMessage("暂无内容,敬请期待!");
 	}
 
+	/// <summary>
+	/// 显示登陆界面
+	/// </summary>
 	public void ShowLoginPanel()
 	{
 		if(serverSelectPanel != null && loginPanel != null)
@@ -77,6 +86,9 @@ public class LoginScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// 从登陆界面返回
+	/// </summary>
 	public void BackToServerSelectFromLoginPanel()
 	{
 		if(serverSelectPanel != null && loginPanel != null)
@@ -89,6 +101,14 @@ public class LoginScene : MonoBehaviour {
 
 		//关闭监听线程
 		cardClient.StopListen();
+	}
+
+	/// <summary>
+	/// 退出游戏
+	/// </summary>
+	public void ExitGame()
+	{
+		Application.Quit();
 	}
 
 	/// <summary>
