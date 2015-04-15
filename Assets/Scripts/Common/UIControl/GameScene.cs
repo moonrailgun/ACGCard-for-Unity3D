@@ -36,11 +36,12 @@ public class GameScene : MonoBehaviour
         {
             GameObject card = Resources.Load<GameObject>("Card-small");
             card.GetComponent<Card>().SetCardInfo(cardinfo);//设置属性
-            uiManager.AddUIListener(card);//添加UI事件监听
+            //uiManager.AddUIListener(card);//添加UI事件监听
 
             //实例化卡牌
             GameObject parent = GameObject.Find("GamePanel/" + side.ToString() + "side/CardGrid");
-            NGUITools.AddChild(parent, card);
+            GameObject go = NGUITools.AddChild(parent, card);
+            uiManager.AddUIListener(go);//添加UI事件监听
         }
         else
         {
