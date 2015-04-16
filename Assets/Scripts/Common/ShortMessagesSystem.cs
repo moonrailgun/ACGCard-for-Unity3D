@@ -90,7 +90,6 @@ public class ShortMessagesSystem
         }
         MessageList.Add(label);
         label.transform.localPosition = new Vector3(x + offsetX, y + offsetY, 0f);
-        Debug.Log(Screen.width);
     }
 
     public void RemoveMessageList(GameObject go)
