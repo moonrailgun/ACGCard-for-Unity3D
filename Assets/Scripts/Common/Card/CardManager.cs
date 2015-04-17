@@ -18,7 +18,7 @@ public class CardManager
     /// </summary>
     public void CardRegister()
     {
-
+        AddCardGroup(new Card(1, "Rin", 1));
 
         LogsSystem.Instance.Print(string.Format("卡片注册完毕。共注册卡片{0}个", cardMap.Count));
     }
@@ -28,7 +28,7 @@ public class CardManager
     /// </summary>
     public void AddCard(Card card)
     {
-        int cardID = card.cardID;
+        int cardID = card.GetCardID();
         if (!cardMap.ContainsKey(cardID))
             cardMap.Add(cardID, card);
         else
@@ -40,11 +40,11 @@ public class CardManager
     /// </summary>
     public void AddCardGroup(Card beginCard)
     {
-        int beginid = beginCard.cardID;
+        int beginid = beginCard.GetCardID();
 
         for (int i = 1; i <= 6; i++)
         {
-            AddCard(new Card(beginCard.cardID + i - 1, beginCard.cardName, beginCard.cardType, beginCard.cardSkill, (CardRarity)i, beginCard.cardDescription));
+            AddCard(new Card(beginid + i - 1, beginCard.GetCardName(), beginCard.GetCardType(), beginCard.GetCardSkillList(), (CardRarity)i, beginCard.GetCardDescription()));
         }
     }
 }

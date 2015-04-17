@@ -147,17 +147,18 @@ public class MenuScene : MonoBehaviour
         LogsSystem.Instance.Print("卡片背包显示完毕");
     }
 
+    /// <summary>
+    /// 添加一张卡片到界面的背包列表
+    /// </summary>
     private void AddCardListItem(int id, string cardName, int rarity)
     {
         GameObject card = Instantiate<GameObject>(Resources.Load<GameObject>("Card-small"));
         card.transform.parent = cardListGrid.transform;
         card.transform.localScale = new Vector3(1, 1, 1);
 
-        Card cardInfo = card.GetComponent<Card>();
-        cardInfo.cardID = id;
-        cardInfo.cardName = cardName;
-        cardInfo.cardRarity = (CardRarity)rarity;
-        cardInfo.UpdateCardUI();
+        CardContainer container = card.GetComponent<CardContainer>();
+        container.SetCardData(new Card(id, cardName, rarity));
+        container.UpdateCardUI();
 
         cardListGrid.GetComponent<UIGrid>().enabled = true;
     }

@@ -42,7 +42,7 @@ public class GameScene : MonoBehaviour
             GameObject parent = GameObject.Find("GamePanel/" + side.ToString() + "side/CardGrid");
             GameObject go = NGUITools.AddChild(parent, card);
             uiManager.AddUIListener(go);//添加UI事件监听
-            go.GetComponent<Card>().UpdateCardUI();//更新贴图
+            go.GetComponent<CardContainer>().UpdateCardUI();//更新贴图
 
             return go;
         }
@@ -57,13 +57,14 @@ public class GameScene : MonoBehaviour
         if (Global.Instance.scene == SceneType.GameScene)
         {
             GameObject card = Resources.Load<GameObject>("Card-small");
-            card.GetComponent<Card>().SetCardInfo(cardinfo);//设置属性
+            CardContainer container = card.GetComponent<CardContainer>();
+            container.SetCardData(cardinfo);//设置卡片属性
 
             //实例化卡牌
             GameObject parent = GameObject.Find("GamePanel/" + side.ToString() + "side/CardGrid");
             GameObject go = NGUITools.AddChild(parent, card);
             uiManager.AddUIListener(go);//添加UI事件监听
-            go.GetComponent<Card>().UpdateCardUI();//更新贴图
+            container.UpdateCardUI();//更新贴图
 
             return go;
         }

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 游戏界面侧边栏
+/// </summary>
 public class GameCardUIManager : MonoBehaviour
 {
     private UILabel CardName;
@@ -35,15 +38,15 @@ public class GameCardUIManager : MonoBehaviour
     //选中脚本
     private void OnCardSelected(GameObject go)
     {
-        Card card = go.GetComponent<Card>();
+        Card card = go.GetComponent<CardContainer>().GetCard();
         if (card != null)
         {
             //根据脚本显示出卡片信息
-            this.CardName.text = card.cardName;
-            this.CardType.text = CardTypes.GetCardTypeNames(card.cardType);
-            this.CardRarity.text = CardRaritys.GetCardRarityNames(card.cardRarity);
-            this.CardOwner.text = card.cardOwner;
-            this.CardDes.text = card.cardDescription;
+            this.CardName.text = card.GetCardName();
+            this.CardType.text = CardTypes.GetCardTypeNames(card.GetCardType());
+            this.CardRarity.text = CardRaritys.GetCardRarityNames(card.GetCardRarity());
+            this.CardOwner.text = card.GetCardOwner();
+            this.CardDes.text = card.GetCardDescription();
         }
     }
 }
