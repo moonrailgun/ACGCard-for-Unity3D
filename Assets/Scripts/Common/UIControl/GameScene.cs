@@ -19,36 +19,60 @@ public class GameScene : MonoBehaviour
 
     private void Start()
     {
-        CreateGameCard(GameSide.Our);
+        Card card = new Card(1, "Saber", 1);
+        CreateGameCard(GameSide.Our, card);
     }
 
     /// <summary>
     /// 生成游戏卡片
     /// </summary>
-    public void CreateGameCard(GameSide side)
+    public GameObject CreateGameCard(GameSide side)
     {
         Hashtable cardinfo = new Hashtable();
-        CreateGameCard(side, cardinfo);
+        return CreateGameCard(side, cardinfo);
     }
-    public void CreateGameCard(GameSide side,Hashtable cardinfo)
+    public GameObject CreateGameCard(GameSide side, Hashtable cardinfo)
     {
         if (Global.Instance.scene == SceneType.GameScene)
         {
             GameObject card = Resources.Load<GameObject>("Card-small");
             card.GetComponent<Card>().SetCardInfo(cardinfo);//设置属性
-            //uiManager.AddUIListener(card);//添加UI事件监听
 
             //实例化卡牌
             GameObject parent = GameObject.Find("GamePanel/" + side.ToString() + "side/CardGrid");
             GameObject go = NGUITools.AddChild(parent, card);
             uiManager.AddUIListener(go);//添加UI事件监听
+            go.GetComponent<Card>().UpdateCardUI();//更新贴图
+
+            return go;
         }
         else
         {
             LogsSystem.Instance.Print("不能在非游戏界面生成游戏卡牌", LogLevel.WARN);
+            return null;
         }
     }
+    public GameObject CreateGameCard(GameSide side, Card cardinfo)
+    {
+        if (Global.Instance.scene == SceneType.GameScene)
+        {
+            GameObject card = Resources.Load<GameObject>("Card-small");
+            card.GetComponent<Card>().SetCardInfo(cardinfo);//设置属性
 
+            //实例化卡牌
+            GameObject parent = GameObject.Find("GamePanel/" + side.ToString() + "side/CardGrid");
+            GameObject go = NGUITools.AddChild(parent, card);
+            uiManager.AddUIListener(go);//添加UI事件监听
+            go.GetComponent<Card>().UpdateCardUI();//更新贴图
+
+            return go;
+        }
+        else
+        {
+            LogsSystem.Instance.Print("不能在非游戏界面生成游戏卡牌", LogLevel.WARN);
+            return null;
+        }
+    }
 
     public enum GameSide
     {

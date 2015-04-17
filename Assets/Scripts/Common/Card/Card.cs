@@ -11,29 +11,55 @@ public class Card : MonoBehaviour
     public int cardID;//卡片ID
     public string cardName;//卡片名称
     public CardType cardType;//卡片类型
-    public List<CardSkill> cardSkill;//卡片技能列表
-    //public UIAtlas atlas;//卡片图集
-    public string cardPicName;//卡片图片
+    public List<Skill> cardSkill;//卡片技能列表
     public string cardOwner;//卡片拥有者
     public CardRarity cardRarity;//卡片稀有度
     public string cardDescription;//卡片描述
 
-
+    /// <summary>
+    /// 卡片构造函数
+    /// </summary>
     public Card()
     {
         this.cardName = "";
         this.cardType = CardType.Character;
-        this.cardSkill = new List<CardSkill>();
-        this.cardPicName = "Default";
+        this.cardSkill = new List<Skill>();
+        this.cardRarity = CardRarity.Normal;
+        this.cardDescription = CardDescriptions.Instance.GetCardDescription(cardName);
     }
-
     public Card(int cardId, string cardName, int cardRarity)
+        : this()
     {
         this.cardID = cardId;
         this.cardName = cardName;
         this.cardRarity = (CardRarity)cardRarity;
     }
+    public Card(int cardId, string cardName, int cardRarity, CardType type)
+        : this(cardId, cardName, cardRarity)
+    {
+        this.cardType = type;
+    }
+    public Card(int cardId, string cardName, CardType cardType, List<Skill> cardSkill, CardRarity cardRarity, string cardDescription = "")
+    {
+        this.cardID = cardId;
+        this.cardName = cardName;
+        this.cardType = cardType;
+        this.cardSkill = cardSkill;
+        this.cardRarity = cardRarity;
+        if (cardDescription != "")
+        {
+            this.cardDescription = cardDescription;
+        }
+        else
+        {
 
+            this.cardDescription = CardDescriptions.Instance.GetCardDescription(cardName);
+        }
+    }
+
+    /// <summary>
+    /// 更新UI贴图
+    /// </summary>
     public void UpdateCardUI()
     {
         GameObject character = transform.FindChild("Character").gameObject;
@@ -79,6 +105,10 @@ public class Card : MonoBehaviour
         cardDescribe.GetComponentInChildren<UILabel>().text = this.cardDescription;
     }
 
+    /// <summary>
+    /// 设置卡片信息
+    /// </summary>
+    /// <param name="info"></param>
     public void SetCardInfo(Hashtable info)
     {
         if (info.ContainsKey("CardID"))
@@ -95,6 +125,17 @@ public class Card : MonoBehaviour
             this.cardRarity = (CardRarity)info["CardRarity"];
         if (info.ContainsKey("CardDescription"))
             this.cardDescription = (string)info["CardDescription"];
+    }
+    public void SetCardInfo(Card card)
+    {
+        this.cardID = card.cardID;
+        this.cardName = card.cardName;
+        this.cardName = card.cardName;
+        this.cardType = card.cardType;
+        this.cardSkill = card.cardSkill;
+        this.cardOwner = card.cardOwner;
+        this.cardRarity = card.cardRarity;
+        this.cardDescription = card.cardDescription;
     }
 }
 

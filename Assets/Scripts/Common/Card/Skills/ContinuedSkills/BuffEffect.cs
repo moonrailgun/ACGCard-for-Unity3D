@@ -1,6 +1,7 @@
 ﻿/// <summary>
 /// Buff基类
 /// </summary>
-public class BuffEffect : SkillEffect {
+public abstract class Buff : Skill
+{
 
 }
