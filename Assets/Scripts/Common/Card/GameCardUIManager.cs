@@ -6,6 +6,7 @@ using System.Collections;
 /// </summary>
 public class GameCardUIManager : MonoBehaviour
 {
+    private GameObject sceneManager;
     private UILabel CardName;
     private UILabel CardType;
     private UILabel CardRarity;
@@ -27,6 +28,8 @@ public class GameCardUIManager : MonoBehaviour
             this.CardRarity.text = "";
             this.CardOwner.text = "";
             this.CardDes.text = "";
+
+            this.sceneManager = GameObject.FindGameObjectWithTag(Tags.SceneController);
         }
     }
 
@@ -39,7 +42,7 @@ public class GameCardUIManager : MonoBehaviour
     private void OnCardSelected(GameObject go)
     {
         Card card = go.GetComponent<CardContainer>().GetCard();
-        if (card != null)
+        if (card != null && Global.Instance.scene == SceneType.GameScene)
         {
             //根据脚本显示出卡片信息
             this.CardName.text = card.GetCardName();
@@ -47,6 +50,9 @@ public class GameCardUIManager : MonoBehaviour
             this.CardRarity.text = CardRaritys.GetCardRarityNames(card.GetCardRarity());
             this.CardOwner.text = card.GetCardOwner();
             this.CardDes.text = card.GetCardDescription();
+
+            //设置被选中
+            this.sceneManager.GetComponent<GameScene>().SetSelectedCard(go);
         }
     }
 }

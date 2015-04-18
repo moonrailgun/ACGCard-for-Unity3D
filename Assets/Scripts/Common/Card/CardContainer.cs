@@ -13,7 +13,10 @@ public class CardContainer : MonoBehaviour
     private void Awake()
     {
         //当没有卡片数据时，添加一份空数据
-        this.card = new Card();
+        if (this.card == null)
+        {
+            this.card = new Card();
+        }
     }
 
     /// <summary>
@@ -26,8 +29,6 @@ public class CardContainer : MonoBehaviour
 
         //更换图片
         character.GetComponent<UISprite>().spriteName = string.Format("Card-{0}", this.card.GetCardName());
-
-        Debug.Log(this.card.GetCardName());
 
         string rarityColorName;
         //选择颜色名

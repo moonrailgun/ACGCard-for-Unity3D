@@ -50,7 +50,7 @@ public class CardNames
             }
 
             string[] data = text.Split(new char[] { '=' });
-            
+
             //只添加正常的数据
             if (data.Length == 2)
             {
@@ -59,7 +59,7 @@ public class CardNames
                 CardNamesList.Add(commonName, chineseName);
             }
         }
-        LogsSystem.Instance.Print("卡片名称列表配置读取完毕");
+        LogsSystem.Instance.Print(string.Format("卡片名称列表配置读取完毕,共读取名称{0}个", CardNamesList.Count));
     }
 
     /// <summary>

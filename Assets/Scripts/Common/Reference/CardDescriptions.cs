@@ -57,7 +57,7 @@ public class CardDescriptions
                 CardDescriptionsList.Add(commonName, Description);
             }
         }
-        LogsSystem.Instance.Print("卡片描述列表配置读取完毕");
+        LogsSystem.Instance.Print(string.Format("卡片描述列表配置读取完毕,共读取描述{0}个", CardDescriptionsList.Count));
     }
 
     /// <summary>

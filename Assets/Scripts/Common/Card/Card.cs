@@ -26,7 +26,6 @@ public class Card
         this.cardType = CardType.Character;
         this.cardSkill = new List<Skill>();
         this.cardRarity = CardRarity.Normal;
-        this.cardDescription = CardDescriptions.Instance.GetCardDescription(cardName);
     }
     public Card(int cardId, string cardName, int cardRarity)
         : this()
@@ -34,6 +33,7 @@ public class Card
         this.cardID = cardId;
         this.cardName = cardName;
         this.cardRarity = (CardRarity)cardRarity;
+        this.cardDescription = CardDescriptions.Instance.GetCardDescription(cardName);
     }
     public Card(int cardId, string cardName, int cardRarity, CardType type)
         : this(cardId, cardName, cardRarity)
@@ -58,27 +58,11 @@ public class Card
         }
     }
 
+    #region 信息设置
     /// <summary>
     /// 设置卡片信息
     /// </summary>
     /// <param name="info"></param>
-    public void SetCardInfo(Hashtable info)
-    {
-        if (info.ContainsKey("CardID"))
-            this.cardID = (int)info["CardID"];
-        if (info.ContainsKey("CardName"))
-            this.cardName = (string)info["CardName"];
-        if (info.ContainsKey("CardType"))
-            this.cardType = (CardType)info["CardType"];
-
-
-        if (info.ContainsKey("CardOwner"))
-            this.cardOwner = (string)info["CardOwner"];
-        if (info.ContainsKey("CardRarity"))
-            this.cardRarity = (CardRarity)info["CardRarity"];
-        if (info.ContainsKey("CardDescription"))
-            this.cardDescription = (string)info["CardDescription"];
-    }
     public void SetCardInfo(Card card)
     {
         this.cardID = card.cardID;
@@ -90,11 +74,11 @@ public class Card
         this.cardRarity = card.cardRarity;
         this.cardDescription = card.cardDescription;
     }
-
     public void SetOwner(string OwnerName)
     {
         this.cardOwner = OwnerName;
     }
+    #endregion
 
     #region 信息获取
     public int GetCardID()

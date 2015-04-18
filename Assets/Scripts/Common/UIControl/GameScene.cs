@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameScene : MonoBehaviour
 {
     public GameCard cardList = new GameCard();//所有卡片集合
-    public GameObject selectCardObject;
+    private GameObject selectCardObject;
     private GameCardUIManager uiManager;
 
     private void Awake()
@@ -19,8 +19,20 @@ public class GameScene : MonoBehaviour
 
     private void Start()
     {
-        Card card = new Card(1, "Saber", 1);
-        CreateGameCard(GameSide.Our, card);
+        //测试数据
+        CreateGameCard(GameSide.Our, new Card(1, "Saber", 1));
+        CreateGameCard(GameSide.Our, new Card(1, "Saber", 2));
+        CreateGameCard(GameSide.Our, new Card(1, "Saber", 3));
+        CreateGameCard(GameSide.Our, new Card(1, "Saber", 4));
+        CreateGameCard(GameSide.Our, new Card(1, "Saber", 5));
+        CreateGameCard(GameSide.Our, new Card(1, "Saber", 6));
+        CreateGameCard(GameSide.Enemy, new Card(1, "Yaya", 1));
+        CreateGameCard(GameSide.Enemy, new Card(1, "Rin", 2));
+        CreateGameCard(GameSide.Enemy, new Card(1, "Yaya", 3));
+        CreateGameCard(GameSide.Enemy, new Card(1, "Yaya", 4));
+        CreateGameCard(GameSide.Enemy, new Card(1, "Yaya", 5));
+        CreateGameCard(GameSide.Enemy, new Card(1, "Yaya", 6));
+        //以上为测试数据
     }
 
     /// <summary>
@@ -28,51 +40,38 @@ public class GameScene : MonoBehaviour
     /// </summary>
     public GameObject CreateGameCard(GameSide side)
     {
-        Hashtable cardinfo = new Hashtable();
+        Card cardinfo = new Card();
         return CreateGameCard(side, cardinfo);
-    }
-    public GameObject CreateGameCard(GameSide side, Hashtable cardinfo)
-    {
-        if (Global.Instance.scene == SceneType.GameScene)
-        {
-            GameObject card = Resources.Load<GameObject>("Card-small");
-            card.GetComponent<Card>().SetCardInfo(cardinfo);//设置属性
-
-            //实例化卡牌
-            GameObject parent = GameObject.Find("GamePanel/" + side.ToString() + "side/CardGrid");
-            GameObject go = NGUITools.AddChild(parent, card);
-            uiManager.AddUIListener(go);//添加UI事件监听
-            go.GetComponent<CardContainer>().UpdateCardUI();//更新贴图
-
-            return go;
-        }
-        else
-        {
-            LogsSystem.Instance.Print("不能在非游戏界面生成游戏卡牌", LogLevel.WARN);
-            return null;
-        }
     }
     public GameObject CreateGameCard(GameSide side, Card cardinfo)
     {
         if (Global.Instance.scene == SceneType.GameScene)
         {
-            GameObject card = Resources.Load<GameObject>("Card-small");
+            //实例化卡牌
+            GameObject prefeb = Resources.Load<GameObject>("Card-small");
+            GameObject parent = GameObject.Find("GamePanel/" + side.ToString() + "side/CardGrid");
+            GameObject card = NGUITools.AddChild(parent, prefeb);
+
             CardContainer container = card.GetComponent<CardContainer>();
             container.SetCardData(cardinfo);//设置卡片属性
-
-            //实例化卡牌
-            GameObject parent = GameObject.Find("GamePanel/" + side.ToString() + "side/CardGrid");
-            GameObject go = NGUITools.AddChild(parent, card);
-            uiManager.AddUIListener(go);//添加UI事件监听
             container.UpdateCardUI();//更新贴图
+            uiManager.AddUIListener(card);//添加UI事件监听
 
-            return go;
+            return card;
         }
         else
         {
             LogsSystem.Instance.Print("不能在非游戏界面生成游戏卡牌", LogLevel.WARN);
             return null;
         }
+    }
+
+    /// <summary>
+    /// 设置当前选中的卡片对象
+    /// </summary>
+    public void SetSelectedCard(GameObject go)
+    {
+        this.selectCardObject = go;
     }
 
     public enum GameSide
