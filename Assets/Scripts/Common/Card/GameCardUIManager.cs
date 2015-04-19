@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// 游戏界面侧边栏
@@ -12,6 +13,7 @@ public class GameCardUIManager : MonoBehaviour
     private UILabel CardRarity;
     private UILabel CardOwner;
     private UILabel CardDes;
+    private UIGrid CardSkillList;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class GameCardUIManager : MonoBehaviour
             this.CardRarity = GameObject.Find("CardInfo/Rarity/Label").GetComponent<UILabel>();
             this.CardOwner = GameObject.Find("CardInfo/Owner/Label").GetComponent<UILabel>();
             this.CardDes = GameObject.Find("CardInfo/Description/Label").GetComponent<UILabel>();
+            this.CardSkillList = GameObject.Find("SkillList/Grid").GetComponent<UIGrid>();
 
             this.CardName.text = "";
             this.CardType.text = "";
@@ -30,29 +33,85 @@ public class GameCardUIManager : MonoBehaviour
             this.CardDes.text = "";
 
             this.sceneManager = GameObject.FindGameObjectWithTag(Tags.SceneController);
+            ClearSkillButton();
         }
     }
 
-    public void AddUIListener(GameObject go)
+    public void AddUIListener(GameObject go, GameScene.GameSide side)
     {
-        UIEventListener.Get(go).onClick += OnCardSelected;
+        if (side == GameScene.GameSide.Our)
+        {
+            UIEventListener.Get(go).onClick += OnOurCardSelected;
+        }
+        else if (side == GameScene.GameSide.Enemy)
+        {
+            UIEventListener.Get(go).onClick += OnEnemyCardSelected;
+        }
+
     }
 
-    //选中脚本
-    private void OnCardSelected(GameObject go)
+    /// <summary>
+    /// 我方卡片选中
+    /// 生成技能列表
+    /// 修改卡片信息
+    /// 设定为选中
+    /// </summary>
+    private void OnOurCardSelected(GameObject go)
     {
-        Card card = go.GetComponent<CardContainer>().GetCard();
-        if (card != null && Global.Instance.scene == SceneType.GameScene)
+        CardContainer container = go.GetComponent<CardContainer>();
+        Card card = container.GetCard();
+        if (container != null && card != null && Global.Instance.scene == SceneType.GameScene)
         {
-            //根据脚本显示出卡片信息
-            this.CardName.text = card.GetCardName();
-            this.CardType.text = CardTypes.GetCardTypeNames(card.GetCardType());
-            this.CardRarity.text = CardRaritys.GetCardRarityNames(card.GetCardRarity());
-            this.CardOwner.text = card.GetCardOwner();
-            this.CardDes.text = card.GetCardDescription();
+            if (go.transform.IsChildOf(GameObject.Find("Ourside/CardGrid").transform))
+            {
+                //清空技能按钮列表
+                ClearSkillButton();
+            }
+
+            ShowCardInfo(card);//显示出卡片信息
+
+            //显示卡片技能列表
+            List<Skill> skillList = card.GetCardSkillList();
+            foreach (Skill skill in skillList)
+            {
+                skill.CreateSkillButton();//创建技能图标
+            }
 
             //设置被选中
             this.sceneManager.GetComponent<GameScene>().SetSelectedCard(go);
         }
+    }
+
+    /// <summary>
+    /// 地方卡片被选中
+    /// </summary>
+    /// <param name="go"></param>
+    private void OnEnemyCardSelected(GameObject go)
+    {
+        LogsSystem.Instance.Print("尚未完成");
+    }
+
+    /// <summary>
+    /// 清空技能列表
+    /// </summary>
+    private void ClearSkillButton()
+    {
+        int childcount = CardSkillList.transform.childCount;
+        for (int i = childcount; i > 0; i--)
+        {
+            DestroyImmediate(CardSkillList.transform.GetChild(0).gameObject);
+        }
+    }
+
+    /// <summary>
+    /// 根据脚本显示出卡片信息
+    /// </summary>
+    private void ShowCardInfo(Card card)
+    {
+        this.CardName.text = card.GetCardName();
+        this.CardType.text = CardTypes.GetCardTypeNames(card.GetCardType());
+        this.CardRarity.text = CardRaritys.GetCardRarityNames(card.GetCardRarity());
+        this.CardOwner.text = card.GetCardOwner();
+        this.CardDes.text = card.GetCardDescription();
     }
 }

@@ -6,5 +6,8 @@ using System.Collections;
 /// </summary>
 public class ArcaneMissiles : AttackSkill
 {
-
+    public ArcaneMissiles()
+    {
+        this.skillCommonName = "ArcaneMissiles";
+    }
 }

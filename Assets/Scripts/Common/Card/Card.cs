@@ -7,7 +7,7 @@ using System.Collections.Generic;
 /// 卡片基类
 /// 数据层
 /// </summary>
-public class Card
+public class Card : ICloneable
 {
     private int cardID;//卡片ID
     private string cardName;//卡片名称
@@ -111,6 +111,11 @@ public class Card
         return this.cardDescription;
     }
     #endregion
+
+    public object Clone()
+    {
+        return this.MemberwiseClone();
+    }
 }
 
 public enum CardType

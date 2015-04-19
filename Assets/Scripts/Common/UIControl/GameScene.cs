@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameScene : MonoBehaviour
 {
     public GameCard cardList = new GameCard();//所有卡片集合
-    private GameObject selectCardObject;
+    private GameObject selectedCardObject;
     private GameCardUIManager uiManager;
 
     private void Awake()
@@ -20,18 +20,17 @@ public class GameScene : MonoBehaviour
     private void Start()
     {
         //测试数据
-        CreateGameCard(GameSide.Our, new Card(1, "Saber", 1));
-        CreateGameCard(GameSide.Our, new Card(1, "Saber", 2));
-        CreateGameCard(GameSide.Our, new Card(1, "Saber", 3));
-        CreateGameCard(GameSide.Our, new Card(1, "Saber", 4));
-        CreateGameCard(GameSide.Our, new Card(1, "Saber", 5));
-        CreateGameCard(GameSide.Our, new Card(1, "Saber", 6));
-        CreateGameCard(GameSide.Enemy, new Card(1, "Yaya", 1));
-        CreateGameCard(GameSide.Enemy, new Card(1, "Rin", 2));
-        CreateGameCard(GameSide.Enemy, new Card(1, "Yaya", 3));
-        CreateGameCard(GameSide.Enemy, new Card(1, "Yaya", 4));
-        CreateGameCard(GameSide.Enemy, new Card(1, "Yaya", 5));
-        CreateGameCard(GameSide.Enemy, new Card(1, "Yaya", 6));
+        CreateGameCard(GameSide.Our, CardManager.Instance.GetCardById(1));
+        CreateGameCard(GameSide.Our, CardManager.Instance.GetCardById(6));
+        CreateGameCard(GameSide.Our, CardManager.Instance.GetCardById(8));
+        CreateGameCard(GameSide.Our, CardManager.Instance.GetCardById(12));
+        CreateGameCard(GameSide.Our, CardManager.Instance.GetCardById(24));
+        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(24));
+        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(12));
+        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(1));
+        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(25));
+        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(5));
+        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(17));
         //以上为测试数据
     }
 
@@ -55,7 +54,7 @@ public class GameScene : MonoBehaviour
             CardContainer container = card.GetComponent<CardContainer>();
             container.SetCardData(cardinfo);//设置卡片属性
             container.UpdateCardUI();//更新贴图
-            uiManager.AddUIListener(card);//添加UI事件监听
+            uiManager.AddUIListener(card, side);//添加UI事件监听
 
             return card;
         }
@@ -71,7 +70,7 @@ public class GameScene : MonoBehaviour
     /// </summary>
     public void SetSelectedCard(GameObject go)
     {
-        this.selectCardObject = go;
+        this.selectedCardObject = go;
     }
 
     public enum GameSide

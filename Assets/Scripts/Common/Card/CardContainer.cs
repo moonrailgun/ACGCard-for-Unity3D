@@ -19,6 +19,11 @@ public class CardContainer : MonoBehaviour
         }
     }
 
+    public void OnSelected()
+    {
+
+    }
+
     /// <summary>
     /// 更新UI贴图
     /// </summary>
