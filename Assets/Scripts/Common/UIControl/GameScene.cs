@@ -5,8 +5,9 @@ using System.Collections.Generic;
 public class GameScene : MonoBehaviour
 {
     public GameCard cardList = new GameCard();//所有卡片集合
-    private GameObject selectedCardObject;
-    private GameCardUIManager uiManager;
+    private GameObject selectedCardObject;//被选中的卡片
+    private Skill selectedSkill;//被选中的技能
+    private GameCardUIManager uiManager;//卡片UI管理器
 
     private void Awake()
     {
@@ -71,6 +72,11 @@ public class GameScene : MonoBehaviour
     public void SetSelectedCard(GameObject go)
     {
         this.selectedCardObject = go;
+    }
+    
+    public void SetSelectedSkill(Skill skill)
+    {
+        this.selectedSkill = skill;
     }
 
     public enum GameSide

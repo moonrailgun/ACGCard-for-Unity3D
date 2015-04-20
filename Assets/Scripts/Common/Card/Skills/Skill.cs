@@ -6,6 +6,15 @@
 public abstract class Skill : ISkill
 {
     public string skillCommonName;
+    protected static GameScene gameScene;
+
+    protected Skill()
+    {
+        if (gameScene == null && Global.Instance.scene == SceneType.GameScene)
+        {
+            gameScene = GameObject.FindGameObjectWithTag(Tags.SceneController).GetComponent<GameScene>();
+        }
+    }
 
     /*
     /// <summary>
@@ -23,10 +32,12 @@ public abstract class Skill : ISkill
     public virtual void CreateSkillButton()
     {
         string path = "SkillList/Grid";
+        GameObject grid = GameObject.Find(path);
 
         //创建按钮
         GameObject prefab = Resources.Load<GameObject>("SkillButton");
-        GameObject button = NGUITools.AddChild(GameObject.Find(path), prefab);
+        GameObject button = NGUITools.AddChild(grid, prefab);
+        grid.GetComponent<UIGrid>().Reposition();
 
         //修改按钮信息
         button.GetComponent<UIButton>().onClick.Add(new EventDelegate(OnUse));//添加回调
@@ -34,13 +45,7 @@ public abstract class Skill : ISkill
         button.transform.FindChild("Name").GetComponent<UILabel>().text = SkillNames.Instance.GetSkillName(skillCommonName);//修改技能名
     }
 
-    public virtual void OnUse()
-    {
-        throw new System.NotImplementedException();
-    }
+    public abstract void OnUse();
 
-    public virtual void OnUse(GameObject target)
-    {
-        throw new System.NotImplementedException();
-    }
+    public abstract void OnUse(GameObject target);
 }

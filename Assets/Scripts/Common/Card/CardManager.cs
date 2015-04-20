@@ -43,7 +43,7 @@ public class CardManager
     /// </summary>
     public void CardRegister()
     {
-        AddCardGroup(new Card(1,"Rin", CardType.Character, new List<Skill>(new Skill[]{new ArcaneMissiles()}), CardRarity.Normal));
+        AddCardGroup(new Card(1, "Rin", CardType.Character, new List<Skill>(new Skill[] { new ArcaneMissiles(), new Fireball() }), CardRarity.Normal));
         AddCardGroup(new Card(7, "Saber", 1));
         AddCardGroup(new Card(13, "Yaya", 1));
         AddCardGroup(new Card(19, "Rukia", 1));

@@ -1,1 +1,2 @@
 ﻿ArcaneMissiles=奥术飞弹
+Fireball=火球术

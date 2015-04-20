@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class AttackSkill : Skill
+public abstract class AttackSkill : Skill
 {
+    protected AttackSkill()
+        :base()
+    {
 
+    }
 }

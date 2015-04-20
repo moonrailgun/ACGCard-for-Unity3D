@@ -83,7 +83,7 @@ public class GameCardUIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 地方卡片被选中
+    /// 敌方卡片被选中
     /// </summary>
     /// <param name="go"></param>
     private void OnEnemyCardSelected(GameObject go)
