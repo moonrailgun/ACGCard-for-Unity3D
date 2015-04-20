@@ -21,10 +21,12 @@ public class LogsSystem
     private string logDate;
     private string logPath;
     private string logFileName;
+    private object writeFileLock;//文件读写锁
 
     public LogsSystem()
     {
         SetLogFileInfo();
+        writeFileLock = new object();
     }
 
     /// <summary>
@@ -40,6 +42,12 @@ public class LogsSystem
             logDate = DateTime.Now.ToString("yyyy-MM-dd");
             logPath = Application.dataPath + "/logs/";
             logFileName = logPath + logDate + ".log";
+
+            //如果不存在就创建目录文件
+            if (!Directory.Exists(logPath))
+            {
+                Directory.CreateDirectory(logPath);
+            }
         }
         catch (Exception ex)
         {
@@ -71,11 +79,15 @@ public class LogsSystem
             string log = string.Format("[{0} {1}] : {2}", DateTime.Now.ToString("HH:mm:ss"), level.ToString(), mainLog);
 
             //写入数据
-            FileStream fs = new FileStream(logFileName, FileMode.Append);
-            StreamWriter sw = new StreamWriter(fs);
-            sw.WriteLine(log);
-            sw.Close();
-            fs.Close();
+            lock (writeFileLock)
+            {
+                //写入数据
+                FileStream fs = new FileStream(logFileName, FileMode.Append);
+                StreamWriter sw = new StreamWriter(fs);
+                sw.WriteLine(log);
+                sw.Close();
+                fs.Close();
+            }
         }
         catch (IOException ex)
         {
