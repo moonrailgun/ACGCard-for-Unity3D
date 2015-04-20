@@ -49,7 +49,7 @@ public class GameCardUIManager : MonoBehaviour
         }
 
     }
-
+    #region 卡片选中
     /// <summary>
     /// 我方卡片选中
     /// 生成技能列表
@@ -81,15 +81,35 @@ public class GameCardUIManager : MonoBehaviour
             this.sceneManager.GetComponent<GameScene>().SetSelectedCard(go);
         }
     }
-
     /// <summary>
     /// 敌方卡片被选中
     /// </summary>
     /// <param name="go"></param>
     private void OnEnemyCardSelected(GameObject go)
     {
-        LogsSystem.Instance.Print("尚未完成");
+        if (Global.Instance.scene == SceneType.GameScene)
+        {
+            GameScene gs = sceneManager.GetComponent<GameScene>();
+            Skill skill = gs.GetSelectedSkillAndReset();
+            GameObject card = gs.GetSelectedCard();
+            if (skill != null)
+            {
+                skill.OnUse(go);
+            }
+            else if (card != null)
+            {
+                LogsSystem.Instance.Print("尚未实现普通攻击功能", LogLevel.WARN);
+                gs.ResetSelectedCard();
+            }
+            else
+            {
+                ShortMessagesSystem.Instance.ShowShortMessage("请选择技能或卡片");
+            }
+        }
     }
+    #endregion
+
+
 
     /// <summary>
     /// 清空技能列表

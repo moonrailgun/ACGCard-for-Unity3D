@@ -12,14 +12,9 @@ public class Fireball : AttackSkill
         this.skillCommonName = "Fireball";
     }
 
-    public override void OnUse()
-    {
-        throw new NotImplementedException();
-    }
-
     public override void OnUse(UnityEngine.GameObject target)
     {
-        throw new NotImplementedException();
+        LogsSystem.Instance.Print("对" + target.name + "使用了火球术");
     }
 }
 

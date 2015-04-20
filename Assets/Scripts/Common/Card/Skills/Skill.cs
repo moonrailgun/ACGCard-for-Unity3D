@@ -46,6 +46,5 @@ public abstract class Skill : ISkill
     }
 
     public abstract void OnUse();
-
     public abstract void OnUse(GameObject target);
 }

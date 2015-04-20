@@ -12,13 +12,8 @@ public class ArcaneMissiles : AttackSkill
         this.skillCommonName = "ArcaneMissiles";
     }
 
-    public override void OnUse()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void OnUse(GameObject target)
     {
-        throw new System.NotImplementedException();
+        LogsSystem.Instance.Print("对" + target.name + "使用了奥术飞弹");
     }
 }

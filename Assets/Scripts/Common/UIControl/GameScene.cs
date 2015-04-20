@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameScene : MonoBehaviour
 {
     public GameCard cardList = new GameCard();//所有卡片集合
-    private GameObject selectedCardObject;//被选中的卡片
+    public GameObject selectedCardObject;//被选中的卡片
     private Skill selectedSkill;//被选中的技能
     private GameCardUIManager uiManager;//卡片UI管理器
 
@@ -73,11 +73,38 @@ public class GameScene : MonoBehaviour
     {
         this.selectedCardObject = go;
     }
-    
+    /// <summary>
+    /// 设置选中技能
+    /// </summary>
     public void SetSelectedSkill(Skill skill)
     {
         this.selectedSkill = skill;
     }
+    /// <summary>
+    /// 获取选中的卡片对象
+    /// </summary>
+    public GameObject GetSelectedCard()
+    {
+        return this.selectedCardObject;
+    }
+    /// <summary>
+    /// 重置被选中的卡片
+    /// </summary>
+    public void ResetSelectedCard()
+    {
+        this.selectedCardObject = null;
+    }
+    /// <summary>
+    /// 获取选中技能并重置
+    /// （只可获得一次）
+    /// </summary>
+    public Skill GetSelectedSkillAndReset()
+    {
+        Skill skill = this.selectedSkill;
+        this.selectedSkill = null;
+        return skill;
+    }
+    
 
     public enum GameSide
     {

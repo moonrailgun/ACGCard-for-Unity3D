@@ -9,4 +9,9 @@ public abstract class AttackSkill : Skill
     {
 
     }
+
+    public override void OnUse()
+    {
+        gameScene.SetSelectedSkill(this);
+    }
 }
