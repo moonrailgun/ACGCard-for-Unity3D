@@ -76,22 +76,11 @@ public class GameCardUIManager : MonoBehaviour
             desCardContainer.SetCardData(cardData);//设置卡片数据
             desCardContainer.UpdateCardUI();//根据卡片数据刷新卡片UI
 
-            /* ----------------------------------------------------------因为坐标换算问题暂时注释--------------------------------------------------------------------------------------
             //修改显示的位置
-            Transform container = CardDesPanel.transform.FindChild("Container");
-
-            Vector2 cardPos = new Vector2(go.transform.localPosition.x, go.transform.localPosition.y);//被选中卡片坐标
-            container.transform.localPosition = new Vector3(cardPos.x, cardPos.y, 0);
-                
-            Vector2 desSize = CardDesPanel.transform.FindChild("Container/Bg").GetComponent<UISprite>().localSize;//卡片描述框大小
-            Vector2 cardPos = new Vector2(go.transform.localPosition.x, go.transform.localPosition.y);//被选中卡片坐标
-            Debug.Log(cardPos);
             Vector2 cardSize = go.GetComponent<UISprite>().localSize;
-            Debug.Log(cardSize);
-            float x = cardPos.x + cardSize.x/2;
-            float y = cardPos.y + desSize.y > Global.Instance.screenSize.y ? Global.Instance.screenSize.y - desSize.y : cardPos.y;//如果会超出屏幕则贴边否则就和卡片上对齐
-            Debug.Log(new Vector2(x, y));
-            container.transform.localPosition = new Vector3(x, y, 0);*/
+            CardDesPanel.transform.parent = go.transform;//成为该物体子物体
+            CardDesPanel.transform.localPosition = new Vector3(cardSize.x / 2 + 10, 0, 0);//位置是详情最左端向右偏移半个卡片距离+10像素
+            CardDesPanel.transform.localScale = Vector3.one;
         }
         else
         {
