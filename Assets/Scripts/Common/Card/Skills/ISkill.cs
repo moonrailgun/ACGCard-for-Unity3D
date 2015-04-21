@@ -6,4 +6,5 @@ interface ISkill
 {
     void OnUse();
     void OnUse(GameObject target);
+    void OnUse(GameObject from, GameObject target);
 }

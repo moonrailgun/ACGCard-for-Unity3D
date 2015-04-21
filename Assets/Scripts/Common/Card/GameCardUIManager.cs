@@ -94,7 +94,7 @@ public class GameCardUIManager : MonoBehaviour
             GameObject card = gs.GetSelectedCard();
             if (skill != null)
             {
-                skill.OnUse(go);
+                skill.OnUse(card, go);
             }
             else if (card != null)
             {

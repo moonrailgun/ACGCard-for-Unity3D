@@ -14,4 +14,8 @@ public abstract class AttackSkill : Skill
     {
         gameScene.SetSelectedSkill(this);
     }
+    public override void OnUse(GameObject from, GameObject target)
+    {
+        LogsSystem.Instance.Print(from.name + "攻击了" + target.name);
+    }
 }

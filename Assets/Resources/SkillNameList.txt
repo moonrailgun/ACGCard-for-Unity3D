@@ -1,2 +1,7 @@
 ﻿ArcaneMissiles=奥术飞弹
 Fireball=火球术
+FireArrow=火焰矢
+Meteorites=陨星术
+SpeenUp=速度提升
+Thunderbolt=落雷
+FirePower=火焰加持

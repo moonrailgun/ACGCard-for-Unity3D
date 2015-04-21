@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// 火球术
@@ -12,7 +13,7 @@ public class Fireball : AttackSkill
         this.skillCommonName = "Fireball";
     }
 
-    public override void OnUse(UnityEngine.GameObject target)
+    public override void OnUse(GameObject target)
     {
         LogsSystem.Instance.Print("对" + target.name + "使用了火球术");
     }

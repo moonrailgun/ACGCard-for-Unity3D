@@ -12,4 +12,9 @@ public abstract class Buff : Skill
     {
         throw new System.NotImplementedException();
     }
+
+    public override void OnUse(UnityEngine.GameObject from, UnityEngine.GameObject target)
+    {
+        throw new System.NotImplementedException();
+    }
 }
