@@ -9,29 +9,35 @@ public class SkillAnimation : MonoBehaviour
 
     private void Start()
     {
-        Play();
+        Play(true);
     }
-
-    public void Play()
+    public void Play(bool loop = false)
     {
-        StartCoroutine("AnimationCoroutine");
+        StartCoroutine("AnimationCoroutine",loop);
     }
-    public void Play(int num, string format, float intervalSecond)
+    public void Play(int num, string format, float intervalSecond, bool loop = false)
     {
         this.spriteNum = num;
         this.format = format;
         this.intervalSecond = intervalSecond;
-        this.Play();
+        this.Play(loop);
     }
 
-    private IEnumerator AnimationCoroutine()
+    private IEnumerator AnimationCoroutine(bool loop)
     {
         UISprite sprite = GetComponent<UISprite>();
-        for (int i = 0; i < spriteNum; i++)
+        if (sprite != null)
         {
-            sprite.spriteName = string.Format(format, i);
-            sprite.MakePixelPerfect();
-            yield return new WaitForSeconds(intervalSecond);
+            do
+            {
+                for (int i = 0; i < spriteNum; i++)
+                {
+                    sprite.spriteName = string.Format(format, i);
+                    sprite.MakePixelPerfect();//设定为默认大小
+                    yield return new WaitForSeconds(intervalSecond);
+                }
+            } while (loop);
+            
         }
         yield return 0;
     }
