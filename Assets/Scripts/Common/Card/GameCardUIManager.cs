@@ -71,7 +71,7 @@ public class GameCardUIManager : MonoBehaviour
             CardDesPanel.alpha = 1;
 
             //修改显示的内容
-            Card cardData = go.GetComponent<CardContainer>().GetCard();
+            Card cardData = go.GetComponent<CardContainer>().GetCardData();
             CardContainer desCardContainer = CardDesPanel.transform.FindChild("Container/Card").gameObject.GetComponent<CardContainer>();
             desCardContainer.SetCardData(cardData);//设置卡片数据
             desCardContainer.UpdateCardUI();//根据卡片数据刷新卡片UI
@@ -99,7 +99,7 @@ public class GameCardUIManager : MonoBehaviour
     private void OnOurCardSelected(GameObject go)
     {
         CardContainer container = go.GetComponent<CardContainer>();
-        Card card = container.GetCard();
+        Card card = container.GetCardData();
         if (container != null && card != null && Global.Instance.scene == SceneType.GameScene)
         {
             if (go.transform.IsChildOf(GameObject.Find("Ourside/CardGrid").transform))

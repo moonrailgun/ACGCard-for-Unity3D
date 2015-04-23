@@ -22,4 +22,6 @@ public class CharacterCard : Card
     {
         base.Init();
     }
+
+
 }

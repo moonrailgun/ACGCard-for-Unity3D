@@ -21,34 +21,35 @@ public class GameScene : MonoBehaviour
     private void Start()
     {
         //测试数据
-        CreateGameCard(GameSide.Our, CardManager.Instance.GetCardById(1));
-        CreateGameCard(GameSide.Our, CardManager.Instance.GetCardById(6));
-        CreateGameCard(GameSide.Our, CardManager.Instance.GetCardById(8));
-        CreateGameCard(GameSide.Our, CardManager.Instance.GetCardById(12));
-        CreateGameCard(GameSide.Our, CardManager.Instance.GetCardById(24));
-        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(24));
-        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(12));
-        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(1));
-        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(25));
-        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(5));
-        CreateGameCard(GameSide.Enemy, CardManager.Instance.GetCardById(17));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(1));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(6));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(8));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(12));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(24));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(24));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(12));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(1));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(25));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(5));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(17));
         //以上为测试数据
     }
 
     /// <summary>
     /// 生成游戏卡片
+    /// 角色卡
     /// </summary>
-    public GameObject CreateGameCard(GameSide side)
+    public GameObject CreateGameCharacterCard(GameSide side)
     {
         Card cardinfo = new Card();
-        return CreateGameCard(side, cardinfo);
+        return CreateGameCharacterCard(side, cardinfo);
     }
-    public GameObject CreateGameCard(GameSide side, Card cardinfo)
+    public GameObject CreateGameCharacterCard(GameSide side, Card cardinfo)
     {
         if (Global.Instance.scene == SceneType.GameScene)
         {
             //实例化卡牌
-            GameObject prefeb = Resources.Load<GameObject>("Card-small");
+            GameObject prefeb = Resources.Load<GameObject>("CharacterCard");
             GameObject parent = GameObject.Find("GamePanel/" + side.ToString() + "side/CardGrid");
             GameObject card = NGUITools.AddChild(parent, prefeb);
 
