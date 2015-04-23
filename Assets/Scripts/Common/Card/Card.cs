@@ -22,6 +22,7 @@ public class Card : ICloneable
     /// </summary>
     public Card()
     {
+        Init();
         this.cardName = "";
         this.cardType = CardType.Character;
         this.cardSkill = new List<Skill>();
@@ -42,6 +43,7 @@ public class Card : ICloneable
     }
     public Card(int cardId, string cardName, CardType cardType, List<Skill> cardSkill, CardRarity cardRarity, string cardDescription = "")
     {
+        Init();
         this.cardID = cardId;
         this.cardName = cardName;
         this.cardType = cardType;
@@ -56,6 +58,11 @@ public class Card : ICloneable
 
             this.cardDescription = CardDescriptions.Instance.GetCardDescription(cardName);
         }
+    }
+
+    protected virtual void Init()
+    {
+
     }
 
     #region 信息设置
