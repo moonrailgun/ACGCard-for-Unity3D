@@ -21,17 +21,17 @@ public class GameScene : MonoBehaviour
     private void Start()
     {
         //测试数据
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(1));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(6));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(8));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(12));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(24));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(24));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(12));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(1));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(25));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(5));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(17));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(1, 100, 100));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(6, 100, 100));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(8, 100, 100));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(12, 100, 100));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(24, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(24, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(12, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(1, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(25, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(5, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(17, 100, 100));
         //以上为测试数据
     }
 
@@ -95,6 +95,10 @@ public class GameScene : MonoBehaviour
     {
         this.selectedCardObject = null;
     }
+    public Skill GetSelectedSkill()
+    {
+        return this.selectedSkill;
+    }
     /// <summary>
     /// 获取选中技能并重置
     /// （只可获得一次）
@@ -105,7 +109,7 @@ public class GameScene : MonoBehaviour
         this.selectedSkill = null;
         return skill;
     }
-    
+
 
     public enum GameSide
     {

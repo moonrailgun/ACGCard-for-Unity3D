@@ -88,7 +88,6 @@ public class GameCardUIManager : MonoBehaviour
         }
     }
     #endregion
-
     #region 卡片选中
     /// <summary>
     /// 我方卡片选中
@@ -102,23 +101,38 @@ public class GameCardUIManager : MonoBehaviour
         Card card = container.GetCardData();
         if (container != null && card != null && Global.Instance.scene == SceneType.GameScene)
         {
-            if (go.transform.IsChildOf(GameObject.Find("Ourside/CardGrid").transform))
+            GameScene gs = sceneManager.GetComponent<GameScene>();
+            Skill selectedSkill = gs.GetSelectedSkill();
+            GameObject selectedCard = gs.GetSelectedCard();//已经被选中的我方卡片
+            if (card != null && selectedSkill != null && (selectedSkill is Buff))
             {
-                //清空技能按钮列表
-                ClearSkillButton();
+                //如果已经选中了技能并且技能是BUFF类（可以对己方使用）
+                if (selectedSkill != null)
+                {
+                    selectedSkill.OnUse(selectedCard, go);//技能被使用（从Card到go）
+                }
+            }
+            else
+            {
+                if (go.transform.IsChildOf(GameObject.Find("Ourside/CardGrid").transform))
+                {
+                    //清空技能按钮列表
+                    ClearSkillButton();
+                }
+
+                ShowCardInfo(card);//显示出卡片信息
+
+                //显示卡片技能列表
+                List<Skill> skillList = card.GetCardSkillList();
+                foreach (Skill skill in skillList)
+                {
+                    skill.CreateSkillButton();//创建技能图标
+                }
+
+                //设置被选中
+                this.sceneManager.GetComponent<GameScene>().SetSelectedCard(go);
             }
 
-            ShowCardInfo(card);//显示出卡片信息
-
-            //显示卡片技能列表
-            List<Skill> skillList = card.GetCardSkillList();
-            foreach (Skill skill in skillList)
-            {
-                skill.CreateSkillButton();//创建技能图标
-            }
-
-            //设置被选中
-            this.sceneManager.GetComponent<GameScene>().SetSelectedCard(go);
         }
     }
     /// <summary>
@@ -131,10 +145,10 @@ public class GameCardUIManager : MonoBehaviour
         {
             GameScene gs = sceneManager.GetComponent<GameScene>();
             Skill skill = gs.GetSelectedSkillAndReset();
-            GameObject card = gs.GetSelectedCard();
+            GameObject card = gs.GetSelectedCard();//已经被选中的我方卡片
             if (skill != null)
             {
-                skill.OnUse(card, go);
+                skill.OnUse(card, go);//技能被使用（从Card到go）
             }
             else if (card != null)
             {
@@ -148,8 +162,6 @@ public class GameCardUIManager : MonoBehaviour
         }
     }
     #endregion
-
-
 
     /// <summary>
     /// 清空技能列表

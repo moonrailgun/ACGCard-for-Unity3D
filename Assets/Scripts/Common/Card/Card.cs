@@ -9,13 +9,13 @@ using System.Collections.Generic;
 /// </summary>
 public class Card : ICloneable
 {
-    private int cardID;//卡片ID
-    private string cardName;//卡片名称
-    private CardType cardType;//卡片类型
-    private List<Skill> cardSkill;//卡片技能列表
-    private string cardOwner;//卡片拥有者
-    private CardRarity cardRarity;//卡片稀有度
-    private string cardDescription;//卡片描述
+    protected int cardID;//卡片ID
+    protected string cardName;//卡片名称
+    protected CardType cardType;//卡片类型
+    protected List<Skill> cardSkill;//卡片技能列表
+    protected string cardOwner;//卡片拥有者
+    protected CardRarity cardRarity;//卡片稀有度
+    protected string cardDescription;//卡片描述
 
     /// <summary>
     /// 卡片构造函数
@@ -114,6 +114,13 @@ public class Card : ICloneable
         character.transform.FindChild("Label").GetComponent<UILabel>().text = cardName;
         cardDescribe.transform.FindChild("Label").GetComponent<UILabel>().text = this.cardDescription;
     }
+
+    /// <summary>
+    /// 当被技能指向（使用）
+    /// </summary>
+    /// <param name="skill">卡片被指向的技能</param>
+    public virtual void OnSkillUsed(Skill skill)
+    { }
 
     #region 信息设置
     /// <summary>

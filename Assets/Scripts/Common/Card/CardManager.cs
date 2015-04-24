@@ -43,11 +43,11 @@ public class CardManager
     /// </summary>
     public void CardRegister()
     {
-        AddCardGroup(new Card(1, "Rin", CardType.Character, new List<Skill>(new Skill[] { new ArcaneMissiles(), new Fireball() }), CardRarity.Normal));
-        AddCardGroup(new Card(7, "Saber", 1));
-        AddCardGroup(new Card(13, "Yaya", 1));
-        AddCardGroup(new Card(19, "Rukia", 1));
-        AddCardGroup(new Card(25, "Illyasviel", 1));
+        AddCardGroup(new CharacterCard(1, "Rin", CardType.Character, new List<Skill>(new Skill[] { new ArcaneMissiles(), new Fireball() }), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(7, "Saber", 1));
+        AddCardGroup(new CharacterCard(13, "Yaya", 1));
+        AddCardGroup(new CharacterCard(19, "Rukia", 1));
+        AddCardGroup(new CharacterCard(25, "Illyasviel", 1));
 
         LogsSystem.Instance.Print(string.Format("卡片注册完毕。共注册卡片{0}个", cardMap.Count));
 
@@ -76,10 +76,20 @@ public class CardManager
 
         for (int i = 1; i <= 6; i++)
         {
-            AddCard(new Card(beginid + i - 1, beginCard.GetCardName(), beginCard.GetCardType(), beginCard.GetCardSkillList(), (CardRarity)i, beginCard.GetCardDescription()));
+            if (beginCard is CharacterCard)
+            {
+                AddCard(new CharacterCard(beginid + i - 1, beginCard.GetCardName(), beginCard.GetCardType(), beginCard.GetCardSkillList(), (CardRarity)i, beginCard.GetCardDescription()));
+            }
+            else
+            {
+                AddCard(new Card(beginid + i - 1, beginCard.GetCardName(), beginCard.GetCardType(), beginCard.GetCardSkillList(), (CardRarity)i, beginCard.GetCardDescription()));
+            }
         }
     }
 
+    /// <summary>
+    /// 获取卡片的拷贝
+    /// </summary>
     public Card GetCardById(int id)
     {
         if (cardMap.ContainsKey(id))
@@ -91,5 +101,19 @@ public class CardManager
         {
             return null;
         }
+    }
+    /// <summary>
+    /// 获取角色卡的拷贝
+    /// </summary>
+    public Card GetCardById(int id, int health,int energy)
+    {
+        Card card = GetCardById(id);
+        if (card is CharacterCard)
+        {
+            CharacterCard characterCard = card as CharacterCard;
+            characterCard.SetCharacterInfo(health, energy);
+            return characterCard;
+        }
+        return card;
     }
 }
