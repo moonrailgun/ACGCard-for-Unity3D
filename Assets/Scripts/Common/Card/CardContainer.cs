@@ -35,9 +35,14 @@ public class CardContainer : MonoBehaviour
     public void SetCardData(Card card)
     {
         this.card = card;
+        this.card.SetCardContainer(this.gameObject);//传递卡片容器
     }
     public Card GetCardData()
     {
         return card;
+    }
+    public Card GetCardClone()
+    {
+        return (Card)card.Clone();
     }
 }

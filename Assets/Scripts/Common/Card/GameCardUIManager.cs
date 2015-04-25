@@ -71,7 +71,7 @@ public class GameCardUIManager : MonoBehaviour
             CardDesPanel.alpha = 1;
 
             //修改显示的内容
-            Card cardData = go.GetComponent<CardContainer>().GetCardData();
+            Card cardData = go.GetComponent<CardContainer>().GetCardClone();//获取卡片的克隆
             CardContainer desCardContainer = CardDesPanel.transform.FindChild("Container/Card").gameObject.GetComponent<CardContainer>();
             desCardContainer.SetCardData(cardData);//设置卡片数据
             desCardContainer.UpdateCardUI();//根据卡片数据刷新卡片UI

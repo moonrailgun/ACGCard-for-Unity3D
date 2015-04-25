@@ -6,7 +6,7 @@ public class VideoManager : MonoBehaviour
     public UITexture texture;
     //public GameObject audio;
     public MovieTexture playingMovie;
-    private Coroutine coroutine;
+    private Coroutine routine;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class VideoManager : MonoBehaviour
     public void PlayLocalMovie(MovieTexture movie, AudioClip sound = null)
     {
         playingMovie = movie;
-        this.coroutine = StartCoroutine("PlayMovie");
+        this.routine = StartCoroutine("PlayMovie");
     }
 
     /// <summary>
@@ -32,7 +32,15 @@ public class VideoManager : MonoBehaviour
     {
         WWW www = new WWW(URL);
         playingMovie = www.movie;
-        this.coroutine = StartCoroutine("PlayMovie");
+        this.routine = StartCoroutine("PlayMovie");
+    }
+
+    /// <summary>
+    /// 停止播放影片
+    /// </summary>
+    public void StopPlay()
+    {
+        StopCoroutine(routine);
     }
 
     /// <summary>

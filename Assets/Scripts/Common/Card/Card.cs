@@ -17,6 +17,8 @@ public class Card : ICloneable
     protected CardRarity cardRarity;//卡片稀有度
     protected string cardDescription;//卡片描述
 
+    protected GameObject container;//容器对象。用于从卡片对象内部访问外部容器
+
     /// <summary>
     /// 卡片构造函数
     /// </summary>
@@ -123,10 +125,10 @@ public class Card : ICloneable
     { }
 
     #region 信息设置
+    /*
     /// <summary>
     /// 设置卡片信息
     /// </summary>
-    /// <param name="info"></param>
     public void SetCardInfo(Card card)
     {
         this.cardID = card.cardID;
@@ -137,7 +139,17 @@ public class Card : ICloneable
         this.cardOwner = card.cardOwner;
         this.cardRarity = card.cardRarity;
         this.cardDescription = card.cardDescription;
+    }*/
+    /// <summary>
+    /// 设置卡片容器
+    /// </summary>
+    public void SetCardContainer(GameObject container)
+    {
+        this.container = container;
     }
+    /// <summary>
+    /// 设置所有者
+    /// </summary>
     public void SetOwner(string OwnerName)
     {
         this.cardOwner = OwnerName;
@@ -146,34 +158,21 @@ public class Card : ICloneable
 
     #region 信息获取
     public int GetCardID()
-    {
-        return this.cardID;
-    }
+    { return this.cardID; }
     public string GetCardName()
-    {
-        return this.cardName;
-    }
-
+    { return this.cardName; }
     public CardType GetCardType()
-    {
-        return this.cardType;
-    }
+    { return this.cardType; }
     public List<Skill> GetCardSkillList()
-    {
-        return this.cardSkill;
-    }
+    { return this.cardSkill; }
     public string GetCardOwner()
-    {
-        return this.cardOwner;
-    }
+    { return this.cardOwner; }
     public CardRarity GetCardRarity()
-    {
-        return this.cardRarity;
-    }
+    { return this.cardRarity; }
     public string GetCardDescription()
-    {
-        return this.cardDescription;
-    }
+    { return this.cardDescription; }
+    public GameObject GetCardContainer()
+    { return this.container; }
     #endregion
 
     public object Clone()

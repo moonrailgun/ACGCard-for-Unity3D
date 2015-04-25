@@ -10,6 +10,7 @@ public class ArcaneMissiles : AttackSkill
         :base()
     {
         this.skillCommonName = "ArcaneMissiles";
+        this.damage = 10;//测试用。随便写的
     }
 
     public override void OnUse(GameObject target)

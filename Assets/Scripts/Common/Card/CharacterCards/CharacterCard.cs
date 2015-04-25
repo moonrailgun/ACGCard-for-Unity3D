@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 public class CharacterCard : Card
 {
-    private int health;//生命
-    private int energy;//能量
+    protected int health;//生命
+    protected int energy;//能量
+    protected int maxHealth;//最大生命值
+    protected int maxEnergy;//最大能量值
 
     #region 构造函数
     public CharacterCard()
@@ -38,6 +40,8 @@ public class CharacterCard : Card
     {
         this.health = health;
         this.energy = energy;
+        this.maxHealth = health;
+        this.maxEnergy = energy;
     }
 
     /// <summary>
@@ -48,6 +52,10 @@ public class CharacterCard : Card
         base.Init();
     }
 
+    /// <summary>
+    /// 当被技能指向（使用）
+    /// </summary>
+    /// <param name="skill">卡片被指向的技能</param>
     public override void OnSkillUsed(Skill skill)
     {
         base.OnSkillUsed(skill);//调用上级
@@ -56,8 +64,29 @@ public class CharacterCard : Card
         {
             AttackSkill attackSkill = skill as AttackSkill;
             int damage = attackSkill.damage;
-            health -= damage;
-            LogsSystem.Instance.Print(string.Format("{0}收到{1}点伤害,当前血量{2}", this.cardName, damage, this.health));
+            health -= damage;//伤害扣血
+            UpdateCardUIBaseByCardInfo(this.container);//更新贴图
+            LogsSystem.Instance.Print(string.Format("{0}受到{1}点伤害,当前血量{2}", this.cardName, damage, this.health));//日志记录
+        }
+    }
+
+    /// <summary>
+    /// 更新UI
+    /// </summary>
+    public override void UpdateCardUIBaseByCardInfo(GameObject container)
+    {
+        base.UpdateCardUIBaseByCardInfo(container);
+
+        //获取信息面板
+        Transform info = container.transform.FindChild("CharacterInfo");
+        if (info != null)
+        {
+            //更新血条
+            UISlider healthSlider = info.FindChild("Health").GetComponent<UISlider>();
+            UISlider energySlider = info.FindChild("Energy").GetComponent<UISlider>();
+
+            healthSlider.value = (float)health / maxHealth;
+            energySlider.value = (float)energy / maxEnergy;
         }
     }
 }

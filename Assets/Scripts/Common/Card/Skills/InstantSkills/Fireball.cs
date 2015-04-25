@@ -11,6 +11,7 @@ public class Fireball : AttackSkill
         :base()
     {
         this.skillCommonName = "Fireball";
+        this.damage = 20;//测试用。随便写的
     }
 
     public override void OnUse(GameObject target)
