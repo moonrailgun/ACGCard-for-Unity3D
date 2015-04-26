@@ -110,6 +110,14 @@ public class GameScene : MonoBehaviour
         return skill;
     }
 
+    /// <summary>
+    /// 创建箭头
+    /// </summary>
+    private void CreateArrow()
+    {
+
+    }
+
 
     public enum GameSide
     {
