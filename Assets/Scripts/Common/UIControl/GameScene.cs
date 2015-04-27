@@ -8,6 +8,7 @@ public class GameScene : MonoBehaviour
     public GameObject selectedCardObject;//被选中的卡片
     private Skill selectedSkill;//被选中的技能
     private GameCardUIManager uiManager;//卡片UI管理器
+    private GameObject cardGrow;//卡片光晕物体
 
     private void Awake()
     {
@@ -72,7 +73,19 @@ public class GameScene : MonoBehaviour
     /// </summary>
     public void SetSelectedCard(GameObject go)
     {
+        //删除光晕
+        if (cardGrow != null) { DestroyImmediate(cardGrow); }
+        
+        //添加光晕
+        if (go.GetComponent<CardContainer>() != null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("CardGrow-small");
+            GameObject glow = NGUITools.AddChild(go, prefab);
+            this.cardGrow = glow;
+        }
+
         this.selectedCardObject = go;
+
     }
     /// <summary>
     /// 设置选中技能
