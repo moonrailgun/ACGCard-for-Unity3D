@@ -103,7 +103,7 @@ public class GameCardUIManager : MonoBehaviour
         {
             GameScene gs = sceneManager.GetComponent<GameScene>();
             Skill selectedSkill = gs.GetSelectedSkill();
-            GameObject selectedCard = gs.GetSelectedCard();//已经被选中的我方卡片
+            GameObject selectedCard = gs.GetSelectedCard();//获得已经被选中的我方卡片
             if (card != null && selectedSkill != null && (selectedSkill is Buff))
             {
                 //如果已经选中了技能并且技能是BUFF类（可以对己方使用）

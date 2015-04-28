@@ -8,6 +8,7 @@ public class ArrowLine : MonoBehaviour
     private GameObject cursor;
     public Vector2 BeginPos;
     public bool isShowing;
+    public Camera uicamera;
 
     private void Awake()
     {
@@ -15,18 +16,31 @@ public class ArrowLine : MonoBehaviour
         texture = GetComponent<UITexture>();
         texture.pivot = UIWidget.Pivot.Bottom;
         cursor = GameObject.FindGameObjectWithTag(Tags.Cursor);
+        uicamera = GameObject.Find("UI Root/Camera").GetComponent<Camera>();
+    }
+
+    private void Start()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        GetComponent<UITexture>().alpha = 1.0f;
+        gameObject.SetActive(false);
+        isShowing = false;
     }
 
     private void Update()
     {
+
         if (isShowing)
         {
             if (cursor != null)
             {
-                Vector2 cursorPos = new Vector2(cursor.transform.localPosition.x, cursor.transform.localPosition.y);
-
+                Vector2 cursorWorldPos = new Vector2(cursor.transform.position.x, cursor.transform.position.y);
                 SetUVRect();
-                SetWidge(BeginPos, cursorPos);
+                SetWidge(BeginPos, cursorWorldPos);
             }
             else
             {
@@ -51,12 +65,12 @@ public class ArrowLine : MonoBehaviour
     /// </summary>
     private void SetWidge(Vector2 from, Vector2 to)
     {
+        Vector2 vpDir = uicamera.WorldToViewportPoint(to) - uicamera.WorldToViewportPoint(from);//视口坐标差
+        Vector2 dir = Vector2.Scale(vpDir, Global.Instance.screenSize);
 
-        Vector2 dir = to - from;
         float dis = dir.magnitude;
-        int coefficient = dir.x > 0 ? -1 : 1;
-        float angle = Vector2.Angle(Vector2.up, to - from) * coefficient;
-
+        int coefficient = dir.x > 0 / 2 ? -1 : 1;//方向系数
+        float angle = Vector2.Angle(Vector2.up, dir) * coefficient;
         transform.position = new Vector3(from.x, from.y);
         transform.eulerAngles = new Vector3(0, 0, angle);
         texture.height = Mathf.FloorToInt(dis);
@@ -65,7 +79,6 @@ public class ArrowLine : MonoBehaviour
     /// <summary>
     /// 设置箭头指向线的来源位置
     /// </summary>
-    /// <param name="pos"></param>
     public void SetBeginPos(Vector2 pos)
     {
         this.BeginPos = pos;
@@ -85,8 +98,13 @@ public class ArrowLine : MonoBehaviour
     }
     public void ShowArrowLine(Vector2 from)
     {
-        ShowArrowLine();
         SetBeginPos(from);
+        ShowArrowLine();
+    }
+    public void ShowArrowLine(GameObject from)
+    {
+        SetBeginPos(from);
+        ShowArrowLine();
     }
 
     /// <summary>

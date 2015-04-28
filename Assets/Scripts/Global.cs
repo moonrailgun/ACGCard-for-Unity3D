@@ -29,7 +29,7 @@ public class Global
 
     public Global()
     {
-        screenSize = new Vector2(1280, 720);
+        screenSize = new Vector2(1280, 720);//默认大小。所有基于屏幕坐标的换算都基于此变量
     }
 }
 

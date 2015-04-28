@@ -9,14 +9,18 @@ public class GameScene : MonoBehaviour
     private Skill selectedSkill;//被选中的技能
     private GameCardUIManager uiManager;//卡片UI管理器
     private GameObject cardGrow;//卡片光晕物体
+    private ArrowLine arrowLine;
 
     private void Awake()
     {
         Global.Instance.scene = SceneType.GameScene;
 
         uiManager = GetComponent<GameCardUIManager>();
-        //获取对战信息
-        //获取卡片列表
+        arrowLine = GameObject.Find("ArrowLine").GetComponent<ArrowLine>();
+
+        //--网络编程
+        //--获取对战信息
+        //--获取卡片列表
     }
 
     private void Start()
@@ -84,8 +88,13 @@ public class GameScene : MonoBehaviour
             this.cardGrow = glow;
         }
 
-        this.selectedCardObject = go;
+        //添加线条
+        if (arrowLine != null)
+        {
+            arrowLine.ShowArrowLine(go);
+        }
 
+        this.selectedCardObject = go;
     }
     /// <summary>
     /// 设置选中技能
@@ -107,6 +116,7 @@ public class GameScene : MonoBehaviour
     public void ResetSelectedCard()
     {
         this.selectedCardObject = null;
+        arrowLine.HideArrowLine();
     }
     public Skill GetSelectedSkill()
     {
@@ -122,15 +132,6 @@ public class GameScene : MonoBehaviour
         this.selectedSkill = null;
         return skill;
     }
-
-    /// <summary>
-    /// 创建箭头
-    /// </summary>
-    private void CreateArrow()
-    {
-
-    }
-
 
     public enum GameSide
     {
