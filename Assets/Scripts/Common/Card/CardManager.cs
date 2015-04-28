@@ -48,6 +48,13 @@ public class CardManager
         AddCardGroup(new CharacterCard(13, "Yaya", 1));
         AddCardGroup(new CharacterCard(19, "Rukia", 1));
         AddCardGroup(new CharacterCard(25, "Illyasviel", 1));
+        AddCardGroup(new CharacterCard(31, "Asuna", 1));
+        AddCardGroup(new CharacterCard(37, "Haruhi", 1));
+        AddCardGroup(new CharacterCard(43, "Kurumi", 1));
+        AddCardGroup(new CharacterCard(49, "Lucy", 1));
+        AddCardGroup(new CharacterCard(55, "Luotianyi", 1));
+        AddCardGroup(new CharacterCard(61, "Rikka", 1));
+        AddCardGroup(new CharacterCard(67, "ShiRo", 1));
 
         LogsSystem.Instance.Print(string.Format("卡片注册完毕。共注册卡片{0}个", cardMap.Count));
 
