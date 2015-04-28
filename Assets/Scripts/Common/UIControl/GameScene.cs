@@ -115,6 +115,9 @@ public class GameScene : MonoBehaviour
     /// </summary>
     public void ResetSelectedCard()
     {
+        //删除光晕
+        if (cardGrow != null) { DestroyImmediate(cardGrow); }
+
         this.selectedCardObject = null;
         arrowLine.HideArrowLine();
     }
