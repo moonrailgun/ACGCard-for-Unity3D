@@ -5,8 +5,9 @@
 /// </summary>
 public abstract class Skill : ISkill
 {
-    public string skillCommonName;
+    protected string skillCommonName;
     protected static GameScene gameScene;
+    protected string skillIconName;
 
     protected Skill()
     {
@@ -15,16 +16,6 @@ public abstract class Skill : ISkill
             gameScene = GameObject.FindGameObjectWithTag(Tags.SceneController).GetComponent<GameScene>();
         }
     }
-
-    /*
-    /// <summary>
-    /// 设置图标
-    /// </summary>
-    /// <param name="icon"></param>
-    public virtual void SetIcon(Texture2D icon)
-    {
-        this.icon = icon;
-    }*/
 
     /// <summary>
     /// 创建技能图标按钮
@@ -41,8 +32,21 @@ public abstract class Skill : ISkill
 
         //修改按钮信息
         button.GetComponent<UIButton>().onClick.Add(new EventDelegate(OnUse));//添加回调
-        button.transform.FindChild("SkillIcon").GetComponent<UISprite>().spriteName = string.Format("Skill_Icon_{0}", skillCommonName);//设置图集名
+        //设置精灵名
+        if (string.IsNullOrEmpty(skillIconName) && !string.IsNullOrEmpty(skillCommonName))
+        { button.transform.FindChild("SkillIcon").GetComponent<UISprite>().spriteName = string.Format("Skill_Icon_{0}", skillCommonName); }
+        else
+        { button.transform.FindChild("SkillIcon").GetComponent<UISprite>().spriteName = skillIconName; }
         button.transform.FindChild("Name").GetComponent<UILabel>().text = SkillNames.Instance.GetSkillName(skillCommonName);//修改技能名
+    }
+
+    /// <summary>
+    /// 设置技能名
+    /// </summary>
+    public Skill SetIconName(string name)
+    {
+        this.skillIconName = string.Format("Skill_Icon_{0}", name);
+        return this;
     }
 
     public abstract void OnUse();

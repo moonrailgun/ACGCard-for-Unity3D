@@ -4,12 +4,33 @@ using UnityEngine;
 
 public abstract class AttackSkill : Skill
 {
-    public int damage = 0;
+    protected int damage = 0;
 
     protected AttackSkill()
-        :base()
+        : base()
     {
 
+    }
+
+    public void SetBasicDamage(int value)
+    {
+        this.damage = value;
+    }
+
+    /// <summary>
+    /// 返回造成的伤害
+    /// </summary>
+    /// <returns></returns>
+    public virtual int GetCalculatedDamage()
+    {
+        return this.damage;
+    }
+    /// <summary>
+    /// 根据技能来源（技能释放者）计算伤害
+    /// </summary>
+    public virtual int GetCalculatedDamage(Card from)
+    {
+        return this.GetCalculatedDamage();
     }
 
     public override void OnUse()
@@ -18,8 +39,10 @@ public abstract class AttackSkill : Skill
     }
     public override void OnUse(GameObject from, GameObject target)
     {
-        LogsSystem.Instance.Print(from.name + "攻击了" + target.name);
-        target.GetComponent<CardContainer>().GetCardData().OnSkillUsed(this);
+        Card skillOrigin = from.GetComponent<CardContainer>().GetCardData();//技能源数据
+        Card skillBelong = target.GetComponent<CardContainer>().GetCardData();//技能归属数据
+        LogsSystem.Instance.Print(skillOrigin.GetCardName() + "攻击了" + skillBelong.GetCardName());
+        skillBelong.OnSkillUsed(this, skillOrigin);
 
         //--创建技能特效
     }

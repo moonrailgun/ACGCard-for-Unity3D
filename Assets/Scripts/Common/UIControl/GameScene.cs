@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameScene : MonoBehaviour
 {
     public GameCard cardList = new GameCard();//所有卡片集合
-    public GameObject selectedCardObject;//被选中的卡片
+    private GameObject selectedCardObject;//被选中的卡片
     private Skill selectedSkill;//被选中的技能
     private GameCardUIManager uiManager;//卡片UI管理器
     private GameObject cardGrow;//卡片光晕物体
@@ -17,6 +17,11 @@ public class GameScene : MonoBehaviour
 
         uiManager = GetComponent<GameCardUIManager>();
         arrowLine = GameObject.Find("ArrowLine").GetComponent<ArrowLine>();
+
+        //配置游戏桌面使其能够点击后取消卡片和技能的选中
+        GameObject GamePanel = GameObject.Find("Background/GamePanel");
+        UIEventListener.Get(GamePanel).onClick += OnClickGameDesktop;
+        //
 
         //--网络编程
         //--获取对战信息
@@ -73,13 +78,29 @@ public class GameScene : MonoBehaviour
     }
 
     /// <summary>
+    /// 点击游戏桌面后调用
+    /// 取消卡片选中
+    /// </summary>
+    private void OnClickGameDesktop(GameObject go)
+    {
+        //进行一次简单判定
+        if (go.name == "GamePanel")
+        {
+            //重置选中的卡片和技能
+            ResetSelectedCard();
+            ResetSelectedSkill();
+        }
+    }
+
+    #region 变量配置与修改
+    /// <summary>
     /// 设置当前选中的卡片对象
     /// </summary>
     public void SetSelectedCard(GameObject go)
     {
         //删除光晕
         if (cardGrow != null) { DestroyImmediate(cardGrow); }
-        
+
         //添加光晕
         if (go.GetComponent<CardContainer>() != null)
         {
@@ -119,15 +140,19 @@ public class GameScene : MonoBehaviour
         if (cardGrow != null) { DestroyImmediate(cardGrow); }
 
         this.selectedCardObject = null;
-        arrowLine.HideArrowLine();
+        arrowLine.HideArrowLine();//隐藏指向线
     }
+    /// <summary>
+    /// 获取选中的卡片技能
+    /// </summary>
+    /// <returns></returns>
     public Skill GetSelectedSkill()
     {
         return this.selectedSkill;
     }
     /// <summary>
     /// 获取选中技能并重置
-    /// （只可获得一次）
+    /// （即获得一次后重置选中的卡片技能）
     /// </summary>
     public Skill GetSelectedSkillAndReset()
     {
@@ -135,6 +160,11 @@ public class GameScene : MonoBehaviour
         this.selectedSkill = null;
         return skill;
     }
+    public void ResetSelectedSkill()
+    {
+        this.selectedSkill = null;
+    }
+    #endregion
 
     public enum GameSide
     {

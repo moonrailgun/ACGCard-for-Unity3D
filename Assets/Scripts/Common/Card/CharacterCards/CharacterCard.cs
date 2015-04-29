@@ -56,14 +56,15 @@ public class CharacterCard : Card
     /// 当被技能指向（使用）
     /// </summary>
     /// <param name="skill">卡片被指向的技能</param>
-    public override void OnSkillUsed(Skill skill)
+    /// <param name="from">技能来源</param>
+    public override void OnSkillUsed(Skill skill,Card from)
     {
-        base.OnSkillUsed(skill);//调用上级
+        base.OnSkillUsed(skill,from);//调用上级
 
         if (skill is AttackSkill)
         {
             AttackSkill attackSkill = skill as AttackSkill;
-            int damage = attackSkill.damage;
+            int damage = attackSkill.GetCalculatedDamage();
             health -= damage;//伤害扣血
             UpdateCardUIBaseByCardInfo(this.container);//更新贴图
             LogsSystem.Instance.Print(string.Format("{0}受到{1}点伤害,当前血量{2}", this.cardName, damage, this.health));//日志记录

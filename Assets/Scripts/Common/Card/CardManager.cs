@@ -44,7 +44,7 @@ public class CardManager
     public void CardRegister()
     {
         AddCardGroup(new CharacterCard(1, "Rin", CardType.Character, new List<Skill>(new Skill[] { new ArcaneMissiles(), new Fireball() }), CardRarity.Normal));
-        AddCardGroup(new CharacterCard(7, "Saber", 1));
+        AddCardGroup(new CharacterCard(7, "Saber", CardType.Character, new List<Skill>(new Skill[] { new UniversalAttackSkill("MeteoriteCut", 40) }), CardRarity.Normal));
         AddCardGroup(new CharacterCard(13, "Yaya", 1));
         AddCardGroup(new CharacterCard(19, "Rukia", 1));
         AddCardGroup(new CharacterCard(25, "Illyasviel", 1));
@@ -55,6 +55,7 @@ public class CardManager
         AddCardGroup(new CharacterCard(55, "Luotianyi", 1));
         AddCardGroup(new CharacterCard(61, "Rikka", 1));
         AddCardGroup(new CharacterCard(67, "ShiRo", 1));
+
 
         LogsSystem.Instance.Print(string.Format("卡片注册完毕。共注册卡片{0}个", cardMap.Count));
 
@@ -112,7 +113,7 @@ public class CardManager
     /// <summary>
     /// 获取角色卡的拷贝
     /// </summary>
-    public Card GetCardById(int id, int health,int energy)
+    public Card GetCardById(int id, int health, int energy)
     {
         Card card = GetCardById(id);
         if (card is CharacterCard)

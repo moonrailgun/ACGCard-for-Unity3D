@@ -121,7 +121,7 @@ public class Card : ICloneable
     /// 当被技能指向（使用）
     /// </summary>
     /// <param name="skill">卡片被指向的技能</param>
-    public virtual void OnSkillUsed(Skill skill)
+    public virtual void OnSkillUsed(Skill skill,Card from)
     { }
 
     #region 信息设置
