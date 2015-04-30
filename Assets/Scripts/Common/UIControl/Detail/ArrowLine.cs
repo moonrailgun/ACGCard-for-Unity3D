@@ -11,23 +11,44 @@ public class ArrowLine : MonoBehaviour
     public Camera uicamera;
     public int minDis;//线条最小长度（px）
 
-    private void Awake()
+    //创建指向线
+    public static ArrowLine CreateArrowLine(string parentPath = "UI Root")
     {
+        GameObject parent = GameObject.Find(parentPath);
+        if (parent != null)
+        {
+            //实例化
+            GameObject prefab = Resources.Load<GameObject>("ArrowLine");
+            GameObject arrowLine = NGUITools.AddChild(parent, prefab);
+
+            //脚本初始化
+            ArrowLine script = arrowLine.GetComponent<ArrowLine>();
+            script.Init(prefab);
+            LogsSystem.Instance.Print("箭头初始化完毕");
+            return script;
+        }
+        else
+        {
+            LogsSystem.Instance.Print("创建指向线的路径不存在," + parentPath, LogLevel.ERROR);
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// 初始化
+    /// </summary>
+    private void Init(GameObject prefab)
+    {
+        //变量赋值
         speed = 1;
         texture = GetComponent<UITexture>();
         texture.pivot = UIWidget.Pivot.Bottom;
         cursor = GameObject.FindGameObjectWithTag(Tags.Cursor);
         uicamera = GameObject.Find("UI Root/Camera").GetComponent<Camera>();
         minDis = 40;
-    }
 
-    private void Start()
-    {
-        Init();
-    }
-
-    private void Init()
-    {
+        //基本设置
+        transform.localScale = prefab.transform.localScale;
         GetComponent<UITexture>().alpha = 1.0f;
         gameObject.SetActive(false);
         isShowing = false;

@@ -9,23 +9,27 @@ public class GameScene : MonoBehaviour
     private Skill selectedSkill;//被选中的技能
     private GameCardUIManager uiManager;//卡片UI管理器
     private GameObject cardGrow;//卡片光晕物体
-    private ArrowLine arrowLine;
+    private ArrowLine arrowLine;//箭头指向线
+    private GameObject roundDoneButton;//回合结束按钮
 
     private void Awake()
     {
         Global.Instance.scene = SceneType.GameScene;
 
-        uiManager = GetComponent<GameCardUIManager>();
-        arrowLine = GameObject.Find("ArrowLine").GetComponent<ArrowLine>();
+        this.uiManager = GetComponent<GameCardUIManager>();
+        this.roundDoneButton = GameObject.Find("GamePanel/RoundDone");
 
-        //配置游戏桌面使其能够点击后取消卡片和技能的选中
-        GameObject GamePanel = GameObject.Find("Background/GamePanel");
-        UIEventListener.Get(GamePanel).onClick += OnClickGameDesktop;
         //
 
         //--网络编程
         //--获取对战信息
         //--获取卡片列表
+    }
+    private void Init()
+    {
+        //配置游戏桌面使其能够点击后取消卡片和技能的选中
+        GameObject GamePanel = GameObject.Find("Background/GamePanel");
+        UIEventListener.Get(GamePanel).onClick += OnClickGameDesktop;
     }
 
     private void Start()
@@ -91,6 +95,31 @@ public class GameScene : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 回合结束
+    /// </summary>
+    public void RoundDown()
+    {
+        UIButton button = roundDoneButton.GetComponent<UIButton>();
+        button.isEnabled = false;
+        roundDoneButton.transform.Find("Label").GetComponent<UILabel>().color = button.disabledColor;
+        LogsSystem.Instance.Print("回合结束");
+
+        Invoke("TurnOnRoundButton", 2f);//用于测试
+    }
+
+    /// <summary>
+    /// 进入自己的回合
+    /// 使回合结束按钮可用
+    /// </summary>
+    public void TurnOnRoundButton()
+    {
+        UIButton button = roundDoneButton.GetComponent<UIButton>();
+        button.isEnabled = true;
+        roundDoneButton.transform.Find("Label").GetComponent<UILabel>().color = button.defaultColor;
+        LogsSystem.Instance.Print("回合开始");
+    }
+
     #region 变量配置与修改
     /// <summary>
     /// 设置当前选中的卡片对象
@@ -114,6 +143,11 @@ public class GameScene : MonoBehaviour
         { tweener.PlayForward(); }
 
         //添加线条
+        //如果不存在就创建
+        if (arrowLine == null)
+        {
+            arrowLine = ArrowLine.CreateArrowLine();
+        }
         if (arrowLine != null)
         {
             arrowLine.ShowArrowLine(go);
