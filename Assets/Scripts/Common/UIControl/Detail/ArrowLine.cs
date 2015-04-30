@@ -9,6 +9,7 @@ public class ArrowLine : MonoBehaviour
     public Vector2 BeginPos;
     public bool isShowing;
     public Camera uicamera;
+    public int minDis;//线条最小长度（px）
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class ArrowLine : MonoBehaviour
         texture.pivot = UIWidget.Pivot.Bottom;
         cursor = GameObject.FindGameObjectWithTag(Tags.Cursor);
         uicamera = GameObject.Find("UI Root/Camera").GetComponent<Camera>();
+        minDis = 40;
     }
 
     private void Start()
@@ -38,9 +40,8 @@ public class ArrowLine : MonoBehaviour
         {
             if (cursor != null)
             {
-                Vector2 cursorWorldPos = new Vector2(cursor.transform.position.x, cursor.transform.position.y);
+                SetWidge();
                 SetUVRect();
-                SetWidge(BeginPos, cursorWorldPos);
             }
             else
             {
@@ -63,6 +64,11 @@ public class ArrowLine : MonoBehaviour
     /// <summary>
     /// 设置UI容器大小和方向
     /// </summary>
+    private void SetWidge()
+    {
+        Vector2 cursorWorldPos = new Vector2(cursor.transform.position.x, cursor.transform.position.y);
+        SetWidge(BeginPos, cursorWorldPos);
+    }
     private void SetWidge(Vector2 from, Vector2 to)
     {
         Vector2 vpDir = uicamera.WorldToViewportPoint(to) - uicamera.WorldToViewportPoint(from);//视口坐标差
@@ -74,6 +80,16 @@ public class ArrowLine : MonoBehaviour
         transform.position = new Vector3(from.x, from.y);
         transform.eulerAngles = new Vector3(0, 0, angle);
         texture.height = Mathf.FloorToInt(dis);
+
+        //小于一定像素大小不显示线条
+        if (dis < minDis)
+        {
+            texture.alpha = 0;
+        }
+        else
+        {
+            texture.alpha = 1;
+        }
     }
 
     /// <summary>
@@ -93,6 +109,7 @@ public class ArrowLine : MonoBehaviour
     /// </summary>
     public void ShowArrowLine()
     {
+        SetWidge();
         isShowing = true;
         gameObject.SetActive(true);
     }

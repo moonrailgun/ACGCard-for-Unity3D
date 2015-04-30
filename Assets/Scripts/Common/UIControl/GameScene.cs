@@ -109,6 +109,11 @@ public class GameScene : MonoBehaviour
             this.cardGrow = glow;
         }
 
+        //播放动画
+        UITweener tweener = go.GetComponent<UITweener>();
+        if (tweener != null)
+        { tweener.PlayForward(); }
+
         //添加线条
         if (arrowLine != null)
         {
@@ -122,7 +127,15 @@ public class GameScene : MonoBehaviour
     /// </summary>
     public void SetSelectedSkill(Skill skill)
     {
-        this.selectedSkill = skill;
+        //播放动画
+        GameObject go = skill.GetButtonObject();
+        UITweener tweener = go.GetComponent<UITweener>();
+        if (tweener != null)
+        {
+            tweener.PlayForward();
+        }
+
+        this.selectedSkill = skill;//赋值
     }
     /// <summary>
     /// 获取选中的卡片对象
@@ -136,11 +149,22 @@ public class GameScene : MonoBehaviour
     /// </summary>
     public void ResetSelectedCard()
     {
-        //删除光晕
-        if (cardGrow != null) { DestroyImmediate(cardGrow); }
+        if (this.selectedCardObject != null)
+        {
+            //删除光晕
+            if (cardGrow != null) { DestroyImmediate(cardGrow); }
 
-        this.selectedCardObject = null;
-        arrowLine.HideArrowLine();//隐藏指向线
+            //播放恢复动画
+            UITweener tweener = this.selectedCardObject.GetComponent<UITweener>();
+            if (tweener != null)
+            { tweener.PlayReverse(); }
+
+            //重置选中卡片
+            this.selectedCardObject = null;
+
+            arrowLine.HideArrowLine();//隐藏指向线
+        }
+
     }
     /// <summary>
     /// 获取选中的卡片技能
@@ -157,12 +181,26 @@ public class GameScene : MonoBehaviour
     public Skill GetSelectedSkillAndReset()
     {
         Skill skill = this.selectedSkill;
-        this.selectedSkill = null;
+        ResetSelectedSkill();
         return skill;
     }
+    /// <summary>
+    /// 重置选中的技能
+    /// </summary>
     public void ResetSelectedSkill()
     {
-        this.selectedSkill = null;
+        if (this.selectedSkill != null)
+        {
+            //播放恢复动画
+            GameObject go = this.selectedSkill.GetButtonObject();
+            UITweener tweener = go.GetComponent<UITweener>();
+            if (tweener != null)
+            {
+                tweener.PlayReverse();
+            }
+
+            this.selectedSkill = null;
+        }
     }
     #endregion
 

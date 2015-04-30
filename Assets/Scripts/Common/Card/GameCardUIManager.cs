@@ -39,6 +39,9 @@ public class GameCardUIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 添加事件监听
+    /// </summary>
     public void AddUIListener(GameObject go, GameScene.GameSide side)
     {
         UIEventListener listener = UIEventListener.Get(go);
@@ -59,7 +62,7 @@ public class GameCardUIManager : MonoBehaviour
 
     #region 卡片被指向
     /// <summary>
-    /// 当卡片被选中后
+    /// 当卡片被指向后
     /// 显示放大版的卡片
     /// </summary>
     /// <param name="go"></param>
@@ -88,6 +91,7 @@ public class GameCardUIManager : MonoBehaviour
         }
     }
     #endregion
+
     #region 卡片选中
     /// <summary>
     /// 我方卡片选中
@@ -126,7 +130,7 @@ public class GameCardUIManager : MonoBehaviour
                 List<Skill> skillList = card.GetCardSkillList();
                 foreach (Skill skill in skillList)
                 {
-                    skill.CreateSkillButton();//创建技能图标
+                    skill.CreateSkillButton("SkillList/Grid");//在SkillList/Grid目录下创建技能图标
                 }
 
                 //设置被选中

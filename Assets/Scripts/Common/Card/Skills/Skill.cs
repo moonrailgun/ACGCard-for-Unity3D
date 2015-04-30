@@ -9,6 +9,8 @@ public abstract class Skill : ISkill
     protected static GameScene gameScene;
     protected string skillIconName;
 
+    protected GameObject skillButtonObject;//技能在游戏中的按钮实例
+
     protected Skill()
     {
         if (gameScene == null && Global.Instance.scene == SceneType.GameScene)
@@ -20,15 +22,16 @@ public abstract class Skill : ISkill
     /// <summary>
     /// 创建技能图标按钮
     /// </summary>
-    public virtual void CreateSkillButton()
+    public virtual void CreateSkillButton(string path)
     {
-        string path = "SkillList/Grid";
         GameObject grid = GameObject.Find(path);
 
         //创建按钮
         GameObject prefab = Resources.Load<GameObject>("SkillButton");
         GameObject button = NGUITools.AddChild(grid, prefab);
-        grid.GetComponent<UIGrid>().Reposition();
+        grid.GetComponent<UIGrid>().Reposition();//更新坐标
+
+        this.skillButtonObject = button;//对象指向
 
         //修改按钮信息
         button.GetComponent<UIButton>().onClick.Add(new EventDelegate(OnUse));//添加回调
@@ -47,6 +50,14 @@ public abstract class Skill : ISkill
     {
         this.skillIconName = string.Format("Skill_Icon_{0}", name);
         return this;
+    }
+
+    /// <summary>
+    /// 获取实例化的按钮
+    /// </summary>
+    public GameObject GetButtonObject()
+    {
+        return this.skillButtonObject;
     }
 
     public abstract void OnUse();
