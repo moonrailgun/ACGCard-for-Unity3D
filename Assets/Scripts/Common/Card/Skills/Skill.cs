@@ -31,7 +31,7 @@ public abstract class Skill : ISkill
         GameObject button = NGUITools.AddChild(grid, prefab);
         grid.GetComponent<UIGrid>().Reposition();//更新坐标
 
-        this.skillButtonObject = button;//对象指向
+        this.skillButtonObject = button;//对象指向赋值
 
         //修改按钮信息
         button.GetComponent<UIButton>().onClick.Add(new EventDelegate(OnUse));//添加回调

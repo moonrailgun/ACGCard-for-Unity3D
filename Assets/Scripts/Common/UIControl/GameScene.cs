@@ -88,7 +88,6 @@ public class GameScene : MonoBehaviour
         {
             //重置选中的卡片和技能
             ResetSelectedCard();
-            ResetSelectedSkill();
         }
     }
 
@@ -130,6 +129,7 @@ public class GameScene : MonoBehaviour
         //播放动画
         GameObject go = skill.GetButtonObject();
         UITweener tweener = go.GetComponent<UITweener>();
+        Debug.Log(tweener);
         if (tweener != null)
         {
             tweener.PlayForward();
@@ -145,7 +145,7 @@ public class GameScene : MonoBehaviour
         return this.selectedCardObject;
     }
     /// <summary>
-    /// 重置被选中的卡片
+    /// 重置被选中的卡片和技能
     /// </summary>
     public void ResetSelectedCard()
     {
@@ -163,6 +163,8 @@ public class GameScene : MonoBehaviour
             this.selectedCardObject = null;
 
             arrowLine.HideArrowLine();//隐藏指向线
+
+            ResetSelectedSkill();//重置选中卡片必定重置选中技能
         }
 
     }

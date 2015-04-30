@@ -152,7 +152,8 @@ public class GameCardUIManager : MonoBehaviour
             GameObject card = gs.GetSelectedCard();//已经被选中的我方卡片
             if (skill != null)
             {
-                skill.OnUse(card, go);//技能被使用（从Card到go）
+                skill.OnUse(card, go);//技能被使用（从Card到go)
+                gs.ResetSelectedCard();
             }
             else if (card != null)
             {
