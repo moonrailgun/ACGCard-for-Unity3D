@@ -13,6 +13,7 @@ public class LogsSystem
             if (_instance == null)
             {
                 _instance = new LogsSystem();
+                _instance.Print("==============开始记录==============");
             }
             return _instance;
         }
