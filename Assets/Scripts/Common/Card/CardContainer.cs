@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,21 @@ public class CardContainer : MonoBehaviour
     {
 
     }
+
+    /// <summary>
+    /// 受到攻击时。震动卡片
+    /// </summary>
+    public void ShakeCard()
+    {
+        Hashtable args = new Hashtable();
+        args.Add("amount",  new Vector3(0.05f, 0.05f, 0));//震动范围
+        args.Add("time", 0.2f);//震动时间
+        args.Add("oncompletetarget", transform.parent.gameObject);
+        args.Add("oncomplete", "Reposition");//震动完成后回归正常位
+
+        iTween.ShakePosition(gameObject, args);
+    }
+
 
     /// <summary>
     /// 更新UI贴图

@@ -65,9 +65,7 @@ public class CharacterCard : Card
         {
             AttackSkill attackSkill = skill as AttackSkill;
             int damage = attackSkill.GetCalculatedDamage();
-            health -= damage;//伤害扣血
-            UpdateCardUIBaseByCardInfo(this.container);//更新贴图
-            LogsSystem.Instance.Print(string.Format("{0}受到{1}点伤害,当前血量{2}", this.cardName, damage, this.health));//日志记录
+            GetDamage(damage);
         }
     }
 
@@ -89,5 +87,14 @@ public class CharacterCard : Card
             healthSlider.value = (float)health / maxHealth;
             energySlider.value = (float)energy / maxEnergy;
         }
+    }
+
+    //受到伤害
+    public void GetDamage(int damage)
+    {
+        health -= damage;//伤害扣血
+        UpdateCardUIBaseByCardInfo(this.container);//更新贴图
+        container.GetComponent<CardContainer>().ShakeCard();//震动卡片
+        LogsSystem.Instance.Print(string.Format("{0}受到{1}点伤害,当前血量{2}", this.cardName, damage, this.health));//日志记录
     }
 }
