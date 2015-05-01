@@ -9,10 +9,13 @@ public class CharacterCard : Card
     protected int maxHealth;//最大生命值
     protected int maxEnergy;//最大能量值
 
+    protected List<Skill> cardSkill;//卡片技能列表
+
     #region 构造函数
     public CharacterCard()
         : base()
     {
+        this.cardSkill = new List<Skill>();
     }
     public CharacterCard(int cardId, string cardName, int cardRarity)
         : base(cardId, cardName, cardRarity)
@@ -23,8 +26,9 @@ public class CharacterCard : Card
     {
     }
     public CharacterCard(int cardId, string cardName, CardType cardType, List<Skill> cardSkill, CardRarity cardRarity, string cardDescription = "")
-        : base(cardId, cardName, cardType, cardSkill, cardRarity, cardDescription)
+        : base(cardId, cardName, cardType, cardRarity, cardDescription)
     {
+        this.cardSkill = cardSkill;
     }
     #endregion
 
@@ -97,4 +101,7 @@ public class CharacterCard : Card
         container.GetComponent<CardContainer>().ShakeCard();//震动卡片
         LogsSystem.Instance.Print(string.Format("{0}受到{1}点伤害,当前血量{2}", this.cardName, damage, this.health));//日志记录
     }
+
+    public List<Skill> GetCardSkillList()
+    { return this.cardSkill; }
 }

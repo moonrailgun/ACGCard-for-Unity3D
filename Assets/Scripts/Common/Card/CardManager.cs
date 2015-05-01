@@ -86,11 +86,20 @@ public class CardManager
         {
             if (beginCard is CharacterCard)
             {
-                AddCard(new CharacterCard(beginid + i - 1, beginCard.GetCardName(), beginCard.GetCardType(), beginCard.GetCardSkillList(), (CardRarity)i, beginCard.GetCardDescription()));
+                CharacterCard beginCharacterCard = beginCard as CharacterCard;
+                int cardId = beginid + i - 1;
+                string cardName = beginCharacterCard.GetCardName();
+                CardType cardType = beginCharacterCard.GetCardType();
+                List<Skill> cardSkill = beginCharacterCard.GetCardSkillList();
+                CardRarity cardRarity = (CardRarity)i;
+                string cardDescription = beginCharacterCard.GetCardDescription();
+
+                AddCard(new CharacterCard(cardId, cardName, cardType, cardSkill, cardRarity, cardDescription));
             }
             else
             {
-                AddCard(new Card(beginid + i - 1, beginCard.GetCardName(), beginCard.GetCardType(), beginCard.GetCardSkillList(), (CardRarity)i, beginCard.GetCardDescription()));
+                Debug.Log("尚未实现");
+                //AddCard(new Card(beginid + i - 1, beginCard.GetCardName(), beginCard.GetCardType(), beginCard.GetCardSkillList(), (CardRarity)i, beginCard.GetCardDescription()));
             }
         }
     }

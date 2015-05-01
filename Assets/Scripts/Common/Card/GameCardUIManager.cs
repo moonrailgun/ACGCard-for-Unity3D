@@ -40,34 +40,42 @@ public class GameCardUIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 添加事件监听
+    /// 添加角色卡事件监听
     /// </summary>
-    public void AddUIListener(GameObject go, GameScene.GameSide side)
+    public void AddCharacterUIListener(GameObject go, GameScene.GameSide side)
     {
         UIEventListener listener = UIEventListener.Get(go);
 
         //点击事件
         if (side == GameScene.GameSide.Our)
         {
-            listener.onClick += OnOurCardSelected;
+            listener.onClick += OnOurCharacterCardSelected;
         }
         else if (side == GameScene.GameSide.Enemy)
         {
-            listener.onClick += OnEnemyCardSelected;
+            listener.onClick += OnEnemyCharacterCardSelected;
         }
 
         //鼠标指向事件
-        listener.onHover += OnCardHover;
+        listener.onHover += OnCharacterCardHover;
+    }
+
+    /// <summary>
+    /// 添加手牌事件监听
+    /// </summary>
+    public void AddHandUIListener(GameObject go)
+    {
+        UIEventListener listener = UIEventListener.Get(go);
+
+        listener.onHover += OnItemCardHover;
     }
 
     #region 卡片被指向
     /// <summary>
-    /// 当卡片被指向后
+    /// 当角色卡片被指向后
     /// 显示放大版的卡片
     /// </summary>
-    /// <param name="go"></param>
-    /// <param name="state"></param>
-    private void OnCardHover(GameObject go, bool state)
+    private void OnCharacterCardHover(GameObject go, bool state)
     {
         if (state == true)
         {
@@ -90,6 +98,14 @@ public class GameCardUIManager : MonoBehaviour
             CardDesPanel.alpha = 0;
         }
     }
+
+    /// <summary>
+    /// 当物品卡片被指向
+    /// </summary>
+    private void OnItemCardHover(GameObject go,bool state)
+    {
+        Debug.Log("尚未实现");
+    }
     #endregion
 
     #region 卡片选中
@@ -99,11 +115,11 @@ public class GameCardUIManager : MonoBehaviour
     /// 修改卡片信息
     /// 设定为选中
     /// </summary>
-    private void OnOurCardSelected(GameObject go)
+    private void OnOurCharacterCardSelected(GameObject go)
     {
         CardContainer container = go.GetComponent<CardContainer>();
         Card card = container.GetCardData();
-        if (container != null && card != null && Global.Instance.scene == SceneType.GameScene)
+        if (container != null && card != null && Global.Instance.scene == SceneType.GameScene && card is CharacterCard)
         {
             GameScene gs = sceneManager.GetComponent<GameScene>();
             Skill selectedSkill = gs.GetSelectedSkill();
@@ -127,7 +143,7 @@ public class GameCardUIManager : MonoBehaviour
                 ShowCardInfo(card);//显示出卡片信息
 
                 //显示卡片技能列表
-                List<Skill> skillList = card.GetCardSkillList();
+                List<Skill> skillList = ((CharacterCard)card).GetCardSkillList();
                 foreach (Skill skill in skillList)
                 {
                     skill.CreateSkillButton("SkillList/Grid");//在SkillList/Grid目录下创建技能图标
@@ -143,7 +159,7 @@ public class GameCardUIManager : MonoBehaviour
     /// 敌方卡片被选中
     /// </summary>
     /// <param name="go"></param>
-    private void OnEnemyCardSelected(GameObject go)
+    private void OnEnemyCharacterCardSelected(GameObject go)
     {
         if (Global.Instance.scene == SceneType.GameScene)
         {

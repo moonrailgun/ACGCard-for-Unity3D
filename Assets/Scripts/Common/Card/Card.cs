@@ -12,7 +12,7 @@ public class Card : ICloneable
     protected int cardID;//卡片ID
     protected string cardName;//卡片名称
     protected CardType cardType;//卡片类型
-    protected List<Skill> cardSkill;//卡片技能列表
+    
     protected string cardOwner;//卡片拥有者
     protected CardRarity cardRarity;//卡片稀有度
     protected string cardDescription;//卡片描述
@@ -27,7 +27,6 @@ public class Card : ICloneable
         Init();
         this.cardName = "";
         this.cardType = CardType.Character;
-        this.cardSkill = new List<Skill>();
         this.cardRarity = CardRarity.Normal;
     }
     public Card(int cardId, string cardName, int cardRarity)
@@ -43,13 +42,12 @@ public class Card : ICloneable
     {
         this.cardType = type;
     }
-    public Card(int cardId, string cardName, CardType cardType, List<Skill> cardSkill, CardRarity cardRarity, string cardDescription = "")
+    public Card(int cardId, string cardName, CardType cardType, CardRarity cardRarity, string cardDescription = "")
     {
         Init();
         this.cardID = cardId;
         this.cardName = cardName;
         this.cardType = cardType;
-        this.cardSkill = cardSkill;
         this.cardRarity = cardRarity;
         if (cardDescription != "")
         {
@@ -125,21 +123,6 @@ public class Card : ICloneable
     { }
 
     #region 信息设置
-    /*
-    /// <summary>
-    /// 设置卡片信息
-    /// </summary>
-    public void SetCardInfo(Card card)
-    {
-        this.cardID = card.cardID;
-        this.cardName = card.cardName;
-        this.cardName = card.cardName;
-        this.cardType = card.cardType;
-        this.cardSkill = card.cardSkill;
-        this.cardOwner = card.cardOwner;
-        this.cardRarity = card.cardRarity;
-        this.cardDescription = card.cardDescription;
-    }*/
     /// <summary>
     /// 设置卡片容器
     /// </summary>
@@ -163,8 +146,6 @@ public class Card : ICloneable
     { return this.cardName; }
     public CardType GetCardType()
     { return this.cardType; }
-    public List<Skill> GetCardSkillList()
-    { return this.cardSkill; }
     public string GetCardOwner()
     { return this.cardOwner; }
     public CardRarity GetCardRarity()

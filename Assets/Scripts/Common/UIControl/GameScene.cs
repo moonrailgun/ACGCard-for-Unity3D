@@ -70,7 +70,7 @@ public class GameScene : MonoBehaviour
             CardContainer container = card.GetComponent<CardContainer>();
             container.SetCardData(cardinfo);//设置卡片属性
             container.UpdateCardUI();//更新贴图
-            uiManager.AddUIListener(card, side);//添加UI事件监听
+            uiManager.AddCharacterUIListener(card, side);//添加UI事件监听
 
             return card;
         }
@@ -79,6 +79,24 @@ public class GameScene : MonoBehaviour
             LogsSystem.Instance.Print("不能在非游戏界面生成游戏卡牌", LogLevel.WARN);
             return null;
         }
+    }
+
+    /// <summary>
+    /// 生成手牌
+    /// </summary>
+    public GameObject CreateGameHandCard(Card cardinfo)
+    {
+        //实例化卡牌
+        GameObject prefeb = Resources.Load<GameObject>("Card-small");
+        GameObject parent = GameObject.Find("GamePanel/Ourside/HandCard");
+        GameObject card = NGUITools.AddChild(parent, prefeb);
+
+        CardContainer container = card.GetComponent<CardContainer>();
+        container.SetCardData(cardinfo);//设置卡片属性
+        container.UpdateCardUI();//更新贴图
+        uiManager.AddHandUIListener(card);//添加手牌UI事件监听
+
+        return card;
     }
 
     /// <summary>
