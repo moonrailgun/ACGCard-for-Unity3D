@@ -78,6 +78,7 @@ public class GameScene : MonoBehaviour
             container.SetCardData(cardinfo);//设置卡片属性
             container.UpdateCardUI();//更新贴图
             uiManager.AddCharacterUIListener(card, side);//添加UI事件监听
+            container.SetGameSide(side);//设置卡片归属方
 
             parent.GetComponent<UIGrid>().Reposition();//更新卡片位置
 
@@ -104,6 +105,7 @@ public class GameScene : MonoBehaviour
         container.SetCardData(cardinfo);//设置卡片属性
         container.UpdateCardUI();//更新贴图
         uiManager.AddHandUIListener(card);//添加手牌UI事件监听
+        container.SetGameSide(GameSide.Our);
 
         //parent.GetComponent<UIGrid>().Reposition();//更新卡片位置
 
@@ -171,16 +173,7 @@ public class GameScene : MonoBehaviour
         if (tweener != null)
         { tweener.PlayForward(); }
 
-        //添加线条
-        //如果不存在就创建
-        if (arrowLine == null)
-        {
-            arrowLine = ArrowLine.CreateArrowLine();
-        }
-        if (arrowLine != null)
-        {
-            arrowLine.ShowArrowLine(go);
-        }
+        ShowArrowLine(go);//添加线条
 
         this.selectedCardObject = go;
     }
@@ -225,7 +218,7 @@ public class GameScene : MonoBehaviour
             //重置选中卡片
             this.selectedCardObject = null;
 
-            arrowLine.HideArrowLine();//隐藏指向线
+            HideArrowLine();//隐藏线条
 
             ResetSelectedSkill();//重置选中卡片必定重置选中技能
         }
@@ -269,6 +262,32 @@ public class GameScene : MonoBehaviour
     }
     #endregion
 
+    #region 指向线条操作
+    /// <summary>
+    /// 添加线条
+    /// 如果不存在就创建
+    /// </summary>
+    public void ShowArrowLine(GameObject go)
+    {
+        if (arrowLine == null)
+        {
+            arrowLine = ArrowLine.CreateArrowLine();
+        }
+        if (arrowLine != null)
+        {
+            arrowLine.ShowArrowLine(go);
+        }
+    }
+    /// <summary>
+    /// 隐藏线条
+    /// </summary>
+    public void HideArrowLine()
+    {
+        arrowLine.HideArrowLine();
+    }
+    #endregion
+
+
     public enum GameSide
     {
         Our, Enemy
@@ -282,5 +301,3 @@ public class GameScene : MonoBehaviour
         public List<Card> EnemyHandCard = new List<Card>();
     }
 }
-
-

@@ -17,6 +17,8 @@ public class Card : ICloneable
     protected string cardDescription;//卡片描述
     protected GameObject container;//容器对象。用于从卡片对象内部访问外部容器
 
+    protected GameScene gs;//游戏场景总管理
+
     /// <summary>
     /// 卡片构造函数
     /// </summary>
@@ -58,9 +60,15 @@ public class Card : ICloneable
         }
     }
 
+    /// <summary>
+    /// 初始化
+    /// </summary>
     protected virtual void Init()
     {
-
+        if (Global.Instance.scene == SceneType.GameScene)
+        {
+            gs = GameObject.FindGameObjectWithTag(Tags.SceneController).GetComponent<GameScene>();
+        }
     }
 
     /// <summary>

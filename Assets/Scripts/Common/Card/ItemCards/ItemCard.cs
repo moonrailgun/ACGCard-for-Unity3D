@@ -10,10 +10,19 @@ public class ItemCard : Card
     #endregion
 
     public virtual void OnUse()
-    { }
+    {
+        gs.ResetSelectedCard();
+        //Debug.Log("道具被使用");
+    }
     public virtual void OnUse(GameObject target)
-    { }
+    {
+        gs.ResetSelectedCard();
+        Debug.Log("道具被使用,目标为" + target.GetComponent<CardContainer>().GetCardData().GetCardName());
+    }
 
+    /// <summary>
+    /// 更新卡片UI
+    /// </summary>
     public override void UpdateCardUIBaseByCardInfo(GameObject container)
     {
         base.UpdateCardUIBaseByCardInfo(container);

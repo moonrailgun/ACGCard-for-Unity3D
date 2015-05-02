@@ -10,6 +10,7 @@ using UnityEngine;
 public class CardContainer : MonoBehaviour
 {
     private Card card;
+    private GameScene.GameSide side;
 
     private void Awake()
     {
@@ -39,7 +40,6 @@ public class CardContainer : MonoBehaviour
         iTween.ShakePosition(gameObject, args);
     }
 
-
     /// <summary>
     /// 更新UI贴图
     /// </summary>
@@ -60,5 +60,13 @@ public class CardContainer : MonoBehaviour
     public Card GetCardClone()
     {
         return (Card)card.Clone();
+    }
+    public void SetGameSide(GameScene.GameSide side)
+    {
+        this.side = side;
+    }
+    public GameScene.GameSide GetGameSide()
+    {
+        return side;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// 游戏界面侧边栏
@@ -68,6 +69,7 @@ public class GameCardUIManager : MonoBehaviour
         UIEventListener listener = UIEventListener.Get(go);
 
         listener.onHover += OnItemCardHover;
+        listener.onClick += OnItemCardSelected;
     }
 
     #region 卡片被指向
@@ -120,7 +122,7 @@ public class GameCardUIManager : MonoBehaviour
         }
         else
         {
-            if (tweener != null) {  tweener.PlayReverse(); }
+            if (tweener != null) { tweener.PlayReverse(); }
 
             iTween.Stop(go);
 
@@ -148,12 +150,13 @@ public class GameCardUIManager : MonoBehaviour
     {
         CardContainer container = go.GetComponent<CardContainer>();
         Card card = container.GetCardData();
-        if (container != null && card != null && Global.Instance.scene == SceneType.GameScene && card is CharacterCard)
+        if (container != null && card != null && Global.Instance.scene == SceneType.GameScene && card is CharacterCard)//数据正常
         {
             GameScene gs = sceneManager.GetComponent<GameScene>();
             Skill selectedSkill = gs.GetSelectedSkill();
             GameObject selectedCard = gs.GetSelectedCard();//获得已经被选中的我方卡片
-            if (card != null && selectedSkill != null && (selectedSkill is Buff))
+            Card selectedCardData = selectedCard.GetComponent<CardContainer>().GetCardData();//获取选中的卡片数据
+            if (selectedCard != null && selectedSkill != null && (selectedSkill is Buff))
             {
                 //如果已经选中了技能并且技能是BUFF类（可以对己方使用）
                 if (selectedSkill != null)
@@ -161,8 +164,16 @@ public class GameCardUIManager : MonoBehaviour
                     selectedSkill.OnUse(selectedCard, go);//技能被使用（从Card到go）
                 }
             }
+            else if (selectedCard != null && selectedCardData is ItemCard)
+            {
+                //已经被选中的卡片为手牌
+                ItemCard item = selectedCardData as ItemCard;
+                item.OnUse(go);
+            }
             else
             {
+                //将改卡设定为初始选中卡
+
                 if (go.transform.IsChildOf(GameObject.Find("Ourside/CardGrid").transform))
                 {
                     //清空技能按钮列表
@@ -181,29 +192,38 @@ public class GameCardUIManager : MonoBehaviour
                 //设置被选中
                 this.sceneManager.GetComponent<GameScene>().SetSelectedCard(go);
             }
-
+        }
+        else
+        {
+            LogsSystem.Instance.Print("数据异常", LogLevel.WARN);
         }
     }
     /// <summary>
     /// 敌方卡片被选中
     /// </summary>
-    /// <param name="go"></param>
     private void OnEnemyCharacterCardSelected(GameObject go)
     {
         if (Global.Instance.scene == SceneType.GameScene)
         {
             GameScene gs = sceneManager.GetComponent<GameScene>();
             Skill skill = gs.GetSelectedSkillAndReset();
-            GameObject card = gs.GetSelectedCard();//已经被选中的我方卡片
-            if (skill != null)
+            GameObject selectedCard = gs.GetSelectedCard();//已经被选中的我方卡片
+            Card selectedCardData = selectedCard.GetComponent<CardContainer>().GetCardData();//获取选中的卡片数据
+            if (selectedCard != null && skill != null)
             {
-                skill.OnUse(card, go);//技能被使用（从Card到go)
+                skill.OnUse(selectedCard, go);//技能被使用（从Card到go)
                 gs.ResetSelectedCard();
             }
-            else if (card != null)
+            else if (selectedCard != null&& selectedCardData is CharacterCard)
             {
                 LogsSystem.Instance.Print("尚未实现普通攻击功能", LogLevel.WARN);
                 gs.ResetSelectedCard();
+            }
+            else if (selectedCard != null && selectedCardData is ItemCard)
+            {
+                //已经被选中的卡片为手牌
+                ItemCard item = selectedCardData as ItemCard;
+                item.OnUse(go);
             }
             else
             {
@@ -211,6 +231,22 @@ public class GameCardUIManager : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// 手牌被选中
+    /// </summary>
+    private void OnItemCardSelected(GameObject go)
+    {
+        try
+        {
+            CardContainer container = go.GetComponent<CardContainer>();
+            ItemCard item = container.GetCardData() as ItemCard;
+            item.OnUse();
+        }
+        catch (Exception ex)
+        { LogsSystem.Instance.Print("出现错误" + ex, LogLevel.WARN); }
+    }
+
     #endregion
 
     /// <summary>
