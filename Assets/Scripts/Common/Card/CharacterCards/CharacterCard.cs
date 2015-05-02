@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class CharacterCard : Card
 {
+    protected int level;//等级
     protected int health;//生命
     protected int energy;//能量
     protected int maxHealth;//最大生命值
@@ -12,21 +13,8 @@ public class CharacterCard : Card
     protected List<Skill> cardSkill;//卡片技能列表
 
     #region 构造函数
-    public CharacterCard()
-        : base()
-    {
-        this.cardSkill = new List<Skill>();
-    }
-    public CharacterCard(int cardId, string cardName, int cardRarity)
-        : base(cardId, cardName, cardRarity)
-    {
-    }
-    public CharacterCard(int cardId, string cardName, int cardRarity, CardType type)
-        : base(cardId, cardName, cardRarity, type)
-    {
-    }
-    public CharacterCard(int cardId, string cardName, CardType cardType, List<Skill> cardSkill, CardRarity cardRarity, string cardDescription = "")
-        : base(cardId, cardName, cardType, cardRarity, cardDescription)
+    public CharacterCard(int cardId, string cardName, List<Skill> cardSkill, CardRarity cardRarity, string cardDescription = "")
+        : base(cardId, cardName, CardType.Character, cardRarity, cardDescription)
     {
         this.cardSkill = cardSkill;
     }
@@ -40,8 +28,9 @@ public class CharacterCard : Card
     {
         return this.energy;
     }
-    public void SetCharacterInfo(int health, int energy)
+    public void SetCharacterInfo(int level, int health, int energy)
     {
+        this.level = level;
         this.health = health;
         this.energy = energy;
         this.maxHealth = health;
@@ -61,9 +50,9 @@ public class CharacterCard : Card
     /// </summary>
     /// <param name="skill">卡片被指向的技能</param>
     /// <param name="from">技能来源</param>
-    public override void OnSkillUsed(Skill skill,Card from)
+    public override void OnSkillUsed(Skill skill, Card from)
     {
-        base.OnSkillUsed(skill,from);//调用上级
+        base.OnSkillUsed(skill, from);//调用上级
 
         if (skill is AttackSkill)
         {
@@ -79,6 +68,10 @@ public class CharacterCard : Card
     public override void UpdateCardUIBaseByCardInfo(GameObject container)
     {
         base.UpdateCardUIBaseByCardInfo(container);
+
+        //更换图片
+        GameObject character = container.transform.FindChild("Character").gameObject;
+        character.GetComponent<UISprite>().spriteName = string.Format("Card-{0}", this.cardName);
 
         //获取信息面板
         Transform info = container.transform.FindChild("CharacterInfo");

@@ -8,7 +8,7 @@ using System.Collections;
 /// </summary>
 public class UniversalAttackSkill : AttackSkill {
     /// <summary>
-    /// 如果iconName为空则和commonName一样
+    /// 如果iconName为空则设为未知图标
     /// </summary>
     /// <param name="commonName"></param>
     /// <param name="damage"></param>

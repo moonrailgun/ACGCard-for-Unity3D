@@ -102,9 +102,38 @@ public class GameCardUIManager : MonoBehaviour
     /// <summary>
     /// 当物品卡片被指向
     /// </summary>
-    private void OnItemCardHover(GameObject go,bool state)
+    private void OnItemCardHover(GameObject go, bool state)
     {
-        Debug.Log("尚未实现");
+        UITweener tweener = go.GetComponent<UITweener>();
+        float upDistance = 50;
+
+        if (state)
+        {
+            if (tweener != null) { tweener.PlayForward(); }
+
+            Hashtable args = new Hashtable();
+            args.Add("y", upDistance);
+            args.Add("islocal", true);
+            args.Add("time", 0.4f);
+
+            iTween.MoveTo(go, args);
+        }
+        else
+        {
+            if (tweener != null) {  tweener.PlayReverse(); }
+
+            iTween.Stop(go);
+
+            Hashtable args = new Hashtable();
+            args.Add("y", 0);
+            args.Add("islocal", true);
+            args.Add("time", 0.4f);
+
+            iTween.MoveTo(go, args);
+            //HandCardTable.Reposition();
+        }
+
+
     }
     #endregion
 

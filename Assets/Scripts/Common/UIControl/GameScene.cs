@@ -35,17 +35,24 @@ public class GameScene : MonoBehaviour
     private void Start()
     {
         //测试数据
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(1, 100, 100));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(6, 100, 100));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(8, 100, 100));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(12, 100, 100));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCardById(24, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(24, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(12, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(1, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(25, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(5, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCardById(17, 100, 100));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(1, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(6, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(8, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(12, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(24, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(24, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(12, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(1, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(25, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(5, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(17, 1, 100, 100));
+
+
+        CreateGameHandCard(CardManager.Instance.GetItemById(1));
+        CreateGameHandCard(CardManager.Instance.GetItemById(2));
+        CreateGameHandCard(CardManager.Instance.GetItemById(3));
+        CreateGameHandCard(CardManager.Instance.GetItemById(4));
+
         //以上为测试数据
     }
 
@@ -72,6 +79,8 @@ public class GameScene : MonoBehaviour
             container.UpdateCardUI();//更新贴图
             uiManager.AddCharacterUIListener(card, side);//添加UI事件监听
 
+            parent.GetComponent<UIGrid>().Reposition();//更新卡片位置
+
             return card;
         }
         else
@@ -95,6 +104,8 @@ public class GameScene : MonoBehaviour
         container.SetCardData(cardinfo);//设置卡片属性
         container.UpdateCardUI();//更新贴图
         uiManager.AddHandUIListener(card);//添加手牌UI事件监听
+
+        //parent.GetComponent<UIGrid>().Reposition();//更新卡片位置
 
         return card;
     }

@@ -22,7 +22,9 @@ public class CardManager
     }
     #endregion
 
-    private Dictionary<int, Card> cardMap;
+    private Dictionary<int, CharacterCard> characterCardMap;
+    private Dictionary<int, ItemCard> itemCardMap;
+    private Dictionary<int, CastCard> castCardMap;
 
     public CardManager()
     {
@@ -35,7 +37,9 @@ public class CardManager
     /// </summary>
     private void Init()
     {
-        cardMap = new Dictionary<int, Card>();
+        characterCardMap = new Dictionary<int, CharacterCard>();
+        itemCardMap = new Dictionary<int, ItemCard>();
+        castCardMap = new Dictionary<int, CastCard>();
     }
 
     /// <summary>
@@ -43,35 +47,58 @@ public class CardManager
     /// </summary>
     public void CardRegister()
     {
-        AddCardGroup(new CharacterCard(1, "Rin", CardType.Character, new List<Skill>(new Skill[] { new ArcaneMissiles(), new Fireball() }), CardRarity.Normal));
-        AddCardGroup(new CharacterCard(7, "Saber", CardType.Character, new List<Skill>(new Skill[] { new UniversalAttackSkill("MeteoriteCut", 40) }), CardRarity.Normal));
-        AddCardGroup(new CharacterCard(13, "Yaya", 1));
-        AddCardGroup(new CharacterCard(19, "Rukia", 1));
-        AddCardGroup(new CharacterCard(25, "Illyasviel", 1));
-        AddCardGroup(new CharacterCard(31, "Asuna", 1));
-        AddCardGroup(new CharacterCard(37, "Haruhi", 1));
-        AddCardGroup(new CharacterCard(43, "Kurumi", 1));
-        AddCardGroup(new CharacterCard(49, "Lucy", 1));
-        AddCardGroup(new CharacterCard(55, "Luotianyi", 1));
-        AddCardGroup(new CharacterCard(61, "Rikka", 1));
-        AddCardGroup(new CharacterCard(67, "ShiRo", 1));
+        //角色卡
+        AddCardGroup(new CharacterCard(1, "Rin", new List<Skill>(new Skill[] { new ArcaneMissiles(), new Fireball() }), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(7, "Saber", new List<Skill>(new Skill[] { new UniversalAttackSkill("MeteoriteCut", 40) }), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(13, "Yaya", new List<Skill>(), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(19, "Rukia", new List<Skill>(), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(25, "Illyasviel", new List<Skill>(), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(31, "Asuna", new List<Skill>(), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(37, "Haruhi", new List<Skill>(), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(43, "Kurumi", new List<Skill>(), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(49, "Lucy", new List<Skill>(), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(55, "Luotianyi", new List<Skill>(), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(61, "Rikka", new List<Skill>(), CardRarity.Normal));
+        AddCardGroup(new CharacterCard(67, "ShiRo", new List<Skill>(), CardRarity.Normal));
 
+        //物品卡
+        AddCard(new ItemCard(1,"Excalibur",CardRarity.Legend));
+        AddCard(new ItemCard(2, "Avalon", CardRarity.Legend));
+        AddCard(new ItemCard(3, "IceSword", CardRarity.Excellent));
+        AddCard(new ItemCard(4, "Shield", CardRarity.Normal));
 
-        LogsSystem.Instance.Print(string.Format("卡片注册完毕。共注册卡片{0}个", cardMap.Count));
-
-        //Debug.Log(cardMap[1].GetCardSkillList()[0].skillCommonName);
+        LogsSystem.Instance.Print(string.Format("卡片注册完毕。共注册卡片{0}个", characterCardMap.Count));
     }
 
     /// <summary>
-    /// 添加卡片
+    /// 单个添加卡片
     /// </summary>
     public void AddCard(Card card)
     {
-        int cardID = card.GetCardID();
-        if (!cardMap.ContainsKey(cardID))
-            cardMap.Add(cardID, card);
-        else
-            LogsSystem.Instance.Print("[卡片管理器]重复的ID号" + cardID, LogLevel.WARN);
+        if (card is CharacterCard)
+        {
+            int cardID = card.GetCardID();
+            if (!characterCardMap.ContainsKey(cardID))
+                characterCardMap.Add(cardID, card as CharacterCard);
+            else
+                LogsSystem.Instance.Print("[卡片管理器]无法向角色卡添加卡片：重复的ID号" + cardID, LogLevel.WARN);
+        }
+        else if (card is ItemCard)
+        {
+            int cardID = card.GetCardID();
+            if (!itemCardMap.ContainsKey(cardID))
+                itemCardMap.Add(cardID, card as ItemCard);
+            else
+                LogsSystem.Instance.Print("[卡片管理器]无法向角色卡添加卡片：重复的ID号" + cardID, LogLevel.WARN);
+        }
+        else if (card is CastCard)
+        {
+            int cardID = card.GetCardID();
+            if (!castCardMap.ContainsKey(cardID))
+                castCardMap.Add(cardID, card as CastCard);
+            else
+                LogsSystem.Instance.Print("[卡片管理器]无法向角色卡添加卡片：重复的ID号" + cardID, LogLevel.WARN);
+        }
     }
 
     /// <summary>
@@ -84,21 +111,23 @@ public class CardManager
 
         for (int i = 1; i <= 6; i++)
         {
-            if (beginCard is CharacterCard)
-            {
-                CharacterCard beginCharacterCard = beginCard as CharacterCard;
-                int cardId = beginid + i - 1;
-                string cardName = beginCharacterCard.GetCardName();
-                CardType cardType = beginCharacterCard.GetCardType();
-                List<Skill> cardSkill = beginCharacterCard.GetCardSkillList();
-                CardRarity cardRarity = (CardRarity)i;
-                string cardDescription = beginCharacterCard.GetCardDescription();
+            //通用成员属性
+            int cardId = beginid + i - 1;
+            string cardName = beginCard.GetCardName();
+            CardRarity cardRarity = (CardRarity)i;
+            string cardDescription = beginCard.GetCardDescription();
 
-                AddCard(new CharacterCard(cardId, cardName, cardType, cardSkill, cardRarity, cardDescription));
-            }
-            else
+            if (beginCard is CharacterCard)//如果是角色卡
             {
-                Debug.Log("尚未实现");
+                //角色卡成组通用参数
+                CharacterCard beginCharacterCard = beginCard as CharacterCard;
+                List<Skill> cardSkill = beginCharacterCard.GetCardSkillList();
+
+                AddCard(new CharacterCard(cardId, cardName, cardSkill, cardRarity, cardDescription));
+            }
+            else if (beginCard is ItemCard)
+            {
+                AddCard(new ItemCard(cardId, cardName, cardRarity, cardDescription));
                 //AddCard(new Card(beginid + i - 1, beginCard.GetCardName(), beginCard.GetCardType(), beginCard.GetCardSkillList(), (CardRarity)i, beginCard.GetCardDescription()));
             }
         }
@@ -107,30 +136,68 @@ public class CardManager
     /// <summary>
     /// 获取卡片的拷贝
     /// </summary>
-    public Card GetCardById(int id)
+    private Card GetCardById(int id, CardType cardType)
     {
-        if (cardMap.ContainsKey(id))
+        switch (cardType)
         {
-            Card card = cardMap[id];
-            return card.Clone() as Card;
+            case CardType.Character:
+                {
+                    if (characterCardMap.ContainsKey(id))
+                    {
+                        Card card = characterCardMap[id];
+                        return card.Clone() as Card;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            case CardType.Item:
+                {
+                    if (itemCardMap.ContainsKey(id))
+                    {
+                        Card card = itemCardMap[id];
+                        return card.Clone() as Card;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            case CardType.Cast:
+                {
+                    if (castCardMap.ContainsKey(id))
+                    {
+                        Card card = castCardMap[id];
+                        return card.Clone() as Card;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            default:
+                {
+                    LogsSystem.Instance.Print("[卡片管理器]获取卡片拷贝时发生错误：未知的卡片类型");
+                    break;
+                }
         }
-        else
-        {
-            return null;
-        }
+        return null;
     }
+
     /// <summary>
     /// 获取角色卡的拷贝
     /// </summary>
-    public Card GetCardById(int id, int health, int energy)
+    public CharacterCard GetCharacterById(int id, int level, int health, int energy)
     {
-        Card card = GetCardById(id);
-        if (card is CharacterCard)
-        {
-            CharacterCard characterCard = card as CharacterCard;
-            characterCard.SetCharacterInfo(health, energy);
-            return characterCard;
-        }
+        CharacterCard card = GetCardById(id, CardType.Character) as CharacterCard;
+        if (card != null)
+            card.SetCharacterInfo(level, health, energy);
         return card;
+    }
+
+    public ItemCard GetItemById(int id)
+    {
+        return GetCardById(id, CardType.Item) as ItemCard;
     }
 }

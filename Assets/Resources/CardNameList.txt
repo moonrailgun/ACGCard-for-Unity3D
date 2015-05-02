@@ -1,4 +1,5 @@
-﻿Rin=远坂凛
+﻿#角色卡
+Rin=远坂凛
 Saber=亚瑟王Saber
 Rukia=朽木露琪亚
 Illyasviel=伊利亚
@@ -10,3 +11,9 @@ Lucy=露西·哈特菲利亚
 Luotianyi=洛天依
 Rikka=小鸟游六花
 ShiRo=白
+
+#物品卡
+Avalon=远离尘世的理想乡
+Excalibur=誓约胜利之剑
+IceSword=冰之刃
+Shield=盾

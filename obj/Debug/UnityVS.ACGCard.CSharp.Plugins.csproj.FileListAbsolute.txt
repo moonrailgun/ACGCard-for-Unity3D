@@ -1,0 +1,12 @@
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.dll
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.pdb
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\LitJson.dll
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\UnityEditor.dll
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\UnityEngine.dll
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\UnityEngine.xml
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\UnityEditor.xml
+G:\Study\Unity3D Project\ACGCard\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+G:\Study\Unity3D Project\ACGCard\obj\Debug\UnityVS.ACGCard.CSharp.Plugins.csprojResolveAssemblyReference.cache
+G:\Study\Unity3D Project\ACGCard\obj\Debug\Assembly-CSharp-firstpass.dll
+G:\Study\Unity3D Project\ACGCard\obj\Debug\Assembly-CSharp-firstpass.pdb

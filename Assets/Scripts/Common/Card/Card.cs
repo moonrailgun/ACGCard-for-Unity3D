@@ -12,11 +12,9 @@ public class Card : ICloneable
     protected int cardID;//卡片ID
     protected string cardName;//卡片名称
     protected CardType cardType;//卡片类型
-    
     protected string cardOwner;//卡片拥有者
     protected CardRarity cardRarity;//卡片稀有度
     protected string cardDescription;//卡片描述
-
     protected GameObject container;//容器对象。用于从卡片对象内部访问外部容器
 
     /// <summary>
@@ -26,7 +24,7 @@ public class Card : ICloneable
     {
         Init();
         this.cardName = "";
-        this.cardType = CardType.Character;
+        this.cardType = CardType.Character;//默认为角色卡
         this.cardRarity = CardRarity.Normal;
     }
     public Card(int cardId, string cardName, int cardRarity)
@@ -71,11 +69,7 @@ public class Card : ICloneable
     /// <param name="container">卡片容器对象</param>
     public virtual void UpdateCardUIBaseByCardInfo(GameObject container)
     {
-        GameObject character = container.transform.FindChild("Character").gameObject;
         GameObject cardDescribe = container.transform.FindChild("Card-describe").gameObject;
-
-        //更换图片
-        character.GetComponent<UISprite>().spriteName = string.Format("Card-{0}", this.cardName);
 
         //选择颜色名
         string rarityColorName;
@@ -111,7 +105,7 @@ public class Card : ICloneable
 
         //更新文本
         string cardName = CardNames.Instance.GetCardName(this.cardName);
-        character.transform.FindChild("Label").GetComponent<UILabel>().text = cardName;
+        container.transform.FindChild("Character/Label").GetComponent<UILabel>().text = cardName;
         cardDescribe.transform.FindChild("Label").GetComponent<UILabel>().text = this.cardDescription;
     }
 
