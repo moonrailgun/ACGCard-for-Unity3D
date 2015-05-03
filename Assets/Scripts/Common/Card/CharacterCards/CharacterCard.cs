@@ -78,6 +78,13 @@ public class CharacterCard : Card
         GameObject character = container.transform.FindChild("Character").gameObject;
         character.GetComponent<UISprite>().spriteName = string.Format("Card-{0}", this.cardName);
 
+        //更新等级
+        Transform charaterLevel = container.transform.FindChild("CharacterLevel");
+        if (charaterLevel != null)
+        {
+            charaterLevel.GetComponentInChildren<UILabel>().text = this.level.ToString();
+        }
+
         //获取信息面板
         Transform info = container.transform.FindChild("CharacterInfo");
         if (info != null)
@@ -89,6 +96,8 @@ public class CharacterCard : Card
             healthSlider.value = (float)health / maxHealth;
             energySlider.value = (float)energy / maxEnergy;
         }
+
+
     }
 
     /// <summary>
@@ -111,7 +120,7 @@ public class CharacterCard : Card
         this.cardState.Add(state);
 
         LogsSystem.Instance.Print(
-            string.Format("角色 {0} 获得状态 {1} ，持续 {2} 回合",CardNames.Instance.GetCardName(this.cardName),SkillNames.Instance.GetSkillName(state.GetSkillCommonName()), state.GetLastRound())
+            string.Format("角色 {0} 获得状态 {1} ，持续 {2} 回合", CardNames.Instance.GetCardName(this.cardName), SkillNames.Instance.GetSkillName(state.GetSkillCommonName()), state.GetLastRound())
             );
     }
 
@@ -124,6 +133,8 @@ public class CharacterCard : Card
     }
 
     #region 外部访问接口
+    public int GetCardLevel()
+    { return this.level; }
     public List<Skill> GetCardSkillList()
     { return this.cardSkill; }
     public List<StateSkill> GetCardState()

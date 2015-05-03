@@ -88,6 +88,7 @@ public class GameCardUIManager : MonoBehaviour
             CardContainer desCardContainer = CardDesPanel.transform.FindChild("Container/Card").gameObject.GetComponent<CardContainer>();
             desCardContainer.SetCardData(cardData);//设置卡片数据
             desCardContainer.UpdateCardUI();//根据卡片数据刷新卡片UI
+            CardDesPanel.GetComponent<CardDesPanel>().UpdateDesPanelUI(cardData);//更新描述面板信息
 
             //修改显示的位置
             Vector2 cardSize = go.GetComponent<UISprite>().localSize;
