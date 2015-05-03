@@ -1,20 +1,10 @@
 ﻿/// <summary>
 /// Buff基类
 /// </summary>
-public abstract class Buff : Skill
+public abstract class Buff : StateSkill
 {
-    public override void OnUse()
+    protected Buff()
+        : base()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnUse(UnityEngine.GameObject target)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnUse(UnityEngine.GameObject from, UnityEngine.GameObject target)
-    {
-        throw new System.NotImplementedException();
     }
 }

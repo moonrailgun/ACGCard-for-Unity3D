@@ -11,6 +11,7 @@ public class CharacterCard : Card
     protected int maxEnergy;//最大能量值
 
     protected List<Skill> cardSkill;//卡片技能列表
+    protected List<StateSkill> cardState;//卡片状态列表
 
     #region 构造函数
     public CharacterCard(int cardId, string cardName, List<Skill> cardSkill, CardRarity cardRarity, string cardDescription = "")
@@ -35,14 +36,6 @@ public class CharacterCard : Card
         this.energy = energy;
         this.maxHealth = health;
         this.maxEnergy = energy;
-    }
-
-    /// <summary>
-    /// 初始化
-    /// </summary>
-    protected override void Init()
-    {
-        base.Init();
     }
 
     /// <summary>
@@ -86,7 +79,9 @@ public class CharacterCard : Card
         }
     }
 
-    //受到伤害
+    /// <summary>
+    /// 受到伤害
+    /// </summary>
     public void GetDamage(int damage)
     {
         health -= damage;//伤害扣血
@@ -95,6 +90,27 @@ public class CharacterCard : Card
         LogsSystem.Instance.Print(string.Format("{0}受到{1}点伤害,当前血量{2}", this.cardName, damage, this.health));//日志记录
     }
 
+    /// <summary>
+    /// 添加卡片状态
+    /// </summary>
+    public void AddState(StateSkill state)
+    {
+        state.SetOwnerCard(this);
+        this.cardState.Add(state);
+    }
+
+    /// <summary>
+    /// 删除卡片状态
+    /// </summary>
+    public void RemoveState(StateSkill state)
+    {
+        this.cardState.Remove(state);
+    }
+
+    #region 对外接口
     public List<Skill> GetCardSkillList()
     { return this.cardSkill; }
+    public List<StateSkill> GetCardState()
+    { return this.cardState; }
+    #endregion
 }
