@@ -62,9 +62,9 @@ public class CardManager
         AddCardGroup(new CharacterCard(67, "ShiRo", new List<Skill>(), CardRarity.Normal));
 
         //物品卡
-        AddCard(new EquipmentCard(1,"Excalibur",CardRarity.Legend));
+        AddCard(new Weapon(1, "Excalibur", CardRarity.Legend, 50, 3));
         AddCard(new EquipmentCard(2, "Avalon", CardRarity.Legend));
-        AddCard(new EquipmentCard(3, "IceSword", CardRarity.Excellent));
+        AddCard(new Weapon(3, "IceSword", CardRarity.Excellent, 10, 5));
         AddCard(new EquipmentCard(4, "Shield", CardRarity.Normal));
 
         LogsSystem.Instance.Print(string.Format("卡片注册完毕。共注册卡片{0}个", characterCardMap.Count));

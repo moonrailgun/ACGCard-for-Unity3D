@@ -3,8 +3,9 @@
 /// </summary>
 public abstract class Buff : StateSkill
 {
-    protected Buff()
-        : base()
+    protected Buff(int lastRound)
+        : base(lastRound)
     {
+
     }
 }

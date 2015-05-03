@@ -53,6 +53,23 @@ public abstract class Skill : ISkill
     }
 
     /// <summary>
+    /// 获取技能显示的名字
+    /// </summary>
+    public virtual string GetSkillShowName()
+    {
+        return SkillNames.Instance.GetSkillName(this.skillCommonName);
+    }
+
+    /// <summary>
+    /// 获取技能通用名
+    /// </summary>
+    /// <returns></returns>
+    public string GetSkillCommonName()
+    {
+        return this.skillCommonName;
+    }
+
+    /// <summary>
     /// 获取实例化的按钮
     /// </summary>
     public GameObject GetButtonObject()

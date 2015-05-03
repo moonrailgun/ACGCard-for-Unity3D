@@ -155,7 +155,12 @@ public class GameCardUIManager : MonoBehaviour
             GameScene gs = sceneManager.GetComponent<GameScene>();
             Skill selectedSkill = gs.GetSelectedSkill();
             GameObject selectedCard = gs.GetSelectedCard();//获得已经被选中的我方卡片
-            Card selectedCardData = selectedCard.GetComponent<CardContainer>().GetCardData();//获取选中的卡片数据
+            Card selectedCardData = null;//选中卡片的数据
+            if (selectedCard != null)
+            {
+                selectedCardData = selectedCard.GetComponent<CardContainer>().GetCardData();//获取选中的卡片数据
+            }
+
             if (selectedCard != null && selectedSkill != null && (selectedSkill is Buff))
             {
                 //如果已经选中了技能并且技能是BUFF类（可以对己方使用）
@@ -214,7 +219,7 @@ public class GameCardUIManager : MonoBehaviour
                 skill.OnUse(selectedCard, go);//技能被使用（从Card到go)
                 gs.ResetSelectedCard();
             }
-            else if (selectedCard != null&& selectedCardData is CharacterCard)
+            else if (selectedCard != null && selectedCardData is CharacterCard)
             {
                 LogsSystem.Instance.Print("尚未实现普通攻击功能", LogLevel.WARN);
                 gs.ResetSelectedCard();

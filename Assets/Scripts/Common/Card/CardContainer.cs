@@ -51,7 +51,7 @@ public class CardContainer : MonoBehaviour
     public void SetCardData(Card card)
     {
         this.card = card;
-        this.card.SetCardContainer(this.gameObject);//传递卡片容器
+        this.card.SetCardContainer(this);//传递卡片容器
     }
     public Card GetCardData()
     {

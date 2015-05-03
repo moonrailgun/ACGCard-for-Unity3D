@@ -3,8 +3,8 @@
 /// </summary>
 public abstract class Debuff : StateSkill
 {
-    protected Debuff()
-        : base()
+    protected Debuff(int lastRound)
+        : base(lastRound)
     {
 
     }

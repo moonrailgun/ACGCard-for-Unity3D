@@ -15,7 +15,7 @@ public class Card : ICloneable
     protected string cardOwner;//卡片拥有者
     protected CardRarity cardRarity;//卡片稀有度
     protected string cardDescription;//卡片描述
-    protected GameObject container;//容器对象。用于从卡片对象内部访问外部容器
+    protected CardContainer container;//容器对象。用于从卡片对象内部访问外部容器
 
     protected GameScene gs;//游戏场景总管理
 
@@ -128,7 +128,7 @@ public class Card : ICloneable
     /// <summary>
     /// 设置卡片容器
     /// </summary>
-    public void SetCardContainer(GameObject container)
+    public void SetCardContainer(CardContainer container)
     {
         this.container = container;
     }
@@ -154,7 +154,7 @@ public class Card : ICloneable
     { return this.cardRarity; }
     public string GetCardDescription()
     { return this.cardDescription; }
-    public GameObject GetCardContainer()
+    public CardContainer GetCardContainer()
     { return this.container; }
     #endregion
 

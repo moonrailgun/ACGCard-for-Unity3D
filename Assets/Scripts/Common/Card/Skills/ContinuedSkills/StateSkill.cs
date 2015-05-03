@@ -9,12 +9,15 @@ using UnityEngine;
 public abstract class StateSkill : Skill
 {
     protected int lastRound;//可以持续的回合数
+    protected int allLastRound;//总共可以持续的回合数,0为无限使用
     protected CharacterCard ownerCard;//该状态的所有者
 
-    protected StateSkill()
+    protected StateSkill(int lastRound)
         : base()
     {
-
+        //配置持续回合数
+        this.lastRound = lastRound;
+        this.allLastRound = lastRound;
     }
 
     /// <summary>
@@ -23,11 +26,15 @@ public abstract class StateSkill : Skill
     /// </summary>
     public virtual void OnRoundStart()
     {
-        lastRound--;//持续回合递减
-        if (lastRound <= 0)
+        if (allLastRound != 0)
         {
-            DestoryState();
+            lastRound--;//持续回合递减
+            if (lastRound <= 0)
+            {
+                DestoryState();
+            }
         }
+
     }
 
     /// <summary>
@@ -47,6 +54,12 @@ public abstract class StateSkill : Skill
         ownerCard.RemoveState(this);
     }
 
+    public override string GetSkillShowName()
+    {
+        string showName = string.Format("{0} 剩余：{1}回合", base.GetSkillShowName(), lastRound);
+        return showName;
+    }
+
     public override void OnUse()
     {
         throw new NotImplementedException();
@@ -61,4 +74,19 @@ public abstract class StateSkill : Skill
     {
         throw new NotImplementedException();
     }
+
+    #region 角色事件监听
+    /// <summary>
+    /// 当角色发动普通攻击时调用
+    /// </summary>
+    public virtual void OnCharaterAttack() { }
+    #endregion
+
+
+    #region 外部访问接口
+    public int GetLastRound()
+    { return this.lastRound; }
+    public CharacterCard GetOwnerCard()
+    { return this.ownerCard; }
+    #endregion
 }

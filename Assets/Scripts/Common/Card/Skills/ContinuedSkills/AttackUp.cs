@@ -8,16 +8,18 @@ using System.Text;
 /// </summary>
 public class AttackUp : Buff
 {
-    public AttackUp()
-        : base()
-    {
+    protected int addedValue;//攻击力增加的值
 
+    public AttackUp(int value, int lastRound)
+        : base(lastRound)
+    {
+        this.skillCommonName = "AttackUp";
+        this.addedValue = value;
     }
 
-    public AttackUp(string skillCommonName, int lastRound)
-        : base()
+    public override string GetSkillShowName()
     {
-        this.skillCommonName = skillCommonName;
-        this.lastRound = lastRound;
+        string showName = string.Format("{0} 攻击力+{1} 剩余{2}回合", SkillNames.Instance.GetSkillName(this.skillCommonName), addedValue, lastRound);
+        return showName;
     }
 }

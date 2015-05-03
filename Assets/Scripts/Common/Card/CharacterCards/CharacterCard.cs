@@ -18,6 +18,7 @@ public class CharacterCard : Card
         : base(cardId, cardName, CardType.Character, cardRarity, cardDescription)
     {
         this.cardSkill = cardSkill;
+        this.cardState = new List<StateSkill>();
     }
     #endregion
 
@@ -56,6 +57,17 @@ public class CharacterCard : Card
     }
 
     /// <summary>
+    /// 当角色发动普通攻击时
+    /// </summary>
+    public void OnCharacterAttack()
+    {
+        foreach (StateSkill state in cardState)
+        {
+            state.OnCharaterAttack();//向下调用事件
+        }
+    }
+
+    /// <summary>
     /// 更新UI
     /// </summary>
     public override void UpdateCardUIBaseByCardInfo(GameObject container)
@@ -85,7 +97,7 @@ public class CharacterCard : Card
     public void GetDamage(int damage)
     {
         health -= damage;//伤害扣血
-        UpdateCardUIBaseByCardInfo(this.container);//更新贴图
+        UpdateCardUIBaseByCardInfo(this.container.gameObject);//更新贴图
         container.GetComponent<CardContainer>().ShakeCard();//震动卡片
         LogsSystem.Instance.Print(string.Format("{0}受到{1}点伤害,当前血量{2}", this.cardName, damage, this.health));//日志记录
     }
@@ -97,6 +109,10 @@ public class CharacterCard : Card
     {
         state.SetOwnerCard(this);
         this.cardState.Add(state);
+
+        LogsSystem.Instance.Print(
+            string.Format("角色 {0} 获得状态 {1} ，持续 {2} 回合",CardNames.Instance.GetCardName(this.cardName),SkillNames.Instance.GetSkillName(state.GetSkillCommonName()), state.GetLastRound())
+            );
     }
 
     /// <summary>
@@ -107,7 +123,7 @@ public class CharacterCard : Card
         this.cardState.Remove(state);
     }
 
-    #region 对外接口
+    #region 外部访问接口
     public List<Skill> GetCardSkillList()
     { return this.cardSkill; }
     public List<StateSkill> GetCardState()

@@ -12,12 +12,13 @@ public class ItemCard : Card
     public virtual void OnUse()
     {
         gs.ResetSelectedCard();
-        //Debug.Log("道具被使用");
     }
     public virtual void OnUse(GameObject target)
     {
         gs.ResetSelectedCard();
         Debug.Log("道具被使用,目标为" + target.GetComponent<CardContainer>().GetCardData().GetCardName());
+        Debug.Log("销毁卡片");
+        gs.DestoryCard(this);
     }
 
     /// <summary>

@@ -17,7 +17,7 @@ public class EquipmentCard : ItemCard
     {
         base.OnUse();
 
-        gs.SetSelectedCard(container);
+        gs.SetSelectedCard(container.gameObject);
     }
     public override void OnUse(GameObject target)
     {
@@ -26,15 +26,20 @@ public class EquipmentCard : ItemCard
         CardContainer targetContainer = target.GetComponent<CardContainer>();
         Card targetCard = targetContainer.GetCardData();
 
-        if (targetContainer.GetGameSide() == GameScene.GameSide.Our&& targetCard is CharacterCard)
+        if (targetContainer.GetGameSide() == GameScene.GameSide.Our && targetCard is CharacterCard)
         {
-            //--这里实现装备的装备
-            LogsSystem.Instance.Print("物品被装备");
+            OnEquiped(this,targetCard as CharacterCard);
+            LogsSystem.Instance.Print(string.Format("物品{0}被装备", this.GetCardName()));
         }
         else
         {
-            gs.SetSelectedCard(container);
+            gs.SetSelectedCard(container.gameObject);
             ShortMessagesSystem.Instance.ShowShortMessage("只能给我方英雄装备该道具卡");
         }
     }
+
+    /// <summary>
+    /// 当装备被装备时调用该函数
+    /// </summary>
+    protected virtual void OnEquiped(EquipmentCard from, CharacterCard to) { }
 }

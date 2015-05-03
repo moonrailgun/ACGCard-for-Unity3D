@@ -113,6 +113,22 @@ public class GameScene : MonoBehaviour
     }
 
     /// <summary>
+    /// 销毁卡片
+    /// </summary>
+    public void DestoryCard(GameObject card)
+    {
+        UIGrid grid = card.transform.parent.GetComponent<UIGrid>();
+        DestroyImmediate(card);//立刻销毁卡片
+
+        if (grid != null)
+            grid.Reposition();
+    }
+    public void DestoryCard(Card card)
+    {
+        DestoryCard(card.GetCardContainer().gameObject);
+    }
+
+    /// <summary>
     /// 点击游戏桌面后调用
     /// 取消卡片选中
     /// </summary>
