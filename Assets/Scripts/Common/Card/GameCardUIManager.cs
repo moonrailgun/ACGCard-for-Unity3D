@@ -222,7 +222,9 @@ public class GameCardUIManager : MonoBehaviour
             }
             else if (selectedCard != null && selectedCardData is CharacterCard)
             {
-                LogsSystem.Instance.Print("尚未实现普通攻击功能", LogLevel.WARN);
+                //普通攻击
+                CharacterCard character = selectedCardData as CharacterCard;
+                character.OnCharacterAttack(go);
                 gs.ResetSelectedCard();
             }
             else if (selectedCard != null && selectedCardData is ItemCard)

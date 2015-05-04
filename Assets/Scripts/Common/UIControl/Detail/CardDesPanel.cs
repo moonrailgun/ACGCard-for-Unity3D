@@ -44,8 +44,8 @@ public class CardDesPanel : MonoBehaviour
             CharacterCard charater = cardInfo as CharacterCard;
             cardNameLabel.text = charater.GetCardName();
             cardLevelLabel.text = charater.GetCardLevel().ToString();
-            cardDamageLabel.text = charater.GetBaseCardDamage().ToString();
-            cardSpeedLabel.text = charater.GetBaseCardSpeed().ToString();
+            cardDamageLabel.text = charater.GetBaseCardDamageValue().ToString();
+            cardSpeedLabel.text = charater.GetBaseCardSpeedValue().ToString();
 
             ClearStateList();//清空状态列表
 

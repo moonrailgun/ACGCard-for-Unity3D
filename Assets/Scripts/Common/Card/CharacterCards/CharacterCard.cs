@@ -32,7 +32,7 @@ public class CharacterCard : Card
     {
         return this.energy;
     }
-    public void SetCharacterInfo(int level, int health, int energy, int baseDamage,int baseSpeed)
+    public void SetCharacterInfo(int level, int health, int energy, int baseDamage, int baseSpeed)
     {
         this.level = level;
         this.health = health;
@@ -63,11 +63,34 @@ public class CharacterCard : Card
     /// <summary>
     /// 当角色发动普通攻击时
     /// </summary>
-    public void OnCharacterAttack()
+    /// <param name="target">攻击对象</param>
+    public void OnCharacterAttack(GameObject target)
     {
-        foreach (StateSkill state in cardState)
+        CardContainer targetContainer = target.GetComponent<CardContainer>();
+
+        //播放动画
+        Hashtable args = new Hashtable();
+        args.Add("amount", target.transform.position - container.transform.position);
+        args.Add("time", 1f);
+
+        iTween.PunchPosition(container.gameObject, args);
+
+        //造成伤害
+        Card card = targetContainer.GetCardData();
+        if (card is CharacterCard)
         {
-            state.OnCharaterAttack();//向下调用事件
+            CharacterCard character = card as CharacterCard;
+            character.GetDamage(this.GetCardDamage());//传递卡片伤害
+        }
+
+        //状态回调
+        if (cardState.Count != 0)
+        {
+            foreach (StateSkill state in cardState)
+            {
+                state.OnCharaterAttack();//向下调用事件
+                if (cardState.Count == 0) { break; }
+            }
         }
     }
 
@@ -143,13 +166,25 @@ public class CharacterCard : Card
     { return this.cardSkill; }
     public List<StateSkill> GetCardState()
     { return this.cardState; }
-    public int GetBaseCardDamage()
+    public int GetBaseCardDamageValue()
     { return this.baseDamage; }
-    public int GetBaseCardSpeed()
+    public int GetBaseCardSpeedValue()
     { return this.baseSpeed; }
     public int GetCardDamage()
     {
-        throw new System.NotImplementedException();
+        int value = baseDamage;
+        if (cardState.Count != 0)
+        {
+            foreach (StateSkill state in cardState)
+            {
+                if (state is AttackUp)
+                {
+                    //如果是攻击上升类状态
+                    value += ((AttackUp)state).GetAddedDamage();
+                }
+            }
+        }
+        return value;
     }
     public int GetCardSpeed()
     {
