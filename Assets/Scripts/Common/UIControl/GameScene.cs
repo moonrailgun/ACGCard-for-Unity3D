@@ -35,17 +35,17 @@ public class GameScene : MonoBehaviour
     private void Start()
     {
         //测试数据
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(1, 1, 100, 100));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(6, 1, 100, 100));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(8, 1, 100, 100));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(12, 1, 100, 100));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(24, 1, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(24, 1, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(12, 1, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(1, 1, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(25, 1, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(5, 1, 100, 100));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(17, 1, 100, 100));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(1, 1, 100, 100,10,200));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(6, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(8, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(12, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(24, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(24, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(12, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(1, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(25, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(5, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(17, 1, 100, 100, 10, 200));
 
 
         CreateGameHandCard(CardManager.Instance.GetItemById(1));

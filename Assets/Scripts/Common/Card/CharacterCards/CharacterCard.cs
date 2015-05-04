@@ -9,6 +9,8 @@ public class CharacterCard : Card
     protected int energy;//能量
     protected int maxHealth;//最大生命值
     protected int maxEnergy;//最大能量值
+    protected int baseDamage;//攻击力
+    protected int baseSpeed;//速度
 
     protected List<Skill> cardSkill;//卡片技能列表
     protected List<StateSkill> cardState;//卡片状态列表
@@ -30,13 +32,15 @@ public class CharacterCard : Card
     {
         return this.energy;
     }
-    public void SetCharacterInfo(int level, int health, int energy)
+    public void SetCharacterInfo(int level, int health, int energy, int baseDamage,int baseSpeed)
     {
         this.level = level;
         this.health = health;
         this.energy = energy;
         this.maxHealth = health;
         this.maxEnergy = energy;
+        this.baseDamage = baseDamage;
+        this.baseSpeed = baseSpeed;
     }
 
     /// <summary>
@@ -139,5 +143,17 @@ public class CharacterCard : Card
     { return this.cardSkill; }
     public List<StateSkill> GetCardState()
     { return this.cardState; }
+    public int GetBaseCardDamage()
+    { return this.baseDamage; }
+    public int GetBaseCardSpeed()
+    { return this.baseSpeed; }
+    public int GetCardDamage()
+    {
+        throw new System.NotImplementedException();
+    }
+    public int GetCardSpeed()
+    {
+        throw new System.NotImplementedException();
+    }
     #endregion
 }

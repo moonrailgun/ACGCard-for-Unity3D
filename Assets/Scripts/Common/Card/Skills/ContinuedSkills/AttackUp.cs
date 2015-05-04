@@ -22,4 +22,6 @@ public class AttackUp : Buff
         string showName = string.Format("{0} 攻击力+{1} 剩余{2}回合", SkillNames.Instance.GetSkillName(this.skillCommonName), addedValue, lastRound);
         return showName;
     }
+    public int GetAddedDamage()
+    { return this.addedValue; }
 }

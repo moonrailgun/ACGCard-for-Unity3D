@@ -7,6 +7,8 @@ public class CardDesPanel : MonoBehaviour
     private UIPanel cardDesPanel;
     private UILabel cardNameLabel;
     private UILabel cardLevelLabel;
+    private UILabel cardDamageLabel;
+    private UILabel cardSpeedLabel;
     private UIWidget stateListWidget;
     private UIGrid stateListGrid;
 
@@ -17,6 +19,8 @@ public class CardDesPanel : MonoBehaviour
         cardDesPanel = GetComponent<UIPanel>();
         cardNameLabel = transform.FindChild("Container/CardInfo/CardName/Value").GetComponent<UILabel>();
         cardLevelLabel = transform.FindChild("Container/CardInfo/CardLevel/Value").GetComponent<UILabel>();
+        cardDamageLabel = transform.FindChild("Container/CardInfo/CardDamage/Value").GetComponent<UILabel>();
+        cardSpeedLabel = transform.FindChild("Container/CardInfo/CardSpeed/Value").GetComponent<UILabel>();
         stateListWidget = transform.FindChild("Container/CardInfo/StateList").GetComponent<UIWidget>();
         stateListGrid = transform.FindChild("Container/CardInfo/StateList/List").GetComponent<UIGrid>();
     }
@@ -35,11 +39,13 @@ public class CardDesPanel : MonoBehaviour
     public void UpdateDesPanelUI(Card cardInfo)
     {
         this.latestShowCard = cardInfo;//缓存数据
-        if(cardInfo is CharacterCard)
+        if (cardInfo is CharacterCard)
         {
             CharacterCard charater = cardInfo as CharacterCard;
             cardNameLabel.text = charater.GetCardName();
             cardLevelLabel.text = charater.GetCardLevel().ToString();
+            cardDamageLabel.text = charater.GetBaseCardDamage().ToString();
+            cardSpeedLabel.text = charater.GetBaseCardSpeed().ToString();
 
             ClearStateList();//清空状态列表
 
@@ -50,7 +56,11 @@ public class CardDesPanel : MonoBehaviour
             }
             else
             {
+                //有状态
                 stateListWidget.alpha = 1;
+
+                int addedDamage = 0;
+                int addedSpeed = 0;
 
                 foreach (StateSkill state in states)
                 {
@@ -61,11 +71,28 @@ public class CardDesPanel : MonoBehaviour
 
                     //修改信息
                     stateGo.GetComponentInChildren<UILabel>().text = state.GetSkillShowName();
+
+                    //状态改变
+                    if (state is AttackUp)
+                    {
+                        AttackUp temp = state as AttackUp;
+                        addedDamage += temp.GetAddedDamage();
+                    }
+                }
+
+                //附加值
+                if (addedDamage != 0)
+                {
+                    cardDamageLabel.text += string.Format("( + {0})", addedDamage);
+                }
+                if (addedSpeed != 0)
+                {
+                    cardSpeedLabel.text += string.Format("( + {0})", addedSpeed);
                 }
             }
         }
 
-        
+
     }
 
     /// <summary>
