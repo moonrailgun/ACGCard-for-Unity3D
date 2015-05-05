@@ -36,9 +36,4 @@ public class UniversalAttackSkill : AttackSkill {
         this.skillCommonName = name;
         return this;
     }
-
-    public override void OnUse(GameObject target)
-    {
-        throw new System.NotImplementedException();
-    }
 }

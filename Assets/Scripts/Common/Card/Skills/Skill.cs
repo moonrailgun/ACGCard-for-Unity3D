@@ -8,6 +8,7 @@ public abstract class Skill : ISkill
     protected string skillCommonName;
     protected static GameScene gameScene;
     protected string skillIconName;
+    protected int consumedEnergy;//消耗的能量
 
     protected GameObject skillButtonObject;//技能在游戏中的按钮实例
 
@@ -17,6 +18,35 @@ public abstract class Skill : ISkill
         {
             gameScene = GameObject.FindGameObjectWithTag(Tags.SceneController).GetComponent<GameScene>();
         }
+    }
+
+    /// <summary>
+    /// 检查施法条件
+    /// 如果不合法则返回false
+    /// </summary>
+    /// <param name="from">施法对象</param>
+    protected virtual bool CheckConjureCondition(GameObject from)
+    {
+        //消耗能量
+        if (this.consumedEnergy > 0)
+        {
+            Card card = from.GetComponent<CardContainer>().GetCardData();
+            if (card is CharacterCard)
+            {
+                CharacterCard character = card as CharacterCard;
+                if (!character.TryConsumeEnergy(this.consumedEnergy))
+                {
+                    //能量不足
+                    ShortMessagesSystem.Instance.ShowShortMessage("能量不足以放出技能");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /// <summary>
@@ -77,7 +107,7 @@ public abstract class Skill : ISkill
         return this.skillButtonObject;
     }
 
-    public abstract void OnUse();
+    public abstract void OnUse();//被点击
     public abstract void OnUse(GameObject target);
-    public abstract void OnUse(GameObject from, GameObject target);
+    public abstract void OnUse(GameObject from, GameObject target);// 被点击后有施法目标
 }

@@ -39,11 +39,19 @@ public abstract class AttackSkill : Skill
     }
     public override void OnUse(GameObject from, GameObject target)
     {
-        Card skillOrigin = from.GetComponent<CardContainer>().GetCardData();//技能源数据
-        Card skillBelong = target.GetComponent<CardContainer>().GetCardData();//技能归属数据
-        LogsSystem.Instance.Print(skillOrigin.GetCardName() + "攻击了" + skillBelong.GetCardName());
-        skillBelong.OnSkillUsed(this, skillOrigin);
+        if (CheckConjureCondition(from))
+        {
+            Card skillOrigin = from.GetComponent<CardContainer>().GetCardData();//技能源数据
+            Card skillBelong = target.GetComponent<CardContainer>().GetCardData();//技能归属数据
+            LogsSystem.Instance.Print(skillOrigin.GetCardName() + "攻击了" + skillBelong.GetCardName());
+            skillBelong.OnSkillUsed(this, skillOrigin);
 
-        //--创建技能特效
+            //--创建技能特效
+        }
+    }
+
+    public override void OnUse(GameObject target)
+    {
+        throw new NotImplementedException();
     }
 }

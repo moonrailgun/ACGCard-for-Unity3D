@@ -21,6 +21,11 @@ public class CardContainer : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        UpdateCardUI();
+    }
+
     public void OnSelected()
     {
 

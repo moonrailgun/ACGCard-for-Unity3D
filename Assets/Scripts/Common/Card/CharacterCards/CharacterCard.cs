@@ -44,6 +44,25 @@ public class CharacterCard : Card
     }
 
     /// <summary>
+    /// 尝试消耗能量
+    /// 如果能量不足则返回false
+    /// </summary>
+    public bool TryConsumeEnergy(int consumeEnergyValue)
+    {
+        if (energy >= consumeEnergyValue)
+        {
+            //能量足够
+            energy -= consumeEnergyValue;
+            return true;
+        }
+        else
+        {
+            //能量不足
+            return false;
+        }
+    }
+
+    /// <summary>
     /// 当被技能指向（使用）
     /// </summary>
     /// <param name="skill">卡片被指向的技能</param>

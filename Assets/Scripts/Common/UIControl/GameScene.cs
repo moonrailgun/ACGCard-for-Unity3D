@@ -201,7 +201,6 @@ public class GameScene : MonoBehaviour
         //播放动画
         GameObject go = skill.GetButtonObject();
         UITweener tweener = go.GetComponent<UITweener>();
-        Debug.Log(tweener);
         if (tweener != null)
         {
             tweener.PlayForward();
