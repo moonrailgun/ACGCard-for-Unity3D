@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class WeaponAttackUp : AttackUp
 {
     #region 构造函数
     public WeaponAttackUp(int value, int lastRound)
-        : base(value,lastRound)
+        : base(value, lastRound)
     {
 
     }
@@ -13,7 +14,7 @@ public class WeaponAttackUp : AttackUp
 
     public override void OnRoundStart()
     {
-        //清空回合数的递减，设定为什么都不做
+        //清空回合数的递减，对于武器设定为什么都不做
     }
 
     /// <summary>

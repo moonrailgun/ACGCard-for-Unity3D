@@ -12,15 +12,17 @@ public class CharacterCard : Card
     protected int baseDamage;//攻击力
     protected int baseSpeed;//速度
 
+    protected Equipment equipments;//装备
+
     protected List<Skill> cardSkill;//卡片技能列表
-    protected List<StateSkill> cardState;//卡片状态列表
+    protected Dictionary<StateSkill, Card> cardState;//卡片状态列表 - <状态内容,状态来源>
 
     #region 构造函数
     public CharacterCard(int cardId, string cardName, List<Skill> cardSkill, CardRarity cardRarity, string cardDescription = "")
         : base(cardId, cardName, CardType.Character, cardRarity, cardDescription)
     {
         this.cardSkill = cardSkill;
-        this.cardState = new List<StateSkill>();
+        this.cardState = new Dictionary<StateSkill, Card>();
     }
     #endregion
 
@@ -105,9 +107,9 @@ public class CharacterCard : Card
         //状态回调
         if (cardState.Count != 0)
         {
-            foreach (StateSkill state in cardState)
+            foreach (KeyValuePair<StateSkill, Card> pair in cardState)
             {
-                state.OnCharaterAttack();//向下调用事件
+                pair.Key.OnCharaterAttack();//向下调用事件
                 if (cardState.Count == 0) { break; }
             }
         }
@@ -160,13 +162,13 @@ public class CharacterCard : Card
     /// <summary>
     /// 添加卡片状态
     /// </summary>
-    public void AddState(StateSkill state)
+    public void AddState(StateSkill state, Card from)
     {
-        state.SetOwnerCard(this);
-        this.cardState.Add(state);
+        state.SetOwnerCard(this);//设置状态的拥有者
+        this.cardState.Add(state, from);//状态，来源
 
         LogsSystem.Instance.Print(
-            string.Format("角色 {0} 获得状态 {1} ，持续 {2} 回合", CardNames.Instance.GetCardName(this.cardName), SkillNames.Instance.GetSkillName(state.GetSkillCommonName()), state.GetLastRound())
+            string.Format("角色 {0} 获得状态 {1} ，持续 {2} 回合(来自:{3})", CardNames.Instance.GetCardName(this.cardName), SkillNames.Instance.GetSkillName(state.GetSkillCommonName()), state.GetLastRound(), from.GetCardName())
             );
     }
 
@@ -175,15 +177,61 @@ public class CharacterCard : Card
     /// </summary>
     public void RemoveState(StateSkill state)
     {
-        this.cardState.Remove(state);
+        if (this.cardState.ContainsKey(state))
+        {
+            this.cardState.Remove(state);
+        }
     }
+
+    /// <summary>
+    /// 获取技能来源
+    /// </summary>
+    public Card GetStateOrigin(StateSkill state)
+    {
+        return this.cardState[state];
+    }
+
+    #region 装备道具
+    /// <summary>
+    /// 装备武器
+    /// </summary>
+    public void EquipWeapon(Weapon weapon)
+    {
+        if (this.equipments.weapon == null)
+        {
+            //角色没有装备
+            this.equipments.weapon = weapon;
+        }
+        else
+        {
+            //角色已经有装备了
+            this.equipments.weapon.OnUnequiped(this);
+            this.equipments.weapon = weapon;
+        }
+    }
+    /// <summary>
+    /// 装备盔甲
+    /// </summary>
+    public void EquipArmor(EquipmentCard armor)
+    {
+        throw new System.NotImplementedException();
+    }
+    /// <summary>
+    /// 装备首饰
+    /// </summary>
+    public void EquipJewelry(EquipmentCard armor)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    #endregion
 
     #region 外部访问接口
     public int GetCardLevel()
     { return this.level; }
     public List<Skill> GetCardSkillList()
     { return this.cardSkill; }
-    public List<StateSkill> GetCardState()
+    public Dictionary<StateSkill, Card> GetCardState()
     { return this.cardState; }
     public int GetBaseCardDamageValue()
     { return this.baseDamage; }
@@ -194,8 +242,9 @@ public class CharacterCard : Card
         int value = baseDamage;
         if (cardState.Count != 0)
         {
-            foreach (StateSkill state in cardState)
+            foreach (KeyValuePair<StateSkill, Card> pair in cardState)
             {
+                StateSkill state = pair.Key;
                 if (state is AttackUp)
                 {
                     //如果是攻击上升类状态
@@ -209,5 +258,15 @@ public class CharacterCard : Card
     {
         throw new System.NotImplementedException();
     }
+    public Equipment GetCharacterEquipments()
+    { return this.equipments; }
     #endregion
+
+    public struct Equipment
+    {
+        public Weapon weapon;//武器
+        public EquipmentCard armor;//盔甲
+        public EquipmentCard jewelry1;//首饰1
+        public EquipmentCard jewelry2;//首饰2
+    }
 }

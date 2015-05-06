@@ -19,6 +19,8 @@ public class GameScene : MonoBehaviour
         this.uiManager = GetComponent<GameCardUIManager>();
         this.roundDoneButton = GameObject.Find("GamePanel/RoundDone");
 
+        Init();
+
         //
 
         //--网络编程

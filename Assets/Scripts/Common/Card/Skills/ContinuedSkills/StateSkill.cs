@@ -51,7 +51,19 @@ public abstract class StateSkill : Skill
     /// </summary>
     public void DestoryState()
     {
-        ownerCard.RemoveState(this);
+        if (ownerCard != null)
+        {
+            Card origin = ownerCard.GetStateOrigin(this);
+            if (origin is EquipmentCard)
+            {
+                //解除角色武装
+                (origin as EquipmentCard).OnUnequiped(ownerCard);
+            }
+            else
+            {
+                ownerCard.RemoveState(this);
+            }
+        }
     }
 
     public override string GetSkillShowName()

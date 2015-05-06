@@ -49,7 +49,7 @@ public class CardDesPanel : MonoBehaviour
 
             ClearStateList();//清空状态列表
 
-            List<StateSkill> states = charater.GetCardState();
+            Dictionary<StateSkill,Card> states = charater.GetCardState();
             if (states.Count == 0)
             {
                 stateListWidget.alpha = 0;
@@ -62,8 +62,10 @@ public class CardDesPanel : MonoBehaviour
                 int addedDamage = 0;
                 int addedSpeed = 0;
 
-                foreach (StateSkill state in states)
+                foreach (KeyValuePair<StateSkill,Card> pair in states)
                 {
+                    StateSkill state = pair.Key;
+
                     //实例化并修正位置
                     GameObject prefab = Resources.Load<GameObject>("State");
                     GameObject stateGo = NGUITools.AddChild(stateListGrid.gameObject, prefab);
