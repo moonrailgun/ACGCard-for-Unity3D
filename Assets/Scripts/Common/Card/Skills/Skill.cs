@@ -8,7 +8,7 @@ public abstract class Skill : ISkill
     protected string skillCommonName;
     protected static GameScene gameScene;
     protected string skillIconName;
-    protected int consumedEnergy;//消耗的能量
+    protected int consumedEnergy = -1;//消耗的能量
 
     protected GameObject skillButtonObject;//技能在游戏中的按钮实例
 
@@ -28,7 +28,7 @@ public abstract class Skill : ISkill
     protected virtual bool CheckConjureCondition(GameObject from)
     {
         //消耗能量
-        if (this.consumedEnergy > 0)
+        if (this.consumedEnergy >= 0)
         {
             Card card = from.GetComponent<CardContainer>().GetCardData();
             if (card is CharacterCard)
@@ -45,6 +45,10 @@ public abstract class Skill : ISkill
                     return true;
                 }
             }
+        }
+        else
+        {
+            Debug.Log("没有配置消耗能量");
         }
         return false;
     }

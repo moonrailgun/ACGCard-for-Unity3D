@@ -12,11 +12,6 @@ public class Fireball : AttackSkill
     {
         this.skillCommonName = "Fireball";
         this.damage = 20;//测试用。随便写的
-    }
-
-    public override void OnUse(GameObject target)
-    {
-        LogsSystem.Instance.Print("对" + target.name + "使用了火球术");
+        this.consumedEnergy = 20;
     }
 }
-

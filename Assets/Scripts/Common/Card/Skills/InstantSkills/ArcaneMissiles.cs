@@ -10,7 +10,7 @@ public class ArcaneMissiles : AttackSkill
         :base()
     {
         this.skillCommonName = "ArcaneMissiles";
-        this.damage = 10;//测试用。随便写的
+        this.damage = 70;//测试用。随便写的
         this.consumedEnergy = 60;
     }
 }

@@ -6,26 +6,21 @@ using System.Collections;
 /// 只修改了名字和图标的技能
 /// （为了凑数）
 /// </summary>
-public class UniversalAttackSkill : AttackSkill {
+public class UniversalAttackSkill : AttackSkill
+{
     /// <summary>
     /// 如果iconName为空则设为未知图标
     /// </summary>
-    /// <param name="commonName"></param>
-    /// <param name="damage"></param>
-    /// <param name="iconName"></param>
-    public UniversalAttackSkill(string commonName,int damage,string iconName = "")
-        :base()
+    public UniversalAttackSkill(string commonName, int damage, int consumedEnergy, string iconName = "")
+        : base()
     {
-        SetCommonName(commonName);
-        SetBasicDamage(damage);
+        this.skillCommonName = commonName;
+        this.damage = damage;
+        this.consumedEnergy = consumedEnergy;
         if (!string.IsNullOrEmpty(iconName))
-        {
-            SetIconName(iconName);
-        }
+        { SetIconName(iconName); }
         else
-        {
-            SetIconName("Unknown");
-        }
+        { SetIconName("Unknown"); }
     }
 
     /// <summary>

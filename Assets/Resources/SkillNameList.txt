@@ -7,6 +7,23 @@ FireArrow=火焰矢
 Meteorites=陨星术
 Thunderbolt=落雷
 MeteoriteCut=陨星斩
+Yaya01=吹鸣二四冲
+Yaya02=光焰十二结
+Yaya03=绝冲
+Rukia01=初舞·月白
+Rukia02=次舞·白涟
+Rukia03=三舞·白刃
+Illyasviel01=多元重奏饱和炮击
+Asuna01=妖精之舞
+Asuna02=圣母圣咏
+Haruhi01=不可能的妄想
+Haruhi02=引发世界的异常
+Kurumi01=Aleph
+Kurumi02=Dalet
+Kurumi03=Zayin
+Lucy01=星灵魔法
+Lucy02=星河之鞭
+Lucy03=星图史话
 
 ###########################
 #状态类
