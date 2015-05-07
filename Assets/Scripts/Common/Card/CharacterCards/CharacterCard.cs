@@ -219,9 +219,47 @@ public class CharacterCard : Card
     /// <summary>
     /// 装备首饰
     /// </summary>
-    public void EquipJewelry(EquipmentCard armor)
+    public void EquipJewelry(Jewelry jewelry)
     {
-        throw new System.NotImplementedException();
+        //如果两个首饰槽都有装备了。覆盖稀有度小的。稀有度一样则随机覆盖
+        if (this.equipments.jewelry1 != null && this.equipments.jewelry2 != null)
+        {
+            if (this.equipments.jewelry1.GetCardRarity() != this.equipments.jewelry2.GetCardRarity())
+            {
+                //替换稀有度低的
+                if (this.equipments.jewelry1.GetCardRarity() > this.equipments.jewelry2.GetCardRarity())
+                {
+                    this.equipments.jewelry1 = jewelry;
+                }
+                else
+                {
+                    this.equipments.jewelry2 = jewelry;
+                }
+            }
+            else
+            {
+                //随机替换
+                if (Random.value < 0.5f)
+                {
+                    this.equipments.jewelry1 = jewelry;
+                }
+                else
+                {
+                    this.equipments.jewelry2 = jewelry;
+                }
+            }
+        }
+        else
+        {
+            if (this.equipments.jewelry1 == null)
+            {
+                this.equipments.jewelry1 = jewelry;
+            }
+            else if (this.equipments.jewelry2 == null)
+            {
+                this.equipments.jewelry2 = jewelry;
+            }
+        }
     }
 
     #endregion

@@ -21,3 +21,5 @@ Avalon=远离尘世的理想乡
 Excalibur=誓约胜利之剑
 IceSword=冰之刃
 Shield=盾
+Ring=戒指
+HeartOfOcean=海洋之心

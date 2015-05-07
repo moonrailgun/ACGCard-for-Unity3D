@@ -66,6 +66,8 @@ public class CardManager
         AddCard(new EquipmentCard(2, "Avalon", CardRarity.Legend));
         AddCard(new Weapon(3, "IceSword", CardRarity.Excellent, 10, 5));
         AddCard(new EquipmentCard(4, "Shield", CardRarity.Normal));
+        AddCard(new Jewelry(5, "Ring", CardRarity.Normal));
+        AddCard(new Jewelry(6, "HeartOfOcean", CardRarity.Legend));
 
         LogsSystem.Instance.Print(string.Format("卡片注册完毕。共注册卡片{0}个", characterCardMap.Count));
     }

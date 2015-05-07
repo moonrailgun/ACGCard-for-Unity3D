@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// 武器类
+/// </summary>
 public class Weapon : EquipmentCard
 {
     protected int attackUpValue;//装备后攻击提升的值
