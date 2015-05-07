@@ -24,6 +24,7 @@ public class GameClient
     public TcpClient gameClient;
     public Encoding encoding;//编码格式
     private TCPGameDataHandler dataHandler;//数据处理器
+    public AllocRoomData allocRoomData;//分配到的房间的信息
 
     public GameClient()
     {
@@ -69,9 +70,9 @@ public class GameClient
 
 
     #region 发送数据
-    public void Send(Socket socket, GameDataDTO data)
+    public void Send(Socket socket, GameData data)
     {
-        string sendMessage = JsonCoding<GameDataDTO>.encode(data);
+        string sendMessage = JsonCoding<GameData>.encode(data);
         byte[] sendBytes = encoding.GetBytes(sendMessage);
         Send(socket, sendBytes);
     }
@@ -163,9 +164,9 @@ public class GameClient
             string receiveMessage = encoding.GetString(receiveBytes);
             LogsSystem.Instance.Print(string.Format("[TCP FROM{0}]:{1}", socket.RemoteEndPoint, receiveMessage));//日志记录
             
-            GameDataDTO receiveData = JsonCoding<GameDataDTO>.decode(receiveMessage);
-            GameDataDTO returnData = dataHandler.Process(receiveData, socket);//数据处理
-            //响应
+            GameData receiveData = JsonCoding<GameData>.decode(receiveMessage);
+            GameData returnData = dataHandler.Process(receiveData, socket);//数据处理
+            //只有当返回值不为空的时候有响应。
             if (returnData != null)
             {
                 Send(socket, returnData);
