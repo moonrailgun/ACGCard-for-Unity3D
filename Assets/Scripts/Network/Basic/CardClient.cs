@@ -16,11 +16,10 @@ public class CardClient : MonoBehaviour
     public static string ServerAddress;
     public string hostName = "0.0.0.0";
     private int remotePort = 23333;
-    private int localPort = 22233;//固定
+    private int localPort;//不固定
     private bool isThreadRun = false;
 
     private UdpClient udpReceiveClient;
-    private UdpClient udpSendClient;
 
     private List<SocketModel> messageList = new List<SocketModel>();
 
@@ -46,11 +45,13 @@ public class CardClient : MonoBehaviour
     /// </summary>
     private void NetworkInit()
     {
-        if (udpReceiveClient == null || udpSendClient == null)
+        if (udpReceiveClient == null)
         {
-            udpReceiveClient = new UdpClient(localPort);
-            udpSendClient = new UdpClient();
+            udpReceiveClient = new UdpClient(0);//任意绑定一个可用端口
+            localPort = (udpReceiveClient.Client.LocalEndPoint as IPEndPoint).Port;
         }
+
+        LogsSystem.Instance.Print("网络初始化完毕，可用端口号:" + localPort);
 
         //开始监听
         BeginListen();
@@ -66,12 +67,12 @@ public class CardClient : MonoBehaviour
     }
     public void SendMsg(string hostname, int port, string message)
     {
-        if (hostname != "0.0.0.0" && udpSendClient != null)
+        if (hostname != "0.0.0.0" && udpReceiveClient != null)
         {
             try
             {
                 byte[] dgram = Encoding.UTF8.GetBytes(message);
-                udpSendClient.Send(dgram, dgram.Length, hostname, port);
+                udpReceiveClient.Send(dgram, dgram.Length, hostname, port);
                 LogsSystem.Instance.Print(string.Format("[To {0}:{1}]{2}", hostname, port, message));
             }
             catch (Exception ex)
@@ -95,7 +96,7 @@ public class CardClient : MonoBehaviour
         {
             try
             {
-                udpSendClient.Send(packet, packet.Length, hostName, remotePort);
+                udpReceiveClient.Send(packet, packet.Length, hostName, remotePort);
             }
             catch (Exception ex)
             {
@@ -122,7 +123,6 @@ public class CardClient : MonoBehaviour
         {
             Debug.Log("已关闭线程");
             udpReceiveClient.Close();
-            udpSendClient.Close();
             return;
         }
 
@@ -140,7 +140,6 @@ public class CardClient : MonoBehaviour
         catch (SocketException)//出现Socket异常就关闭连接 
         {
             udpReceiveClient.Close();//这个函数用来关闭客户端连接
-            udpSendClient.Close();
             return;
         }
         udpReceiveClient.BeginReceive(ReceiveCallBack, null);
