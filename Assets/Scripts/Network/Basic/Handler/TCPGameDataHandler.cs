@@ -18,7 +18,7 @@ public class TCPGameDataHandler
                 }
             case OperateCode.Offline:
                 {
-                    Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, Windows.WindowsType.MessageWindow);
+                    Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, null, Windows.WindowsType.MessageWindow);
                     return null;
                 }
             default:

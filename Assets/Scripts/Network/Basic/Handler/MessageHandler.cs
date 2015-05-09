@@ -54,7 +54,7 @@ public class MessageHandler : MonoBehaviour
             //每帧检测TCP数据列表,每帧处理一个消息请求（降低瞬间负荷）
             if (tcpMessageList.Count > 0)
             {
-                List<GameData> gameData = new List<GameData>( tcpMessageList.Keys);
+                List<GameData> gameData = new List<GameData>(tcpMessageList.Keys);
 
                 GameData receiveData = gameData[0];//获取第一个
                 Socket socket = tcpMessageList[receiveData];
@@ -103,7 +103,7 @@ public class MessageHandler : MonoBehaviour
                 }
             case SocketProtocol.OFFLINE:
                 {
-                    Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, Windows.WindowsType.MessageWindow);
+                    Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, null, Windows.WindowsType.MessageWindow);
                     break;
                 }
             default:
