@@ -101,19 +101,16 @@ public class MessageHandler : MonoBehaviour
                     cardInfoHandler.Process(model);
                     break;
                 }
+            case SocketProtocol.OFFLINE:
+                {
+                    Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, Windows.WindowsType.MessageWindow);
+                    break;
+                }
             default:
                 {
                     LogsSystem.Instance.Print("未知的协议");
                     break;
                 }
         }
-    }
-
-    /// <summary>
-    /// 处理TCP SOCKET消息
-    /// </summary>
-    private void ProcessTCPMessage()
-    {
-
     }
 }
