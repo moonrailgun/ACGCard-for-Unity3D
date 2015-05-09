@@ -23,14 +23,15 @@ public class GameClient
     public const int gamePort = 28283;
     public TcpClient gameClient;
     public Encoding encoding;//编码格式
-    private TCPGameDataHandler dataHandler;//数据处理器
     public AllocRoomData allocRoomData;//分配到的房间的信息
+
+    private Dictionary<GameData, Socket> gameDataMessageList;//缓存游戏数据信息,等待主线程调用
 
     public GameClient()
     {
         gameClient = new TcpClient();
-        dataHandler = new TCPGameDataHandler();
         encoding = Encoding.UTF8;
+        gameDataMessageList = new Dictionary<GameData, Socket>();
     }
 
     /// <summary>
@@ -163,14 +164,8 @@ public class GameClient
         {
             string receiveMessage = encoding.GetString(receiveBytes);
             LogsSystem.Instance.Print(string.Format("[TCP FROM{0}]:{1}", socket.RemoteEndPoint, receiveMessage));//日志记录
-            
             GameData receiveData = JsonCoding<GameData>.decode(receiveMessage);
-            GameData returnData = dataHandler.Process(receiveData, socket);//数据处理
-            //只有当返回值不为空的时候有响应。
-            if (returnData != null)
-            {
-                Send(socket, returnData);
-            }
+            this.gameDataMessageList.Add(receiveData, socket);//将得到的数据缓存到内存等待主线程读取
         }
         catch (Exception ex)
         {
@@ -178,6 +173,9 @@ public class GameClient
         }
     }
     #endregion
+
+    public Dictionary<GameData, Socket> GetGameDataList()
+    { return this.gameDataMessageList; }
 
     class StateObject
     {
