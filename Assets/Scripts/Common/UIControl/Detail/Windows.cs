@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Windows
 {
@@ -12,7 +13,7 @@ public class Windows
     /// <summary>
     /// 创建窗体
     /// </summary>
-    public static void CreateWindows(string title, string message, string buttonText = "确认", UIWidget.Pivot messagePivot = UIWidget.Pivot.TopLeft, EventDelegate.Callback events = null, WindowsType type = WindowsType.MessageWindow)
+    public static void CreateWindows(string title, string message, string buttonText = "确认", UIWidget.Pivot messagePivot = UIWidget.Pivot.TopLeft, List<EventDelegate.Callback> events = null, WindowsType type = WindowsType.MessageWindow)
     {
         //创建窗体
         GameObject uiroot = GameObject.Find("UI Root");
@@ -43,11 +44,13 @@ public class Windows
             //点击事件
             if (events == null && type == WindowsType.MessageWindow)
             {
-                events += CloseWindow;
+                events = new List<EventDelegate.Callback>();
+                events.Add(new EventDelegate.Callback(CloseWindow));
             }
             if (events != null)
             {
-                confirmButton.GetComponent<UIButton>().onClick.Add(new EventDelegate(events));
+                foreach(EventDelegate.Callback _event in events)
+                    confirmButton.GetComponent<UIButton>().onClick.Add(new EventDelegate(_event));
             }
 
             //动画

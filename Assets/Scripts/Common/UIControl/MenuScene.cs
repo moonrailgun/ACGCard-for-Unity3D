@@ -65,12 +65,26 @@ public class MenuScene : MonoBehaviour
     /// </summary>
     public void GameStart()
     {
-        Windows.CreateWindows("请稍后", "正在匹配对手...", "取消匹配", UIWidget.Pivot.Center);
-        if (cardClient != null || cardClient.hostName != "0.0.0.0")
+        if (cardClient != null && cardClient.hostName != "0.0.0.0")
         {
+            //窗口
+            List<EventDelegate.Callback> events = new List<EventDelegate.Callback>();
+            events.Add(new EventDelegate.Callback(Windows.CloseWindow));
+            events.Add(new EventDelegate.Callback(DisconnectGame));
+            events.Add(new EventDelegate.Callback(Test));
+            Windows.CreateWindows("请稍后", "正在匹配对手...", "取消匹配", UIWidget.Pivot.Center, events);
+
             string serverHost = cardClient.hostName;//获取IP地址
             GameClient.Instance.ConnectGameServer(serverHost);//连接服务器
         }
+    }
+    private void DisconnectGame()
+    {
+        Debug.Log("a");
+    }
+    private void Test()
+    {
+        Debug.Log("b");
     }
 
     /// <summary>
