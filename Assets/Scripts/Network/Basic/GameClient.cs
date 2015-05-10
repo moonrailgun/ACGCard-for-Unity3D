@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Collections;  
+using UnityEngine;
 
 public class GameClient
 {
@@ -66,11 +68,35 @@ public class GameClient
             gameClient.Close();//关闭连接
         }
     }
+    /// <summary>
+    /// 延时关闭TCP连接的方法
+    /// </summary>
+    public IEnumerator DelayCloseTcpConnectCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        CloseTcpConnect();
+    }
 
 
 
 
     #region 发送数据
+    /// <summary>
+    /// 发送到已经连接的
+    /// </summary>
+    /// <param name="data"></param>
+    public void SendToServer(GameData data)
+    {
+        if (this.gameClient != null)
+        {
+            Send(this.gameClient.Client, data);
+        }
+        else
+        {
+            LogsSystem.Instance.Print("未连接到游戏服务器", LogLevel.WARN);
+        }
+    }
     public void Send(Socket socket, GameData data)
     {
         string sendMessage = JsonCoding<GameData>.encode(data);

@@ -71,7 +71,6 @@ public class MenuScene : MonoBehaviour
             List<EventDelegate.Callback> events = new List<EventDelegate.Callback>();
             events.Add(new EventDelegate.Callback(Windows.CloseWindow));
             events.Add(new EventDelegate.Callback(DisconnectGame));
-            events.Add(new EventDelegate.Callback(Test));
             Windows.CreateWindows("请稍后", "正在匹配对手...", "取消匹配", UIWidget.Pivot.Center, events);
 
             string serverHost = cardClient.hostName;//获取IP地址
@@ -80,11 +79,20 @@ public class MenuScene : MonoBehaviour
     }
     private void DisconnectGame()
     {
-        Debug.Log("a");
-    }
-    private void Test()
-    {
-        Debug.Log("b");
+        DisconnectDTO data = new DisconnectDTO();
+        data.uid = Global.Instance.playerInfo.uid;
+        data.UUID = Global.Instance.playerInfo.UUID;
+        data.protocol = (int)LinkProtocol.TCP;
+
+        GameData gameData = new GameData();
+        gameData.roomID = -1;
+        gameData.operateCode = OperateCode.Offline;
+        gameData.operateData = JsonCoding<DisconnectDTO>.encode(data);
+
+        GameClient.Instance.SendToServer(gameData);
+        LogsSystem.Instance.Print("中止匹配");
+
+        StartCoroutine(GameClient.Instance.DelayCloseTcpConnectCoroutine(1f));//一秒后关闭TCP连接（临时做法。后期需要优化）
     }
 
     /// <summary>
