@@ -77,6 +77,10 @@ public class MenuScene : MonoBehaviour
             GameClient.Instance.ConnectGameServer(serverHost);//连接服务器
         }
     }
+
+    /// <summary>
+    /// 断开游戏连接
+    /// </summary>
     private void DisconnectGame()
     {
         DisconnectDTO data = new DisconnectDTO();
@@ -91,8 +95,6 @@ public class MenuScene : MonoBehaviour
 
         GameClient.Instance.SendToServer(gameData);
         LogsSystem.Instance.Print("中止匹配");
-
-        StartCoroutine(GameClient.Instance.DelayCloseTcpConnectCoroutine(1f));//一秒后关闭TCP连接（临时做法。后期需要优化）
     }
 
     /// <summary>

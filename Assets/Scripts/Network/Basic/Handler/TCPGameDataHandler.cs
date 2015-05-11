@@ -18,8 +18,8 @@ public class TCPGameDataHandler
                 }
             case OperateCode.Offline:
                 {
-                    Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, null, Windows.WindowsType.MessageWindow);
-                    return null;
+                    //Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, null, Windows.WindowsType.MessageWindow);
+                    return ProcessOffline(data);
                 }
             default:
                 {
@@ -66,6 +66,17 @@ public class TCPGameDataHandler
             }
         }
 
+        return null;
+    }
+
+    private GameData ProcessOffline(GameData data)
+    {
+        if (GameClient.Instance.gameClient.Connected)
+        {
+            GameClient.Instance.gameClient.Client.EndReceive(null);
+            GameClient.Instance.gameClient.Close();
+            ShortMessagesSystem.Instance.ShowShortMessage("您已经断开了连接");
+        }
         return null;
     }
 }

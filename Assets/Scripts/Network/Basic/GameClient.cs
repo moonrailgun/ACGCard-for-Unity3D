@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Collections;  
+using System.Collections;
 using UnityEngine;
 
 public class GameClient
@@ -146,7 +146,7 @@ public class GameClient
             Socket client = receiveState.socket;
 
             int bytesRead = client.EndReceive(ar);
-            if (bytesRead < StateObject.buffSize)
+            if (bytesRead < StateObject.buffSize && bytesRead > 0)
             {
                 //如果读取到数据长度较小
                 foreach (byte b in receiveState.buffer)
@@ -161,13 +161,13 @@ public class GameClient
 
                 //接受完成
                 byte[] receiveData = receiveState.dataByte.ToArray();
-                LogsSystem.Instance.Print(string.Format("接受到{0}字节数据", receiveData.Length));
+                LogsSystem.Instance.Print(string.Format("读取到{1}长度数据,接受到{0}字节数据", receiveData.Length, bytesRead));
                 //处理数据
                 ProcessReceiveMessage(receiveData, receiveState.socket);
 
                 Receive(client);//继续下一轮的接受
             }
-            else
+            else if (bytesRead >= StateObject.buffSize)
             {
                 //如果读取到数据长度大于缓冲区
                 receiveState.dataByte.AddRange(receiveState.buffer);//将缓存加入结果列
@@ -191,7 +191,10 @@ public class GameClient
             string receiveMessage = encoding.GetString(receiveBytes);
             LogsSystem.Instance.Print(string.Format("[TCP FROM{0}]:{1}", socket.RemoteEndPoint, receiveMessage));//日志记录
             GameData receiveData = JsonCoding<GameData>.decode(receiveMessage);
-            this.gameDataMessageList.Add(receiveData, socket);//将得到的数据缓存到内存等待主线程读取
+            if (receiveData != null)
+            {
+                this.gameDataMessageList.Add(receiveData, socket);//将得到的数据缓存到内存等待主线程读取
+            }
         }
         catch (Exception ex)
         {
