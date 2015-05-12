@@ -29,6 +29,7 @@ public class MenuScene : MonoBehaviour
     private void Awake()
     {
         Global.Instance.scene = SceneType.MenuScene;//切换场景变量
+        Global.Instance.activedSceneManager = this;
 
         //尝试获取网络端口
         try

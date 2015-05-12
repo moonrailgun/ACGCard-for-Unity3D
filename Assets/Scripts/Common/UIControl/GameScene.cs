@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GameScene : MonoBehaviour
 {
-    public GameCard cardList = new GameCard();//所有卡片集合
+    public GameManager gameManager;
     private GameObject selectedCardObject;//被选中的卡片
     private Skill selectedSkill;//被选中的技能
     private GameCardUIManager uiManager;//卡片UI管理器
@@ -15,6 +15,7 @@ public class GameScene : MonoBehaviour
     private void Awake()
     {
         Global.Instance.scene = SceneType.GameScene;
+        Global.Instance.activedSceneManager = this;
 
         this.uiManager = GetComponent<GameCardUIManager>();
         this.roundDoneButton = GameObject.Find("GamePanel/RoundDone");
@@ -29,6 +30,9 @@ public class GameScene : MonoBehaviour
     }
     private void Init()
     {
+        //初始化一局游戏的管理器
+        this.gameManager = new GameManager();
+
         //配置游戏桌面使其能够点击后取消卡片和技能的选中
         GameObject GamePanel = GameObject.Find("Background/GamePanel");
         UIEventListener.Get(GamePanel).onClick += OnClickGameDesktop;
@@ -37,17 +41,17 @@ public class GameScene : MonoBehaviour
     private void Start()
     {
         //测试数据
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(1, 1, 100, 100,10,200));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(6, 1, 100, 100, 10, 200));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(8, 1, 100, 100, 10, 200));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(12, 1, 100, 100, 10, 200));
-        CreateGameCharacterCard(GameSide.Our, CardManager.Instance.GetCharacterById(24, 1, 100, 100, 10, 200));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(24, 1, 100, 100, 10, 200));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(12, 1, 100, 100, 10, 200));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(1, 1, 100, 100, 10, 200));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(25, 1, 100, 100, 10, 200));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(5, 1, 100, 100, 10, 200));
-        CreateGameCharacterCard(GameSide.Enemy, CardManager.Instance.GetCharacterById(17, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Our, CardManager.Instance.GetCharacterById(1, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Our, CardManager.Instance.GetCharacterById(6, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Our, CardManager.Instance.GetCharacterById(8, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Our, CardManager.Instance.GetCharacterById(12, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Our, CardManager.Instance.GetCharacterById(24, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Enemy, CardManager.Instance.GetCharacterById(24, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Enemy, CardManager.Instance.GetCharacterById(12, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Enemy, CardManager.Instance.GetCharacterById(1, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Enemy, CardManager.Instance.GetCharacterById(25, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Enemy, CardManager.Instance.GetCharacterById(5, 1, 100, 100, 10, 200));
+        CreateGameCharacterCard(GameManager.GameSide.Enemy, CardManager.Instance.GetCharacterById(17, 1, 100, 100, 10, 200));
 
 
         CreateGameHandCard(CardManager.Instance.GetItemById(1));
@@ -62,12 +66,12 @@ public class GameScene : MonoBehaviour
     /// 生成游戏卡片
     /// 角色卡
     /// </summary>
-    public GameObject CreateGameCharacterCard(GameSide side)
+    public GameObject CreateGameCharacterCard(GameManager.GameSide side)
     {
         Card cardinfo = new Card();
         return CreateGameCharacterCard(side, cardinfo);
     }
-    public GameObject CreateGameCharacterCard(GameSide side, Card cardinfo)
+    public GameObject CreateGameCharacterCard(GameManager.GameSide side, Card cardinfo)
     {
         if (Global.Instance.scene == SceneType.GameScene)
         {
@@ -107,7 +111,7 @@ public class GameScene : MonoBehaviour
         container.SetCardData(cardinfo);//设置卡片属性
         container.UpdateCardUI();//更新贴图
         uiManager.AddHandUIListener(card);//添加手牌UI事件监听
-        container.SetGameSide(GameSide.Our);
+        container.SetGameSide(GameManager.GameSide.Our);
 
         //parent.GetComponent<UIGrid>().Reposition();//更新卡片位置
 
@@ -303,18 +307,4 @@ public class GameScene : MonoBehaviour
         arrowLine.HideArrowLine();
     }
     #endregion
-
-
-    public enum GameSide
-    {
-        Our, Enemy
-    }
-
-    public class GameCard
-    {
-        public List<Card> OurCharacterCard = new List<Card>();
-        public List<Card> EnemyCharacterCard = new List<Card>();
-        public List<Card> OurHandCard = new List<Card>();
-        public List<Card> EnemyHandCard = new List<Card>();
-    }
 }

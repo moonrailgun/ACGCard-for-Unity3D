@@ -10,7 +10,7 @@ using UnityEngine;
 public class CardContainer : MonoBehaviour
 {
     private Card card;
-    private GameScene.GameSide side;
+    private GameManager.GameSide side;
 
     private void Awake()
     {
@@ -66,11 +66,11 @@ public class CardContainer : MonoBehaviour
     {
         return (Card)card.Clone();
     }
-    public void SetGameSide(GameScene.GameSide side)
+    public void SetGameSide(GameManager.GameSide side)
     {
         this.side = side;
     }
-    public GameScene.GameSide GetGameSide()
+    public GameManager.GameSide GetGameSide()
     {
         return side;
     }

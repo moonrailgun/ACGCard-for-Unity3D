@@ -25,7 +25,6 @@ public class GameClient
     public const int gamePort = 28283;
     public TcpClient gameClient;
     public Encoding encoding;//编码格式
-    public AllocRoomData allocRoomData;//分配到的房间的信息
 
     private Dictionary<GameData, Socket> gameDataMessageList;//缓存游戏数据信息,等待主线程调用
 
@@ -205,6 +204,17 @@ public class GameClient
 
     public Dictionary<GameData, Socket> GetGameDataList()
     { return this.gameDataMessageList; }
+    public GameScene GetGameSceneManager()
+    {
+        if (Global.Instance.activedSceneManager is GameScene)
+        {
+            return (Global.Instance.activedSceneManager as GameScene);
+        }
+        else
+        {
+            return null;
+        }
+    }
 
     class StateObject
     {

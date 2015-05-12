@@ -43,16 +43,16 @@ public class GameCardUIManager : MonoBehaviour
     /// <summary>
     /// 添加角色卡事件监听
     /// </summary>
-    public void AddCharacterUIListener(GameObject go, GameScene.GameSide side)
+    public void AddCharacterUIListener(GameObject go, GameManager.GameSide side)
     {
         UIEventListener listener = UIEventListener.Get(go);
 
         //点击事件
-        if (side == GameScene.GameSide.Our)
+        if (side == GameManager.GameSide.Our)
         {
             listener.onClick += OnOurCharacterCardSelected;
         }
-        else if (side == GameScene.GameSide.Enemy)
+        else if (side == GameManager.GameSide.Enemy)
         {
             listener.onClick += OnEnemyCharacterCardSelected;
         }

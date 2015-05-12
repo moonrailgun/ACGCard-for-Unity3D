@@ -21,6 +21,10 @@ public class TCPGameDataHandler
                     //Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, null, Windows.WindowsType.MessageWindow);
                     return ProcessOffline(data);
                 }
+            case OperateCode.PlayerOwnCard:
+                {
+                    return ProcessPlayerOwnCard(data);
+                }
             default:
                 {
                     break;
@@ -47,15 +51,17 @@ public class TCPGameDataHandler
 
     private GameData ProcessAllocRoom(GameData data)
     {
-        if (data.returnCode == ReturnCode.Success)
+        if (data.returnCode == ReturnCode.Success)//如果分配成功
         {
             try
             {
-                //如果分配成功
+                //赋值给全局
                 AllocRoomData roomInfoData = JsonCoding<AllocRoomData>.decode(data.operateData);
-
-                //赋值
-                GameClient.Instance.allocRoomData = roomInfoData;
+                Global.Instance.playerRoomData = roomInfoData;
+                if (GameClient.Instance.GetGameSceneManager() != null)
+                {
+                    GameClient.Instance.GetGameSceneManager().gameManager.UpdateGameInfo();
+                }
 
                 //载入游戏界面
                 Application.LoadLevel("GameScene");
@@ -63,6 +69,21 @@ public class TCPGameDataHandler
             catch (Exception ex)
             {
                 LogsSystem.Instance.Print("分配房间失败:" + ex.ToString(), LogLevel.ERROR);
+            }
+        }
+
+        return null;
+    }
+
+    private GameData ProcessPlayerOwnCard(GameData data)
+    {
+        if (data.returnCode == ReturnCode.Success)
+        {
+            GamePlayerOwnCardData ownCardData = JsonCoding<GamePlayerOwnCardData>.decode(data.operateData);
+            Global.Instance.playerOwnCard = ownCardData.cardInv;//传递给全局
+            if (GameClient.Instance.GetGameSceneManager() != null)
+            {
+                GameClient.Instance.GetGameSceneManager().gameManager.UpdateGameInfo();
             }
         }
 

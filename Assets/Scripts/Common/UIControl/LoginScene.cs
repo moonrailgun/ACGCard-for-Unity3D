@@ -18,6 +18,7 @@ public class LoginScene : MonoBehaviour
     private void Awake()
     {
         Global.Instance.scene = SceneType.LoginScene;//切换场景变量
+        Global.Instance.activedSceneManager = this;
 
         cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
     }

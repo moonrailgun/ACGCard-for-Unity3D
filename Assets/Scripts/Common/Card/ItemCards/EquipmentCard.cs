@@ -28,7 +28,7 @@ public class EquipmentCard : ItemCard
         CardContainer targetContainer = target.GetComponent<CardContainer>();
         Card targetCard = targetContainer.GetCardData();
 
-        if (targetContainer.GetGameSide() == GameScene.GameSide.Our && targetCard is CharacterCard)
+        if (targetContainer.GetGameSide() == GameManager.GameSide.Our && targetCard is CharacterCard)
         {
             OnEquiped(targetCard as CharacterCard);
             LogsSystem.Instance.Print(string.Format("物品{0}被装备", this.GetCardName()));
