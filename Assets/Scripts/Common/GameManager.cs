@@ -7,12 +7,14 @@ using System.Collections.Generic;
 /// </summary>
 public class GameManager
 {
-    public AllocRoomData playerRoomData;//玩家分配到的房间信息
-    public List<CardInfo> playerOwnCard;//玩家拥有的卡片
-    public GameCard cardList = new GameCard();//所有卡片集合
+    private GameScene gameSceneManager;//游戏管理器
+    private AllocRoomData playerRoomData;//玩家分配到的房间信息
+    private List<CardInfo> playerOwnCard;//玩家拥有的卡片
+    private GameCard cardList = new GameCard();//所有卡片集合
 
-    public GameManager()
+    public GameManager(GameScene gameSceneManager)
     {
+        this.gameSceneManager = gameSceneManager;
         UpdateGameInfo();
     }
 
@@ -24,6 +26,11 @@ public class GameManager
         //从全局变量获取信息
         this.playerRoomData = Global.Instance.playerRoomData;
         this.playerOwnCard = Global.Instance.playerOwnCard;
+
+        if (this.gameSceneManager != null)
+        {
+
+        }
     }
 
     /// <summary>

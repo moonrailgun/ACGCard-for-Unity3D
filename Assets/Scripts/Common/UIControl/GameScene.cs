@@ -22,8 +22,6 @@ public class GameScene : MonoBehaviour
 
         Init();
 
-        //
-
         //--网络编程
         //--获取对战信息
         //--获取卡片列表
@@ -31,7 +29,7 @@ public class GameScene : MonoBehaviour
     private void Init()
     {
         //初始化一局游戏的管理器
-        this.gameManager = new GameManager();
+        this.gameManager = new GameManager(this);
 
         //配置游戏桌面使其能够点击后取消卡片和技能的选中
         GameObject GamePanel = GameObject.Find("Background/GamePanel");
@@ -171,6 +169,18 @@ public class GameScene : MonoBehaviour
         button.isEnabled = true;
         roundDoneButton.transform.Find("Label").GetComponent<UILabel>().color = button.defaultColor;
         LogsSystem.Instance.Print("回合开始");
+    }
+
+    private int chooseTimes = 0;//已经选择的次数
+    public void ChooseUpCard()
+    {
+        if (this.chooseTimes < 6)
+        {
+            //选择卡片召唤到场上
+
+        }
+
+        this.chooseTimes++;
     }
 
     #region 变量配置与修改

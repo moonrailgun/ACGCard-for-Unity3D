@@ -214,24 +214,28 @@ public class GameCardUIManager : MonoBehaviour
             GameScene gs = sceneManager.GetComponent<GameScene>();
             Skill skill = gs.GetSelectedSkillAndReset();
             GameObject selectedCard = gs.GetSelectedCard();//已经被选中的我方卡片
-            Card selectedCardData = selectedCard.GetComponent<CardContainer>().GetCardData();//获取选中的卡片数据
-            if (selectedCard != null && skill != null)
+            if (selectedCard != null)
             {
-                skill.OnUse(selectedCard, go);//技能被使用（从Card到go)
-                gs.ResetSelectedCard();
-            }
-            else if (selectedCard != null && selectedCardData is CharacterCard)
-            {
-                //普通攻击
-                CharacterCard character = selectedCardData as CharacterCard;
-                character.OnCharacterAttack(go);
-                gs.ResetSelectedCard();
-            }
-            else if (selectedCard != null && selectedCardData is ItemCard)
-            {
-                //已经被选中的卡片为手牌
-                ItemCard item = selectedCardData as ItemCard;
-                item.OnUse(go);
+                Card selectedCardData = selectedCard.GetComponent<CardContainer>().GetCardData();//获取选中的卡片数据
+
+                if (skill != null)
+                {
+                    skill.OnUse(selectedCard, go);//技能被使用（从Card到go)
+                    gs.ResetSelectedCard();
+                }
+                else if (selectedCardData is CharacterCard)
+                {
+                    //普通攻击
+                    CharacterCard character = selectedCardData as CharacterCard;
+                    character.OnCharacterAttack(go);
+                    gs.ResetSelectedCard();
+                }
+                else if (selectedCardData is ItemCard)
+                {
+                    //已经被选中的卡片为手牌
+                    ItemCard item = selectedCardData as ItemCard;
+                    item.OnUse(go);
+                }
             }
             else
             {
