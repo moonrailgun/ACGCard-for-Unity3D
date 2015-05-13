@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// 一局游戏的管理器
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 /// </summary>
 public class GameManager
 {
-    private GameScene gameSceneManager;//游戏管理器
+    private GameScene gameSceneManager;//游戏场景管理器
     private AllocRoomData playerRoomData;//玩家分配到的房间信息
     private List<CardInfo> playerOwnCard;//玩家拥有的卡片
     private GameCard cardList = new GameCard();//所有卡片集合
@@ -27,10 +28,83 @@ public class GameManager
         this.playerRoomData = Global.Instance.playerRoomData;
         this.playerOwnCard = Global.Instance.playerOwnCard;
 
-        if (this.gameSceneManager != null)
+        if (this.gameSceneManager != null && this.playerOwnCard != null && this.playerRoomData != null && this.hasGameInit == false)
         {
-
+            //游戏基础数据接受完毕。游戏开始
+            this.GameStart();
         }
+    }
+
+    private bool hasGameInit = false;
+    /// <summary>
+    /// 游戏开始
+    /// 创建并生成可以被选中的英雄
+    /// 只能初始化一次
+    /// </summary>
+    public void GameStart()
+    {
+        if (this.hasGameInit == false)
+        {
+            GameObject perfab = Resources.Load<GameObject>("CharacterCard");
+            GameObject parent = GameObject.Find("ChooseCardPanel/ChooseContainer/ChooseList/Grid");
+            UIScrollView scrollView = GameObject.Find("ChooseCardPanel/ChooseContainer/ChooseList").GetComponent<UIScrollView>();
+
+            foreach (CardInfo cardInfo in playerOwnCard)
+            {
+                GameObject go = NGUITools.AddChild(parent, perfab);
+                go.transform.FindChild("CharacterInfo").gameObject.SetActive(false);//隐藏血条
+                go.transform.FindChild("CharacterLevel/Label").GetComponent<UILabel>().text = cardInfo.cardLevel.ToString();//修改等级
+                go.AddComponent<UIDragScrollView>().scrollView = scrollView;//这是指向滚动条
+
+                //修改显示数据
+                CardContainer container = go.GetComponent<CardContainer>();
+                Card card = CardManager.Instance.GetCharacterById(cardInfo.cardId, cardInfo.cardLevel, cardInfo.health, cardInfo.energy, cardInfo.attack, cardInfo.speed);
+                container.SetCardData(card);
+                container.UpdateCardUI();
+
+                //添加点击事件
+                UIEventListener.Get(go).onClick += OnSelectHeroToUp;
+            }
+        }
+        this.hasGameInit = true;
+    }
+
+    private int chooseTimes = 0;//已经召唤的次数
+
+    /// <summary>
+    /// 当选中英雄上场时调用此函数
+    /// </summary>
+    private void OnSelectHeroToUp(GameObject go)
+    {
+        Card card = go.GetComponent<CardContainer>().GetCardClone();//获取卡片数据的克隆
+
+        gameSceneManager.ChooseUpCard(card as CharacterCard);
+        MonoBehaviour.DestroyImmediate(go);//立刻销毁游戏物体
+        gameSceneManager.chooseCardPanel.alpha = 0;//使窗口隐形
+    }
+
+    /// <summary>
+    /// 回合开始
+    /// </summary>
+    public void RoundStart()
+    {
+        if (chooseTimes < 6)
+        {
+            gameSceneManager.chooseCardPanel.alpha = 1;//显示窗口
+
+            //------还有其他操作
+
+            chooseTimes++;
+        }
+        LogsSystem.Instance.Print("回合开始");
+    }
+
+    /// <summary>
+    /// 回合结束
+    /// </summary>
+    public void RoundDown()
+    {
+        LogsSystem.Instance.Print("回合结束");
     }
 
     /// <summary>
@@ -43,6 +117,15 @@ public class GameManager
 
         this.UpdateGameInfo();
     }
+
+    /// <summary>
+    /// 获取玩家拥有卡片的备份
+    /// </summary>
+    public List<CardInfo> GetPlayerOwnCardClone()
+    {
+        return new List<CardInfo>(playerOwnCard);
+    }
+
     #region 附属结构
     /// <summary>
     /// 游戏中所有卡片列表

@@ -190,11 +190,11 @@ public class CardManager
     /// <summary>
     /// 获取角色卡的拷贝
     /// </summary>
-    public CharacterCard GetCharacterById(int id, int level, int health, int energy, int baseDamage, int baseSpeed)
+    public CharacterCard GetCharacterById(int id, int level, int health, int energy, int attack, int speed)
     {
         CharacterCard card = GetCardById(id, CardType.Character) as CharacterCard;
         if (card != null)
-            card.SetCharacterInfo(level, health, energy, baseDamage, baseSpeed);
+            card.SetCharacterInfo(level, health, energy, attack, speed);
         return card;
     }
 

@@ -9,8 +9,8 @@ public class CharacterCard : Card
     protected int energy;//能量
     protected int maxHealth;//最大生命值
     protected int maxEnergy;//最大能量值
-    protected int baseDamage;//攻击力
-    protected int baseSpeed;//速度
+    protected int attack;//攻击力
+    protected int speed;//速度
 
     protected Equipment equipments;//装备
 
@@ -41,8 +41,8 @@ public class CharacterCard : Card
         this.energy = energy;
         this.maxHealth = health;
         this.maxEnergy = energy;
-        this.baseDamage = baseDamage;
-        this.baseSpeed = baseSpeed;
+        this.attack = baseDamage;
+        this.speed = baseSpeed;
     }
 
     /// <summary>
@@ -272,12 +272,12 @@ public class CharacterCard : Card
     public Dictionary<StateSkill, Card> GetCardState()
     { return this.cardState; }
     public int GetBaseCardDamageValue()
-    { return this.baseDamage; }
+    { return this.attack; }
     public int GetBaseCardSpeedValue()
-    { return this.baseSpeed; }
+    { return this.speed; }
     public int GetCardDamage()
     {
-        int value = baseDamage;
+        int value = attack;
         if (cardState.Count != 0)
         {
             foreach (KeyValuePair<StateSkill, Card> pair in cardState)

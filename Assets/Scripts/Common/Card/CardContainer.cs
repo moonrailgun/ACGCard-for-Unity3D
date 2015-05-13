@@ -26,11 +26,6 @@ public class CardContainer : MonoBehaviour
         UpdateCardUI();
     }
 
-    public void OnSelected()
-    {
-
-    }
-
     /// <summary>
     /// 受到攻击时。震动卡片
     /// </summary>

@@ -11,6 +11,7 @@ public class GameScene : MonoBehaviour
     private GameObject cardGrow;//卡片光晕物体
     private ArrowLine arrowLine;//箭头指向线
     private GameObject roundDoneButton;//回合结束按钮
+    public UIPanel chooseCardPanel;//选择卡片根面板
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class GameScene : MonoBehaviour
 
         this.uiManager = GetComponent<GameCardUIManager>();
         this.roundDoneButton = GameObject.Find("GamePanel/RoundDone");
+        this.chooseCardPanel = GameObject.Find("UI Root/Background/ChooseCardPanel").GetComponent<UIPanel>();
 
         Init();
 
@@ -56,7 +58,7 @@ public class GameScene : MonoBehaviour
         CreateGameHandCard(CardManager.Instance.GetItemById(2));
         CreateGameHandCard(CardManager.Instance.GetItemById(3));
         CreateGameHandCard(CardManager.Instance.GetItemById(4));
-
+        LogsSystem.Instance.Print("已生成测试数据");
         //以上为测试数据
     }
 
@@ -171,16 +173,24 @@ public class GameScene : MonoBehaviour
         LogsSystem.Instance.Print("回合开始");
     }
 
-    private int chooseTimes = 0;//已经选择的次数
-    public void ChooseUpCard()
+    /// <summary>
+    /// 关闭选择英雄窗口
+    /// </summary>
+    public void CloseChooseWindow()
     {
-        if (this.chooseTimes < 6)
-        {
-            //选择卡片召唤到场上
+        this.chooseCardPanel.alpha = 0;
+    }
 
-        }
 
-        this.chooseTimes++;
+    public void ChooseUpCard(CharacterCard card)
+    {
+        LogsSystem.Instance.Print(string.Format("召唤{0}上场", card.GetCardName()));
+
+        Debug.LogError("此处尚未实现，双击打开");
+
+        //选择卡片召唤到场上
+        //List<CardInfo> playerOwnCard = gameManager.GetPlayerOwnCardClone();
+
     }
 
     #region 变量配置与修改

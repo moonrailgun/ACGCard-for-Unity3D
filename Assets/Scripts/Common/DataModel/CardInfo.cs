@@ -7,6 +7,7 @@ public class CardInfo
     public int cardOwnerId;
     public string cardName;
     public int cardRarity;
+    public int cardLevel;
     public int health;
     public int energy;
     public int attack;
