@@ -25,6 +25,10 @@ public class TCPGameDataHandler
                 {
                     return ProcessPlayerOwnCard(data);
                 }
+            case OperateCode.SummonCharacter:
+                {
+                    throw new NotImplementedException();
+                }
             default:
                 {
                     break;
@@ -98,6 +102,19 @@ public class TCPGameDataHandler
             GameClient.Instance.gameClient.Close();
             ShortMessagesSystem.Instance.ShowShortMessage("您已经断开了连接");
         }
+        return null;
+    }
+
+    private GameData ProcessSummonCharacter(GameData data)
+    {
+        //添加到场景卡片集合
+        /*
+        if (side == GameSide.Our)
+            this.gameCardCollection.OurCharacterCard.Add(character);
+        else if (side == GameSide.Enemy)
+            this.gameCardCollection.EnemyCharacterCard.Add(character);
+
+        gameSceneManager.SummonCharacterUp(character, side);//让场景管理器能够调用召唤这张卡*/
         return null;
     }
 }

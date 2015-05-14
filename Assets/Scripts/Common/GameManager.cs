@@ -78,7 +78,7 @@ public class GameManager
     private void OnSelectHeroToUp(GameObject go)
     {
         Card card = go.GetComponent<CardContainer>().GetCardClone();//获取卡片数据的克隆
-        AddCharacterCard(card as CharacterCard, GameSide.Our, card.GetCardInfo().cardUUID);
+        RequestAddCharacterCard(card as CharacterCard, GameSide.Our, card.GetCardInfo().cardUUID);
 
         MonoBehaviour.DestroyImmediate(go);//立刻销毁游戏物体
         gameSceneManager.chooseCardPanel.alpha = 0;//使窗口隐形
@@ -128,23 +128,22 @@ public class GameManager
     }
 
     /// <summary>
-    /// 添加英雄卡到场上
+    /// 向服务器请求添加英雄卡到场上
     /// </summary>
-    public void AddCharacterCard(CharacterCard character, GameSide side,string cardUUID)
+    public void RequestAddCharacterCard(CharacterCard character, GameSide side,string cardUUID)
     {
-        //添加到场景卡片集合
-        if (side == GameSide.Our)
-            this.gameCardCollection.OurCharacterCard.Add(character);
-        else if (side == GameSide.Enemy)
-            this.gameCardCollection.EnemyCharacterCard.Add(character);
-
-        gameSceneManager.SummonCharacterUp(character,side);//让场景管理器能够调用召唤这张卡
-
         //发送到远程服务器
+        SummonCharacter detailData = new SummonCharacter();
+        detailData.cardInfo = character.GetCardInfo();
+        detailData.cardUUID = cardUUID;
+        detailData.operatePlayerPosition = playerRoomData.allocPosition;
+        detailData.operatePlayerUid = Global.Instance.playerInfo.uid;
+        detailData.operatePlayerUUID = Global.Instance.playerInfo.UUID;
+
         GameData data = new GameData();
         data.operateCode = OperateCode.SummonCharacter;
         data.roomID = playerRoomData.roomID;
-        data.operateData = cardUUID;
+        data.operateData = JsonCoding<SummonCharacter>.encode(detailData);
 
         GameClient.Instance.SendToServer(data);
     }
@@ -155,8 +154,8 @@ public class GameManager
     /// </summary>
     public class GameCard
     {
-        public List<CharacterCard> OurCharacterCard = new List<CharacterCard>();
-        public List<CharacterCard> EnemyCharacterCard = new List<CharacterCard>();
+        public Dictionary<CharacterCard, int> OurCharacterCard = new Dictionary<CharacterCard, int>();//场上卡片<卡片对象，位置>
+        public Dictionary<CharacterCard, int> EnemyCharacterCard = new Dictionary<CharacterCard, int>();//场上卡片<卡片对象，位置>
         public List<ItemCard> OurHandCard = new List<ItemCard>();
         public List<ItemCard> EnemyHandCard = new List<ItemCard>();
     }
