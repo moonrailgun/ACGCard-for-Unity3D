@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// 一局游戏的管理器
+/// 用于管理数据层操作
 /// 每次游戏开始都会建立一个新的
 /// </summary>
 public class GameManager
@@ -11,7 +12,7 @@ public class GameManager
     private GameScene gameSceneManager;//游戏场景管理器
     private AllocRoomData playerRoomData;//玩家分配到的房间信息
     private List<CardInfo> playerOwnCard;//玩家拥有的卡片
-    private GameCard cardList = new GameCard();//所有卡片集合
+    private GameCard gameCardCollection = new GameCard();//所有卡片集合
 
     public GameManager(GameScene gameSceneManager)
     {
@@ -77,8 +78,8 @@ public class GameManager
     private void OnSelectHeroToUp(GameObject go)
     {
         Card card = go.GetComponent<CardContainer>().GetCardClone();//获取卡片数据的克隆
+        AddCharacterCard(card as CharacterCard, GameSide.Our, card.GetCardInfo().cardUUID);
 
-        gameSceneManager.ChooseUpCard(card as CharacterCard);
         MonoBehaviour.DestroyImmediate(go);//立刻销毁游戏物体
         gameSceneManager.chooseCardPanel.alpha = 0;//使窗口隐形
     }
@@ -126,16 +127,38 @@ public class GameManager
         return new List<CardInfo>(playerOwnCard);
     }
 
+    /// <summary>
+    /// 添加英雄卡到场上
+    /// </summary>
+    public void AddCharacterCard(CharacterCard character, GameSide side,string cardUUID)
+    {
+        //添加到场景卡片集合
+        if (side == GameSide.Our)
+            this.gameCardCollection.OurCharacterCard.Add(character);
+        else if (side == GameSide.Enemy)
+            this.gameCardCollection.EnemyCharacterCard.Add(character);
+
+        gameSceneManager.SummonCharacterUp(character,side);//让场景管理器能够调用召唤这张卡
+
+        //发送到远程服务器
+        GameData data = new GameData();
+        data.operateCode = OperateCode.SummonCharacter;
+        data.roomID = playerRoomData.roomID;
+        data.operateData = cardUUID;
+
+        GameClient.Instance.SendToServer(data);
+    }
+
     #region 附属结构
     /// <summary>
     /// 游戏中所有卡片列表
     /// </summary>
     public class GameCard
     {
-        public List<Card> OurCharacterCard = new List<Card>();
-        public List<Card> EnemyCharacterCard = new List<Card>();
-        public List<Card> OurHandCard = new List<Card>();
-        public List<Card> EnemyHandCard = new List<Card>();
+        public List<CharacterCard> OurCharacterCard = new List<CharacterCard>();
+        public List<CharacterCard> EnemyCharacterCard = new List<CharacterCard>();
+        public List<ItemCard> OurHandCard = new List<ItemCard>();
+        public List<ItemCard> EnemyHandCard = new List<ItemCard>();
     }
     /// <summary>
     /// 游戏方

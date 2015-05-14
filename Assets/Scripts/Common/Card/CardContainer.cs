@@ -53,6 +53,12 @@ public class CardContainer : MonoBehaviour
         this.card = card;
         this.card.SetCardContainer(this);//传递卡片容器
     }
+    public void SetCardData(Card card, bool isUpdateUI)
+    {
+        this.SetCardData(card);
+        if (isUpdateUI)
+        { this.UpdateCardUI(); }
+    }
     public Card GetCardData()
     {
         return card;

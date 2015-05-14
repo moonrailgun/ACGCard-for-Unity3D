@@ -181,12 +181,21 @@ public class GameScene : MonoBehaviour
         this.chooseCardPanel.alpha = 0;
     }
 
-
-    public void ChooseUpCard(CharacterCard card)
+    /// <summary>
+    /// 召唤选中的角色卡
+    /// </summary>
+    public void SummonCharacterUp(CharacterCard card, GameManager.GameSide side)
     {
-        LogsSystem.Instance.Print(string.Format("召唤{0}上场", card.GetCardName()));
+        LogsSystem.Instance.Print(string.Format("{0}召唤{1}上场", side.ToString(), card.GetCardName()));
 
-        Debug.LogError("此处尚未实现，双击打开");
+        //召唤卡片到场上
+        string path = string.Format("UI Root/Background/GamePanel/{0}side/CardGrid", side.ToString());
+        GameObject parent = GameObject.Find(path);
+        GameObject prefab = Resources.Load<GameObject>("CharacterCard");
+        GameObject go = NGUITools.AddChild(parent, prefab);
+        CardContainer container = go.GetComponent<CardContainer>();
+        container.SetCardData(card, true);
+
 
         //选择卡片召唤到场上
         //List<CardInfo> playerOwnCard = gameManager.GetPlayerOwnCardClone();

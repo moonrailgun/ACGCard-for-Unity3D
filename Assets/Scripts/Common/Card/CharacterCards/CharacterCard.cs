@@ -298,6 +298,24 @@ public class CharacterCard : Card
     }
     public Equipment GetCharacterEquipments()
     { return this.equipments; }
+
+    public override CardInfo GetCardInfo()
+    {
+        CardInfo info = new CardInfo();
+
+        info.cardUUID = this.cardUUID;
+        info.cardId = this.cardID;
+        //info.cardOwnerId 暂时保留
+        info.cardName = this.cardName;
+        info.cardRarity = (int)this.cardRarity;
+        info.cardLevel = this.level;
+        info.health = this.health;
+        info.energy = this.energy;
+        info.attack = this.attack;
+        info.speed = this.speed;
+
+        return info;
+    }
     #endregion
 
     public struct Equipment

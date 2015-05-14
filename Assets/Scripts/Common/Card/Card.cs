@@ -9,6 +9,7 @@ using System.Collections.Generic;
 /// </summary>
 public class Card : ICloneable
 {
+    protected string cardUUID;//卡片临时唯一标示
     protected int cardID;//卡片ID
     protected string cardName;//卡片名称
     protected CardType cardType;//卡片类型
@@ -19,6 +20,7 @@ public class Card : ICloneable
 
     protected GameScene gs;//游戏场景总管理
 
+    #region 构造函数
     /// <summary>
     /// 卡片构造函数
     /// </summary>
@@ -59,6 +61,7 @@ public class Card : ICloneable
             this.cardDescription = CardDescriptions.Instance.GetCardDescription(cardName);
         }
     }
+    #endregion
 
     /// <summary>
     /// 初始化
@@ -156,6 +159,19 @@ public class Card : ICloneable
     { return this.cardDescription; }
     public CardContainer GetCardContainer()
     { return this.container; }
+
+    public virtual CardInfo GetCardInfo()
+    {
+        CardInfo info = new CardInfo();
+
+        info.cardUUID = this.cardUUID;
+        info.cardId = this.cardID;
+        //info.cardOwnerId 暂时保留
+        info.cardName = this.cardName;
+        info.cardRarity = (int)this.cardRarity;
+
+        return info;
+    }
     #endregion
 
     public object Clone()
