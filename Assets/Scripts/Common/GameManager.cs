@@ -75,7 +75,6 @@ public class GameManager
     }
 
     private int chooseTimes = 0;//已经召唤的次数
-
     /// <summary>
     /// 当选中英雄上场时调用此函数
     /// </summary>
@@ -155,22 +154,85 @@ public class GameManager
     /// 被TCP数据处理器调用
     /// 召唤英雄
     /// </summary>
-    public void AddCharacterCard(string cardUUID, CardInfo cardInfo, int operatePlayerPosition)
+    public void ResponseAddCharacterCard(SummonCharacterData detailData)
     {
-        GameSide side;
+        string cardUUID = detailData.cardUUID;
+        CardInfo cardInfo = detailData.cardInfo;
+        int operatePlayerPosition = detailData.operatePlayerPosition;
+        GameSide operateSide;
         if (operatePlayerPosition == this.playerRoomData.allocPosition)
-        { side = GameSide.Our; }
+        { operateSide = GameSide.Our; }
         else
-        { side = GameSide.Enemy; }
+        { operateSide = GameSide.Enemy; }
 
         //添加数据
         CharacterCard character = CardManager.Instance.GetCharacterById(cardInfo.cardId, cardInfo.cardLevel, cardInfo.health, cardInfo.energy, cardInfo.attack, cardInfo.speed);
-        gameCardCollection.AddCharacterCard(character, side);
+        gameCardCollection.AddCharacterCard(character, operateSide);
 
         //添加场景实体
-        gameSceneManager.CreateGameCharacterCard(side, character);
+        gameSceneManager.CreateGameCharacterCard(operateSide, character);
     }
+    #endregion
 
+    #region 普通攻击
+    /// <summary>
+    /// 向服务器发送普通攻击请求
+    /// </summary>
+    public void RequestCharacterAttack(CharacterCard from, CharacterCard to)
+    {
+        string fromCardUUID = from.GetCardUUID();
+        string toCardUUID = to.GetCardUUID();
+
+        AttackData detailData = new AttackData();
+        detailData.fromCardUUID = fromCardUUID;
+        detailData.toCardUUID = toCardUUID;
+        detailData.operatePlayerPosition = playerRoomData.allocPosition;
+        detailData.operatePlayerUid = Global.Instance.playerInfo.uid;
+        detailData.operatePlayerUUID = Global.Instance.playerInfo.UUID;
+
+        GameData data = new GameData();
+        data.operateCode = OperateCode.Attack;
+        data.roomID = playerRoomData.roomID;
+        data.operateData = JsonCoding<AttackData>.encode(detailData);
+
+        GameClient.Instance.SendToServer(data);
+    }
+    /// <summary>
+    /// 响应服务器对普通攻击的反应
+    /// </summary>
+    public void ResponseCharacterAttack(AttackData detailData)
+    {
+        string fromCardUUID = detailData.fromCardUUID;
+        string toCardUUID = detailData.toCardUUID;
+        int damage = detailData.damage;
+        GameSide operateSide;
+        if (detailData.operatePlayerPosition == this.playerRoomData.allocPosition)
+        { operateSide = GameSide.Our; }
+        else
+        { operateSide = GameSide.Enemy; }
+
+        //获取场上卡片对象
+        CharacterCard fromCard = gameCardCollection.GetCharacterCard(fromCardUUID, operateSide);
+        CharacterCard toCard = gameCardCollection.GetCharacterCard(toCardUUID, GetOppositeSide(operateSide));
+
+        //调用卡片操作
+        fromCard.OnCharacterAttack(toCard, damage);
+    }
+    #endregion
+
+    #region 使用技能
+    #endregion
+
+    #region 装备道具
+    #endregion
+
+    #region 抽取手牌
+    #endregion
+
+    #region 结束回合
+    #endregion
+
+    #region 开始回合
     #endregion
 
     #region 附属结构
@@ -179,8 +241,8 @@ public class GameManager
     /// </summary>
     public class GameCard
     {
-        public Dictionary<CharacterCard, string> OurCharacterCard = new Dictionary<CharacterCard, string>();//场上卡片<卡片对象，卡片UUID>
-        public Dictionary<CharacterCard, string> EnemyCharacterCard = new Dictionary<CharacterCard, string>();//场上卡片<卡片对象，卡片UUID>
+        public Dictionary<string, CharacterCard> OurCharacterCard = new Dictionary<string, CharacterCard>();//场上卡片<卡片对象，卡片UUID>
+        public Dictionary<string, CharacterCard> EnemyCharacterCard = new Dictionary<string, CharacterCard>();//场上卡片<卡片对象，卡片UUID>
         public List<ItemCard> OurHandCard = new List<ItemCard>();
         public List<ItemCard> EnemyHandCard = new List<ItemCard>();
 
@@ -188,11 +250,22 @@ public class GameManager
         {
             if (side == GameSide.Our)
             {
-                OurCharacterCard.Add(card, card.GetCardInfo().cardUUID);
+                OurCharacterCard.Add(card.GetCardInfo().cardUUID, card);
             }
             else
             {
-                EnemyCharacterCard.Add(card, card.GetCardInfo().cardUUID);
+                EnemyCharacterCard.Add(card.GetCardInfo().cardUUID, card);
+            }
+        }
+        public CharacterCard GetCharacterCard(string cardUUID, GameSide side)
+        {
+            if (side == GameSide.Our)
+            {
+                return OurCharacterCard[cardUUID];
+            }
+            else
+            {
+                return EnemyCharacterCard[cardUUID];
             }
         }
     }
@@ -202,6 +275,20 @@ public class GameManager
     public enum GameSide
     {
         Our, Enemy
+    }
+    /// <summary>
+    /// 获取对立方
+    /// </summary>
+    public static GameSide GetOppositeSide(GameSide side)
+    {
+        if (side == GameSide.Our)
+        {
+            return GameSide.Enemy;
+        }
+        else
+        {
+            return GameSide.Our;
+        }
     }
 
     #endregion

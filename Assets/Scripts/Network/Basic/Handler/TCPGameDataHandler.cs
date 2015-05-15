@@ -115,7 +115,7 @@ public class TCPGameDataHandler
             GameScene gs = Global.Instance.activedSceneManager as GameScene;
             GameManager gm = gs.gameManager;
 
-            gm.AddCharacterCard(detailData.cardUUID, detailData.cardInfo, detailData.operatePlayerPosition);//调用游戏管理器处理数据
+            gm.ResponseAddCharacterCard(detailData);//调用游戏管理器处理数据
         }
         else
         {

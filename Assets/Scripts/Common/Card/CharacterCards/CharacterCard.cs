@@ -84,25 +84,19 @@ public class CharacterCard : Card
     /// <summary>
     /// 当角色发动普通攻击时
     /// </summary>
-    /// <param name="target">攻击对象</param>
-    public void OnCharacterAttack(GameObject target)
+    /// <param name="targetCharacter">攻击对象</param>
+    /// <param name="damage">伤害值</param>
+    public void OnCharacterAttack(CharacterCard targetCharacter, int damage)
     {
-        CardContainer targetContainer = target.GetComponent<CardContainer>();
-
+        GameObject target = targetCharacter.container.gameObject;
         //播放动画
         Hashtable args = new Hashtable();
         args.Add("amount", target.transform.position - container.transform.position);
         args.Add("time", 1f);
 
-        iTween.PunchPosition(container.gameObject, args);
+        iTween.PunchPosition(target, args);
 
-        //造成伤害
-        Card card = targetContainer.GetCardData();
-        if (card is CharacterCard)
-        {
-            CharacterCard character = card as CharacterCard;
-            character.GetDamage(this.GetCardDamage());//传递卡片伤害
-        }
+        targetCharacter.GetDamage(damage);
 
         //状态回调
         if (cardState.Count != 0)
@@ -282,7 +276,7 @@ public class CharacterCard : Card
     { return this.attack; }
     public int GetBaseCardSpeedValue()
     { return this.speed; }
-    public int GetCardDamage()
+    public int GetCardAttack()
     {
         int value = attack;
         if (cardState.Count != 0)

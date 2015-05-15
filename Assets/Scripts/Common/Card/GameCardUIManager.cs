@@ -8,7 +8,7 @@ using System;
 /// </summary>
 public class GameCardUIManager : MonoBehaviour
 {
-    private GameObject sceneManager;
+    private GameScene gameSceneManager;
     private UILabel CardName;
     private UILabel CardType;
     private UILabel CardRarity;
@@ -35,7 +35,7 @@ public class GameCardUIManager : MonoBehaviour
             this.CardOwner.text = "";
             this.CardDes.text = "";
 
-            this.sceneManager = GameObject.FindGameObjectWithTag(Tags.SceneController);
+            this.gameSceneManager = GameObject.FindGameObjectWithTag(Tags.SceneController).GetComponent<GameScene>();
             ClearSkillButton();
         }
     }
@@ -153,9 +153,8 @@ public class GameCardUIManager : MonoBehaviour
         Card card = container.GetCardData();
         if (container != null && card != null && Global.Instance.scene == SceneType.GameScene && card is CharacterCard)//数据正常
         {
-            GameScene gs = sceneManager.GetComponent<GameScene>();
-            Skill selectedSkill = gs.GetSelectedSkill();
-            GameObject selectedCard = gs.GetSelectedCard();//获得已经被选中的我方卡片
+            Skill selectedSkill = gameSceneManager.GetSelectedSkill();
+            GameObject selectedCard = gameSceneManager.GetSelectedCard();//获得已经被选中的我方卡片
             Card selectedCardData = null;//选中卡片的数据
             if (selectedCard != null)
             {
@@ -196,7 +195,7 @@ public class GameCardUIManager : MonoBehaviour
                 }
 
                 //设置被选中
-                this.sceneManager.GetComponent<GameScene>().SetSelectedCard(go);
+                this.gameSceneManager.SetSelectedCard(go);
             }
         }
         else
@@ -211,9 +210,8 @@ public class GameCardUIManager : MonoBehaviour
     {
         if (Global.Instance.scene == SceneType.GameScene)
         {
-            GameScene gs = sceneManager.GetComponent<GameScene>();
-            Skill skill = gs.GetSelectedSkillAndReset();
-            GameObject selectedCard = gs.GetSelectedCard();//已经被选中的我方卡片
+            Skill skill = gameSceneManager.GetSelectedSkillAndReset();
+            GameObject selectedCard = gameSceneManager.GetSelectedCard();//已经被选中的我方卡片
             if (selectedCard != null)
             {
                 Card selectedCardData = selectedCard.GetComponent<CardContainer>().GetCardData();//获取选中的卡片数据
@@ -221,14 +219,14 @@ public class GameCardUIManager : MonoBehaviour
                 if (skill != null)
                 {
                     skill.OnUse(selectedCard, go);//技能被使用（从Card到go)
-                    gs.ResetSelectedCard();
+                    gameSceneManager.ResetSelectedCard();
                 }
                 else if (selectedCardData is CharacterCard)
                 {
                     //普通攻击
                     CharacterCard character = selectedCardData as CharacterCard;
-                    character.OnCharacterAttack(go);
-                    gs.ResetSelectedCard();
+                    gameSceneManager.gameManager.RequestCharacterAttack(character, go.GetComponent<CardContainer>().GetCardData() as CharacterCard);//向服务器请求攻击
+                    gameSceneManager.ResetSelectedCard();//重置选中的卡
                 }
                 else if (selectedCardData is ItemCard)
                 {

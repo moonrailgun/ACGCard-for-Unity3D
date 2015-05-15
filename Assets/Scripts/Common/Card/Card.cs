@@ -156,6 +156,8 @@ public class Card : ICloneable
     #endregion
 
     #region 信息获取
+    public string GetCardUUID()
+    { return this.cardUUID; }
     public int GetCardID()
     { return this.cardID; }
     public string GetCardName()
