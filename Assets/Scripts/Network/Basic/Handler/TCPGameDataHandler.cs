@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TCPGameDataHandler
 {
+    private GameManager gameManager;
+
     public GameData Process(GameData data, Socket socket)
     {
         switch (data.operateCode)
@@ -27,7 +29,7 @@ public class TCPGameDataHandler
                 }
             case OperateCode.SummonCharacter:
                 {
-                    throw new NotImplementedException();
+                    return ProcessSummonCharacter(data);
                 }
             default:
                 {
@@ -107,14 +109,18 @@ public class TCPGameDataHandler
 
     private GameData ProcessSummonCharacter(GameData data)
     {
-        //添加到场景卡片集合
-        /*
-        if (side == GameSide.Our)
-            this.gameCardCollection.OurCharacterCard.Add(character);
-        else if (side == GameSide.Enemy)
-            this.gameCardCollection.EnemyCharacterCard.Add(character);
+        SummonCharacterData detailData = JsonCoding<SummonCharacterData>.decode(data.operateData);
+        if (Global.Instance.activedSceneManager is GameScene)
+        {
+            GameScene gs = Global.Instance.activedSceneManager as GameScene;
+            GameManager gm = gs.gameManager;
 
-        gameSceneManager.SummonCharacterUp(character, side);//让场景管理器能够调用召唤这张卡*/
+            gm.AddCharacterCard(detailData.cardUUID, detailData.cardInfo, detailData.operatePlayerPosition);//调用游戏管理器处理数据
+        }
+        else
+        {
+            LogsSystem.Instance.Print("在不正确的场合接收到了数据ID" + data.operateCode, LogLevel.WARN);
+        }
         return null;
     }
 }

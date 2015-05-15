@@ -142,6 +142,17 @@ public class Card : ICloneable
     {
         this.cardOwner = OwnerName;
     }
+
+    /// <summary>
+    /// 设置卡片信息
+    /// </summary>
+    public virtual void SetCardInfo(CardInfo info)
+    {
+        this.cardUUID = info.cardUUID;
+        this.cardID = info.cardId;
+        this.cardName = info.cardName;
+        this.cardRarity =(CardRarity)info.cardRarity;
+    }
     #endregion
 
     #region 信息获取

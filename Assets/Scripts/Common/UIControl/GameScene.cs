@@ -40,6 +40,7 @@ public class GameScene : MonoBehaviour
 
     private void Start()
     {
+        /*
         //测试数据
         CreateGameCharacterCard(GameManager.GameSide.Our, CardManager.Instance.GetCharacterById(1, 1, 100, 100, 10, 200));
         CreateGameCharacterCard(GameManager.GameSide.Our, CardManager.Instance.GetCharacterById(6, 1, 100, 100, 10, 200));
@@ -60,6 +61,7 @@ public class GameScene : MonoBehaviour
         CreateGameHandCard(CardManager.Instance.GetItemById(4));
         LogsSystem.Instance.Print("已生成测试数据");
         //以上为测试数据
+         */
     }
 
     /// <summary>
@@ -71,7 +73,7 @@ public class GameScene : MonoBehaviour
         Card cardinfo = new Card();
         return CreateGameCharacterCard(side, cardinfo);
     }
-    public GameObject CreateGameCharacterCard(GameManager.GameSide side, Card cardinfo)
+    public GameObject CreateGameCharacterCard(GameManager.GameSide side, Card cardData)
     {
         if (Global.Instance.scene == SceneType.GameScene)
         {
@@ -81,7 +83,7 @@ public class GameScene : MonoBehaviour
             GameObject card = NGUITools.AddChild(parent, prefeb);
 
             CardContainer container = card.GetComponent<CardContainer>();
-            container.SetCardData(cardinfo);//设置卡片属性
+            container.SetCardData(cardData);//设置卡片属性
             container.UpdateCardUI();//更新贴图
             uiManager.AddCharacterUIListener(card, side);//添加UI事件监听
             container.SetGameSide(side);//设置卡片归属方

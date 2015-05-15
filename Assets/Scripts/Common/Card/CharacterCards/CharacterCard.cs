@@ -34,15 +34,15 @@ public class CharacterCard : Card
     {
         return this.energy;
     }
-    public void SetCharacterInfo(int level, int health, int energy, int baseDamage, int baseSpeed)
+    public void SetCharacterInfo(int level, int health, int energy, int attack, int speed)
     {
         this.level = level;
         this.health = health;
         this.energy = energy;
         this.maxHealth = health;
         this.maxEnergy = energy;
-        this.attack = baseDamage;
-        this.speed = baseSpeed;
+        this.attack = attack;
+        this.speed = speed;
     }
 
     /// <summary>
@@ -181,6 +181,13 @@ public class CharacterCard : Card
         {
             this.cardState.Remove(state);
         }
+    }
+
+    public override void SetCardInfo(CardInfo info)
+    {
+        base.SetCardInfo(info);
+
+        SetCharacterInfo(info.cardLevel, info.health, info.energy, info.attack, info.speed);
     }
 
     /// <summary>

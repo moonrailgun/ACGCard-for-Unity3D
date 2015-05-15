@@ -50,6 +50,7 @@ public class GameManager
             GameObject parent = GameObject.Find("ChooseCardPanel/ChooseContainer/ChooseList/Grid");
             UIScrollView scrollView = GameObject.Find("ChooseCardPanel/ChooseContainer/ChooseList").GetComponent<UIScrollView>();
 
+            //循环添加选中列表的数据
             foreach (CardInfo cardInfo in playerOwnCard)
             {
                 GameObject go = NGUITools.AddChild(parent, perfab);
@@ -66,6 +67,9 @@ public class GameManager
                 //添加点击事件
                 UIEventListener.Get(go).onClick += OnSelectHeroToUp;
             }
+
+            gameSceneManager.chooseCardPanel.alpha = 1;//显示窗口
+            LogsSystem.Instance.Print("游戏初始化完毕，开始游戏");
         }
         this.hasGameInit = true;
     }
@@ -82,6 +86,7 @@ public class GameManager
 
         MonoBehaviour.DestroyImmediate(go);//立刻销毁游戏物体
         gameSceneManager.chooseCardPanel.alpha = 0;//使窗口隐形
+        this.chooseTimes++;//计数器自增
     }
 
     /// <summary>
@@ -91,11 +96,9 @@ public class GameManager
     {
         if (chooseTimes < 6)
         {
-            gameSceneManager.chooseCardPanel.alpha = 1;//显示窗口
+            gameSceneManager.chooseCardPanel.alpha = 1;//显示选择窗口
 
             //------还有其他操作
-
-            chooseTimes++;
         }
         LogsSystem.Instance.Print("回合开始");
     }
@@ -127,13 +130,14 @@ public class GameManager
         return new List<CardInfo>(playerOwnCard);
     }
 
+    #region 召唤英雄
     /// <summary>
     /// 向服务器请求添加英雄卡到场上
     /// </summary>
-    public void RequestAddCharacterCard(CharacterCard character, GameSide side,string cardUUID)
+    public void RequestAddCharacterCard(CharacterCard character, GameSide side, string cardUUID)
     {
         //发送到远程服务器
-        SummonCharacter detailData = new SummonCharacter();
+        SummonCharacterData detailData = new SummonCharacterData();
         detailData.cardInfo = character.GetCardInfo();
         detailData.cardUUID = cardUUID;
         detailData.operatePlayerPosition = playerRoomData.allocPosition;
@@ -143,10 +147,31 @@ public class GameManager
         GameData data = new GameData();
         data.operateCode = OperateCode.SummonCharacter;
         data.roomID = playerRoomData.roomID;
-        data.operateData = JsonCoding<SummonCharacter>.encode(detailData);
+        data.operateData = JsonCoding<SummonCharacterData>.encode(detailData);
 
         GameClient.Instance.SendToServer(data);
     }
+    /// <summary>
+    /// 被TCP数据处理器调用
+    /// 召唤英雄
+    /// </summary>
+    public void AddCharacterCard(string cardUUID, CardInfo cardInfo, int operatePlayerPosition)
+    {
+        GameSide side;
+        if (operatePlayerPosition == this.playerRoomData.allocPosition)
+        { side = GameSide.Our; }
+        else
+        { side = GameSide.Enemy; }
+
+        //添加数据
+        CharacterCard character = CardManager.Instance.GetCharacterById(cardInfo.cardId, cardInfo.cardLevel, cardInfo.health, cardInfo.energy, cardInfo.attack, cardInfo.speed);
+        gameCardCollection.AddCharacterCard(character, side);
+
+        //添加场景实体
+        gameSceneManager.CreateGameCharacterCard(side, character);
+    }
+
+    #endregion
 
     #region 附属结构
     /// <summary>
@@ -154,10 +179,22 @@ public class GameManager
     /// </summary>
     public class GameCard
     {
-        public Dictionary<CharacterCard, int> OurCharacterCard = new Dictionary<CharacterCard, int>();//场上卡片<卡片对象，位置>
-        public Dictionary<CharacterCard, int> EnemyCharacterCard = new Dictionary<CharacterCard, int>();//场上卡片<卡片对象，位置>
+        public Dictionary<CharacterCard, string> OurCharacterCard = new Dictionary<CharacterCard, string>();//场上卡片<卡片对象，卡片UUID>
+        public Dictionary<CharacterCard, string> EnemyCharacterCard = new Dictionary<CharacterCard, string>();//场上卡片<卡片对象，卡片UUID>
         public List<ItemCard> OurHandCard = new List<ItemCard>();
         public List<ItemCard> EnemyHandCard = new List<ItemCard>();
+
+        public void AddCharacterCard(CharacterCard card, GameSide side)
+        {
+            if (side == GameSide.Our)
+            {
+                OurCharacterCard.Add(card, card.GetCardInfo().cardUUID);
+            }
+            else
+            {
+                EnemyCharacterCard.Add(card, card.GetCardInfo().cardUUID);
+            }
+        }
     }
     /// <summary>
     /// 游戏方
