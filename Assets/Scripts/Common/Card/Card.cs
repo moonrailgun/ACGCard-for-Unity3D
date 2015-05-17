@@ -127,6 +127,7 @@ public class Card : ICloneable
     public virtual void OnSkillUsed(Skill skill,Card from)
     { }
 
+
     #region 信息设置
     /// <summary>
     /// 设置卡片容器
@@ -152,6 +153,10 @@ public class Card : ICloneable
         this.cardID = info.cardId;
         this.cardName = info.cardName;
         this.cardRarity =(CardRarity)info.cardRarity;
+    }
+    public void SetCardUUID(string cardUUID)
+    {
+        this.cardUUID = cardUUID;
     }
     #endregion
 

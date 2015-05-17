@@ -69,6 +69,8 @@ public class TCPGameDataHandler
                     GameClient.Instance.GetGameSceneManager().gameManager.UpdateGameInfo();
                 }
 
+                LogsSystem.Instance.Print("已经分配到房间号:" + roomInfoData.roomID + ",正在载入游戏");
+
                 //载入游戏界面
                 Application.LoadLevel("GameScene");
             }
@@ -76,6 +78,10 @@ public class TCPGameDataHandler
             {
                 LogsSystem.Instance.Print("分配房间失败:" + ex.ToString(), LogLevel.ERROR);
             }
+        }
+        else
+        {
+            LogsSystem.Instance.Print("返回数据为不成功");
         }
 
         return null;

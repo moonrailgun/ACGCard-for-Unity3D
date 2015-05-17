@@ -26,12 +26,19 @@ public class GameManager
     public void UpdateGameInfo()
     {
         //从全局变量获取信息
-        this.playerRoomData = Global.Instance.playerRoomData;
-        this.playerOwnCard = Global.Instance.playerOwnCard;
+        if (Global.Instance.playerRoomData != null)
+        {
+            this.playerRoomData = Global.Instance.playerRoomData;
+        }
+        if (Global.Instance.playerOwnCard != null)
+        {
+            this.playerOwnCard = Global.Instance.playerOwnCard;
+        }
 
         if (this.gameSceneManager != null && this.playerOwnCard != null && this.playerRoomData != null && this.hasGameInit == false)
         {
             //游戏基础数据接受完毕。游戏开始
+            LogsSystem.Instance.Print("数据转接正常，游戏开始");
             this.GameStart();
         }
     }
@@ -61,6 +68,7 @@ public class GameManager
                 //修改显示数据
                 CardContainer container = go.GetComponent<CardContainer>();
                 Card card = CardManager.Instance.GetCharacterById(cardInfo.cardId, cardInfo.cardLevel, cardInfo.health, cardInfo.energy, cardInfo.attack, cardInfo.speed);
+                card.SetCardUUID(cardInfo.cardUUID);
                 container.SetCardData(card);
                 container.UpdateCardUI();
 
