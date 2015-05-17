@@ -232,7 +232,7 @@ public class GameCardUIManager : MonoBehaviour
                 {
                     //已经被选中的卡片为手牌
                     ItemCard item = selectedCardData as ItemCard;
-                    item.OnUse(go);
+                    item.OnUse(go);//使用对某使用道具
                 }
             }
             else
