@@ -61,7 +61,7 @@ public class GameScene : MonoBehaviour
         CreateGameHandCard(CardManager.Instance.GetItemById(4));
         LogsSystem.Instance.Print("已生成测试数据");
         //以上为测试数据
-         */
+        */
     }
 
     /// <summary>
