@@ -71,8 +71,6 @@ public class TCPGameDataHandler
 
                 LogsSystem.Instance.Print("已经分配到房间号:" + roomInfoData.roomID + ",正在载入游戏");
 
-                System.Threading.Thread.Sleep(200);//尝试用同步阻塞
-
                 //载入游戏界面
                 Application.LoadLevel("GameScene");
             }
