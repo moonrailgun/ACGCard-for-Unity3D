@@ -9,14 +9,18 @@ using UnityEngine;
 /// </summary>
 public class GameManager
 {
+    private GameClient gameClient;//游戏TCP数据管理器
     private GameScene gameSceneManager;//游戏场景管理器
     private AllocRoomData playerRoomData;//玩家分配到的房间信息
     private List<CardInfo> playerOwnCard;//玩家拥有的卡片
     private GameCard gameCardCollection = new GameCard();//所有卡片集合
+    private PlayerInfo playerInfo;//玩家信息集合
 
     public GameManager(GameScene gameSceneManager)
     {
+        this.gameClient = GameClient.Instance;
         this.gameSceneManager = gameSceneManager;
+        this.playerInfo = Global.Instance.playerInfo;
         UpdateGameInfo();
     }
 
@@ -135,6 +139,24 @@ public class GameManager
     public List<CardInfo> GetPlayerOwnCardClone()
     {
         return new List<CardInfo>(playerOwnCard);
+    }
+
+    /// <summary>
+    /// 向服务器请求卡片列表
+    /// </summary>
+    public void RequestCardInv()
+    {
+        GamePlayerOwnCardData detail = new GamePlayerOwnCardData();
+        detail.operatePlayerPosition = playerRoomData.allocPosition;
+        detail.operatePlayerUid = playerInfo.uid;
+        detail.operatePlayerUUID = playerInfo.UUID;
+
+        GameData data = new GameData();
+        data.operateCode = OperateCode.PlayerOwnCard;
+        data.roomID = playerRoomData.roomID;
+        data.operateData  = JsonCoding<GamePlayerOwnCardData>.encode(detail);
+
+        gameClient.SendToServer(data);
     }
 
     #region 召唤英雄

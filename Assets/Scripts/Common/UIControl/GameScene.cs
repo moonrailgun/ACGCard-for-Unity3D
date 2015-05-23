@@ -23,10 +23,6 @@ public class GameScene : MonoBehaviour
         this.chooseCardPanel = GameObject.Find("UI Root/Background/ChooseCardPanel").GetComponent<UIPanel>();
 
         Init();
-
-        //--网络编程
-        //--获取对战信息
-        //--获取卡片列表
     }
     private void Init()
     {
@@ -36,6 +32,9 @@ public class GameScene : MonoBehaviour
         //配置游戏桌面使其能够点击后取消卡片和技能的选中
         GameObject GamePanel = GameObject.Find("Background/GamePanel");
         UIEventListener.Get(GamePanel).onClick += OnClickGameDesktop;
+
+        //获取卡片背包列表
+        gameManager.RequestCardInv();
     }
 
     private void Start()

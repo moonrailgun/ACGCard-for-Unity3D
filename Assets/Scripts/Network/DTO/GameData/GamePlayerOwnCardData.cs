@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
-public class GamePlayerOwnCardData : CommonDTO
+public class GamePlayerOwnCardData : GameDetailData
 {
-    public int playerUid;
     public List<CardInfo> cardInv;
 }
