@@ -1213,7 +1213,7 @@ public class UIInput : MonoBehaviour
 					string asterisk = "*";
 
 					if (label.bitmapFont != null && label.bitmapFont.bmFont != null &&
-						label.bitmapFont.bmFont.GetGlyph('*') == null) asterisk = "x";
+						label.bitmapFont.bmFont.GetGlyph('*') == null) asterisk = "*";
 
 					for (int i = 0, imax = fullText.Length; i < imax; ++i) processed += asterisk;
 				}
