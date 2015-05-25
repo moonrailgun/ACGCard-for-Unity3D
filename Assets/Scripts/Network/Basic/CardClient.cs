@@ -153,14 +153,10 @@ public class CardClient : MonoBehaviour
     {
         //关闭UDP
         this.isThreadRun = false;
-        SendMsg("127.0.0.1", 22233, "请求关闭监听");
+        SendMsg("127.0.0.1", localPort, "请求关闭监听");
 
         //关闭TCP
         GameClient.Instance.CloseTcpConnect();
-    }
-    private void OnDestroy()
-    {
-        StopListen();
     }
 
     #region 消息列表操作

@@ -61,7 +61,7 @@ public class GameClient
     /// </summary>
     public void CloseTcpConnect()
     {
-        if (gameClient.Connected)
+        if (gameClient.Client != null && gameClient.Connected)
         {
             //如果tcp已连接
             gameClient.Close();//关闭连接
@@ -176,7 +176,7 @@ public class GameClient
         }
         catch (Exception e)
         {
-            LogsSystem.Instance.Print(e.ToString(), LogLevel.ERROR);
+            LogsSystem.Instance.Print(e.ToString(), LogLevel.WARN);
         }
     }
 
