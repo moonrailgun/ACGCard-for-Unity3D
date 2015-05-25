@@ -34,6 +34,7 @@ public class Windows
             GameObject messageLabel = window.transform.FindChild("WindowMain/Message").gameObject;
             GameObject confirmButton = window.transform.FindChild("WindowMain/ConfirmButton").gameObject;
             GameObject confirmButtonLabel = window.transform.FindChild("WindowMain/ConfirmButton/Label").gameObject;
+            GameObject overlay = window.transform.FindChild("Overlay").gameObject;
 
             //文本赋值
             titleTextLabel.GetComponent<UILabel>().text = title;
@@ -49,9 +50,12 @@ public class Windows
             }
             if (events != null)
             {
-                foreach(EventDelegate.Callback _event in events)
+                foreach (EventDelegate.Callback _event in events)
                     confirmButton.GetComponent<UIButton>().onClick.Add(new EventDelegate(_event));
             }
+
+            //背景事件
+            //UIEventListener.Get(overlay).onClick += CloseWindow;
 
             //动画
             TweenScale ts = confirmButton.AddComponent<TweenScale>();
@@ -69,7 +73,7 @@ public class Windows
 
     private static void OnButtonHover(GameObject go, bool state)
     {
-        UITweener tweener = go.GetComponent<UITweener>();
+        TweenScale tweener = go.GetComponent<TweenScale>();
         if (state)
         {
             tweener.PlayForward();
@@ -84,6 +88,10 @@ public class Windows
     {
         Object.DestroyImmediate(Windows.activedWindow);
         LogsSystem.Instance.Print("窗口已经被关闭，当前活动的窗口为" + activedWindow);
+    }
+    public static void CloseWindow(GameObject go)
+    {
+        CloseWindow();
     }
 
     public enum WindowsType

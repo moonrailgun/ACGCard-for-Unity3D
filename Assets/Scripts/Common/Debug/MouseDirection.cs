@@ -6,13 +6,14 @@
 public class MouseDirection : MonoBehaviour
 {
     Camera uicamera;
-    void Awake()
-    {
-        uicamera = GameObject.FindGameObjectWithTag(Tags.UICamera).GetComponent<Camera>();
-    }
 
     void Update()
     {
+        if (uicamera == null)
+        {
+            uicamera = GameObject.FindGameObjectWithTag(Tags.UICamera).GetComponent<Camera>();
+        }
+
         Vector3 Mps = Input.mousePosition;
         Ray Mray = uicamera.ScreenPointToRay(Mps);
         RaycastHit Mhit;

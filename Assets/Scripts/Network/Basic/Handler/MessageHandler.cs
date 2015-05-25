@@ -103,7 +103,10 @@ public class MessageHandler : MonoBehaviour
                 }
             case SocketProtocol.OFFLINE:
                 {
-                    Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, null, Windows.WindowsType.MessageWindow);
+                    List<EventDelegate.Callback> events = new List<EventDelegate.Callback>();
+                    events.Add(new EventDelegate.Callback(Windows.CloseWindow));
+                    events.Add(new EventDelegate.Callback(LoadLoginScene));
+                    Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, events, Windows.WindowsType.MessageWindow);
                     break;
                 }
             default:
@@ -112,5 +115,13 @@ public class MessageHandler : MonoBehaviour
                     break;
                 }
         }
+    }
+
+    /// <summary>
+    /// 跳转登陆界面
+    /// </summary>
+    private void LoadLoginScene()
+    {
+        Application.LoadLevel("LoginScene");
     }
 }

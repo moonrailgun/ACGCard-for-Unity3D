@@ -41,7 +41,7 @@ public class ShortMessagesSystem
 
             //anchor
             this.shortMessageRoot = new GameObject("ShortMessagePanel");
-            shortMessageRoot.transform.parent = GameObject.FindGameObjectWithTag(Tags.UIRoot).transform;
+            shortMessageRoot.transform.parent = GameObject.FindGameObjectWithTag(Tags.Global).transform;
             shortMessageRoot.transform.localScale = new Vector3(1, 1, 1);
             shortMessageRoot.layer = 8;
             shortMessageRoot.AddComponent<UIPanel>().depth = 5;//添加面板并设定深度为5

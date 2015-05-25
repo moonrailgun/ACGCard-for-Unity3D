@@ -5,4 +5,5 @@
 	public const string UICamera = "UICamera";
 	public const string SceneController = "SceneController";
 	public const string Cursor = "Cursor";
+	public const string Global = "Global";
 }
