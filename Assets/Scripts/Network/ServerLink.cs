@@ -9,7 +9,11 @@ public class ServerLink : MonoBehaviour {
 
 	void Awake()
 	{
-		client = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
+		GameObject network = GameObject.FindGameObjectWithTag(Tags.Networks);
+		if (network != null)
+			client = network.GetComponent<CardClient>();
+		else
+			LogsSystem.Instance.Print("请从StartScene开始游戏", LogLevel.ERROR);
 	}
 
 	/// <summary>

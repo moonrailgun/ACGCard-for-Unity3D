@@ -20,8 +20,8 @@ public class Global
     }
     #endregion
 
-    public string internalVersion = "2015052501";//内部版本号
-    public string officialVersion = "V0.1Beta";//正式版本号
+    public string internalVersion = "2015052601";//内部版本号
+    public string officialVersion = "0.1Beta";//正式版本号
 
     public Vector2 screenSize;
     public SceneType scene;

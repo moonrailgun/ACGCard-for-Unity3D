@@ -14,18 +14,27 @@ public class LoginScene : MonoBehaviour
     private GameObject configPanel;
 
     private CardClient cardClient;
+    private UILabel gameVersion;
 
     private void Awake()
     {
         Global.Instance.scene = SceneType.LoginScene;//切换场景变量
         Global.Instance.activedSceneManager = this;
 
-        cardClient = GameObject.FindGameObjectWithTag(Tags.Networks).GetComponent<CardClient>();
+        GameObject network = GameObject.FindGameObjectWithTag(Tags.Networks);
+        if (network != null)
+        { cardClient = network.GetComponent<CardClient>(); }
+        else
+        { LogsSystem.Instance.Print("请从StartScene开始游戏", LogLevel.ERROR); }
+
+        gameVersion = GameObject.Find("MainPanel/Version").GetComponent<UILabel>();
     }
 
     private void Start()
     {
         indexPanel.GetComponent<TweenPosition>().to.y = -Screen.height / 2 - 50;
+
+        gameVersion.text = "Ver.  " + Global.Instance.officialVersion;
 
         if (indexPanel == null || serverSelectPanel == null || loginPanel == null || configPanel == null)
         {
