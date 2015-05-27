@@ -1,0 +1,13 @@
+﻿【[b][ff0000]游戏申明[-][/b]】
+本游戏完全由moonrailgun个人独立创作，
+所有资源皆为自己创作或来源于网络公开资源。
+如有版权问题请联系，我会尽快处理。
+【[b][ff0000]开源申明[-][/b]】
+本游戏代码包括客户端、服务端均为开源软件。
+均遵守[b][FF8C00]GPLv2开源协议[-][/b]。
+如有兴趣可以前往开源代码库Github上进行代码的浏览、学习、修改
+欢迎提出宝贵的意见和提交BUG
+【[ff0000]代码仓库地址[-]】
+[u][url=https://github.com/moonrailgun/ACGCard-for-Unity3D] 客户端源码:https://github.com/moonrailgun/ACGCard-for-Unity3D [/url][/u]
+[u][url=https://github.com/moonrailgun/ACGCard-Server] 服务端源码:https://github.com/moonrailgun/ACGCard-Server [/url][/u]
+[u][url=http://www.moonrailgun.com/] 开发者个人首页:http://www.moonrailgun.com/ [/url][/u]

@@ -12,6 +12,8 @@ public class LoginScene : MonoBehaviour
     private GameObject loginPanel;
     [SerializeField]
     private GameObject configPanel;
+    [SerializeField]
+    private GameObject aboutPanel;
 
     private CardClient cardClient;
     private UILabel gameVersion;
@@ -36,16 +38,21 @@ public class LoginScene : MonoBehaviour
 
         gameVersion.text = "Ver.  " + Global.Instance.officialVersion;
 
-        if (indexPanel == null || serverSelectPanel == null || loginPanel == null || configPanel == null)
+        if (indexPanel == null || serverSelectPanel == null || loginPanel == null || configPanel == null || aboutPanel == null)
         {
             Debug.LogError("没有给面板赋值");
         }
         else
         {
+            aboutPanel.transform.FindChild("Label").GetComponent<UILabel>().text = Resources.Load<TextAsset>("About").text;//动态读取脚本
+
             indexPanel.SetActive(true);
             serverSelectPanel.SetActive(false);
             loginPanel.SetActive(false);
             configPanel.SetActive(false);
+            aboutPanel.SetActive(false);
+
+
         }
     }
 
@@ -100,6 +107,24 @@ public class LoginScene : MonoBehaviour
             indexPanel.SetActive(false);
             configPanel.SetActive(true);
         }
+    }
+
+    /// <summary>
+    /// 显示关于界面
+    /// </summary>
+    public void ShowAboutPanel()
+    {
+        indexPanel.SetActive(false);
+        aboutPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// 隐藏关于界面
+    /// </summary>
+    public void HideAboutPanel()
+    {
+        indexPanel.SetActive(true);
+        aboutPanel.SetActive(false);
     }
 
     /// <summary>
