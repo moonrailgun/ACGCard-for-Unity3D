@@ -7,6 +7,7 @@ public class CircleTimer : MonoBehaviour
 {
     public UISprite timerBackground;
     public UILabel numLabel;
+    public bool isInfinite = false;
     public float intervalTime = 1f;//一次循环间隔时间
     public int beginTime = 60;//开始时间
     private int showTime;
@@ -44,8 +45,6 @@ public class CircleTimer : MonoBehaviour
         if (TimerCoroutine != null)
         {
             StopCoroutine(TimerCoroutine);
-
-
         }
     }
 
@@ -73,7 +72,9 @@ public class CircleTimer : MonoBehaviour
                 }
                 timerBackground.invert = !timerBackground.invert;//取反
                 addDir = -addDir;//取反
-                TimeDown();//时间变化
+
+                if (!isInfinite)
+                    TimeDown();//时间变化
             }
 
             timerBackground.fillAmount = toChangeAmount;
@@ -136,6 +137,11 @@ public class CircleTimer : MonoBehaviour
             //numLabel
             showTime = beginTime;
             numLabel.text = showTime.ToString();
+
+            if (!isInfinite)
+                numLabel.gameObject.SetActive(true);
+            else
+                numLabel.gameObject.SetActive(false);
         }
         else
         {
