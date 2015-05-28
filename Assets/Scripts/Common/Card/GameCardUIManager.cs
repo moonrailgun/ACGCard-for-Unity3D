@@ -218,7 +218,8 @@ public class GameCardUIManager : MonoBehaviour
 
                 if (skill != null)
                 {
-                    skill.OnUse(selectedCard, go);//技能被使用（从Card到go)
+                    gameSceneManager.gameManager.RequestUseSkill(skill, selectedCard, go);//技能被使用（从selectedCard到go)
+                    //skill.OnUse(selectedCard, go);//技能被使用（从Card到go)
                     gameSceneManager.ResetSelectedCard();
                 }
                 else if (selectedCardData is CharacterCard)

@@ -154,7 +154,7 @@ public class GameManager
         GameData data = new GameData();
         data.operateCode = OperateCode.PlayerOwnCard;
         data.roomID = playerRoomData.roomID;
-        data.operateData  = JsonCoding<GamePlayerOwnCardData>.encode(detail);
+        data.operateData = JsonCoding<GamePlayerOwnCardData>.encode(detail);
 
         gameClient.SendToServer(data);
     }
@@ -251,6 +251,44 @@ public class GameManager
     #endregion
 
     #region 使用技能
+    /// <summary>
+    /// 向服务器请求使用技能
+    /// </summary>
+    public void RequestUseSkill(Skill skill, GameObject from, GameObject to)
+    {
+        CardContainer fromCardContainer = from.GetComponent<CardContainer>();
+        CardContainer toCardContainer = to.GetComponent<CardContainer>();
+        if (fromCardContainer != null && toCardContainer != null)
+        {
+            Card fromCard = fromCardContainer.GetCardData();
+            Card toCard = toCardContainer.GetCardData();
+
+            if (fromCard is CharacterCard && toCard is CharacterCard)
+            {
+                RequestUseSkill(skill, fromCard as CharacterCard, toCard as CharacterCard);//转到正规函数
+            }
+            else
+            {
+                LogsSystem.Instance.Print("技能使用对象出错，必须为角色卡", LogLevel.WARN);
+            }
+        }
+        else
+        {
+            LogsSystem.Instance.Print("出错。指向对象不是卡片", LogLevel.WARN);
+        }
+    }
+    public void RequestUseSkill(Skill skill, CharacterCard from, CharacterCard to)
+    {
+        UseSkillData detail = new UseSkillData();
+        detail.fromCardUUID = from.GetCardUUID();
+        detail.toCardUUID = to.GetCardUUID();
+        detail.skillCommonName = skill.GetSkillCommonName();
+
+        //detail.skillID
+
+
+        throw new NotImplementedException();
+    }
     #endregion
 
     #region 装备道具
