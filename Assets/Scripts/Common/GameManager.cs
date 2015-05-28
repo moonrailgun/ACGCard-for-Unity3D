@@ -279,14 +279,28 @@ public class GameManager
     }
     public void RequestUseSkill(Skill skill, CharacterCard from, CharacterCard to)
     {
-        UseSkillData detail = new UseSkillData();
-        detail.fromCardUUID = from.GetCardUUID();
-        detail.toCardUUID = to.GetCardUUID();
-        detail.skillCommonName = skill.GetSkillCommonName();
+        UseSkillData detailData = new UseSkillData();
+        detailData.operatePlayerPosition = playerRoomData.allocPosition;
+        detailData.operatePlayerUid = Global.Instance.playerInfo.uid;
+        detailData.operatePlayerUUID = Global.Instance.playerInfo.UUID;
+        detailData.fromCardUUID = from.GetCardUUID();
+        detailData.toCardUUID = to.GetCardUUID();
+        detailData.skillCommonName = skill.GetSkillCommonName();
+        detailData.skillAppendData = skill.GetSkillAppendData();
 
-        //detail.skillID
+        GameData data = new GameData();
+        data.operateCode = OperateCode.UseSkill;
+        data.roomID = playerRoomData.roomID;
+        data.operateData = JsonCoding<UseSkillData>.encode(detailData);
 
+        GameClient.Instance.SendToServer(data);
+    }
 
+    /// <summary>
+    /// 响应服务器对使用技能的数据返回
+    /// </summary>
+    public void ResponseUseSkill(UseSkillData detailData)
+    {
         throw new NotImplementedException();
     }
     #endregion

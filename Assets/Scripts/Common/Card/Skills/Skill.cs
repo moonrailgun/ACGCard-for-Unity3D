@@ -9,6 +9,7 @@ public abstract class Skill : ISkill
     protected static GameScene gameScene;
     protected string skillIconName;
     protected int consumedEnergy = -1;//消耗的能量
+    protected string skillAppendData;//技能附加数据，可以为空
 
     protected GameObject skillButtonObject;//技能在游戏中的按钮实例
 
@@ -101,6 +102,11 @@ public abstract class Skill : ISkill
     public string GetSkillCommonName()
     {
         return this.skillCommonName;
+    }
+
+    public virtual string GetSkillAppendData()
+    {
+        return this.skillAppendData;
     }
 
     /// <summary>

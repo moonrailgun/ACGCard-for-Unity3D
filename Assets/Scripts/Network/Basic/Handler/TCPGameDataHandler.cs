@@ -6,6 +6,11 @@ public class TCPGameDataHandler
 {
     private GameManager gameManager;
 
+    public TCPGameDataHandler()
+    {
+        this.gameManager = gameManager;
+    }
+
     public GameData Process(GameData data, Socket socket)
     {
         switch (data.operateCode)
@@ -23,6 +28,14 @@ public class TCPGameDataHandler
                     //Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, null, Windows.WindowsType.MessageWindow);
                     return ProcessOffline(data);
                 }
+            case OperateCode.Attack:
+                {
+                    return ProcessAttack(data);
+                }
+            case OperateCode.UseSkill:
+                {
+                    return ProcessUseSkill(data);
+                }
             case OperateCode.PlayerOwnCard:
                 {
                     return ProcessPlayerOwnCard(data);
@@ -38,6 +51,7 @@ public class TCPGameDataHandler
         }
         return null;
     }
+
 
     private GameData ProcessIdentify(GameData data)
     {
@@ -87,6 +101,20 @@ public class TCPGameDataHandler
         return null;
     }
 
+    private GameData ProcessUseSkill(GameData data)
+    {
+        UseSkillData detailData = JsonCoding<UseSkillData>.decode(data.operateData);
+        this.GetGameManager().ResponseUseSkill(detailData);
+        return null;
+    }
+
+    private GameData ProcessAttack(GameData data)
+    {
+        AttackData detailData = JsonCoding<AttackData>.decode(data.operateData);
+        this.GetGameManager().ResponseCharacterAttack(detailData);
+        return null;
+    }
+
     private GameData ProcessPlayerOwnCard(GameData data)
     {
         if (data.returnCode == ReturnCode.Success)
@@ -98,7 +126,6 @@ public class TCPGameDataHandler
                 GameClient.Instance.GetGameSceneManager().gameManager.UpdateGameInfo();
             }
         }
-
         return null;
     }
 
@@ -116,17 +143,28 @@ public class TCPGameDataHandler
     private GameData ProcessSummonCharacter(GameData data)
     {
         SummonCharacterData detailData = JsonCoding<SummonCharacterData>.decode(data.operateData);
+
+        this.GetGameManager().ResponseAddCharacterCard(detailData);//调用游戏管理器处理数据
+
+        return null;
+    }
+
+    /// <summary>
+    /// 获取游戏管理器
+    /// </summary>
+    private GameManager GetGameManager()
+    {
         if (Global.Instance.activedSceneManager is GameScene)
         {
             GameScene gs = Global.Instance.activedSceneManager as GameScene;
             GameManager gm = gs.gameManager;
 
-            gm.ResponseAddCharacterCard(detailData);//调用游戏管理器处理数据
+            return gm;
         }
         else
         {
             LogsSystem.Instance.Print("在不正确的场合接收到了数据ID" + data.operateCode, LogLevel.WARN);
+            return null;
         }
-        return null;
     }
 }
