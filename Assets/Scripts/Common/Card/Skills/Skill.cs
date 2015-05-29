@@ -5,19 +5,31 @@
 /// </summary>
 public abstract class Skill : ISkill
 {
+    protected int skillID;
     protected string skillCommonName;
-    protected static GameScene gameScene;
     protected string skillIconName;
     protected int consumedEnergy = -1;//消耗的能量
     protected string skillAppendData;//技能附加数据，可以为空
+    protected CharacterCard skillOwner;//技能拥有者
 
     protected GameObject skillButtonObject;//技能在游戏中的按钮实例
 
-    protected Skill()
+    /// <summary>
+    /// 场景管理器
+    /// </summary>
+    protected GameScene gameScene
     {
-        if (gameScene == null && Global.Instance.scene == SceneType.GameScene)
+        get
         {
-            gameScene = GameObject.FindGameObjectWithTag(Tags.SceneController).GetComponent<GameScene>();
+            if (Global.Instance.scene == SceneType.GameScene)
+            {
+                return GameObject.FindGameObjectWithTag(Tags.SceneController).GetComponent<GameScene>();
+            }
+            else
+            {
+                LogsSystem.Instance.Print("无法获得场景管理器");
+                return null;
+            }
         }
     }
 
@@ -69,7 +81,7 @@ public abstract class Skill : ISkill
         this.skillButtonObject = button;//对象指向赋值
 
         //修改按钮信息
-        button.GetComponent<UIButton>().onClick.Add(new EventDelegate(OnUse));//添加回调
+        button.GetComponent<UIButton>().onClick.Add(new EventDelegate(SetSelectedSkill));//添加回调
         //设置精灵名
         if (string.IsNullOrEmpty(skillIconName) && !string.IsNullOrEmpty(skillCommonName))
         { button.transform.FindChild("SkillIcon").GetComponent<UISprite>().spriteName = string.Format("Skill_Icon_{0}", skillCommonName); }
@@ -96,6 +108,12 @@ public abstract class Skill : ISkill
     }
 
     /// <summary>
+    /// 获取技能ID
+    /// </summary>
+    public int GetSkillID()
+    { return this.skillID; }
+
+    /// <summary>
     /// 获取技能通用名
     /// </summary>
     /// <returns></returns>
@@ -117,7 +135,25 @@ public abstract class Skill : ISkill
         return this.skillButtonObject;
     }
 
+    /*
     public abstract void OnUse();//被点击
     public abstract void OnUse(GameObject target);
     public abstract void OnUse(GameObject from, GameObject target);// 被点击后有施法目标
+    */
+
+    /// <summary>
+    /// 设置当前选中的技能为该技能
+    /// </summary>
+    protected void SetSelectedSkill()
+    {
+        gameScene.SetSelectedSkill(this);
+    }
+
+    /// <summary>
+    /// 只能被服务器返回的响应调用
+    /// 技能来源必为技能拥有者（skillOwner)
+    /// toCard为施法对象可以为null,
+    /// skillAppendData为附加数据（伤害等，格式为JSON）
+    /// </summary>
+    public abstract void OnUse(CharacterCard toCard, string skillAppendData);
 }

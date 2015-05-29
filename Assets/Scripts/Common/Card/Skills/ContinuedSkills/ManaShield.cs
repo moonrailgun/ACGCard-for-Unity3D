@@ -8,4 +8,9 @@ public class ManaShield : Buff
     {
         this.skillCommonName = "ManaShield";
     }
+
+    public override void OnUse(CharacterCard toCard, string skillAppendData)
+    {
+        throw new NotImplementedException();
+    }
 }

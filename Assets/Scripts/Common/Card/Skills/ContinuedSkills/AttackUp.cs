@@ -24,4 +24,9 @@ public class AttackUp : Buff
     }
     public int GetAddedDamage()
     { return this.addedValue; }
+
+    public override void OnUse(CharacterCard toCard, string skillAppendData)
+    {
+        throw new NotImplementedException();
+    }
 }

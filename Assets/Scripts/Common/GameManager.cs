@@ -280,12 +280,14 @@ public class GameManager
     }
     public void RequestUseSkill(Skill skill, CharacterCard from, CharacterCard to)
     {
+        //构建封包
         UseSkillData detailData = new UseSkillData();
         detailData.operatePlayerPosition = playerRoomData.allocPosition;
         detailData.operatePlayerUid = Global.Instance.playerInfo.uid;
         detailData.operatePlayerUUID = Global.Instance.playerInfo.UUID;
         detailData.fromCardUUID = from.GetCardUUID();
         detailData.toCardUUID = to.GetCardUUID();
+        detailData.skillID = skill.GetSkillID();
         detailData.skillCommonName = skill.GetSkillCommonName();
         detailData.skillAppendData = skill.GetSkillAppendData();
 
@@ -302,7 +304,29 @@ public class GameManager
     /// </summary>
     public void ResponseUseSkill(UseSkillData detailData)
     {
-        throw new NotImplementedException();
+        int skillID = detailData.skillID;
+        string skillAppendData = detailData.skillAppendData;
+        string fromCardUUID = detailData.fromCardUUID;
+        string toCardUUID = detailData.toCardUUID;
+        GameSide operateSide;
+        if (detailData.operatePlayerPosition == this.playerRoomData.allocPosition)
+        { operateSide = GameSide.Our; }
+        else
+        { operateSide = GameSide.Enemy; }
+
+        //获取场上卡片对象
+        CharacterCard fromCard = gameCardCollection.GetCharacterCard(fromCardUUID, operateSide);
+        CharacterCard toCard = gameCardCollection.GetCharacterCard(toCardUUID);
+
+        Skill skill = fromCard.GetSkillByID(skillID);
+        if (skill != null)
+        {
+            skill.OnUse(toCard, skillAppendData);//调用施法卡片下的技能使用具体方法
+        }
+        else
+        {
+            LogsSystem.Instance.Print("错误！试图调用卡片不存在的技能", LogLevel.WARN);
+        }
     }
     #endregion
 
@@ -340,6 +364,26 @@ public class GameManager
                 EnemyCharacterCard.Add(card.GetCardInfo().cardUUID, card);
             }
         }
+
+        /// <summary>
+        /// 获取场上的角色卡
+        /// </summary>
+        public CharacterCard GetCharacterCard(string cardUUID)
+        {
+            if (OurCharacterCard.ContainsKey(cardUUID))
+            {
+                return OurCharacterCard[cardUUID];
+            }
+            else if (EnemyCharacterCard.ContainsKey(cardUUID))
+            {
+                return EnemyCharacterCard[cardUUID];
+            }
+            else
+            {
+                LogsSystem.Instance.Print("场上不存在这张卡片" + cardUUID);
+                return null;
+            }
+        }
         public CharacterCard GetCharacterCard(string cardUUID, GameSide side)
         {
             if (side == GameSide.Our)
@@ -354,6 +398,7 @@ public class GameManager
     }
     /// <summary>
     /// 游戏方
+    /// 相对
     /// </summary>
     public enum GameSide
     {

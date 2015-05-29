@@ -72,21 +72,6 @@ public abstract class StateSkill : Skill
         return showName;
     }
 
-    public override void OnUse()
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void OnUse(GameObject target)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void OnUse(GameObject from, GameObject target)
-    {
-        throw new NotImplementedException();
-    }
-
     #region 角色事件监听
     /// <summary>
     /// 当角色发动普通攻击时调用

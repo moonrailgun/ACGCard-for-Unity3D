@@ -177,6 +177,20 @@ public class CharacterCard : Card
         }
     }
 
+    public Skill GetSkillByID(int skillID)
+    {
+        foreach (Skill skill in cardSkill)
+        {
+            if (skill.GetSkillID() == skillID)
+            {
+                return skill;
+            }
+        }
+
+        LogsSystem.Instance.Print(string.Format("角色{0}没有该ID为{1}的技能", this.cardName, skillID), LogLevel.WARN);
+        return null;
+    }
+
     public override void SetCardInfo(CardInfo info)
     {
         base.SetCardInfo(info);

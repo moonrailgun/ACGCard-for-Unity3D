@@ -33,10 +33,7 @@ public abstract class AttackSkill : Skill
         return this.GetCalculatedDamage();
     }
 
-    public override void OnUse()
-    {
-        gameScene.SetSelectedSkill(this);
-    }
+    /*
     public override void OnUse(GameObject from, GameObject target)
     {
         if (CheckConjureCondition(from))
@@ -48,9 +45,9 @@ public abstract class AttackSkill : Skill
 
             //--创建技能特效
         }
-    }
+    }*/
 
-    public override void OnUse(GameObject target)
+    public override void OnUse(CharacterCard toCard, string skillAppendData)
     {
         throw new NotImplementedException();
     }

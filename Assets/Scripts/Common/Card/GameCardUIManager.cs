@@ -166,7 +166,8 @@ public class GameCardUIManager : MonoBehaviour
                 //如果已经选中了技能并且技能是BUFF类（可以对己方使用）
                 if (selectedSkill != null)
                 {
-                    selectedSkill.OnUse(selectedCard, go);//技能被使用（从Card到go）
+                    gameSceneManager.gameManager.RequestUseSkill(selectedSkill, selectedCard, go);//技能被使用（从selectedCard到go)
+                    gameSceneManager.ResetSelectedCard();
                 }
             }
             else if (selectedCard != null && selectedCardData is ItemCard)
@@ -178,7 +179,6 @@ public class GameCardUIManager : MonoBehaviour
             else
             {
                 //将改卡设定为初始选中卡
-
                 if (go.transform.IsChildOf(GameObject.Find("Ourside/CardGrid").transform))
                 {
                     //清空技能按钮列表
