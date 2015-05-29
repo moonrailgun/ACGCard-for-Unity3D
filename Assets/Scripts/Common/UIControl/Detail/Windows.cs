@@ -60,7 +60,7 @@ public class Windows
             GameObject messageLabel = window.transform.FindChild("WindowMain/Message").gameObject;
             GameObject confirmButton = window.transform.FindChild("WindowMain/ConfirmButton").gameObject;
             GameObject confirmButtonLabel = window.transform.FindChild("WindowMain/ConfirmButton/Label").gameObject;
-            GameObject overlay = window.transform.FindChild("Overlay").gameObject;
+            //GameObject overlay = window.transform.FindChild("Overlay").gameObject;
             GameObject closeButton = window.transform.FindChild("WindowMain/CloseButton").gameObject;
 
             //文本赋值

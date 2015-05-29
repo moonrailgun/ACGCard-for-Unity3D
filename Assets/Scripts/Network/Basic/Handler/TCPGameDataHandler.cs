@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class TCPGameDataHandler
 {
-    private GameManager gameManager;
-
-    public TCPGameDataHandler()
-    {
-        this.gameManager = gameManager;
-    }
-
     public GameData Process(GameData data, Socket socket)
     {
         switch (data.operateCode)
@@ -163,7 +156,7 @@ public class TCPGameDataHandler
         }
         else
         {
-            LogsSystem.Instance.Print("在不正确的场合接收到了数据ID" + data.operateCode, LogLevel.WARN);
+            LogsSystem.Instance.Print("代码在不正确的场合尝试获取游戏管理器", LogLevel.WARN);
             return null;
         }
     }

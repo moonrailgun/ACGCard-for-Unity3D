@@ -182,7 +182,7 @@ public class GameManager
     }
     /// <summary>
     /// 被TCP数据处理器调用
-    /// 召唤英雄
+    /// 响应服务器召唤英雄的请求
     /// </summary>
     public void ResponseAddCharacterCard(SummonCharacterData detailData)
     {
@@ -197,6 +197,7 @@ public class GameManager
 
         //添加数据
         CharacterCard character = CardManager.Instance.GetCharacterById(cardInfo.cardId, cardInfo.cardLevel, cardInfo.health, cardInfo.energy, cardInfo.attack, cardInfo.speed);
+        character.SetCardUUID(cardUUID);
         gameCardCollection.AddCharacterCard(character, operateSide);
 
         //添加场景实体
