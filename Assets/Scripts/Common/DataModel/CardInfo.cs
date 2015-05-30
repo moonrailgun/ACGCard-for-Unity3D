@@ -9,6 +9,7 @@ public class CardInfo
     public string cardName;
     public int cardRarity;
     public int cardLevel;
+    public string cardOwnSkill;//卡片拥有技能
     public int health;
     public int energy;
     public int attack;
