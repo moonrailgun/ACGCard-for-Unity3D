@@ -71,7 +71,7 @@ public class GameManager
 
                 //修改显示数据
                 CardContainer container = go.GetComponent<CardContainer>();
-                Card card = CardManager.Instance.GetCharacterById(cardInfo.cardId, cardInfo.cardLevel, cardInfo.health, cardInfo.energy, cardInfo.attack, cardInfo.speed);
+                Card card = CardManager.Instance.GetCharacterById(cardInfo.cardUUID, cardInfo.cardId, cardInfo.cardLevel, cardInfo.health, cardInfo.energy, cardInfo.attack, cardInfo.speed, cardInfo.cardOwnSkill);
                 card.SetCardUUID(cardInfo.cardUUID);
                 container.SetCardData(card);
                 container.UpdateCardUI();
@@ -196,7 +196,7 @@ public class GameManager
         { operateSide = GameSide.Enemy; }
 
         //添加数据
-        CharacterCard character = CardManager.Instance.GetCharacterById(cardInfo.cardId, cardInfo.cardLevel, cardInfo.health, cardInfo.energy, cardInfo.attack, cardInfo.speed);
+        CharacterCard character = CardManager.Instance.GetCharacterById(cardInfo.cardUUID, cardInfo.cardId, cardInfo.cardLevel, cardInfo.health, cardInfo.energy, cardInfo.attack, cardInfo.speed, cardInfo.cardOwnSkill);
         character.SetCardUUID(cardUUID);
         gameCardCollection.AddCharacterCard(character, operateSide);
 

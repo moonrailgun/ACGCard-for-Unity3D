@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using System;
 
 /// <summary>
 /// 技能基类
 /// </summary>
-public abstract class Skill : ISkill
+public abstract class Skill : ISkill , ICloneable
 {
     protected int skillID;
     protected string skillCommonName;
@@ -99,6 +100,11 @@ public abstract class Skill : ISkill
         return this;
     }
 
+    public void SetAppendData(string skillAppendData)
+    {
+        this.skillAppendData = skillAppendData;
+    }
+
     /// <summary>
     /// 获取技能显示的名字
     /// </summary>
@@ -135,6 +141,11 @@ public abstract class Skill : ISkill
         return this.skillButtonObject;
     }
 
+    /// <summary>
+    /// 解析技能附加数据，
+    /// </summary>
+    public abstract void AnalyzeSkillAppendData();
+
     /*
     public abstract void OnUse();//被点击
     public abstract void OnUse(GameObject target);
@@ -156,4 +167,9 @@ public abstract class Skill : ISkill
     /// skillAppendData为附加数据（伤害等，格式为JSON）
     /// </summary>
     public abstract void OnUse(CharacterCard toCard, string skillAppendData);
+
+    public object Clone()
+    {
+        return this.MemberwiseClone();
+    }
 }

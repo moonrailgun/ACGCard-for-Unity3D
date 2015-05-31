@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AttackSkill : Skill
+public class AttackSkill : Skill
 {
     protected int damage = 0;
 
-    protected AttackSkill()
+    public AttackSkill(string commonName, string iconName = "")
         : base()
     {
-
+        this.skillCommonName = commonName;
+        if (!string.IsNullOrEmpty(iconName))
+        { SetIconName(iconName); }
+        else
+        { SetIconName("Unknown"); }
     }
 
     public void SetBasicDamage(int value)
@@ -48,6 +52,11 @@ public abstract class AttackSkill : Skill
     }*/
 
     public override void OnUse(CharacterCard toCard, string skillAppendData)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void AnalyzeSkillAppendData()
     {
         throw new NotImplementedException();
     }

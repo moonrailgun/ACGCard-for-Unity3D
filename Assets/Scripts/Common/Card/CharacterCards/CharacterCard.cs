@@ -14,14 +14,13 @@ public class CharacterCard : Card
 
     protected Equipment equipments;//装备
 
-    protected List<Skill> cardSkill;//卡片技能列表
+    protected List<Skill> cardOwnSkill;//卡片技能列表
     protected Dictionary<StateSkill, Card> cardState;//卡片状态列表 - <状态内容,状态来源>
 
     #region 构造函数
-    public CharacterCard(int cardId, string cardName, List<Skill> cardSkill, CardRarity cardRarity, string cardDescription = "")
+    public CharacterCard(int cardId, string cardName, CardRarity cardRarity, string cardDescription = "")
         : base(cardId, cardName, CardType.Character, cardRarity, cardDescription)
     {
-        this.cardSkill = cardSkill;
         this.cardState = new Dictionary<StateSkill, Card>();
     }
     #endregion
@@ -34,7 +33,7 @@ public class CharacterCard : Card
     {
         return this.energy;
     }
-    public void SetCharacterInfo(int level, int health, int energy, int attack, int speed)
+    public void SetCharacterInfo(int level, int health, int energy, int attack, int speed, List<Skill> cardOwnSkill)
     {
         this.level = level;
         this.health = health;
@@ -43,6 +42,7 @@ public class CharacterCard : Card
         this.maxEnergy = energy;
         this.attack = attack;
         this.speed = speed;
+        this.cardOwnSkill = cardOwnSkill;
     }
 
     /// <summary>
@@ -179,7 +179,7 @@ public class CharacterCard : Card
 
     public Skill GetSkillByID(int skillID)
     {
-        foreach (Skill skill in cardSkill)
+        foreach (Skill skill in cardOwnSkill)
         {
             if (skill.GetSkillID() == skillID)
             {
@@ -195,7 +195,7 @@ public class CharacterCard : Card
     {
         base.SetCardInfo(info);
 
-        SetCharacterInfo(info.cardLevel, info.health, info.energy, info.attack, info.speed);
+        SetCharacterInfo(info.cardLevel, info.health, info.energy, info.attack, info.speed, SkillManager.Instance.GetSkillListByIDArray(IntArray.StringToIntArray(info.cardOwnSkill)));
     }
 
     /// <summary>
@@ -283,7 +283,7 @@ public class CharacterCard : Card
     public int GetCardLevel()
     { return this.level; }
     public List<Skill> GetCardSkillList()
-    { return this.cardSkill; }
+    { return this.cardOwnSkill; }
     public Dictionary<StateSkill, Card> GetCardState()
     { return this.cardState; }
     public int GetBaseCardDamageValue()

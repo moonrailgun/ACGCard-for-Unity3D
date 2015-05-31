@@ -13,4 +13,9 @@ public class ManaShield : Buff
     {
         throw new NotImplementedException();
     }
+
+    public override void AnalyzeSkillAppendData()
+    {
+        throw new NotImplementedException();
+    }
 }
