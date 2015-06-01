@@ -104,7 +104,7 @@ public class GameClient
     }
     private void Send(Socket socket, byte[] data)
     {
-        LogsSystem.Instance.Print(string.Format("发送数据({0}):{1}", data.Length, encoding.GetString(data)));
+        LogsSystem.Instance.Print(string.Format("TCP 发送数据({0}):{1}", data.Length, encoding.GetString(data)));
         socket.BeginSend(data, 0, data.Length, 0, new AsyncCallback(SendCallback), socket);
     }
     private void SendCallback(IAsyncResult ar)
@@ -114,7 +114,7 @@ public class GameClient
             Socket handler = (Socket)ar.AsyncState;
 
             int bytesSent = handler.EndSend(ar);
-            LogsSystem.Instance.Print(string.Format("数据({0})发送完成", bytesSent));
+            LogsSystem.Instance.Print(string.Format("TCP 数据({0})发送完成", bytesSent));
         }
         catch (Exception e)
         {
@@ -160,7 +160,7 @@ public class GameClient
 
                 //接受完成
                 byte[] receiveData = receiveState.dataByte.ToArray();
-                LogsSystem.Instance.Print(string.Format("读取到{1}长度数据,接受到{0}字节数据", receiveData.Length, bytesRead));
+                LogsSystem.Instance.Print(string.Format("TCP 读取到{1}长度数据,接受到{0}字节数据", receiveData.Length, bytesRead));
                 //处理数据
                 ProcessReceiveMessage(receiveData, receiveState.socket);
 

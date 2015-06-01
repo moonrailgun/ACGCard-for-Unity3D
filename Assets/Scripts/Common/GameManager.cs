@@ -12,7 +12,7 @@ public class GameManager
     private GameClient gameClient;//游戏TCP数据管理器
     private GameScene gameSceneManager;//游戏场景管理器
     private AllocRoomData playerRoomData;//玩家分配到的房间信息
-    private List<CardInfo> playerOwnCard;//玩家拥有的卡片
+    private List<CardInfo> playerOwnGameCard;//玩家拥有的参与游戏的卡片
     private GameCard gameCardCollection = new GameCard();//所有卡片集合
     private PlayerInfo playerInfo;//玩家信息集合
 
@@ -21,7 +21,6 @@ public class GameManager
         this.gameClient = GameClient.Instance;
         this.gameSceneManager = gameSceneManager;
         this.playerInfo = Global.Instance.playerInfo;
-        UpdateGameInfo();
     }
 
     /// <summary>
@@ -29,17 +28,26 @@ public class GameManager
     /// </summary>
     public void UpdateGameInfo()
     {
+        LogsSystem.Instance.Print("正在更新游戏信息");
+
         //从全局变量获取信息
         if (Global.Instance.playerRoomData != null)
         {
             this.playerRoomData = Global.Instance.playerRoomData;
+            LogsSystem.Instance.Print("游戏管理器已接受到角色房间信息");
+            if (Global.Instance.playerGameCard == null)
+            {
+                LogsSystem.Instance.Print("游戏管理器正在向服务器请求参与游戏卡片数据");
+                RequestCardInv();//获取卡片背包列表
+            }
         }
-        if (Global.Instance.playerOwnCard != null)
+        if (Global.Instance.playerGameCard != null)
         {
-            this.playerOwnCard = Global.Instance.playerOwnCard;
+            this.playerOwnGameCard = Global.Instance.playerGameCard;
+            LogsSystem.Instance.Print("游戏管理器已接收到玩家拥有卡片列表");
         }
 
-        if (this.gameSceneManager != null && this.playerOwnCard != null && this.playerRoomData != null && this.hasGameInit == false)
+        if (this.gameSceneManager != null && Global.Instance.playerRoomData != null && Global.Instance.playerGameCard != null && this.hasGameInit == false)
         {
             //游戏基础数据接受完毕。游戏开始
             LogsSystem.Instance.Print("数据转接正常，游戏开始");
@@ -62,7 +70,7 @@ public class GameManager
             UIScrollView scrollView = GameObject.Find("ChooseCardPanel/ChooseContainer/ChooseList").GetComponent<UIScrollView>();
 
             //循环添加选中列表的数据
-            foreach (CardInfo cardInfo in playerOwnCard)
+            foreach (CardInfo cardInfo in playerOwnGameCard)
             {
                 GameObject go = NGUITools.AddChild(parent, perfab);
                 go.transform.FindChild("CharacterInfo").gameObject.SetActive(false);//隐藏血条
@@ -138,7 +146,7 @@ public class GameManager
     /// </summary>
     public List<CardInfo> GetPlayerOwnCardClone()
     {
-        return new List<CardInfo>(playerOwnCard);
+        return new List<CardInfo>(playerOwnGameCard);
     }
 
     /// <summary>
@@ -146,6 +154,8 @@ public class GameManager
     /// </summary>
     public void RequestCardInv()
     {
+        LogsSystem.Instance.Print("正在向服务器请求卡片背包数据");
+
         GamePlayerOwnCardData detail = new GamePlayerOwnCardData();
         detail.operatePlayerPosition = playerRoomData.allocPosition;
         detail.operatePlayerUid = playerInfo.uid;

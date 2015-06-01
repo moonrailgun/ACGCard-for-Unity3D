@@ -18,7 +18,7 @@ public class PlayerInfoHandler : IHandler
             playerInfo.gem = data.gem;
             playerInfo.vipExpire = data.vipExpire;
 
-            //将数据交给全局
+            //UDP返回的数据不提交给全局
             Global.Instance.playerInfo = playerInfo;
 
             if (Global.Instance.scene == SceneType.MenuScene)

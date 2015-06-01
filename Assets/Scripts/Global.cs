@@ -30,6 +30,7 @@ public class Global
     public string playerName;
     public PlayerInfo playerInfo;
     public List<CardInfo> playerOwnCard;//玩家拥有的卡片
+    public List<CardInfo> playerGameCard;//玩家参与游戏的卡片（被服务器分配UUID）
     public AllocRoomData playerRoomData;//玩家分配到的房间信息
     public MonoBehaviour activedSceneManager;//当前场景管理器
 

@@ -189,12 +189,21 @@ public class CardManager
     /// <summary>
     /// 获取角色卡的拷贝
     /// </summary>
-    public CharacterCard GetCharacterById(string UUID, int id, int level, int health, int energy, int attack, int speed,string cardOwnSkill)
+    public CharacterCard GetCharacterById(string UUID, int id, int level, int health, int energy, int attack, int speed, string cardOwnSkill)
     {
         CharacterCard card = GetCardById(id, CardType.Character) as CharacterCard;
         if (card != null)
         {
-            List<Skill> skillList = SkillManager.Instance.GetSkillListByIDArray(IntArray.StringToIntArray(cardOwnSkill));
+            List<Skill> skillList;
+            if (cardOwnSkill != "[]" && !string.IsNullOrEmpty(cardOwnSkill))
+            {
+                skillList = SkillManager.Instance.GetSkillListByIDArray(IntArray.StringToIntArray(cardOwnSkill));
+            }
+            else
+            {
+                skillList = new List<Skill>();
+            }
+
             card.SetCharacterInfo(level, health, energy, attack, speed, skillList);
             card.SetCardUUID(UUID);
         }

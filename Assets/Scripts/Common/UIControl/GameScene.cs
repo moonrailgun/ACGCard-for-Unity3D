@@ -33,8 +33,7 @@ public class GameScene : MonoBehaviour
         GameObject GamePanel = GameObject.Find("Background/GamePanel");
         UIEventListener.Get(GamePanel).onClick += OnClickGameDesktop;
 
-        //获取卡片背包列表
-        gameManager.RequestCardInv();
+        this.gameManager.UpdateGameInfo();//更新一下数据
     }
 
     private void Start()
@@ -159,6 +158,7 @@ public class GameScene : MonoBehaviour
         roundDoneButton.transform.Find("Label").GetComponent<UILabel>().color = button.disabledColor;
         LogsSystem.Instance.Print("回合结束");
 
+        LogsSystem.Instance.Print("回合结束按钮测试........");
         Invoke("TurnOnRoundButton", 2f);//用于测试
     }
 
