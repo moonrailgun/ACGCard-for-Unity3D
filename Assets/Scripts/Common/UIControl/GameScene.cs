@@ -12,6 +12,7 @@ public class GameScene : MonoBehaviour
     private ArrowLine arrowLine;//箭头指向线
     private GameObject roundDoneButton;//回合结束按钮
     public UIPanel chooseCardPanel;//选择卡片根面板
+    public UIGrid chooseCardGrid;//选择卡片的网格
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class GameScene : MonoBehaviour
         this.uiManager = GetComponent<GameCardUIManager>();
         this.roundDoneButton = GameObject.Find("GamePanel/RoundDone");
         this.chooseCardPanel = GameObject.Find("UI Root/Background/ChooseCardPanel").GetComponent<UIPanel>();
+        this.chooseCardGrid = GameObject.Find("UI Root/Background/ChooseCardPanel/ChooseContainer/ChooseList/Grid").GetComponent<UIGrid>();
 
         Init();
     }
@@ -62,7 +64,8 @@ public class GameScene : MonoBehaviour
         */
     }
 
-    /// <summary>
+    #region 场景卡片管理
+ /// <summary>
     /// 生成游戏卡片
     /// 角色卡
     /// </summary>
@@ -135,6 +138,26 @@ public class GameScene : MonoBehaviour
     }
 
     /// <summary>
+    /// 召唤选中的角色卡
+    /// </summary>
+    public void SummonCharacterUp(CharacterCard card, GameManager.GameSide side)
+    {
+        LogsSystem.Instance.Print(string.Format("{0}召唤{1}上场", side.ToString(), card.GetCardName()));
+
+        //召唤卡片到场上
+        string path = string.Format("UI Root/Background/GamePanel/{0}side/CardGrid", side.ToString());
+        GameObject parent = GameObject.Find(path);
+        GameObject prefab = Resources.Load<GameObject>("CharacterCard");
+        GameObject go = NGUITools.AddChild(parent, prefab);
+        CardContainer container = go.GetComponent<CardContainer>();
+        container.SetCardData(card, true);
+        parent.GetComponent<UIGrid>().Reposition();
+    }
+    #endregion
+
+
+    #region 场景事件
+/// <summary>
     /// 点击游戏桌面后调用
     /// 取消卡片选中
     /// </summary>
@@ -175,33 +198,25 @@ public class GameScene : MonoBehaviour
     }
 
     /// <summary>
+    /// 打开选择英雄窗口
+    /// </summary>
+    public void ShowChooseWindow()
+    {
+        this.chooseCardGrid.Reposition();//刷新排列
+        this.chooseCardPanel.alpha = 1;//显示选择窗口
+    }
+
+    /// <summary>
     /// 关闭选择英雄窗口
     /// </summary>
     public void CloseChooseWindow()
     {
         this.chooseCardPanel.alpha = 0;
     }
+    #endregion
+    
 
-    /// <summary>
-    /// 召唤选中的角色卡
-    /// </summary>
-    public void SummonCharacterUp(CharacterCard card, GameManager.GameSide side)
-    {
-        LogsSystem.Instance.Print(string.Format("{0}召唤{1}上场", side.ToString(), card.GetCardName()));
-
-        //召唤卡片到场上
-        string path = string.Format("UI Root/Background/GamePanel/{0}side/CardGrid", side.ToString());
-        GameObject parent = GameObject.Find(path);
-        GameObject prefab = Resources.Load<GameObject>("CharacterCard");
-        GameObject go = NGUITools.AddChild(parent, prefab);
-        CardContainer container = go.GetComponent<CardContainer>();
-        container.SetCardData(card, true);
-
-
-        //选择卡片召唤到场上
-        //List<CardInfo> playerOwnCard = gameManager.GetPlayerOwnCardClone();
-
-    }
+   
 
     #region 变量配置与修改
     /// <summary>

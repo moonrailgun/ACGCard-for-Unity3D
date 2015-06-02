@@ -50,7 +50,7 @@ public class GameManager
         if (this.gameSceneManager != null && Global.Instance.playerRoomData != null && Global.Instance.playerGameCard != null && this.hasGameInit == false)
         {
             //游戏基础数据接受完毕。游戏开始
-            LogsSystem.Instance.Print("数据转接正常，游戏开始");
+            LogsSystem.Instance.Print("数据转接正常，游戏场景初始化...");
             this.GameStart();
         }
     }
@@ -70,6 +70,7 @@ public class GameManager
             UIScrollView scrollView = GameObject.Find("ChooseCardPanel/ChooseContainer/ChooseList").GetComponent<UIScrollView>();
 
             //循环添加选中列表的数据
+            LogsSystem.Instance.Print("正在把英雄添加到场景上,共" + playerOwnGameCard.Count + "个");
             foreach (CardInfo cardInfo in playerOwnGameCard)
             {
                 GameObject go = NGUITools.AddChild(parent, perfab);
@@ -88,7 +89,8 @@ public class GameManager
                 UIEventListener.Get(go).onClick += OnSelectHeroToUp;
             }
 
-            gameSceneManager.chooseCardPanel.alpha = 1;//显示窗口
+
+            gameSceneManager.ShowChooseWindow();//显示窗口
             LogsSystem.Instance.Print("游戏初始化完毕，开始游戏");
         }
         this.hasGameInit = true;
@@ -104,7 +106,7 @@ public class GameManager
         RequestAddCharacterCard(card as CharacterCard, GameSide.Our, card.GetCardInfo().cardUUID);
 
         MonoBehaviour.DestroyImmediate(go);//立刻销毁游戏物体
-        gameSceneManager.chooseCardPanel.alpha = 0;//使窗口隐形
+        gameSceneManager.CloseChooseWindow();//使窗口隐形
         this.chooseTimes++;//计数器自增
     }
 
@@ -115,7 +117,7 @@ public class GameManager
     {
         if (chooseTimes < 6)
         {
-            gameSceneManager.chooseCardPanel.alpha = 1;//显示选择窗口
+            gameSceneManager.ShowChooseWindow();
 
             //------还有其他操作
         }
