@@ -179,7 +179,7 @@ public class GameManager
     {
         //发送到远程服务器
         SummonCharacterData detailData = new SummonCharacterData();
-        detailData.cardInfo = character.GetCardInfo();
+        detailData.cardInfo = character.GetCardInfo();//获取卡片信息
         detailData.cardUUID = cardUUID;
         detailData.operatePlayerPosition = playerRoomData.allocPosition;
         detailData.operatePlayerUid = Global.Instance.playerInfo.uid;

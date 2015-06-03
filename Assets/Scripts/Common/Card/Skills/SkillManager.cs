@@ -57,6 +57,14 @@ public class SkillManager
         AddSkill(new AttackSkill("Lucy01"));
         AddSkill(new AttackSkill("Lucy02"));
         AddSkill(new AttackSkill("Lucy03"));
+
+        LogsSystem.Instance.Print("技能数据加载完毕,共有 " + skillList.Count + " 个技能");
+        string skillInfoList = "技能ID信息为:\n";
+        foreach (KeyValuePair<int, Skill> pair in skillList)
+        {
+            skillInfoList += string.Format("ID：{0} - {1}\n", pair.Key, pair.Value.GetSkillCommonName());
+        }
+        LogsSystem.Instance.Print(skillInfoList, LogLevel.DEBUG);
     }
 
     /// <summary>
@@ -72,6 +80,7 @@ public class SkillManager
     {
         if (!skillList.ContainsKey(skillID))
         {
+            skill.SetSkillID(skillID);//设置ID与地图一致
             skillList.Add(skillID, skill);
         }
         else
@@ -92,7 +101,7 @@ public class SkillManager
 
             return skill;
         }
-        LogsSystem.Instance.Print("无法通过ID获取到该技能，可能是ID不存在" + skillID);
+        LogsSystem.Instance.Print("无法通过ID获取到该技能，可能是ID不存在；该ID为：" + skillID);
         return null;
     }
 
@@ -113,5 +122,20 @@ public class SkillManager
         }
 
         return returnList;
+    }
+    /// <summary>
+    /// 根据实例列表获取技能数组ID
+    /// </summary>
+    public int[] GetSkillArrayByList(List<Skill> skillList)
+    {
+        int count = skillList.Count;
+        int[] array = new int[count];
+
+        for(int i = 0;i< count; i++)
+        {
+            array[i] = skillList[i].GetSkillID();
+        }
+
+        return array;
     }
 }

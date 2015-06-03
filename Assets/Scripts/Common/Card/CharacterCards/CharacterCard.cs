@@ -329,6 +329,10 @@ public class CharacterCard : Card
         info.attack = this.attack;
         info.speed = this.speed;
 
+        //获取技能
+        int[] array = SkillManager.Instance.GetSkillArrayByList(this.cardOwnSkill);
+        info.cardOwnSkill = IntArray.IntArrayToString(array);
+
         return info;
     }
     #endregion
