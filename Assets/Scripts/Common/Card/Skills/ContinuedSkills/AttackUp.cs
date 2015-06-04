@@ -29,9 +29,4 @@ public class AttackUp : Buff
     {
         throw new NotImplementedException();
     }
-
-    public override void AnalyzeSkillAppendData()
-    {
-        throw new NotImplementedException();
-    }
 }

@@ -146,11 +146,6 @@ public abstract class Skill : ISkill , ICloneable
         return this.skillButtonObject;
     }
 
-    /// <summary>
-    /// 解析技能附加数据，
-    /// </summary>
-    public abstract void AnalyzeSkillAppendData();
-
     /*
     public abstract void OnUse();//被点击
     public abstract void OnUse(GameObject target);

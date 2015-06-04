@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using LitJson;
 
 public class AttackSkill : Skill
 {
     protected int damage = 0;
 
-    public AttackSkill(string commonName, string iconName = "")
+    public AttackSkill(string commonName, bool haveIcon = false, string specialIconName = "")
         : base()
     {
         this.skillCommonName = commonName;
-        if (!string.IsNullOrEmpty(iconName))
-        { SetIconName(iconName); }
+        if (haveIcon)
+        {
+            if (string.IsNullOrEmpty(specialIconName))
+            { SetIconName(commonName); }
+            else
+            { SetIconName(specialIconName); }
+        }
         else
         { SetIconName("Unknown"); }
     }
@@ -53,11 +59,9 @@ public class AttackSkill : Skill
 
     public override void OnUse(CharacterCard toCard, string skillAppendData)
     {
-        throw new NotImplementedException();
-    }
+        JsonData skillData = JsonMapper.ToObject(skillAppendData);
+        int damage = Convert.ToInt32(skillData["damage"].ToString());
 
-    public override void AnalyzeSkillAppendData()
-    {
-        throw new NotImplementedException();
+        toCard.GetDamage(damage);
     }
 }

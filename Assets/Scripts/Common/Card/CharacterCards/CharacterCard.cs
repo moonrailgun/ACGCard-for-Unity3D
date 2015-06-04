@@ -149,7 +149,7 @@ public class CharacterCard : Card
     {
         health -= damage;//伤害扣血
         UpdateCardUIBaseByCardInfo(this.container.gameObject);//更新贴图
-        container.GetComponent<CardContainer>().ShakeCard();//震动卡片
+        container.ShakeCard();//震动卡片
         LogsSystem.Instance.Print(string.Format("{0}受到{1}点伤害,当前血量{2}", this.cardName, damage, this.health));//日志记录
     }
 

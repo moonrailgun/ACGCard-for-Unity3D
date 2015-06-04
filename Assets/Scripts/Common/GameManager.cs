@@ -336,9 +336,7 @@ public class GameManager
             skill.OnUse(toCard, skillAppendData);//调用施法卡片下的技能使用具体方法
         }
         else
-        {
-            LogsSystem.Instance.Print("错误！试图调用卡片不存在的技能", LogLevel.WARN);
-        }
+        { LogsSystem.Instance.Print("错误！试图调用卡片不存在的技能", LogLevel.WARN); }
     }
     #endregion
 
