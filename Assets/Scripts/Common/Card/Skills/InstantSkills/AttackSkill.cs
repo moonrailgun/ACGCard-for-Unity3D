@@ -61,7 +61,9 @@ public class AttackSkill : Skill
     {
         JsonData skillData = JsonMapper.ToObject(skillAppendData);
         int damage = Convert.ToInt32(skillData["damage"].ToString());
+        int energy = Convert.ToInt32(skillData["energy"].ToString());
 
         toCard.GetDamage(damage);
+        toCard.ExpendEnergy(energy);
     }
 }

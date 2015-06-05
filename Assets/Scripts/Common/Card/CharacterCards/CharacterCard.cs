@@ -151,6 +151,42 @@ public class CharacterCard : Card
         UpdateCardUIBaseByCardInfo(this.container.gameObject);//更新贴图
         container.ShakeCard();//震动卡片
         LogsSystem.Instance.Print(string.Format("{0}受到{1}点伤害,当前血量{2}", this.cardName, damage, this.health));//日志记录
+
+        //死亡
+        if (health <= 0)
+        {
+            OnDead();
+        }
+    }
+
+    /// <summary>
+    /// 尝试消耗能量值
+    /// 无需验证（在服务端已通过）
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public void ExpendEnergy(int value)
+    {
+        if (this.energy >= value)
+        {
+            this.energy -= value;
+        }
+        else
+        {
+            this.energy = 0;
+            LogsSystem.Instance.Print("出现异常，尝试扣除比大于人物拥有能量的能量，可能是由于服务端和客户端数据不同步造成的。请联系开发人员", LogLevel.WARN);
+        }
+
+    }
+
+    /// <summary>
+    /// 死亡
+    /// </summary>
+    protected void OnDead()
+    {
+        //立即销毁卡片
+        LogsSystem.Instance.Print(string.Format("{0}生命值归零，死亡。立即销毁卡片", this.cardName));
+        Object.DestroyImmediate(container.gameObject);
     }
 
     /// <summary>

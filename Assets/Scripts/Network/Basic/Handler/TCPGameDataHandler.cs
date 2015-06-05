@@ -97,7 +97,16 @@ public class TCPGameDataHandler
     private GameData ProcessUseSkill(GameData data)
     {
         UseSkillData detailData = JsonCoding<UseSkillData>.decode(data.operateData);
-        this.GetGameManager().ResponseUseSkill(detailData);
+        if (data.returnCode == ReturnCode.Success)
+        {
+            this.GetGameManager().ResponseUseSkill(detailData);
+        }
+        else
+        {
+            this.GetGameManager().ResponseUseSkill(detailData, false);
+        }
+
+
         return null;
     }
 

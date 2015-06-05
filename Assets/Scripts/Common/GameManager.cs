@@ -314,29 +314,37 @@ public class GameManager
     /// <summary>
     /// 响应服务器对使用技能的数据返回
     /// </summary>
-    public void ResponseUseSkill(UseSkillData detailData)
+    public void ResponseUseSkill(UseSkillData detailData, bool isSuccess = true)
     {
-        int skillID = detailData.skillID;
-        string skillAppendData = detailData.skillAppendData;
-        string fromCardUUID = detailData.fromCardUUID;
-        string toCardUUID = detailData.toCardUUID;
-        GameSide operateSide;
-        if (detailData.operatePlayerPosition == this.playerRoomData.allocPosition)
-        { operateSide = GameSide.Our; }
-        else
-        { operateSide = GameSide.Enemy; }
-
-        //获取场上卡片对象
-        CharacterCard fromCard = gameCardCollection.GetCharacterCard(fromCardUUID, operateSide);
-        CharacterCard toCard = gameCardCollection.GetCharacterCard(toCardUUID);
-
-        Skill skill = fromCard.GetSkillByID(skillID);
-        if (skill != null)
+        if (isSuccess)
         {
-            skill.OnUse(toCard, skillAppendData);//调用施法卡片下的技能使用具体方法
+            int skillID = detailData.skillID;
+            string skillAppendData = detailData.skillAppendData;
+            string fromCardUUID = detailData.fromCardUUID;
+            string toCardUUID = detailData.toCardUUID;
+            GameSide operateSide;
+            if (detailData.operatePlayerPosition == this.playerRoomData.allocPosition)
+            { operateSide = GameSide.Our; }
+            else
+            { operateSide = GameSide.Enemy; }
+
+            //获取场上卡片对象
+            CharacterCard fromCard = gameCardCollection.GetCharacterCard(fromCardUUID, operateSide);
+            CharacterCard toCard = gameCardCollection.GetCharacterCard(toCardUUID);
+
+            Skill skill = fromCard.GetSkillByID(skillID);
+            if (skill != null)
+            {
+                skill.OnUse(toCard, skillAppendData);//调用施法卡片下的技能使用具体方法
+            }
+            else
+            { LogsSystem.Instance.Print("错误！试图调用卡片不存在的技能", LogLevel.WARN); }
         }
         else
-        { LogsSystem.Instance.Print("错误！试图调用卡片不存在的技能", LogLevel.WARN); }
+        {
+            LogsSystem.Instance.Print("能量不足,无法释放技能", LogLevel.GAMEDETAIL);
+        }
+
     }
     #endregion
 
