@@ -34,12 +34,12 @@ public class SkillManager
     private void RegisterSkill()
     {
         //AttackSkill瞬间伤害类技能
-        AddSkill(new AttackSkill("ArcaneMissiles"));
-        AddSkill(new AttackSkill("Fireball"));
-        AddSkill(new AttackSkill("FireArrow"));
-        AddSkill(new AttackSkill("Meteorites"));
-        AddSkill(new AttackSkill("Thunderbolt"));
-        AddSkill(new AttackSkill("MeteoriteCut"));
+        AddSkill(new AttackSkill("ArcaneMissiles", true));
+        AddSkill(new AttackSkill("Fireball", true));
+        AddSkill(new AttackSkill("FireArrow", true));
+        AddSkill(new AttackSkill("Meteorites", true));
+        AddSkill(new AttackSkill("Thunderbolt", true));
+        AddSkill(new AttackSkill("MeteoriteCut", true));
         AddSkill(new AttackSkill("Yaya01"));
         AddSkill(new AttackSkill("Yaya02"));
         AddSkill(new AttackSkill("Yaya03"));
@@ -131,7 +131,7 @@ public class SkillManager
         int count = skillList.Count;
         int[] array = new int[count];
 
-        for(int i = 0;i< count; i++)
+        for (int i = 0; i < count; i++)
         {
             array[i] = skillList[i].GetSkillID();
         }
