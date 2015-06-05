@@ -94,7 +94,7 @@ public class CharacterCard : Card
         args.Add("amount", target.transform.position - container.transform.position);
         args.Add("time", 1f);
 
-        iTween.PunchPosition(target, args);
+        iTween.PunchPosition(container.gameObject, args);
 
         targetCharacter.GetDamage(damage);
 

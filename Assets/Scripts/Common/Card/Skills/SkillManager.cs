@@ -39,7 +39,7 @@ public class SkillManager
         AddSkill(new AttackSkill("FireArrow", true));
         AddSkill(new AttackSkill("Meteorites", true));
         AddSkill(new AttackSkill("Thunderbolt", true));
-        AddSkill(new AttackSkill("MeteoriteCut", true));
+        AddSkill(new AttackSkill("MeteoriteCut"));
         AddSkill(new AttackSkill("Yaya01"));
         AddSkill(new AttackSkill("Yaya02"));
         AddSkill(new AttackSkill("Yaya03"));
