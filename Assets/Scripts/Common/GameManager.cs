@@ -301,7 +301,7 @@ public class GameManager
         detailData.toCardUUID = to.GetCardUUID();
         detailData.skillID = skill.GetSkillID();
         detailData.skillCommonName = skill.GetSkillCommonName();
-        detailData.skillAppendData = skill.GetSkillAppendData();
+        detailData.skillAppendData = skill.GetSkillAppendData();//----------暂时没有任何内容
 
         GameData data = new GameData();
         data.operateCode = OperateCode.UseSkill;

@@ -66,7 +66,7 @@ public abstract class StateSkill : Skill
         }
     }
 
-    public override string GetSkillShowName()
+    public string GetSkillShowName()
     {
         string showName = string.Format("{0} 剩余：{1}回合", base.GetSkillShowName(), lastRound);
         return showName;

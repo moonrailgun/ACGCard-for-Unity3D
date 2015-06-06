@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LitJson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,25 +9,28 @@ using System.Text;
 /// </summary>
 public class AttackUp : Buff
 {
-    protected int addedValue;//攻击力增加的值
+    protected int value;//攻击力增加的值
 
     public AttackUp(int value, int lastRound)
         : base(lastRound)
     {
         this.skillCommonName = "AttackUp";
-        this.addedValue = value;
+        this.value = value;
     }
 
-    public override string GetSkillShowName()
+    public string GetSkillShowName()
     {
-        string showName = string.Format("{0} 攻击力+{1} 剩余{2}回合", SkillNames.Instance.GetSkillName(this.skillCommonName), addedValue, lastRound);
+        string showName = string.Format("{0} 攻击力+{1} 剩余{2}回合", SkillNames.Instance.GetSkillName(this.skillCommonName), value, lastRound);
         return showName;
     }
     public int GetAddedDamage()
-    { return this.addedValue; }
+    { return this.value; }
 
     public override void OnUse(CharacterCard toCard, string skillAppendData)
     {
+        JsonData skillData = JsonMapper.ToObject(skillAppendData);
+        this.value = Convert.ToInt32(skillData["value"].ToString());
+
         throw new NotImplementedException();
     }
 }
