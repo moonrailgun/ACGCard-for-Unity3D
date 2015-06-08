@@ -16,7 +16,7 @@ public class Weapon : EquipmentCard
     {
         this.attackUpValue = attackUpValue;
         this.usedTimes = usedTimes;
-        this.equipmentState = new WeaponAttackUp(attackUpValue, usedTimes);
+       // this.equipmentState = new WeaponAttackUp(attackUpValue, usedTimes);
     }
     #endregion
 

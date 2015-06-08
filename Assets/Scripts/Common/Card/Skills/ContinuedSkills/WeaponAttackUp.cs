@@ -5,8 +5,8 @@ using UnityEngine;
 public class WeaponAttackUp : AttackUp
 {
     #region 构造函数
-    public WeaponAttackUp(int skillID, string skillCommonName, int value, int lastRound)
-        : base(skillID, skillCommonName, value, lastRound)
+    public WeaponAttackUp(int skillID, string skillCommonName, bool haveIcon = false, string specialIconName = "")
+        : base(skillID, skillCommonName, haveIcon, specialIconName)
     {
 
     }

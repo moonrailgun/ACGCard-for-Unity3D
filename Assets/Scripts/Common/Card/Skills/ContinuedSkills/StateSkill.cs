@@ -13,8 +13,8 @@ public abstract class StateSkill : Skill
     protected int allLastRound;//总共可以持续的回合数,0为无限使用
     protected CharacterCard ownerCard;//该状态的所有者
 
-    protected StateSkill(int skillID, string skillName)
-        : base(skillID,skillName)
+    protected StateSkill(int skillID, string skillCommonName, bool haveIcon = false, string specialIconName = "")
+        : base(skillID, skillCommonName, haveIcon, specialIconName)
     { }
 
     /// <summary>
