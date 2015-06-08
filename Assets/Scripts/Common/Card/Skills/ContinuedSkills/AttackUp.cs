@@ -11,26 +11,31 @@ public class AttackUp : Buff
 {
     protected int value;//攻击力增加的值
 
-    public AttackUp(int value, int lastRound)
-        : base(lastRound)
-    {
-        this.skillCommonName = "AttackUp";
-        this.value = value;
-    }
+    public AttackUp(int skillID, string skillCommonName, bool haveIcon = false, string specialIconName = "")
+        : base(skillID, skillCommonName, haveIcon, specialIconName)
+    { }
 
-    public string GetSkillShowName()
+    public override string GetSkillShowName()
     {
-        string showName = string.Format("{0} 攻击力+{1} 剩余{2}回合", SkillNames.Instance.GetSkillName(this.skillCommonName), value, lastRound);
+        string showName = string.Format("{0} 攻击力+{1} 剩余{2}回合", SkillNames.Instance.GetSkillName(this.skillCommonName), this.value, this.lastRound);
         return showName;
     }
     public int GetAddedDamage()
     { return this.value; }
 
+    public override JsonData ApplyAppendData(string skillAppendData)
+    {
+        JsonData json = base.ApplyAppendData(skillAppendData);
+
+        this.value = Convert.ToInt32(json["value"].ToString());
+
+        return json;
+    }
+
     public override void OnUse(CharacterCard toCard, string skillAppendData)
     {
-        JsonData skillData = JsonMapper.ToObject(skillAppendData);
-        this.value = Convert.ToInt32(skillData["value"].ToString());
+        ApplyAppendData(skillAppendData);
 
-        throw new NotImplementedException();
+        toCard.AddState(this, null);
     }
 }

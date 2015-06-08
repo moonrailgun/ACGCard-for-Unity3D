@@ -99,7 +99,7 @@ public class TCPGameDataHandler
         UseSkillData detailData = JsonCoding<UseSkillData>.decode(data.operateData);
         if (data.returnCode == ReturnCode.Success)
         {
-            this.GetGameManager().ResponseUseSkill(detailData);
+            this.GetGameManager().ResponseUseSkill(detailData);//将数据转交给游戏管理器处理
         }
         else
         {

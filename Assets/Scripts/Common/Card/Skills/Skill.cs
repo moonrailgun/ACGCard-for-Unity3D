@@ -15,6 +15,22 @@ public abstract class Skill : ISkill , ICloneable
 
     protected GameObject skillButtonObject;//技能在游戏中的按钮实例
 
+    public Skill(int skillID, string skillCommonName, bool haveIcon = false, string specialIconName = "")
+    {
+        this.skillID = skillID;
+        this.skillCommonName = skillCommonName;
+
+        if (haveIcon)
+        {
+            if (string.IsNullOrEmpty(specialIconName))
+            { SetIconName(skillCommonName); }
+            else
+            { SetIconName(specialIconName); }
+        }
+        else
+        { SetIconName("Unknown"); }
+    }
+
     /// <summary>
     /// 场景管理器
     /// </summary>

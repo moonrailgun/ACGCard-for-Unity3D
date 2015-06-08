@@ -34,12 +34,14 @@ public class SkillManager
     private void RegisterSkill()
     {
         //AttackSkill瞬间伤害类技能
-        AddSkill(new AttackSkill("ArcaneMissiles", true));
-        AddSkill(new AttackSkill("Fireball", true));
-        AddSkill(new AttackSkill("FireArrow", true));
-        AddSkill(new AttackSkill("Meteorites", true));
-        AddSkill(new AttackSkill("Thunderbolt", true));
-        AddSkill(new AttackSkill("MeteoriteCut"));
+        AddSkill(new AttackSkill(1,"ArcaneMissiles", true));
+        AddSkill(new AttackSkill(2,"Fireball", true));
+        AddSkill(new AttackSkill(3,"FireArrow", true));
+        AddSkill(new AttackSkill(4,"Meteorites", true));
+        AddSkill(new AttackSkill(5,"Thunderbolt", true));
+        AddSkill(new AttackSkill(6,"MeteoriteCut"));
+        AddSkill(new AttackUp(7, "AttackUp"));
+        /*
         AddSkill(new AttackSkill("Yaya01"));
         AddSkill(new AttackSkill("Yaya02"));
         AddSkill(new AttackSkill("Yaya03"));
@@ -57,6 +59,7 @@ public class SkillManager
         AddSkill(new AttackSkill("Lucy01"));
         AddSkill(new AttackSkill("Lucy02"));
         AddSkill(new AttackSkill("Lucy03"));
+         */
 
         LogsSystem.Instance.Print("技能数据加载完毕,共有 " + skillList.Count + " 个技能");
         string skillInfoList = "技能ID信息为:\n";
@@ -72,9 +75,16 @@ public class SkillManager
     /// </summary>
     private void AddSkill(Skill skill)
     {
-        int availableID = skillList.Count + 1;
+        if (skill.GetSkillID() == 0)
+        {
+            int availableID = skillList.Count + 1;
 
-        AddSkill(availableID, skill);
+            AddSkill(availableID, skill);
+        }
+        else
+        {
+            AddSkill(skill.GetSkillID(), skill);
+        }
     }
     private void AddSkill(int skillID, Skill skill)
     {

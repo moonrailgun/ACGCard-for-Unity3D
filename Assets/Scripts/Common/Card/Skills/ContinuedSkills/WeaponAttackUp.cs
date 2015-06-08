@@ -5,8 +5,8 @@ using UnityEngine;
 public class WeaponAttackUp : AttackUp
 {
     #region 构造函数
-    public WeaponAttackUp(int value, int lastRound)
-        : base(value, lastRound)
+    public WeaponAttackUp(int skillID, string skillCommonName, int value, int lastRound)
+        : base(skillID, skillCommonName, value, lastRound)
     {
 
     }
@@ -23,6 +23,7 @@ public class WeaponAttackUp : AttackUp
     public override void OnCharaterAttack()
     {
         //当角色发送普通攻击后减少使用次数，如果总共持续时间为0则可以无限使用
+        /* 由服务端管理是否移除
         if (allLastRound != 0)
         {
             lastRound--;//持续回合递减
@@ -30,6 +31,6 @@ public class WeaponAttackUp : AttackUp
             {
                 DestoryState();
             }
-        }
+        }*/
     }
 }

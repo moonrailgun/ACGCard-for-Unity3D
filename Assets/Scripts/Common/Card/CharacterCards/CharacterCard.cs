@@ -326,23 +326,6 @@ public class CharacterCard : Card
     { return this.attack; }
     public int GetBaseCardSpeedValue()
     { return this.speed; }
-    public int GetCardAttack()
-    {
-        int value = attack;
-        if (cardState.Count != 0)
-        {
-            foreach (KeyValuePair<StateSkill, Card> pair in cardState)
-            {
-                StateSkill state = pair.Key;
-                if (state is AttackUp)
-                {
-                    //如果是攻击上升类状态
-                    value += ((AttackUp)state).GetAddedDamage();
-                }
-            }
-        }
-        return value;
-    }
     public int GetCardSpeed()
     {
         throw new System.NotImplementedException();

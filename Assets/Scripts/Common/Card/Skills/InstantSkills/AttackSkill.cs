@@ -7,20 +7,9 @@ public class AttackSkill : Skill
 {
     protected int damage = 0;
 
-    public AttackSkill(string commonName, bool haveIcon = false, string specialIconName = "")
-        : base()
-    {
-        this.skillCommonName = commonName;
-        if (haveIcon)
-        {
-            if (string.IsNullOrEmpty(specialIconName))
-            { SetIconName(commonName); }
-            else
-            { SetIconName(specialIconName); }
-        }
-        else
-        { SetIconName("Unknown"); }
-    }
+    public AttackSkill(int skillID,string skillCommonName, bool haveIcon = false, string specialIconName = "")
+        : base(skillID, skillCommonName, haveIcon, specialIconName)
+    { }
 
     public void SetBasicDamage(int value)
     {
@@ -49,7 +38,7 @@ public class AttackSkill : Skill
         int damage = Convert.ToInt32(skillData["damage"].ToString());
         int energy = Convert.ToInt32(skillData["energy"].ToString());
 
-        toCard.GetDamage(damage);
-        toCard.ExpendEnergy(energy);
+        toCard.ExpendEnergy(energy);//消耗能量
+        toCard.GetDamage(damage);//造成伤害
     }
 }
