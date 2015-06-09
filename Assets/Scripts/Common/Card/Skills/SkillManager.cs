@@ -107,7 +107,8 @@ public class SkillManager
         if (skillList.ContainsKey(skillID))
         {
             Skill skill = skillList[skillID].Clone() as Skill;
-            skill.SetAppendData(skillAppendData);
+            skill.SetAppendData(skillAppendData);//设置技能附加值
+            skill.ApplyAppendData();//应用技能附加值
 
             return skill;
         }

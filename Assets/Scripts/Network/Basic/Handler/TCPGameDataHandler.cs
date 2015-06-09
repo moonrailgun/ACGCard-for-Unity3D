@@ -37,6 +37,10 @@ public class TCPGameDataHandler
                 {
                     return ProcessSummonCharacter(data);
                 }
+            case OperateCode.OperateState:
+                {
+                    return ProcessOperateState(data);
+                }
             default:
                 {
                     break;
@@ -147,6 +151,46 @@ public class TCPGameDataHandler
         SummonCharacterData detailData = JsonCoding<SummonCharacterData>.decode(data.operateData);
 
         this.GetGameManager().ResponseAddCharacterCard(detailData);//调用游戏管理器处理数据
+
+        return null;
+    }
+
+    private GameData ProcessOperateState(GameData data)
+    {
+        if (data.returnCode == ReturnCode.Success)
+        {
+            OperateStateData detail = JsonCoding<OperateStateData>.decode(data.operateData);
+
+            int operateCode = detail.stateOperate;
+            int skillID = detail.skillID;
+            string cardUUID = detail.ownerCardUUID;
+            string appendData = detail.appendData;
+            GameManager gameManager = this.GetGameManager();
+
+            switch (operateCode)
+            {
+                case OperateStateData.StateOperateCode.AddState:
+                    {
+                        gameManager.AddState(cardUUID, skillID, appendData);
+                        break;
+                    }
+                case OperateStateData.StateOperateCode.RemoveState:
+                    {
+                        gameManager.RemoveState(cardUUID, skillID, appendData);
+                        break;
+                    }
+                case OperateStateData.StateOperateCode.UpdateState:
+                    {
+                        gameManager.UpdateState(cardUUID, skillID, appendData);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+        }
 
         return null;
     }

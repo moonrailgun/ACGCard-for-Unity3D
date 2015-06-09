@@ -348,6 +348,45 @@ public class GameManager
     }
     #endregion
 
+    #region 状态修改
+    public void AddState(string cardUUID, int skillID, string appendData)
+    {
+        CharacterCard characterCard = this.gameCardCollection.GetCharacterCard(cardUUID);
+        Skill skill = SkillManager.Instance.GetSkillByID(skillID, appendData);
+        if (skill is StateSkill)
+        {
+            characterCard.AddState(skill as StateSkill, null);
+        }
+        else
+        {
+            LogsSystem.Instance.Print("该技能ID不是状态技能" + skillID, LogLevel.WARN);
+        }
+
+        LogsSystem.Instance.Print(string.Format("添加状态ID {0} 到 {1}"), LogLevel.GAMEDETAIL);
+    }
+
+    public void RemoveState(string cardUUID, int skillID, string appendData)
+    {
+        CharacterCard characterCard = this.gameCardCollection.GetCharacterCard(cardUUID);
+        StateSkill state = characterCard.GetStateById(skillID);
+        if (state != null)
+        {
+            characterCard.RemoveState(state);
+            LogsSystem.Instance.Print(string.Format("删除状态ID {0} 到 {1}"), LogLevel.GAMEDETAIL);
+        }
+        else
+        {
+            LogsSystem.Instance.Print("卡片不具有该状态", LogLevel.WARN);
+        }
+    }
+
+    public void UpdateState(string cardUUID, int skillID, string appendData)
+    {
+        throw new NotImplementedException();//未完成
+        //LogsSystem.Instance.Print(string.Format("更新状态ID {0} 到 {1}"), LogLevel.GAMEDETAIL);
+    }
+    #endregion
+
     #region 装备道具
     #endregion
 

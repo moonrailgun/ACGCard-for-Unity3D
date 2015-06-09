@@ -213,9 +213,31 @@ public class CharacterCard : Card
         }
     }
 
+    /// <summary>
+    /// 根据技能ID获取状态
+    /// </summary>
+    public StateSkill GetStateById(int skillID)
+    {
+        foreach (KeyValuePair<StateSkill,Card> pair in this.cardState)
+        {
+            StateSkill state = pair.Key;
+
+            if (state.GetSkillID() == skillID)
+            {
+                return state;
+            }
+        }
+
+        LogsSystem.Instance.Print(string.Format("角色{0}没有该ID为{1}的技能", this.cardName, skillID), LogLevel.WARN);
+        return null;
+    }
+
+    /// <summary>
+    /// 根据技能ID获取卡片技能
+    /// </summary>
     public Skill GetSkillByID(int skillID)
     {
-        foreach (Skill skill in cardOwnSkill)
+        foreach (Skill skill in this.cardOwnSkill)
         {
             if (skill.GetSkillID() == skillID)
             {

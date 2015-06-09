@@ -121,6 +121,15 @@ public abstract class Skill : ISkill , ICloneable
         this.skillAppendData = skillAppendData;
     }
 
+    /// <summary>
+    /// 应用技能附加值
+    /// </summary>
+    public void ApplyAppendData()
+    {
+        ApplyAppendData(this.skillAppendData);
+    }
+    public abstract void ApplyAppendData(string skillAppendData);
+
     public void SetSkillID(int skillID)
     {
         this.skillID = skillID;

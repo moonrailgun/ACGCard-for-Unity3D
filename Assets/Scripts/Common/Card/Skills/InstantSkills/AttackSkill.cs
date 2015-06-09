@@ -41,4 +41,9 @@ public class AttackSkill : Skill
         toCard.ExpendEnergy(energy);//消耗能量
         toCard.GetDamage(damage);//造成伤害
     }
+
+    public override void ApplyAppendData(string skillAppendData)
+    {
+        throw new NotImplementedException();
+    }
 }
