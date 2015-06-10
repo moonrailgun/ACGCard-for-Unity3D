@@ -23,13 +23,12 @@ public class AttackUp : Buff
     public int GetAddedDamage()
     { return this.value; }
 
-    public override JsonData ApplyAppendData(string skillAppendData)
+    public override void ApplyAppendData(string skillAppendData)
     {
-        JsonData json = base.ApplyAppendData(skillAppendData);
-
+        JsonData json = JsonMapper.ToObject(skillAppendData);
+        this.lastRound = Convert.ToInt32(json["lastRound"].ToString());
+        this.allLastRound = Convert.ToInt32(json["allLastRound"].ToString());
         this.value = Convert.ToInt32(json["value"].ToString());
-
-        return json;
     }
 
     public override void OnUse(CharacterCard toCard, string skillAppendData)

@@ -70,13 +70,11 @@ public abstract class StateSkill : Skill
     /// 将附加数据处理
     /// 添加到类中
     /// </summary>
-    public override JsonData ApplyAppendData(string skillAppendData)
+    public override void ApplyAppendData(string skillAppendData)
     {
         JsonData json = JsonMapper.ToObject(skillAppendData);
         this.lastRound = Convert.ToInt32(json["lastRound"].ToString());
         this.allLastRound= Convert.ToInt32(json["allLastRound"].ToString());
-
-        return json;
     }
 
     public override string GetSkillShowName()
