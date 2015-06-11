@@ -18,25 +18,6 @@ public abstract class StateSkill : Skill
     { }
 
     /// <summary>
-    /// 当回合开始时调用该函数
-    /// 根据不同的状态可能会有不同的调用（可重写），因此不能在外部检测
-    /// </summary>
-    public virtual void OnRoundStart()
-    {
-        //由服务端管理是否去除BUFF
-        /*
-        if (allLastRound != 0)
-        {
-            lastRound--;//持续回合递减
-            if (lastRound <= 0)
-            {
-                DestoryState();
-            }
-        }
-        */
-    }
-
-    /// <summary>
     /// 设置该状态的所有者
     /// </summary>
     public void SetOwnerCard(CharacterCard ownerCard)
@@ -84,16 +65,21 @@ public abstract class StateSkill : Skill
     }
 
     #region 角色事件监听
-    protected virtual void OnCharacterAttack() { }
-    protected virtual void OnRoundStart()
+    public virtual void OnCharacterAttack() { }
+
+    /// <summary>
+    /// 当回合开始时调用该函数
+    /// 根据不同的状态可能会有不同的调用（可重写），因此不能在外部检测
+    /// </summary>
+    public virtual void OnRoundStart()
     {
         if (allLastRound != 0)
         {
             lastRound--;//持续回合递减
         }
     }
-    protected virtual void OnRoundEnd() { }
-    protected virtual void OnOtherSkillUse() { }
+    public virtual void OnRoundEnd() { }
+    public virtual void OnOtherSkillUse() { }
     #endregion
 
 

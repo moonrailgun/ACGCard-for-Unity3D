@@ -37,4 +37,9 @@ public class AttackUp : Buff
 
         toCard.AddState(this, null);
     }
+
+    public override void OnCharacterAttack()
+    {
+        base.OnCharacterAttack();
+    }
 }

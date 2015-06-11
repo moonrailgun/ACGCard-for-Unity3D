@@ -20,8 +20,10 @@ public class WeaponAttackUp : AttackUp
     /// <summary>
     /// 当角色普通攻击
     /// </summary>
-    public override void OnCharaterAttack()
+    public override void OnCharacterAttack()
     {
+        base.OnCharacterAttack();
+
         if (allLastRound != 0)
         {
             lastRound--;//持续回合递减

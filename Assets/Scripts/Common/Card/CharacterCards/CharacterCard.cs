@@ -103,7 +103,7 @@ public class CharacterCard : Card
         {
             foreach (KeyValuePair<StateSkill, Card> pair in cardState)
             {
-                pair.Key.OnCharaterAttack();//向下调用事件
+                pair.Key.OnCharacterAttack();//向下调用事件
                 if (cardState.Count == 0) { break; }
             }
         }
