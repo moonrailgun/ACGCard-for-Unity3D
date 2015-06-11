@@ -74,7 +74,7 @@ public abstract class StateSkill : Skill
     {
         JsonData json = JsonMapper.ToObject(skillAppendData);
         this.lastRound = Convert.ToInt32(json["lastRound"].ToString());
-        this.allLastRound= Convert.ToInt32(json["allLastRound"].ToString());
+        this.allLastRound = Convert.ToInt32(json["allLastRound"].ToString());
     }
 
     public override string GetSkillShowName()
@@ -84,10 +84,16 @@ public abstract class StateSkill : Skill
     }
 
     #region 角色事件监听
-    /// <summary>
-    /// 当角色发动普通攻击时调用
-    /// </summary>
-    public virtual void OnCharaterAttack() { }
+    protected virtual void OnCharacterAttack() { }
+    protected virtual void OnRoundStart()
+    {
+        if (allLastRound != 0)
+        {
+            lastRound--;//持续回合递减
+        }
+    }
+    protected virtual void OnRoundEnd() { }
+    protected virtual void OnOtherSkillUse() { }
     #endregion
 
 

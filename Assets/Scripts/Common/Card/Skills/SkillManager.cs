@@ -41,6 +41,7 @@ public class SkillManager
         AddSkill(new AttackSkill(5,"Thunderbolt", true));
         AddSkill(new AttackSkill(6,"MeteoriteCut"));
         AddSkill(new AttackUp(7, "AttackUp"));
+        AddSkill(new WeaponAttackUp(8, "WeaponAttackUp"));
         /*
         AddSkill(new AttackSkill("Yaya01"));
         AddSkill(new AttackSkill("Yaya02"));

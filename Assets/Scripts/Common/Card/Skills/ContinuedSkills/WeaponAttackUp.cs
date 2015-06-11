@@ -22,15 +22,9 @@ public class WeaponAttackUp : AttackUp
     /// </summary>
     public override void OnCharaterAttack()
     {
-        //当角色发送普通攻击后减少使用次数，如果总共持续时间为0则可以无限使用
-        /* 由服务端管理是否移除
         if (allLastRound != 0)
         {
             lastRound--;//持续回合递减
-            if (lastRound <= 0)
-            {
-                DestoryState();
-            }
-        }*/
+        }
     }
 }
