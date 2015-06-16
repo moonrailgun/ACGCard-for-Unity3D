@@ -270,6 +270,7 @@ public class CharacterCard : Card
     /// </summary>
     public void EquipWeapon(Weapon weapon)
     {
+        //本地
         if (this.equipments.weapon == null)
         {
             //角色没有装备
@@ -281,19 +282,37 @@ public class CharacterCard : Card
             this.equipments.weapon.OnUnequiped(this);
             this.equipments.weapon = weapon;
         }
+
+        //请求网络
+        GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(weapon, 1);
     }
     /// <summary>
     /// 装备盔甲
     /// </summary>
     public void EquipArmor(EquipmentCard armor)
     {
-        throw new System.NotImplementedException();
+        //本地
+        if (this.equipments.armor == null)
+        {
+            //角色没有装备
+            this.equipments.armor = armor;
+        }
+        else
+        {
+            //角色已经有装备了
+            this.equipments.armor.OnUnequiped(this);
+            this.equipments.armor = armor;
+        }
+
+        //请求网络
+        GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(armor, 2);
     }
     /// <summary>
     /// 装备首饰
     /// </summary>
     public void EquipJewelry(Jewelry jewelry)
     {
+        //本地
         //如果两个首饰槽都有装备了。覆盖稀有度小的。稀有度一样则随机覆盖
         if (this.equipments.jewelry1 != null && this.equipments.jewelry2 != null)
         {
@@ -303,10 +322,12 @@ public class CharacterCard : Card
                 if (this.equipments.jewelry1.GetCardRarity() > this.equipments.jewelry2.GetCardRarity())
                 {
                     this.equipments.jewelry1 = jewelry;
+                    GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 3);
                 }
                 else
                 {
                     this.equipments.jewelry2 = jewelry;
+                    GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 4);
                 }
             }
             else
@@ -315,10 +336,12 @@ public class CharacterCard : Card
                 if (Random.value < 0.5f)
                 {
                     this.equipments.jewelry1 = jewelry;
+                    GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 3);
                 }
                 else
                 {
                     this.equipments.jewelry2 = jewelry;
+                    GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 4);
                 }
             }
         }
@@ -327,10 +350,12 @@ public class CharacterCard : Card
             if (this.equipments.jewelry1 == null)
             {
                 this.equipments.jewelry1 = jewelry;
+                GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 3);
             }
             else if (this.equipments.jewelry2 == null)
             {
                 this.equipments.jewelry2 = jewelry;
+                GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 4);
             }
         }
     }

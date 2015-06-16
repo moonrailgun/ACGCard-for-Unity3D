@@ -389,8 +389,11 @@ public class GameManager
 
     #region 装备道具
     //------请求使用装备
-    public void RequestEquipment()
+    public void RequestEquipment(EquipmentCard equip, int equipPosition)//Weapon = 1, Armor = 2, Jewelry1 = 3,Jewelry2 = 4
     {
+        LogsSystem.Instance.Print(string.Format("向网络请求装备 {0} ,位置 {1}", equip.GetCardName(), equipPosition));
+        LogsSystem.Instance.Print("尚未实现", LogLevel.DEBUG);
+
         throw new NotImplementedException();
     }
 
