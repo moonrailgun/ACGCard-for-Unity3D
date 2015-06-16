@@ -388,6 +388,16 @@ public class GameManager
     #endregion
 
     #region 装备道具
+    //------请求使用装备
+    public void RequestEquipment()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ResponseEquipment()
+    {
+        throw new NotImplementedException();
+    }
     #endregion
 
     #region 抽取手牌

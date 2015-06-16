@@ -11,4 +11,5 @@ public class OperateCode
     public const int PlayerOwnCard = 33;
     public const int SummonCharacter = 34;
     public const int OperateState = 35;
+    public const int OperateEquip = 36;
 }
