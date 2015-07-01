@@ -24,6 +24,7 @@ public class MenuScene : MonoBehaviour
     //信息面板
     //private GameObject infoPanel;
     private GameObject cardListGrid;
+    [HideInInspector]
     public bool isWaittingForCardInv = false;
 
     private void Awake()
@@ -97,6 +98,30 @@ public class MenuScene : MonoBehaviour
         GameClient.Instance.SendToServer(gameData);
         LogsSystem.Instance.Print("中止匹配");
     }
+
+    #region 商店
+    /// <summary>
+    /// 打开商店
+    /// </summary>
+    public void OpenCardShop()
+    {
+        LogsSystem.Instance.Print("打开商店");
+        //---获取商店内容
+
+        //---打开商店页面
+    }
+    #endregion
+
+    #region 图鉴
+    /// <summary>
+    /// 打开图鉴
+    /// </summary>
+    public void OpenGuide()
+    {
+        LogsSystem.Instance.Print("打开图鉴");
+        //---打开图鉴页面
+    }
+    #endregion
 
     /// <summary>
     /// 本地输入公共聊天消息提交
@@ -203,7 +228,6 @@ public class MenuScene : MonoBehaviour
             chatScroll.foregroundWidget.gameObject.GetComponent<UIButton>().defaultColor = temp;
         }
     }
-
 
     #region 信息处理
     /// <summary>
