@@ -123,6 +123,17 @@ public class MenuScene : MonoBehaviour
     }
     #endregion
 
+    #region 任务
+    /// <summary>
+    /// 打开任务
+    /// </summary>
+    public void OpenTask()
+    {
+        LogsSystem.Instance.Print("打开任务");
+        //---打开任务页面
+    }
+    #endregion
+
     /// <summary>
     /// 本地输入公共聊天消息提交
     /// </summary>
