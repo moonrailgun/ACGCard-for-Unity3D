@@ -295,8 +295,8 @@ public class GameManager
         //构建封包
         UseSkillData detailData = new UseSkillData();
         detailData.operatePlayerPosition = playerRoomData.allocPosition;
-        detailData.operatePlayerUid = Global.Instance.playerInfo.uid;
-        detailData.operatePlayerUUID = Global.Instance.playerInfo.UUID;
+        detailData.operatePlayerUid = this.playerInfo.uid;
+        detailData.operatePlayerUUID = this.playerInfo.UUID;
         detailData.fromCardUUID = from.GetCardUUID();
         detailData.toCardUUID = to.GetCardUUID();
         detailData.skillID = skill.GetSkillID();
@@ -388,13 +388,25 @@ public class GameManager
     #endregion
 
     #region 装备道具
-    //------请求使用装备
+    //请求装上装备
     public void RequestEquipment(EquipmentCard equip, int equipPosition)//Weapon = 1, Armor = 2, Jewelry1 = 3,Jewelry2 = 4
     {
         LogsSystem.Instance.Print(string.Format("向网络请求装备 {0} ,位置 {1}", equip.GetCardName(), equipPosition));
-        LogsSystem.Instance.Print("尚未实现", LogLevel.DEBUG);
+        OperateEquipData detail = new OperateEquipData();
+        detail.operatePlayerUUID = this.playerInfo.UUID;
+        detail.operatePlayerUid = this.playerInfo.uid;
+        detail.operatePlayerPosition = this.playerRoomData.allocPosition;
+        detail.operateCardUUID = equip.GetCardUUID();
+        detail.equipCardId = equip.GetCardID();
+        detail.equipPosition = equipPosition;
+        detail.operateCode = 0;
 
-        throw new NotImplementedException();
+        GameData data = new GameData();
+        data.roomID = this.playerRoomData.roomID;
+        data.operateCode = OperateCode.OperateEquip;
+        data.operateData = JsonCoding<OperateEquipData>.encode(detail);
+
+        GameClient.Instance.SendToServer(data);
     }
 
     public void ResponseEquipment()
