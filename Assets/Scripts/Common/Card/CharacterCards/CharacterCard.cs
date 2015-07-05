@@ -270,6 +270,7 @@ public class CharacterCard : Card
     /// </summary>
     public void EquipWeapon(Weapon weapon)
     {
+        /*由服务器统一管理
         //本地
         if (this.equipments.weapon == null)
         {
@@ -281,7 +282,7 @@ public class CharacterCard : Card
             //角色已经有装备了
             this.equipments.weapon.OnUnequiped(this);
             this.equipments.weapon = weapon;
-        }
+        }*/
 
         //请求网络
         GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(weapon, 1);
@@ -291,6 +292,7 @@ public class CharacterCard : Card
     /// </summary>
     public void EquipArmor(EquipmentCard armor)
     {
+        /*由服务器统一管理
         //本地
         if (this.equipments.armor == null)
         {
@@ -302,7 +304,7 @@ public class CharacterCard : Card
             //角色已经有装备了
             this.equipments.armor.OnUnequiped(this);
             this.equipments.armor = armor;
-        }
+        }*/
 
         //请求网络
         GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(armor, 2);
@@ -312,6 +314,10 @@ public class CharacterCard : Card
     /// </summary>
     public void EquipJewelry(Jewelry jewelry)
     {
+        //请求网络
+        GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 3);
+
+        /*由服务器统一管理
         //本地
         //如果两个首饰槽都有装备了。覆盖稀有度小的。稀有度一样则随机覆盖
         if (this.equipments.jewelry1 != null && this.equipments.jewelry2 != null)
@@ -357,7 +363,7 @@ public class CharacterCard : Card
                 this.equipments.jewelry2 = jewelry;
                 GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 4);
             }
-        }
+        }*/
     }
 
     #endregion
