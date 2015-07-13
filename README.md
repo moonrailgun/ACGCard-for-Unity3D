@@ -4,6 +4,8 @@
 
 ## 概述 ##
 
+![LOGO](./Assets/Textures/Image/logo-np.png)
+
 ### 开发环境 ###
 
 - Unity3D 5.0.0f4
@@ -50,3 +52,5 @@
 > 允许非商业用途的开设私人游戏服务器，欢迎在原作基础上开发插件与MOD  
 > 欢迎FORK与提交ISSUE，开源作品的成长离不开你的支持  
 > ^ ^
+
+Powered by ![MRG](./Assets/Textures/Image/logo2.png)
