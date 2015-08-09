@@ -41,6 +41,10 @@ public class TCPGameDataHandler
                 {
                     return ProcessOperateState(data);
                 }
+            case OperateCode.OperateEquip:
+                {
+                    return ProcessOperateEquip(data);
+                }
             default:
                 {
                     break;
@@ -190,6 +194,30 @@ public class TCPGameDataHandler
                     }
             }
 
+        }
+
+        return null;
+    }
+
+    private GameData ProcessOperateEquip(GameData data)
+    {
+        if (data.returnCode == ReturnCode.Success)
+        {
+            OperateEquipData detail = JsonCoding<OperateEquipData>.decode(data.operateData);
+            GameManager gameManager = this.GetGameManager();
+
+            int operateCode = detail.operateCode;
+
+            if (operateCode == 0)
+            {
+                //equip
+                gameManager.AddEquipment(detail.operateCardUUID, detail.equipCardId, detail.equipPosition, detail.equipCardAppendData);
+            }
+            else if (operateCode == 1)
+            {
+                //unequip
+                gameManager.RemoveEquipment(detail.operateCardUUID, detail.equipCardId, detail.equipPosition);
+            }
         }
 
         return null;

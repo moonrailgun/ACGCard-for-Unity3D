@@ -17,7 +17,7 @@ public class Jewelry : EquipmentCard
     public override void OnEquiped(CharacterCard toCharacterCard)
     {
         //告知角色被装备该装备，如果已有装备则删除以后装备和BUFF
-        toCharacterCard.EquipJewelry(this);
+        toCharacterCard.RequestEquipJewelry(this);
 
         //添加BUFF
         if (equipmentState != null)

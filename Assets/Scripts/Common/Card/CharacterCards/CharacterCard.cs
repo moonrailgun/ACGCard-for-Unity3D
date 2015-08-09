@@ -268,104 +268,63 @@ public class CharacterCard : Card
     /// <summary>
     /// 装备武器
     /// </summary>
-    public void EquipWeapon(Weapon weapon)
+    public void RequestEquipWeapon(Weapon weapon)
     {
-        /*由服务器统一管理
-        //本地
-        if (this.equipments.weapon == null)
-        {
-            //角色没有装备
-            this.equipments.weapon = weapon;
-        }
-        else
-        {
-            //角色已经有装备了
-            this.equipments.weapon.OnUnequiped(this);
-            this.equipments.weapon = weapon;
-        }*/
-
         //请求网络
         GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(weapon, 1);
     }
     /// <summary>
     /// 装备盔甲
     /// </summary>
-    public void EquipArmor(EquipmentCard armor)
+    public void RequestEquipArmor(EquipmentCard armor)
     {
-        /*由服务器统一管理
-        //本地
-        if (this.equipments.armor == null)
-        {
-            //角色没有装备
-            this.equipments.armor = armor;
-        }
-        else
-        {
-            //角色已经有装备了
-            this.equipments.armor.OnUnequiped(this);
-            this.equipments.armor = armor;
-        }*/
-
         //请求网络
         GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(armor, 2);
     }
     /// <summary>
     /// 装备首饰
     /// </summary>
-    public void EquipJewelry(Jewelry jewelry)
+    public void RequestEquipJewelry(Jewelry jewelry)
     {
         //请求网络
         GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 3);
-
-        /*由服务器统一管理
-        //本地
-        //如果两个首饰槽都有装备了。覆盖稀有度小的。稀有度一样则随机覆盖
-        if (this.equipments.jewelry1 != null && this.equipments.jewelry2 != null)
-        {
-            if (this.equipments.jewelry1.GetCardRarity() != this.equipments.jewelry2.GetCardRarity())
-            {
-                //替换稀有度低的
-                if (this.equipments.jewelry1.GetCardRarity() > this.equipments.jewelry2.GetCardRarity())
-                {
-                    this.equipments.jewelry1 = jewelry;
-                    GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 3);
-                }
-                else
-                {
-                    this.equipments.jewelry2 = jewelry;
-                    GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 4);
-                }
-            }
-            else
-            {
-                //随机替换
-                if (Random.value < 0.5f)
-                {
-                    this.equipments.jewelry1 = jewelry;
-                    GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 3);
-                }
-                else
-                {
-                    this.equipments.jewelry2 = jewelry;
-                    GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 4);
-                }
-            }
-        }
-        else
-        {
-            if (this.equipments.jewelry1 == null)
-            {
-                this.equipments.jewelry1 = jewelry;
-                GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 3);
-            }
-            else if (this.equipments.jewelry2 == null)
-            {
-                this.equipments.jewelry2 = jewelry;
-                GameClient.Instance.GetGameSceneManager().gameManager.RequestEquipment(jewelry, 4);
-            }
-        }*/
     }
 
+    #endregion
+
+    #region 响应修改
+    public void SetEquipment(EquipmentCard equipmentCard, int position)
+    {
+        //Weapon = 1, Armor = 2, Jewelry1 = 3,Jewelry2 = 4
+        switch (position)
+        {
+            case 1:
+                {
+                    this.equipments.weapon = equipmentCard;
+                    break;
+                }
+            case 2:
+                {
+                    this.equipments.armor = equipmentCard;
+                    break;
+                }
+            case 3:
+                {
+                    this.equipments.jewelry1 = equipmentCard;
+                    break;
+                }
+            case 4:
+                {
+                    this.equipments.jewelry2 = equipmentCard;
+                    break;
+                }
+            default:
+                {
+                    LogsSystem.Instance.Print("未知的装备位置:" + position, LogLevel.WARN);
+                    break;
+                }
+        }
+    }
     #endregion
 
     #region 外部访问接口
@@ -411,7 +370,7 @@ public class CharacterCard : Card
 
     public struct Equipment
     {
-        public Weapon weapon;//武器
+        public EquipmentCard weapon;//武器
         public EquipmentCard armor;//盔甲
         public EquipmentCard jewelry1;//首饰1
         public EquipmentCard jewelry2;//首饰2

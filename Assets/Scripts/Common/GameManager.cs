@@ -388,7 +388,9 @@ public class GameManager
     #endregion
 
     #region 装备道具
-    //请求装上装备
+    /// <summary>
+    /// 请求装上装备
+    /// </summary>
     public void RequestEquipment(EquipmentCard equip, int equipPosition)//Weapon = 1, Armor = 2, Jewelry = 3
     {
         LogsSystem.Instance.Print(string.Format("向网络请求装备 {0} ,位置 {1}", equip.GetCardName(), equipPosition));
@@ -409,7 +411,29 @@ public class GameManager
         GameClient.Instance.SendToServer(data);
     }
 
-    public void ResponseEquipment()
+    /// <summary>
+    /// 添加装备
+    /// </summary>
+    public void AddEquipment(string cardUUID, int equipCardID, int position, string appendData)
+    {
+        LogsSystem.Instance.Print(string.Format("向卡片{0}添加装备卡（ID:{1},位置:{2},附加信息:{3}）", cardUUID, equipCardID, position, appendData));
+        CharacterCard characterCard = this.gameCardCollection.GetCharacterCard(cardUUID);
+        ItemCard card = CardManager.Instance.GetItemById(equipCardID);
+        if (card is EquipmentCard)
+        {
+            EquipmentCard equipmentCard = card as EquipmentCard;
+            characterCard.SetEquipment(equipmentCard, position);//正常输出
+        }
+        else
+        {
+            LogsSystem.Instance.Print(string.Format("卡片ID：{0}不合法，不是合法的装备卡，装备操作被跳过", equipCardID), LogLevel.WARN);
+        }
+    }
+
+    /// <summary>
+    /// 移除装备
+    /// </summary>
+    public void RemoveEquipment(string cardUUID, int equipCardID, int position)
     {
         throw new NotImplementedException();
     }
