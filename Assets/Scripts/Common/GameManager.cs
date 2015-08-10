@@ -440,6 +440,24 @@ public class GameManager
     #endregion
 
     #region 抽取手牌
+    /// <summary>
+    /// 向服务器请求手牌
+    /// </summary>
+    public void RequestHandCard(int requestCardNum)
+    {
+        GameHandCardData detail = new GameHandCardData();
+        detail.operatePlayerUid = playerInfo.uid;
+        detail.operatePlayerUUID = playerInfo.UUID;
+        detail.operatePlayerPosition = playerRoomData.allocPosition;
+        detail.count = requestCardNum;
+
+        GameData data = new GameData();
+        data.operateCode = OperateCode.OperateHandCard;
+        data.roomID = playerRoomData.roomID;
+        data.operateData = JsonCoding<GameHandCardData>.encode(detail);
+
+        GameClient.Instance.SendToServer(data);
+    }
     #endregion
 
     #region 结束回合
