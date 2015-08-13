@@ -22,8 +22,10 @@
 
 ### example ###
     {
+		"ID":1,
 		"Name":"红宝石(堆)",
 		"Type":"Feature",
+		"Rarity":1,
 		"Des":"可以恢复角色最大生命值一半的血量",
 		"Pic":"Item-RubyPile",
 		"Action":{
