@@ -22,7 +22,7 @@
 
 ### example ###
     {
-		"ID":1,
+		"ID":5,
 		"Name":"红宝石(堆)",
 		"Type":"Feature",
 		"Rarity":1,
