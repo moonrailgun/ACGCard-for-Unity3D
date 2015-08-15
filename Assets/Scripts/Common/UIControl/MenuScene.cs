@@ -172,6 +172,14 @@ public class MenuScene : MonoBehaviour
 
     #region 卡片背包
     /// <summary>
+    /// 打开卡片背包窗口
+    /// </summary>
+    public void ShowCardInventory()
+    {
+
+    }
+
+    /// <summary>
     /// 更新玩家拥有的卡片列表
     /// 并显示卡片背包
     /// </summary>
