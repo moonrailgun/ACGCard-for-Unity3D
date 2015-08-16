@@ -27,6 +27,10 @@ public class MenuScene : MonoBehaviour
     [HideInInspector]
     public bool isWaittingForCardInv = false;
 
+    //卡片背包面板
+    private UIPanel CardInventoryPanel;
+    private GameObject CardInventoryButtonLowlay;
+
     private void Awake()
     {
         Global.Instance.scene = SceneType.MenuScene;//切换场景变量
@@ -60,6 +64,10 @@ public class MenuScene : MonoBehaviour
         //信息控件获取
         //infoPanel = GameObject.Find("Frame/Background/InfoPanel");
         cardListGrid = GameObject.Find("Frame/Background/InfoPanel/CardContainer/CardList/Grid");
+
+        //卡片背包面板
+        CardInventoryPanel = GameObject.Find("CardInventory").GetComponent<UIPanel>();
+        CardInventoryButtonLowlay = GameObject.Find("CardInventory/Background/Feature/Button-lowlay");
     }
 
     /// <summary>
@@ -176,7 +184,20 @@ public class MenuScene : MonoBehaviour
     /// </summary>
     public void ShowCardInventory()
     {
+        CardInventoryPanel.alpha = 1f;
+    }
 
+    /// <summary>
+    /// 关闭（隐藏）卡片背包窗口
+    /// </summary>
+    public void CloseCardInventory()
+    {
+        CardInventoryPanel.alpha = 0f;
+    }
+
+    public void ToggleInvWinButton(GameObject target)
+    {
+        CardInventoryButtonLowlay.GetComponent<UISprite>().SetAnchor(target);
     }
 
     /// <summary>
