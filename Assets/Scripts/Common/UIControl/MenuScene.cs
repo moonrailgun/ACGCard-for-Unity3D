@@ -30,6 +30,8 @@ public class MenuScene : MonoBehaviour
     //卡片背包面板
     private UIPanel CardInventoryPanel;
     private GameObject CardInventoryButtonLowlay;
+    private UIGrid HeroInfoUsingList;
+    private UIGrid HeroInfoInvList;
 
     private void Awake()
     {
@@ -68,6 +70,8 @@ public class MenuScene : MonoBehaviour
         //卡片背包面板
         CardInventoryPanel = GameObject.Find("CardInventory").GetComponent<UIPanel>();
         CardInventoryButtonLowlay = GameObject.Find("CardInventory/Background/Feature/Button-lowlay");
+        HeroInfoUsingList = GameObject.Find("CardInventory/Background/Main/HeroInfo/UsingHeros/Scroll View/Grid").GetComponent<UIGrid>();
+        HeroInfoInvList = GameObject.Find("CardInventory/Background/Main/HeroInfo/InvHeros/Scroll View/Grid").GetComponent<UIGrid>();
     }
 
     /// <summary>
@@ -195,10 +199,50 @@ public class MenuScene : MonoBehaviour
         CardInventoryPanel.alpha = 0f;
     }
 
+    /// <summary>
+    /// 切换背包的标签页
+    /// </summary>
     public void ToggleInvWinButton(GameObject target)
     {
         CardInventoryButtonLowlay.GetComponent<UISprite>().SetAnchor(target);
     }
+
+    #region 英雄页
+    //private List<CharacterCard> HeroList;
+
+    /// <summary>
+    /// 切换英雄是否上阵（视图上）
+    /// </summary>
+    public void SwitchHeroContainer(GameObject heroCard)
+    {
+        UIGrid targetGrid, originGrid;
+        if (heroCard.transform.IsChildOf(this.HeroInfoUsingList.transform))
+        {
+            targetGrid = this.HeroInfoInvList;
+            originGrid = this.HeroInfoUsingList;
+        }
+        else
+        {
+            targetGrid = this.HeroInfoUsingList;
+            originGrid = this.HeroInfoInvList;
+        }
+        targetGrid.AddChild(heroCard.transform);
+        originGrid.RemoveChild(heroCard.transform);
+
+        targetGrid.enabled = true;
+        originGrid.enabled = true;
+        UpdateDraw(targetGrid.gameObject);
+        UpdateDraw(originGrid.gameObject);
+    }
+
+    private void UpdateDraw(GameObject go)
+    {
+        go.SetActive(false);
+        go.SetActive(true);
+    }
+    #endregion
+
+
 
     /// <summary>
     /// 更新玩家拥有的卡片列表
