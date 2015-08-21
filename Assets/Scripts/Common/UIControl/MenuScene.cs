@@ -207,6 +207,93 @@ public class MenuScene : MonoBehaviour
         CardInventoryButtonLowlay.GetComponent<UISprite>().SetAnchor(target);
     }
 
+    #region 请求
+    public void RequestPlayerPage()
+    {
+        int playerID = Global.Instance.playerInfo.uid;
+        string playerUUID = Global.Instance.playerInfo.UUID;
+
+        InvInfoDTO detail = new InvInfoDTO();
+        detail.playerID = playerID;
+        detail.playerUUID = playerUUID;
+        detail.type = 1;
+
+        SocketModel model = new SocketModel();
+        model.protocol = SocketProtocol.INVINFO;
+        model.message = JsonCoding<InvInfoDTO>.encode(detail);
+        cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
+    }
+
+    public void ResponsePlayerPage()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void RequestHeroPage()
+    {
+        int playerID = Global.Instance.playerInfo.uid;
+        string playerUUID = Global.Instance.playerInfo.UUID;
+
+        InvInfoDTO detail = new InvInfoDTO();
+        detail.playerID = playerID;
+        detail.playerUUID = playerUUID;
+        detail.type = 2;
+
+        SocketModel model = new SocketModel();
+        model.protocol = SocketProtocol.INVINFO;
+        model.message = JsonCoding<InvInfoDTO>.encode(detail);
+        cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
+    }
+
+    public void ResponseHeroPage()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void RequestGuidePage()
+    {
+        int playerID = Global.Instance.playerInfo.uid;
+        string playerUUID = Global.Instance.playerInfo.UUID;
+
+        InvInfoDTO detail = new InvInfoDTO();
+        detail.playerID = playerID;
+        detail.playerUUID = playerUUID;
+        detail.type = 3;
+
+        SocketModel model = new SocketModel();
+        model.protocol = SocketProtocol.INVINFO;
+        model.message = JsonCoding<InvInfoDTO>.encode(detail);
+        cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
+    }
+
+    public void ResponseGuidePage()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void RequestInvPage()
+    {
+        int playerID = Global.Instance.playerInfo.uid;
+        string playerUUID = Global.Instance.playerInfo.UUID;
+
+        InvInfoDTO detail = new InvInfoDTO();
+        detail.playerID = playerID;
+        detail.playerUUID = playerUUID;
+        detail.type = 4;
+
+        SocketModel model = new SocketModel();
+        model.protocol = SocketProtocol.INVINFO;
+        model.message = JsonCoding<InvInfoDTO>.encode(detail);
+        cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
+    }
+
+    public void ResponseInvPage()
+    {
+        throw new System.NotImplementedException();
+    }
+    #endregion
+
+
     #region 英雄页
     //private List<CharacterCard> HeroList;
 
