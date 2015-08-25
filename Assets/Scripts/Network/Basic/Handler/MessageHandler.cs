@@ -10,6 +10,7 @@ public class MessageHandler : MonoBehaviour
     private ChatHandler chatHandler;
     private PlayerInfoHandler playerInfoHandler;
     private CardInfoHandler cardInfoHandler;
+    private InvInfoHandler invInfoHandler;
 
     private TCPGameDataHandler gameDataHandler;//TCP数据处理器
 
@@ -24,6 +25,7 @@ public class MessageHandler : MonoBehaviour
         chatHandler = new ChatHandler();
         playerInfoHandler = new PlayerInfoHandler();
         cardInfoHandler = new CardInfoHandler();
+        invInfoHandler = new InvInfoHandler();
 
         gameDataHandler = new TCPGameDataHandler();
 
@@ -107,6 +109,11 @@ public class MessageHandler : MonoBehaviour
                     events.Add(new EventDelegate.Callback(Windows.CloseWindow));
                     events.Add(new EventDelegate.Callback(LoadLoginScene));
                     Windows.CreateWindows("断线", "您已经断开了连接", "重新登录", UIWidget.Pivot.Top, events, Windows.WindowsType.MessageWindow);
+                    break;
+                }
+            case SocketProtocol.INVINFO:
+                {
+                    invInfoHandler.Process(model);
                     break;
                 }
             default:
