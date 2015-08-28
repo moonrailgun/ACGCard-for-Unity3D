@@ -18,18 +18,22 @@ class InvInfoHandler : IHandler
                 {
                     case 1:
                         {
+                            menuScene.ResponsePlayerPage(data.returnData);
                             break;
                         }
                     case 2:
                         {
+                            menuScene.ResponseHeroPage(data.returnData);
                             break;
                         }
                     case 3:
                         {
+                            menuScene.ResponseGuidePage(data.returnData);
                             break;
                         }
                     case 4:
                         {
+                            menuScene.ResponseInvPage(data.returnData);
                             break;
                         }
                     default:

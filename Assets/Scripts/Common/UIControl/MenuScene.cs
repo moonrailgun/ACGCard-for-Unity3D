@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using LitJson;
 
 public class MenuScene : MonoBehaviour
 {
@@ -28,10 +29,17 @@ public class MenuScene : MonoBehaviour
     public bool isWaittingForCardInv = false;
 
     //卡片背包面板
-    private UIPanel CardInventoryPanel;
-    private GameObject CardInventoryButtonLowlay;
-    private UIGrid HeroInfoUsingList;
-    private UIGrid HeroInfoInvList;
+    private UIPanel cardInventoryPanel;
+    private GameObject cardInventoryButtonLowlay;
+    private UIGrid heroInfoUsingList;
+    private UIGrid heroInfoInvList;
+    //玩家页
+    private UILabel pp_PlayerName;
+    private UILabel pp_PlayerLevel;
+    private UILabel pp_PlayerCoin;
+    private UILabel pp_PlayerGem;
+    private UIGrid pp_HeroGrid;
+    private UIGrid pp_ItemGrid;
 
     private void Awake()
     {
@@ -68,10 +76,17 @@ public class MenuScene : MonoBehaviour
         cardListGrid = GameObject.Find("Frame/Background/InfoPanel/CardContainer/CardList/Grid");
 
         //卡片背包面板
-        CardInventoryPanel = GameObject.Find("CardInventory").GetComponent<UIPanel>();
-        CardInventoryButtonLowlay = GameObject.Find("CardInventory/Background/Feature/Button-lowlay");
-        HeroInfoUsingList = GameObject.Find("CardInventory/Background/Main/HeroInfo/UsingHeros/Scroll View/Grid").GetComponent<UIGrid>();
-        HeroInfoInvList = GameObject.Find("CardInventory/Background/Main/HeroInfo/InvHeros/Scroll View/Grid").GetComponent<UIGrid>();
+        cardInventoryPanel = GameObject.Find("CardInventory").GetComponent<UIPanel>();
+        cardInventoryButtonLowlay = GameObject.Find("CardInventory/Background/Feature/Button-lowlay");
+        heroInfoUsingList = GameObject.Find("CardInventory/Background/Main/HeroInfo/UsingHeros/Scroll View/Grid").GetComponent<UIGrid>();
+        heroInfoInvList = GameObject.Find("CardInventory/Background/Main/HeroInfo/InvHeros/Scroll View/Grid").GetComponent<UIGrid>();
+        //玩家页
+        pp_PlayerName = GameObject.Find("CardInventory/Background/Main/PlayerInfo/Head/PlayerName").GetComponent<UILabel>();
+        pp_PlayerLevel = GameObject.Find("CardInventory/Background/Main/PlayerInfo/Head/PlayerLevel").GetComponent<UILabel>();
+        pp_PlayerCoin = GameObject.Find("CardInventory/Background/Main/PlayerInfo/Head/PlayerCoin").GetComponent<UILabel>();
+        pp_PlayerGem = GameObject.Find("CardInventory/Background/Main/PlayerInfo/Head/PlayerGem").GetComponent<UILabel>();
+        pp_HeroGrid = GameObject.Find("CardInventory/Background/Main/PlayerInfo/CardInfo/Heros/Scroll View/Grid").GetComponent<UIGrid>();
+        pp_ItemGrid = GameObject.Find("CardInventory/Background/Main/PlayerInfo/CardInfo/Items/Scroll View/Grid").GetComponent<UIGrid>();
     }
 
     /// <summary>
@@ -188,7 +203,7 @@ public class MenuScene : MonoBehaviour
     /// </summary>
     public void ShowCardInventory()
     {
-        CardInventoryPanel.alpha = 1f;
+        cardInventoryPanel.alpha = 1f;
     }
 
     /// <summary>
@@ -196,7 +211,7 @@ public class MenuScene : MonoBehaviour
     /// </summary>
     public void CloseCardInventory()
     {
-        CardInventoryPanel.alpha = 0f;
+        cardInventoryPanel.alpha = 0f;
     }
 
     /// <summary>
@@ -204,10 +219,10 @@ public class MenuScene : MonoBehaviour
     /// </summary>
     public void ToggleInvWinButton(GameObject target)
     {
-        CardInventoryButtonLowlay.GetComponent<UISprite>().SetAnchor(target);
+        cardInventoryButtonLowlay.GetComponent<UISprite>().SetAnchor(target);
     }
 
-    #region 请求
+    #region 请求数据与处理
     public void RequestPlayerPage()
     {
         int playerID = Global.Instance.playerInfo.uid;
@@ -224,9 +239,39 @@ public class MenuScene : MonoBehaviour
         cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
     }
 
-    public void ResponsePlayerPage()
+    public void ResponsePlayerPage(string data)
     {
-        throw new System.NotImplementedException();
+        //本地玩家信息（不从网络获取）
+        pp_PlayerName.text = Global.Instance.playerInfo.playerName;
+        pp_PlayerLevel.text = "Lv." + Global.Instance.playerInfo.level;
+        pp_PlayerCoin.text = Global.Instance.playerInfo.coin.ToString();
+        pp_PlayerGem.text = Global.Instance.playerInfo.gem.ToString();
+
+        JsonData json = JsonMapper.ToObject(data);
+        foreach (JsonData row in json)
+        {
+            int cardId = Convert.ToInt32(row["CardId"]);
+            string cardType = Convert.ToString(row["CardType"]);
+            bool isUsing = Convert.ToBoolean(row["IsUsing"]);
+
+            //处理信息（添加相应卡片）
+            if (isUsing)
+            {
+                if (cardType == "Character")
+                {
+                    //添加卡片到pp_HeroGrid
+                }
+                else if (cardType == "Item")
+                {
+                    //添加卡片到pp_ItemGrid
+                }
+                else
+                {
+                    LogsSystem.Instance.Print("接收到未知的卡片类型" + cardType + "，无法处理", LogLevel.WARN);
+                }
+            }
+            throw new System.NotImplementedException();
+        }
     }
 
     public void RequestHeroPage()
@@ -245,7 +290,7 @@ public class MenuScene : MonoBehaviour
         cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
     }
 
-    public void ResponseHeroPage()
+    public void ResponseHeroPage(string data)
     {
         throw new System.NotImplementedException();
     }
@@ -266,7 +311,7 @@ public class MenuScene : MonoBehaviour
         cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
     }
 
-    public void ResponseGuidePage()
+    public void ResponseGuidePage(string data)
     {
         throw new System.NotImplementedException();
     }
@@ -287,7 +332,7 @@ public class MenuScene : MonoBehaviour
         cardClient.SendMsg(JsonCoding<SocketModel>.encode(model));
     }
 
-    public void ResponseInvPage()
+    public void ResponseInvPage(string data)
     {
         throw new System.NotImplementedException();
     }
@@ -303,15 +348,15 @@ public class MenuScene : MonoBehaviour
     public void SwitchHeroContainer(GameObject heroCard)
     {
         UIGrid targetGrid, originGrid;
-        if (heroCard.transform.IsChildOf(this.HeroInfoUsingList.transform))
+        if (heroCard.transform.IsChildOf(this.heroInfoUsingList.transform))
         {
-            targetGrid = this.HeroInfoInvList;
-            originGrid = this.HeroInfoUsingList;
+            targetGrid = this.heroInfoInvList;
+            originGrid = this.heroInfoUsingList;
         }
         else
         {
-            targetGrid = this.HeroInfoUsingList;
-            originGrid = this.HeroInfoInvList;
+            targetGrid = this.heroInfoUsingList;
+            originGrid = this.heroInfoInvList;
         }
         targetGrid.AddChild(heroCard.transform);
         originGrid.RemoveChild(heroCard.transform);
