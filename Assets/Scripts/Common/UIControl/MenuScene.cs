@@ -339,7 +339,7 @@ public class MenuScene : MonoBehaviour
     #endregion
 
 
-    #region 英雄页
+    #region 英雄页UI
     //private List<CharacterCard> HeroList;
 
     /// <summary>
@@ -374,7 +374,28 @@ public class MenuScene : MonoBehaviour
     }
     #endregion
 
+    #region 通用处理方式
+    /// <summary>
+    /// 创建卡片实例到某一对象
+    /// </summary>
+    private void CreateCardInstance(int cardId, bool isUsing, GameObject parent)
+    {
+        //实例化卡牌
+        GameObject prefeb = Resources.Load<GameObject>("CharacterCard");
+        GameObject card = NGUITools.AddChild(parent, prefeb);
 
+        CardContainer container = card.GetComponent<CardContainer>();
+
+        //设置卡片属性
+        Card cardData = CardManager.Instance.GetCardById(cardId, CardType.Character);
+        container.SetCardData(cardData);
+
+        UIGrid gridScript = parent.GetComponent<UIGrid>();
+        if (gridScript != null)
+        {
+            gridScript.Reposition();//更新卡片位置
+        }
+    }
 
     /// <summary>
     /// 更新玩家拥有的卡片列表
@@ -428,6 +449,8 @@ public class MenuScene : MonoBehaviour
 
         cardListGrid.GetComponent<UIGrid>().enabled = true;
     }
+
+    #endregion
     #endregion
 
     /// <summary>

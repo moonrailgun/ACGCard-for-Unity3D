@@ -135,9 +135,9 @@ public class CardManager
     }
 
     /// <summary>
-    /// 获取卡片的拷贝
+    /// 获取卡片的拷贝(默认数据)
     /// </summary>
-    private Card GetCardById(int id, CardType cardType)
+    public Card GetCardById(int id, CardType cardType)
     {
         switch (cardType)
         {
