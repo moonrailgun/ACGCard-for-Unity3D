@@ -260,17 +260,18 @@ public class MenuScene : MonoBehaviour
                 if (cardType == "Character")
                 {
                     //添加卡片到pp_HeroGrid
+                    this.CreateCardInstance(cardId, isUsing, pp_HeroGrid);
                 }
                 else if (cardType == "Item")
                 {
                     //添加卡片到pp_ItemGrid
+                    this.CreateCardInstance(cardId, isUsing, pp_ItemGrid);
                 }
                 else
                 {
                     LogsSystem.Instance.Print("接收到未知的卡片类型" + cardType + "，无法处理", LogLevel.WARN);
                 }
             }
-            throw new System.NotImplementedException();
         }
     }
 
@@ -390,11 +391,16 @@ public class MenuScene : MonoBehaviour
         Card cardData = CardManager.Instance.GetCardById(cardId, CardType.Character);
         container.SetCardData(cardData);
 
-        UIGrid gridScript = parent.GetComponent<UIGrid>();
-        if (gridScript != null)
+        //如果为正在使用的，添加标识
+        if (isUsing)
         {
-            gridScript.Reposition();//更新卡片位置
+            throw new NotImplementedException();//-------------------------------------------未实现
         }
+    }
+    private void CreateCardInstance(int cardId, bool isUsing, UIGrid parent)
+    {
+        this.CreateCardInstance(cardId, isUsing, parent.gameObject);
+        parent.Reposition();
     }
 
     /// <summary>
