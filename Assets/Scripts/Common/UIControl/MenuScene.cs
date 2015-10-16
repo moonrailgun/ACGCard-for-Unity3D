@@ -33,6 +33,11 @@ public class MenuScene : MonoBehaviour
     private GameObject cardInventoryButtonLowlay;
     private UIGrid heroInfoUsingList;
     private UIGrid heroInfoInvList;
+    //卡片背包标签页
+    private GameObject ci_PlayerInfo;
+    private GameObject ci_HeroInfo;
+    private GameObject ci_GuideInfo;
+    private GameObject ci_InvInfo;
     //玩家页
     private UILabel pp_PlayerName;
     private UILabel pp_PlayerLevel;
@@ -80,6 +85,11 @@ public class MenuScene : MonoBehaviour
         cardInventoryButtonLowlay = GameObject.Find("CardInventory/Background/Feature/Button-lowlay");
         heroInfoUsingList = GameObject.Find("CardInventory/Background/Main/HeroInfo/UsingHeros/Scroll View/Grid").GetComponent<UIGrid>();
         heroInfoInvList = GameObject.Find("CardInventory/Background/Main/HeroInfo/InvHeros/Scroll View/Grid").GetComponent<UIGrid>();
+        //卡片背包标签页
+        ci_PlayerInfo = GameObject.Find("CardInventory/Background/Main/PlayerInfo");
+        ci_HeroInfo = GameObject.Find("CardInventory/Background/Main/HeroInfo");
+        ci_GuideInfo = GameObject.Find("CardInventory/Background/Main/GuideInfo");
+        ci_InvInfo = GameObject.Find("CardInventory/Background/Main/InvInfo");
         //玩家页
         pp_PlayerName = GameObject.Find("CardInventory/Background/Main/PlayerInfo/Head/PlayerName").GetComponent<UILabel>();
         pp_PlayerLevel = GameObject.Find("CardInventory/Background/Main/PlayerInfo/Head/PlayerLevel").GetComponent<UILabel>();
@@ -221,6 +231,36 @@ public class MenuScene : MonoBehaviour
     {
         cardInventoryButtonLowlay.GetComponent<UISprite>().SetAnchor(target);
     }
+    #region 标签页内容切换
+    public void ShowPlayerInfoPanel()
+    {
+        this.ci_PlayerInfo.SetActive(true);
+        this.ci_HeroInfo.SetActive(false);
+        this.ci_GuideInfo.SetActive(false);
+        this.ci_InvInfo.SetActive(false);
+    }
+    public void ShowHeroInfoPanel()
+    {
+        this.ci_PlayerInfo.SetActive(false);
+        this.ci_HeroInfo.SetActive(true);
+        this.ci_GuideInfo.SetActive(false);
+        this.ci_InvInfo.SetActive(false);
+    }
+    public void ShowGuideInfoPanel()
+    {
+        this.ci_PlayerInfo.SetActive(false);
+        this.ci_HeroInfo.SetActive(false);
+        this.ci_GuideInfo.SetActive(true);
+        this.ci_InvInfo.SetActive(false);
+    }
+    public void ShowInvInfoPanel()
+    {
+        this.ci_PlayerInfo.SetActive(false);
+        this.ci_HeroInfo.SetActive(false);
+        this.ci_GuideInfo.SetActive(false);
+        this.ci_InvInfo.SetActive(true);
+    }
+    #endregion
 
     #region 请求数据与处理
     public void RequestPlayerPage()
@@ -338,7 +378,6 @@ public class MenuScene : MonoBehaviour
         throw new System.NotImplementedException();
     }
     #endregion
-
 
     #region 英雄页UI
     //private List<CharacterCard> HeroList;

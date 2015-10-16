@@ -30,8 +30,10 @@ public class ItemCardManager
         JsonData jd = JsonMapper.ToObject(itemJSONString);
         if (jd.IsArray)
         {
-            foreach (JsonData data in jd)
+            for (int i = 0;i < jd.Count; i++)
             {
+                JsonData data = jd[i];
+
                 int ID = (int)data["ID"];
                 string Name = (string)data["Name"];
                 string Type = (string)data["Type"];
@@ -39,7 +41,7 @@ public class ItemCardManager
                 string Des = (string)data["Des"];
                 string Pic = (string)data["Pic"];
                 JsonData Action = (JsonData)data["Action"];
-                ReadAction(Action);
+                //ReadAction(Action);
             }
         }
         else

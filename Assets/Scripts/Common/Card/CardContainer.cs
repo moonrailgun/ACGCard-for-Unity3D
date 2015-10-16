@@ -48,14 +48,10 @@ public class CardContainer : MonoBehaviour
         card.UpdateCardUIBaseByCardInfo(gameObject);
     }
 
-    public void SetCardData(Card card)
+    public void SetCardData(Card card, bool isUpdateUI = true)
     {
         this.card = card;
         this.card.SetCardContainer(this);//传递卡片容器
-    }
-    public void SetCardData(Card card, bool isUpdateUI = true)
-    {
-        this.SetCardData(card);
         if (isUpdateUI)
         { this.UpdateCardUI(); }
     }
