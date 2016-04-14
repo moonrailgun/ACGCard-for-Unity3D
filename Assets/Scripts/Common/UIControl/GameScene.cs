@@ -9,6 +9,7 @@ public class GameScene : MonoBehaviour
     private Skill selectedSkill;//被选中的技能
     private GameCardUIManager uiManager;//卡片UI管理器
     private GameObject cardGrow;//卡片光晕物体
+    private GameObject roundSwitch;//我的回合。回合切换
     private ArrowLine arrowLine;//箭头指向线
     private GameObject roundDoneButton;//回合结束按钮
     public UIPanel chooseCardPanel;//选择卡片根面板
@@ -21,6 +22,7 @@ public class GameScene : MonoBehaviour
 
         this.uiManager = GetComponent<GameCardUIManager>();
         this.roundDoneButton = GameObject.Find("GamePanel/RoundDone");
+        this.roundSwitch = GameObject.Find("Background/RoundSwitch");
         this.chooseCardPanel = GameObject.Find("UI Root/Background/ChooseCardPanel").GetComponent<UIPanel>();
         this.chooseCardGrid = GameObject.Find("UI Root/Background/ChooseCardPanel/ChooseContainer/ChooseList/Grid").GetComponent<UIGrid>();
 
