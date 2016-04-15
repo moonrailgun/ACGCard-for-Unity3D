@@ -129,6 +129,7 @@ public class TCPGameDataHandler
     {
         if (data.returnCode == ReturnCode.Success)
         {
+            LogsSystem.Instance.Print("正在处理玩家拥有卡片的信息");
             GamePlayerOwnCardData ownCardData = JsonCoding<GamePlayerOwnCardData>.decode(data.operateData);
             Global.Instance.playerGameCard = ownCardData.cardInv;//传递给全局
             if (GameClient.Instance.GetGameSceneManager() != null)

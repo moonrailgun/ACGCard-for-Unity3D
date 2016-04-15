@@ -44,6 +44,7 @@ public class AttackSkill : Skill
 
     public override void ApplyAppendData(string skillAppendData)
     {
-        throw new NotImplementedException();
+        LogsSystem.Instance.Print(string.Format("应用攻击技能未完成：{0}", skillAppendData));
+        //throw new NotImplementedException();
     }
 }

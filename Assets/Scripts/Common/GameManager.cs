@@ -89,7 +89,6 @@ public class GameManager
                 UIEventListener.Get(go).onClick += OnSelectHeroToUp;
             }
 
-
             gameSceneManager.ShowChooseWindow();//显示窗口
             LogsSystem.Instance.Print("游戏初始化完毕，开始游戏");
         }
