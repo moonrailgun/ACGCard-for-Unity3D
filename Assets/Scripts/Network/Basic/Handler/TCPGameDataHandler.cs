@@ -45,6 +45,10 @@ public class TCPGameDataHandler
                 {
                     return ProcessOperateEquip(data);
                 }
+            case OperateCode.RoundSwitch:
+                {
+                    return ProcessRoundSwitch(data);
+                }
             default:
                 {
                     break;
@@ -219,6 +223,17 @@ public class TCPGameDataHandler
                 //unequip
                 gameManager.RemoveEquipment(detail.operateCardUUID, detail.equipCardId, detail.equipPosition);
             }
+        }
+
+        return null;
+    }
+
+    private GameData ProcessRoundSwitch(GameData data)
+    {
+        if (data.returnCode == ReturnCode.Success)
+        {
+            GameManager gameManager = this.GetGameManager();
+            gameManager.RoundStart();//回合开始
         }
 
         return null;

@@ -215,6 +215,15 @@ public class GameScene : MonoBehaviour
     {
         this.chooseCardPanel.alpha = 0;
     }
+
+    public void ShowRoundSwitchBar()
+    {
+        RoundSwitch rs = this.roundSwitch.GetComponent<RoundSwitch>();
+        if (rs != null)
+        {
+            rs.EnterScene();
+        }
+    }
     #endregion
     
 

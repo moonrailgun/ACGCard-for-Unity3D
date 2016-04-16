@@ -12,5 +12,6 @@ public class OperateCode
     public const int SummonCharacter = 34;
     public const int OperateState = 35;
     public const int OperateEquip = 36;
-    public const int OperateHandCard = 37;
+    public const int RoundSwitch = 37;
+    public const int OperateHandCard = 38;
 }

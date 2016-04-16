@@ -114,13 +114,23 @@ public class GameManager
     /// </summary>
     public void RoundStart()
     {
+        /*
         if (chooseTimes < 6)
         {
             gameSceneManager.ShowChooseWindow();
 
             //------还有其他操作
-        }
+        }*/
         LogsSystem.Instance.Print("回合开始");
+        this.gameSceneManager.ShowRoundSwitchBar();//显示回合开始条
+
+        //重置所有卡片状态
+        List<CharacterCard> list = gameCardCollection.GetAllCharacterCard(GameSide.Our);
+        LogsSystem.Instance.Print(string.Format("重置所有卡片状态，共{0}张。", list.Count));
+        foreach(CharacterCard card in list){
+            card.SetAvailable(true);
+        }
+        LogsSystem.Instance.Print("重置完毕");
     }
 
     /// <summary>
@@ -459,12 +469,6 @@ public class GameManager
     }
     #endregion
 
-    #region 结束回合
-    #endregion
-
-    #region 开始回合
-    #endregion
-
     #region 附属结构
     /// <summary>
     /// 游戏中所有卡片列表
@@ -518,6 +522,38 @@ public class GameManager
                 return EnemyCharacterCard[cardUUID];
             }
         }
+
+        public List<CharacterCard> GetAllCharacterCard(GameSide side)
+        {
+            List<CharacterCard> list = new List<CharacterCard>();
+            Dictionary<string, CharacterCard> dic;
+            if (side == GameSide.Our)
+            {
+                dic = OurCharacterCard;
+            }
+            else
+            {
+                dic = EnemyCharacterCard;
+            }
+            foreach(KeyValuePair<string, CharacterCard> pair in dic){
+                list.Add(pair.Value);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// 配置卡片是否可用
+        /// </summary>
+        public void SetCardAvailable(string cardUUID, bool available)
+        {
+            GetCharacterCard(cardUUID).SetAvailable(available);
+        }
+        public bool GetCardAvailable(string cardUUID)
+        {
+            return GetCharacterCard(cardUUID).GetAvailable();
+        }
+
     }
     /// <summary>
     /// 游戏方

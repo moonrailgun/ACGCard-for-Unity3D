@@ -12,6 +12,8 @@ public class CharacterCard : Card
     protected int attack;//攻击力
     protected int speed;//速度
 
+    protected bool isAvailabel;//是否可用
+
     protected Equipment equipments;//装备
 
     protected List<Skill> cardOwnSkill;//卡片技能列表
@@ -71,6 +73,11 @@ public class CharacterCard : Card
     /// <param name="from">技能来源</param>
     public override void OnSkillUsed(Skill skill, Card from)
     {
+        if (!this.isAvailabel)
+        {
+            LogsSystem.Instance.Print("卡片不可用");
+        }
+
         base.OnSkillUsed(skill, from);//调用上级
 
         if (skill is AttackSkill)
@@ -88,6 +95,11 @@ public class CharacterCard : Card
     /// <param name="damage">伤害值</param>
     public void OnCharacterAttack(CharacterCard targetCharacter, int damage)
     {
+        if (!this.isAvailabel)
+        {
+            LogsSystem.Instance.Print("卡片不可用");
+        }
+
         GameObject target = targetCharacter.container.gameObject;
         //播放动画
         Hashtable args = new Hashtable();
@@ -365,6 +377,35 @@ public class CharacterCard : Card
         info.cardOwnSkill = IntArray.IntArrayToString(array);
 
         return info;
+    }
+
+    public void SetAvailable(bool available)
+    {
+        this.isAvailabel = available;
+        if (available)
+        {
+            //变正常
+            Transform cardObject = this.container.transform;
+            UISprite sprite = cardObject.FindChild("Character").GetComponent<UISprite>();
+            if (sprite != null)
+            {
+                sprite.color = Color.white;
+            }
+        }
+        else
+        {
+            //变黑
+            Transform cardObject = this.container.transform;
+            UISprite sprite = cardObject.FindChild("Character").GetComponent<UISprite>();
+            if (sprite != null)
+            {
+                sprite.color = Color.black;
+            }
+        }
+    }
+    public bool GetAvailable()
+    {
+        return this.isAvailabel;
     }
     #endregion
 
