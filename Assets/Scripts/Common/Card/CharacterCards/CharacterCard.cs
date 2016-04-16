@@ -86,6 +86,8 @@ public class CharacterCard : Card
             int damage = attackSkill.GetCalculatedDamage();
             GetDamage(damage);
         }
+
+        this.SetAvailable(false);//设置卡片不可用
     }
 
     /// <summary>
@@ -105,10 +107,10 @@ public class CharacterCard : Card
         Hashtable args = new Hashtable();
         args.Add("amount", target.transform.position - container.transform.position);
         args.Add("time", 1f);
-
         iTween.PunchPosition(container.gameObject, args);
 
         targetCharacter.GetDamage(damage);
+        this.SetAvailable(false);//设置卡片不可用
 
         //状态回调
         if (cardState.Count != 0)
