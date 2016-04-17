@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts.Network.DTO.GameData
 {
-    class RoundSwtichData: CommonDTO
+    class RoundSwitchData: CommonDTO
     {
         public int roundPosition;
     }

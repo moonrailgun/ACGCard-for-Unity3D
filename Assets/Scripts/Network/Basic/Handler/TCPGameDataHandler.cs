@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Network.DTO.GameData;
+using System;
 using System.Net.Sockets;
 using UnityEngine;
 
@@ -232,8 +233,12 @@ public class TCPGameDataHandler
     {
         if (data.returnCode == ReturnCode.Success)
         {
-            GameManager gameManager = this.GetGameManager();
-            gameManager.RoundStart();//回合开始
+            RoundSwitchData detail = JsonCoding<RoundSwitchData>.decode(data.operateData);
+            if (detail.roundPosition == GetGameManager().GetPlayerRoomData().allocPosition)
+            {
+                GameManager gameManager = this.GetGameManager();
+                gameManager.RoundStart();//回合开始
+            }
         }
 
         return null;

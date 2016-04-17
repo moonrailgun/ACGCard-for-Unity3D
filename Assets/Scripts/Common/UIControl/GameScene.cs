@@ -183,8 +183,11 @@ public class GameScene : MonoBehaviour
         roundDoneButton.transform.Find("Label").GetComponent<UILabel>().color = button.disabledColor;
         LogsSystem.Instance.Print("回合结束");
 
+        gameManager.RoundDone();//调用回合结束事件
+
+        /*
         LogsSystem.Instance.Print("回合结束按钮测试........");
-        Invoke("TurnOnRoundButton", 2f);//用于测试
+        Invoke("TurnOnRoundButton", 2f);//用于测试*/
     }
 
     /// <summary>

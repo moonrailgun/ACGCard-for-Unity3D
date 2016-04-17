@@ -124,21 +124,33 @@ public class GameManager
         LogsSystem.Instance.Print("回合开始");
         this.gameSceneManager.ShowRoundSwitchBar();//显示回合开始条
 
+        //使按钮可用
+        this.gameSceneManager.TurnOnRoundButton();
+
         //重置所有卡片状态
         List<CharacterCard> list = gameCardCollection.GetAllCharacterCard(GameSide.Our);
         LogsSystem.Instance.Print(string.Format("重置所有卡片状态，共{0}张。", list.Count));
-        foreach(CharacterCard card in list){
+        foreach (CharacterCard card in list)
+        {
             card.SetAvailable(true);
         }
+
         LogsSystem.Instance.Print("重置完毕");
     }
 
     /// <summary>
     /// 回合结束
     /// </summary>
-    public void RoundDown()
+    public void RoundDone()
     {
         LogsSystem.Instance.Print("回合结束");
+
+        //向服务器发送结束回合操作
+        GameData data = new GameData();
+        data.operateCode = OperateCode.RoundDown;
+        data.roomID = playerRoomData.roomID;
+
+        GameClient.Instance.SendToServer(data);
     }
 
     /// <summary>
@@ -158,6 +170,11 @@ public class GameManager
     public List<CardInfo> GetPlayerOwnCardClone()
     {
         return new List<CardInfo>(playerOwnGameCard);
+    }
+
+    public AllocRoomData GetPlayerRoomData()
+    {
+        return this.playerRoomData;
     }
 
     /// <summary>
