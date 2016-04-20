@@ -151,8 +151,15 @@ public class GameCardUIManager : MonoBehaviour
     {
         CardContainer container = go.GetComponent<CardContainer>();
         Card card = container.GetCardData();
-        if (container != null && card != null && Global.Instance.scene == SceneType.GameScene && card is CharacterCard)//数据正常
+        if (container != null && card != null && Global.Instance.scene == SceneType.GameScene && card is CharacterCard)//数据正常。选中的卡片为角色卡
         {
+            CharacterCard characterCard = card as CharacterCard;
+            if (characterCard.GetAvailable() == false)
+            {
+                LogsSystem.Instance.Print("无法选中卡片：该卡片不可用", LogLevel.GAMEDETAIL);
+                return;
+            }
+
             Skill selectedSkill = gameSceneManager.GetSelectedSkill();
             GameObject selectedCard = gameSceneManager.GetSelectedCard();//获得已经被选中的我方卡片
             Card selectedCardData = null;//选中卡片的数据

@@ -145,6 +145,12 @@ public class GameManager
     {
         LogsSystem.Instance.Print("回合结束");
 
+        foreach (CharacterCard card in gameCardCollection.GetAllCharacterCard(GameManager.GameSide.Our))
+        {
+            //将我方所有卡片都设为不可用
+            card.SetAvailable(false);
+        }
+
         //向服务器发送结束回合操作
         GameData data = new GameData();
         data.operateCode = OperateCode.RoundDown;
@@ -175,6 +181,10 @@ public class GameManager
     public AllocRoomData GetPlayerRoomData()
     {
         return this.playerRoomData;
+    }
+    public GameCard GetGameCardCollection()
+    {
+        return this.gameCardCollection;
     }
 
     /// <summary>

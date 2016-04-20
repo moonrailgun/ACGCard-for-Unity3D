@@ -50,6 +50,10 @@ public class TCPGameDataHandler
                 {
                     return ProcessRoundSwitch(data);
                 }
+            case OperateCode.GameStart:
+                {
+                    return ProcessGameStart(data);
+                }
             default:
                 {
                     break;
@@ -238,6 +242,30 @@ public class TCPGameDataHandler
             {
                 GameManager gameManager = this.GetGameManager();
                 gameManager.RoundStart();//回合开始
+            }
+        }
+
+        return null;
+    }
+
+    private GameData ProcessGameStart(GameData data)
+    {
+        if (data.returnCode == ReturnCode.Success)
+        {
+            GameManager gameManager = this.GetGameManager();
+            RoundSwitchData detail = JsonCoding<RoundSwitchData>.decode(data.operateData);
+            if (detail.roundPosition == GetGameManager().GetPlayerRoomData().allocPosition)
+            {
+                gameManager.RoundStart();//回合开始
+            }
+            else
+            {
+                GameManager.GameCard gameCard = gameManager.GetGameCardCollection();
+                foreach (CharacterCard card in gameCard.GetAllCharacterCard(GameManager.GameSide.Our))
+                {
+                    //将我方所有卡片都设为不可用
+                    card.SetAvailable(false);
+                }
             }
         }
 
