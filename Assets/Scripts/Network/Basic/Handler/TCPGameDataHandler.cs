@@ -254,8 +254,11 @@ public class TCPGameDataHandler
         {
             GameManager gameManager = this.GetGameManager();
             RoundSwitchData detail = JsonCoding<RoundSwitchData>.decode(data.operateData);
+            gameManager.isGameStarted = true;
             if (detail.roundPosition == GetGameManager().GetPlayerRoomData().allocPosition)
             {
+                LogsSystem.Instance.Print("游戏开始， 我方先手", LogLevel.GAMEDETAIL);
+                
                 gameManager.RoundStart();//回合开始
             }
             else
@@ -263,6 +266,8 @@ public class TCPGameDataHandler
                 GameManager.GameCard gameCard = gameManager.GetGameCardCollection();
                 foreach (CharacterCard card in gameCard.GetAllCharacterCard(GameManager.GameSide.Our))
                 {
+                    LogsSystem.Instance.Print("游戏开始， 敌方先手", LogLevel.GAMEDETAIL);
+
                     //将我方所有卡片都设为不可用
                     card.SetAvailable(false);
                 }

@@ -154,9 +154,10 @@ public class GameCardUIManager : MonoBehaviour
         if (container != null && card != null && Global.Instance.scene == SceneType.GameScene && card is CharacterCard)//数据正常。选中的卡片为角色卡
         {
             CharacterCard characterCard = card as CharacterCard;
-            if (characterCard.GetAvailable() == false)
+            GameManager gameManager = gameSceneManager.gameManager;
+            if (characterCard.GetAvailable() == false || gameManager.isGameStarted == false || gameManager.isMyRound == false)
             {
-                LogsSystem.Instance.Print("无法选中卡片：该卡片不可用", LogLevel.GAMEDETAIL);
+                LogsSystem.Instance.Print(string.Format("无法选中卡片：该卡片不可用或处于不可用的场合:({0},{1},{2})", characterCard.GetAvailable(), gameManager.isGameStarted, gameManager.isMyRound), LogLevel.GAMEDETAIL);
                 return;
             }
 

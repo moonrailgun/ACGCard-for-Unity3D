@@ -16,6 +16,9 @@ public class GameManager
     private GameCard gameCardCollection = new GameCard();//所有卡片集合
     private PlayerInfo playerInfo;//玩家信息集合
 
+    public bool isGameStarted = false;
+    public bool isMyRound = false;
+
     public GameManager(GameScene gameSceneManager)
     {
         this.gameClient = GameClient.Instance;
@@ -118,10 +121,9 @@ public class GameManager
         if (chooseTimes < 6)
         {
             gameSceneManager.ShowChooseWindow();
-
-            //------还有其他操作
         }*/
-        LogsSystem.Instance.Print("回合开始");
+        LogsSystem.Instance.Print("回合开始", LogLevel.GAMEDETAIL);
+        this.isMyRound = true;
         this.gameSceneManager.ShowRoundSwitchBar();//显示回合开始条
 
         //使按钮可用
@@ -143,8 +145,9 @@ public class GameManager
     /// </summary>
     public void RoundDone()
     {
-        LogsSystem.Instance.Print("回合结束");
+        LogsSystem.Instance.Print("回合结束", LogLevel.GAMEDETAIL);
 
+        this.isMyRound = false;
         foreach (CharacterCard card in gameCardCollection.GetAllCharacterCard(GameManager.GameSide.Our))
         {
             //将我方所有卡片都设为不可用

@@ -178,6 +178,12 @@ public class GameScene : MonoBehaviour
     /// </summary>
     public void RoundDown()
     {
+        if (gameManager.isGameStarted != true && gameManager.isMyRound != true)
+        {
+            LogsSystem.Instance.Print("不是我的回合， 无法进行操作", LogLevel.GAMEDETAIL);
+            return;
+        }
+
         UIButton button = roundDoneButton.GetComponent<UIButton>();
         button.isEnabled = false;
         roundDoneButton.transform.Find("Label").GetComponent<UILabel>().color = button.disabledColor;
