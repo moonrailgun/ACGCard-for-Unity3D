@@ -154,6 +154,8 @@ public class CardClient : MonoBehaviour
         //关闭UDP
         this.isThreadRun = false;
         SendMsg("127.0.0.1", localPort, "请求关闭监听");
+        udpReceiveClient = null;
+
 
         //关闭TCP
         GameClient.Instance.CloseTcpConnect();
